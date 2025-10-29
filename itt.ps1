@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-lastupdate     = "10/19/2025"
+lastupdate     = "10/29/2025"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -810,25 +810,30 @@ Add-Log -Message "`n  $result times worldwide`n"
 }
 catch {
 Add-Log -Message "Unstable internet connection detected." -Level "info"
-Start-Sleep 8
+Start-Sleep 10
 UsageCount
 }
 }
 function Quotes {
-$q=(Invoke-RestMethod "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Quotes.json").Quotes|Sort-Object {Get-Random}
+$q = (Invoke-RestMethod "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Quotes.json").Quotes | Sort-Object { Get-Random }
 Set-Statusbar -Text "☕ $($itt.database.locales.Controls.$($itt.Language).welcome)"; Start-Sleep 18
 Set-Statusbar -Text "👁‍🗨 $($itt.database.locales.Controls.$($itt.Language).easter_egg)"; Start-Sleep 18
-$i=@{quote="💬";info="📢";music="🎵";Cautton="⚠";default="☕"}
-while(1){foreach($x in $q){$c=$i[$x.type];if(-not $c){$c=$i.default};$t="`“$($x.text)`”";if($x.name){$t+=" ― $($x.name)"};Set-Statusbar -Text "$c $t";Start-Sleep 25}}
+$i = @{quote = "💬"; info = "📢"; music = "🎵"; Cautton = "⚠"; default = "☕" }
+while (1) { foreach ($x in $q) { $c = $i[$x.type]; if (-not $c) { $c = $i.default }; $t = "`“$($x.text)`”"; if ($x.name) { $t += " ― $($x.name)" }; Set-Statusbar -Text "$c $t"; Start-Sleep 25 } }
 }
 function LOG {
 Write-Host "  `n` "
-Write-Host "  ███████████████████╗ My old GitHub account was restricted without any reason from GitHub support"
-Write-Host "  ██╚══██╔══╚═══██╔══╝ This is the new repository, please share it so people can easily"
-Write-Host "  ██║  ██║ Emad ██║    offical repo: https://github.com/emadadeldev/ittea"
-Write-Host "  ██║  ██║ Adel ██║    Backup:https: //gitlab.com/emadadel/itt/"
-Write-Host "  ██║  ██║      ██║    "
-Write-Host "  ╚═╝  ╚═╝      ╚═╝    "
+Write-Host "  ███████████████████╗ " -NoNewline
+Write-Host "My old GitHub account was restricted without any reason." -ForegroundColor Yellow
+Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
+Write-Host "This is the new official repo:" -ForegroundColor Yellow
+Write-Host "  ██║  ██║ Emad ██║    " -NoNewline
+Write-Host "Main repository: https://github.com/emadadeldev/ittea" -ForegroundColor Yellow
+Write-Host "  ██║  ██║ Adel ██║    " -NoNewline
+Write-Host "Backup 1: https://gitlab.com/emadadel/itt" -ForegroundColor Yellow
+Write-Host "  ██║  ██║      ██║    " -NoNewline
+Write-Host "Backup 2: https://codeberg.org/emadadel/itt" -ForegroundColor Yellow
+Write-Host "  ╚═╝  ╚═╝      ╚═╝    " -ForegroundColor White
 UsageCount
 }
 LOG
@@ -1656,11 +1661,11 @@ $itt.$Button.Content = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('bc').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/batmancave')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
@@ -2853,7 +2858,7 @@ $HashVars = New-Object System.Management.Automation.Runspaces.SessionStateVariab
 $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
 $InitialSessionState.Variables.Add($HashVars)
 $Functions = @(
-'Install-App', 'Install-Dependencies','Install-Winget','Add-Log','Finish', 'Message',
+'Install-App', 'Install-Dependencies', 'Install-Winget', 'Add-Log', 'Finish', 'Message',
 'Notify', 'UpdateUI', 'ExecuteCommand', 'Set-Registry', 'Set-Taskbar',
 'Refresh-Explorer', 'CreateRestorePoint', 'Set-Statusbar'
 )
@@ -2891,8 +2896,7 @@ Set-ItemProperty -Path $itt.registryPath -Name "backup" -Value 0 -Force
 Set-ItemProperty -Path $itt.registryPath -Name "source" -Value "auto" -Force
 $itt['window'].FindName('hotdot').Visibility = [System.Windows.Visibility]::Visible
 }
-else
-{
+else {
 $itt['window'].FindName('hotdot').Visibility = [System.Windows.Visibility]::Hidden
 }
 try {
@@ -3001,16 +3005,16 @@ $itt.QuoteIcon = $itt["window"].FindName("QuoteIcon")
 $h = [System.Net.Http.HttpClientHandler]::new()
 $h.AutomaticDecompression = [System.Net.DecompressionMethods] 'GZip,Deflate'
 $c = [System.Net.Http.HttpClient]::new($h)
-$appsUrl   = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
+$appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
 $tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Tweaks.json"
 while ($true) {
 try {
 $aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
 [Threading.Tasks.Task]::WaitAll($aTask, $tTask)
-$appsData   = $aTask.Result | ConvertFrom-Json
+$appsData = $aTask.Result | ConvertFrom-Json
 $tweaksData = $tTask.Result | ConvertFrom-Json
 if ($appsData -and $tweaksData) {
-$itt.AppsListView.ItemsSource   = $appsData
+$itt.AppsListView.ItemsSource = $appsData
 $itt.TweaksListView.ItemsSource = $tweaksData
 break
 }
@@ -3021,7 +3025,7 @@ Write-Host "Still loading data..." -ForegroundColor Yellow
 catch {
 Write-Host "Unstable internet connection detected. Retrying in 8 seconds..." -ForegroundColor Yellow
 }
-Start-Sleep 8
+Start-Sleep 10
 }
 $MainXaml.SelectNodes("//*[@Name]") | ForEach-Object {
 $name = $_.Name
