@@ -2,72 +2,72 @@
 #region initialize Runspace & Window
 #===========================================================================
 
-    # ================================
-    # Configuration
-    # ================================
+# ================================
+# Configuration
+# ================================
 
-    # Max threads = number of logical processors
-    $MaxThreads = [int]$env:NUMBER_OF_PROCESSORS
+# Max threads = number of logical processors
+$MaxThreads = [int]$env:NUMBER_OF_PROCESSORS
 
-    # Create a session state variable entry for sharing $itt across runspaces
-    $HashVars = New-Object System.Management.Automation.Runspaces.SessionStateVariableEntry `
-        -ArgumentList 'itt', $itt, $null
+# Create a session state variable entry for sharing $itt across runspaces
+$HashVars = New-Object System.Management.Automation.Runspaces.SessionStateVariableEntry `
+    -ArgumentList 'itt', $itt, $null
 
-    # Create the initial session state
-    $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
-    $InitialSessionState.Variables.Add($HashVars)
-
-
-    # ================================
-    # Function Injection
-    # ================================
-
-    # List of functions to include in the runspace environment
-    $Functions = @(
-        'Install-App', 'Install-Dependencies','Install-Winget','Add-Log','Finish', 'Message',
-        'Notify', 'UpdateUI', 'ExecuteCommand', 'Set-Registry', 'Set-Taskbar',
-        'Refresh-Explorer', 'CreateRestorePoint', 'Set-Statusbar'
-    )
-
-    foreach ($Func in $Functions) {
-        $Command = Get-Command $Func -ErrorAction SilentlyContinue
-        if ($Command) {
-            $InitialSessionState.Commands.Add(
-                (New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry `
-                    $Command.Name, $Command.ScriptBlock.ToString())
-            )
-            
-            # Debug start
-                Write-Output "Added function: $Func"
-            # Debug end
-        }
-    }
+# Create the initial session state
+$InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
+$InitialSessionState.Variables.Add($HashVars)
 
 
-    # ================================
-    # UI Initialization
-    # ================================
+# ================================
+# Function Injection
+# ================================
 
-    try {
-        [xml]$MainXaml = $MainWindowXaml
-        $itt["window"] = [Windows.Markup.XamlReader]::Load(
-            [System.Xml.XmlNodeReader]$MainXaml
+# List of functions to include in the runspace environment
+$Functions = @(
+    'Install-App', 'Install-Dependencies', 'Install-Winget', 'Add-Log', 'Finish', 'Message',
+    'Notify', 'UpdateUI', 'ExecuteCommand', 'Set-Registry', 'Set-Taskbar',
+    'Refresh-Explorer', 'CreateRestorePoint', 'Set-Statusbar'
+)
+
+foreach ($Func in $Functions) {
+    $Command = Get-Command $Func -ErrorAction SilentlyContinue
+    if ($Command) {
+        $InitialSessionState.Commands.Add(
+            (New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry `
+                $Command.Name, $Command.ScriptBlock.ToString())
         )
+            
+        # Debug start
+        Write-Output "Added function: $Func"
+        # Debug end
     }
-    catch {
-        Write-Output "Error initializing UI: $($_.Exception.Message)"
-    }
+}
 
 
-    # ================================
-    # Runspace Pool Creation
-    # ================================
+# ================================
+# UI Initialization
+# ================================
 
-    $itt.Runspace = [RunspaceFactory]::CreateRunspacePool(
-        1, $MaxThreads, $InitialSessionState, $Host
+try {
+    [xml]$MainXaml = $MainWindowXaml
+    $itt["window"] = [Windows.Markup.XamlReader]::Load(
+        [System.Xml.XmlNodeReader]$MainXaml
     )
+}
+catch {
+    Write-Output "Error initializing UI: $($_.Exception.Message)"
+}
 
-    $itt.Runspace.Open()
+
+# ================================
+# Runspace Pool Creation
+# ================================
+
+$itt.Runspace = [RunspaceFactory]::CreateRunspacePool(
+    1, $MaxThreads, $InitialSessionState, $Host
+)
+
+$itt.Runspace.Open()
 #===========================================================================
 #endregion initialize Runspace & Window
 #===========================================================================
@@ -87,8 +87,7 @@ try {
         Set-ItemProperty -Path $itt.registryPath -Name "source" -Value "auto" -Force
         $itt['window'].FindName('hotdot').Visibility = [System.Windows.Visibility]::Visible
     }
-    else
-    {
+    else {
         # Show hotdot if first run
         $itt['window'].FindName('hotdot').Visibility = [System.Windows.Visibility]::Hidden
     }
@@ -222,7 +221,7 @@ $h = [System.Net.Http.HttpClientHandler]::new()
 $h.AutomaticDecompression = [System.Net.DecompressionMethods] 'GZip,Deflate'
 $c = [System.Net.Http.HttpClient]::new($h)
 
-$appsUrl   = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
+$appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
 $tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Tweaks.json"
 
 while ($true) {
@@ -230,11 +229,11 @@ while ($true) {
         $aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
         [Threading.Tasks.Task]::WaitAll($aTask, $tTask)
 
-        $appsData   = $aTask.Result | ConvertFrom-Json
+        $appsData = $aTask.Result | ConvertFrom-Json
         $tweaksData = $tTask.Result | ConvertFrom-Json
 
         if ($appsData -and $tweaksData) {
-            $itt.AppsListView.ItemsSource   = $appsData
+            $itt.AppsListView.ItemsSource = $appsData
             $itt.TweaksListView.ItemsSource = $tweaksData
             break
         }
@@ -246,7 +245,7 @@ while ($true) {
         Write-Host "Unstable internet connection detected. Retrying in 8 seconds..." -ForegroundColor Yellow
     }
 
-    Start-Sleep 8
+    Start-Sleep 10
 }
 #===========================================================================
 #endregion Fetch Data
