@@ -4,7 +4,7 @@
         x:Name="Window" Title="Install Tweaks Tool"
         WindowStartupLocation="CenterScreen" Background="{DynamicResource PrimaryBackgroundColor}"
         Width="950" Height="700" MinHeight="600" MinWidth="800"
-        FontFamily="Arial" ShowInTaskbar="True"
+        ShowInTaskbar="True"
         TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto"
         Icon="https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico">
 
