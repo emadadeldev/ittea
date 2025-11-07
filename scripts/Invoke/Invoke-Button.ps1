@@ -7,10 +7,10 @@ function Invoke-Button {
             Invoke-Button -action "sysinfo"
     #>
 
-    Param ([string]$action,[string]$Content)
+    Param ([string]$action, [string]$Content)
 
     # debug start
-    function Debug-Message {if($Debug) {  Add-Log "$action,$Content" -Level "Debug"  }}
+    function Debug-Message { if ($Debug) { Add-Log "$action,$Content" -Level "Debug" } }
     # debug end
 
     # Switch block to handle different actions
@@ -82,7 +82,7 @@ function Invoke-Button {
             Start-Process msconfig.exe
         }
         "ev" {
-            rundll32 sysdm.cpl,EditEnvironmentVariables
+            rundll32 sysdm.cpl, EditEnvironmentVariables
         }
         "spp" {
             systemPropertiesProtection
@@ -101,7 +101,7 @@ function Invoke-Button {
         }
         # restore point
         "restorepoint" {
-            ITT-ScriptBlock -ScriptBlock{CreateRestorePoint}
+            ITT-ScriptBlock -ScriptBlock { CreateRestorePoint }
         }
         # Mirror Links
         "unhook" {
@@ -115,11 +115,11 @@ function Invoke-Button {
         }
         "mas" {
             Add-Log -Message "Microsoft Activation Scripts (MAS)" -Level "info"
-            ITT-ScriptBlock -ScriptBlock {irm https://get.activated.win | iex}
+            ITT-ScriptBlock -ScriptBlock { irm https://get.activated.win | iex }
         }
         "idm" {
             Add-Log -Message "Running IDM Activation..." -Level "info"
-            ITT-ScriptBlock -ScriptBlock {curl.exe -L -o $env:TEMP\\IDM_Trial_Reset.exe "https://github.com/itt-co/itt-packages/raw/refs/heads/main/automation/idm-trial-reset/IDM%20Trial%20Reset.exe"; cmd /c "$env:TEMP\\IDM_Trial_Reset.exe"}
+            ITT-ScriptBlock -ScriptBlock { curl.exe -L -o $env:TEMP\\IDM_Trial_Reset.exe "https://github.com/itt-co/itt-packages/raw/refs/heads/main/automation/idm-trial-reset/IDM%20Trial%20Reset.exe"; cmd /c "$env:TEMP\\IDM_Trial_Reset.exe" }
         }
         "winoffice" {
             Start-Process "https://linkjust.com/massgrave" 
@@ -140,42 +140,42 @@ function Invoke-Button {
         "dev" {
             About
         }
-        "shelltube"{
+        "shelltube" {
             Start-Process -FilePath "powershell" -ArgumentList "irm https://github.com/emadadeldev/shelltube/releases/latest/download/st.ps1 | iex"
         }
-        "rapidos"{
+        "rapidos" {
             Start-Process ("https://github.com/rapid-community/RapidOS")
         }
-        "asustool"{
+        "asustool" {
             Start-Process ("https://github.com/codecrafting-io/asus-setup-tool")
         }
-        "webtor"{
+        "webtor" {
             Start-Process ("https://webtor.io/")
         }
-        "spotifydown"{
+        "spotifydown" {
             Start-Process ("https://spotidownloader.com/")
         }
-        "finddriver"{
+        "finddriver" {
             Find-Driver
         }
-        "taps"{
+        "taps" {
             ChangeTap
         }
-        "github"{
+        "github" {
             Start-Process("https://github.com/emadadeldev/ittea")
         }
-        "community"{
-            Start-Process("https://t.me/+qnB0HvMH4ocxZDc8")
+        "community" {
+            Start-Process("https://discord.gg/6HkJpAWpSM")
         }
-        "translate"{
+        "translate" {
             Start-Process("https://github.com/emadadeldev/ittea/tree/main/locales")
         }
-        "donate"{
+        "donate" {
             Start-Process("https://github.com/emadadeldev/ittea/blob/main/.github/DONATE.md")
         }
     }
 
     # debug start
-        Debug-Message $action
+    Debug-Message $action
     # debug end
 }
