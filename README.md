@@ -28,7 +28,7 @@ ITT (Install Tweaks Tool) included most Windows 10/11 Software and Windows Tweak
 
 <!-- ![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fittools-7d9fe-default-rtdb.firebaseio.com%2Fmessage.json) -->
 ![Usage Badge](https://img.shields.io/endpoint?url=https://itt.emadadel4-a0a.workers.dev/count&label=Usage&style=for-the-badge)
-![Latest update](https://img.shields.io/badge/Latest%20build-10/29/2025-blue?style=for-the-badge)
+![Latest update](https://img.shields.io/badge/Latest%20build-11/07/2025-blue?style=for-the-badge)
 ![Script size](https://img.shields.io/github/size/emadadeldev/ittea/itt.ps1?label=Script%20Size&style=for-the-badge)
 <!-- ![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Femadadeldev%2Fittea%2F&countColor=%23263759&style=flat) -->
 
@@ -87,24 +87,6 @@ irm bit.ly/ittco | iex
 [![Video Thumbnail](https://img.youtube.com/vi/0kZFi6NT1gI/maxresdefault.jpg)](https://youtu.be/0kZFi6NT1gI)
 
 </div>
-
-<br>
-
-# ❤️ Donate
-
-Want to support the project? You can make a donation using these crypto addresses:
-
-<a href="#ton" alt="Toncoin"><img src="https://img.shields.io/badge/Donate-Toncoin-0098EA?logo=ton" /></a>
-<a href="#usdt" alt="USDT"><img src="https://img.shields.io/badge/Donate-USDT-26A17B?logo=tether" /></a>
-
-Address (TON): `UQCo-Kos-rkkdtpmpmig61Oi4WSZ-Er1n_5wh0jSEH6Cjcfi`
-OR
-`UQBlkwy0KJrQvVVM2y-KdfoqTi584FffsL_LEswgflETsDkY`
-
-
-Address (USDT): `TFfYMK3cRp8bxScKvHLESasBThSL3DSBmx`
-
-If you make a Donate, please text me in [Telegram](https://t.me/flhohyjvkfe), so I can thank you personally and your name will be listed among our contributors Thank you for your support!
 
 <br>
 
