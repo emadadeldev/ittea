@@ -11,12 +11,6 @@
 
 #### Download the official Windows 10 LTS ISO – the stable, long-term support version
 
-##### 📦 Archive Hub  
-
-![itt.xName:bc [https://linkjust.com/batmancave]](https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Images/tgbc.jpg)
-
-#### Telegram group that Archives all free stuff on the internet
-
 ##### Keyboard Shortcuts
 
 - Ctrl+A: Clear category filter.
