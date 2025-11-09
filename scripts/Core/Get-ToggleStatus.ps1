@@ -169,21 +169,21 @@ function Get-ToggleStatus {
 
     # Core Isolation Memory Integrity
     if ($ToggleSwitch -eq "CoreIsolationMemoryIntegrity") {
+        $regPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\CredentialGuard'
 
-        try {
-            $CoreIsolationMemory = (Get-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\CredentialGuard').Enabled
+        if (Test-Path $regPath) {
+            $CoreIsolationMemory = (Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue).Enabled
             if ($CoreIsolationMemory -eq 1) {
                 return $true
-            } 
+            }
             else {
                 return $false
             }
         }
-        catch {
-            return $false
+        else {
+            return
         }
     }
-
     # Windows Sandbox
     if ($ToggleSwitch -eq "WindowsSandbox") {
         $WS = Get-WindowsOptionalFeature -Online -FeatureName "Containers-DisposableClientVM"
