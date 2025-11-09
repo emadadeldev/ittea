@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-lastupdate     = "11/07/2025"
+lastupdate     = "11/09/2025"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -471,8 +471,9 @@ return $false
 }
 }
 if ($ToggleSwitch -eq "CoreIsolationMemoryIntegrity") {
-try {
-$CoreIsolationMemory = (Get-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\CredentialGuard').Enabled
+$regPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\CredentialGuard'
+if (Test-Path $regPath) {
+$CoreIsolationMemory = (Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue).Enabled
 if ($CoreIsolationMemory -eq 1) {
 return $true
 }
@@ -480,8 +481,8 @@ else {
 return $false
 }
 }
-catch {
-return $false
+else {
+return
 }
 }
 if ($ToggleSwitch -eq "WindowsSandbox") {
