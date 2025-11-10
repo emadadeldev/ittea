@@ -65,11 +65,6 @@
     "category": "Performance"
   },
   {
-    "Name": "Core Isolation Memory Integrity",
-    "description": "Core Isolation Memory Integrity",
-    "category": "Security"
-  },
-  {
     "Name": "Windows Sandbox",
     "description": "Windows Sandbox is a feature that allows you to run a sandboxed version of Windows",
     "category": "Development"
