@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-lastupdate     = "11/09/2025"
+lastupdate     = "11/10/2025"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -468,21 +468,6 @@ return $true
 }
 else {
 return $false
-}
-}
-if ($ToggleSwitch -eq "CoreIsolationMemoryIntegrity") {
-$regPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\CredentialGuard'
-if (Test-Path $regPath) {
-$CoreIsolationMemory = (Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue).Enabled
-if ($CoreIsolationMemory -eq 1) {
-return $true
-}
-else {
-return $false
-}
-}
-else {
-return
 }
 }
 if ($ToggleSwitch -eq "WindowsSandbox") {
@@ -979,7 +964,6 @@ Switch -Wildcard ($debug) {
 "launchtothispc" { Invoke-LaunchTo $(Get-ToggleStatus launchtothispc) }
 "disableautomaticdriverinstallation" { Invoke-DisableAutoDrivers $(Get-ToggleStatus disableautomaticdriverinstallation) }
 "AlwaysshowiconsneverThumbnail" { Invoke-ShowFile-Icons $(Get-ToggleStatus AlwaysshowiconsneverThumbnail) }
-"CoreIsolationMemoryIntegrity" { Invoke-Core-Isolation $(Get-ToggleStatus CoreIsolationMemoryIntegrity) }
 "WindowsSandbox" { Invoke-WindowsSandbox $(Get-ToggleStatus WindowsSandbox) }
 "WindowsSubsystemforLinux" { Invoke-WindowsSandbox $(Get-ToggleStatus WindowsSubsystemforLinux) }
 "HyperVVirtualization" { Invoke-HyperV $(Get-ToggleStatus HyperVVirtualization) }
@@ -1662,11 +1646,11 @@ $itt.$Button.Content = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -2734,8 +2718,6 @@ IsReadOnly="True" Visibility="Collapsed">
 <CheckBox Content="Disable Automatic Driver Installation" FontSize="15" Margin="5,8,0,15" Tag="" Style="{StaticResource ToggleSwitchStyle}" Name="DisableAutomaticDriverInstallation" ToolTip="Automatically downloading and installing drivers"/>
 </StackPanel>        <StackPanel Orientation="Vertical" Margin="0">
 <CheckBox Content="Always show icons never Thumbnail" FontSize="15" Margin="5,8,0,15" Tag="" Style="{StaticResource ToggleSwitchStyle}" Name="AlwaysshowiconsneverThumbnail" ToolTip="Show icons in the file explorer instead of thumbnails"/>
-</StackPanel>        <StackPanel Orientation="Vertical" Margin="0">
-<CheckBox Content="Core Isolation Memory Integrity" FontSize="15" Margin="5,8,0,15" Tag="" Style="{StaticResource ToggleSwitchStyle}" Name="CoreIsolationMemoryIntegrity" ToolTip="Core Isolation Memory Integrity"/>
 </StackPanel>        <StackPanel Orientation="Vertical" Margin="0">
 <CheckBox Content="Windows Sandbox" FontSize="15" Margin="5,8,0,15" Tag="" Style="{StaticResource ToggleSwitchStyle}" Name="WindowsSandbox" ToolTip="Windows Sandbox is a feature that allows you to run a sandboxed version of Windows"/>
 </StackPanel>        <StackPanel Orientation="Vertical" Margin="0">
