@@ -2505,19 +2505,20 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <TabItem.Header>
 <Grid>
 <TextBlock Text="itt" FontFamily="Arial" FontWeight="Bold" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-<Ellipse Width="9" Height="9" Fill="Red" Style="{StaticResource BlinkingDotStyle}"
-HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" Margin="40,0,0,0" x:Name="hotdot"/>
+<Ellipse Width="9" Height="9" Fill="Red" Style="{StaticResource BlinkingDotStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" Margin="40,0,0,0" x:Name="hotdot"/>
 </Grid>
 </TabItem.Header>
-<Border Background="transparent" Padding="20" >
+<Border Background="transparent" Padding="20">
 <Grid>
 <Grid.RowDefinitions>
-<RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/>
+<RowDefinition Height="Auto"/>
+<RowDefinition Height="*"/>
+<RowDefinition Height="Auto"/>
 </Grid.RowDefinitions>
 <StackPanel x:Name="MainStackPanel" Background="Transparent" Orientation="Vertical" Margin="25,25,0,0">
 <Grid Background="Transparent">
 <StackPanel>
-<TextBlock Name="title" FontSize="20" Text="What's New" Foreground="{DynamicResource TextColorSecondaryColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+<TextBlock Name="title" FontSize="20" Text="What&apos;s New" Foreground="{DynamicResource TextColorSecondaryColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 <TextBlock Name="date" Visibility="Hidden" Margin="5,5,0,0" FontSize="12" Text="8/29/2024" Foreground="{DynamicResource TextColorSecondaryColor}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 </StackPanel>
 </Grid>
@@ -2599,31 +2600,115 @@ HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" Margin=
 <RowDefinition Height="Auto"/>
 <RowDefinition Height="*"/>
 </Grid.RowDefinitions>
-<ComboBox Name="AppsCategory" Grid.Row="0" SelectedIndex="0"
-Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center"
-VirtualizingStackPanel.IsVirtualizing="True"
-VirtualizingStackPanel.VirtualizationMode="Recycling">
-<ComboBoxItem Tag="All"><TextBlock><Run Text="🏷 "/><Run Text="{Binding all, TargetNullValue=All}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Web Browsers"><TextBlock><Run Text="🌐 "/><Run Text="{Binding web browsers, TargetNullValue=Web Browsers}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Media"><TextBlock><Run Text="🎬 "/><Run Text="{Binding media, TargetNullValue=Media}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Media Tools"><TextBlock><Run Text="🎚 "/><Run Text="{Binding media tools, TargetNullValue=Media Tools}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Documents"><TextBlock><Run Text="📃 "/><Run Text="{Binding documents, TargetNullValue=Documents}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Compression"><TextBlock><Run Text="📀 "/><Run Text="{Binding compression, TargetNullValue=Compression}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Communication"><TextBlock><Run Text="📞 "/><Run Text="{Binding communication, TargetNullValue=Communication}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="File Sharing"><TextBlock><Run Text="📁 "/><Run Text="{Binding file sharing, TargetNullValue=File Sharing}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Imaging"><TextBlock><Run Text="📷 "/><Run Text="{Binding imaging, TargetNullValue=Imaging}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Gaming"><TextBlock><Run Text="🎮 "/><Run Text="{Binding gaming, TargetNullValue=Gaming}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Utilities"><TextBlock><Run Text="🔨 "/><Run Text="{Binding utilities, TargetNullValue=Utilities}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Disk Tools"><TextBlock><Run Text="💽 "/><Run Text="{Binding disk tools, TargetNullValue=Disk Tools}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Development"><TextBlock><Run Text="👩‍💻 "/><Run Text="{Binding development, TargetNullValue=Development}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Security"><TextBlock><Run Text="🛡 "/><Run Text="{Binding security, TargetNullValue=Security}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Portable"><TextBlock><Run Text="💼 "/><Run Text="{Binding portable, TargetNullValue=Portable}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Runtimes"><TextBlock><Run Text="📈 "/><Run Text="{Binding runtimes, TargetNullValue=Runtimes}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Drivers"><TextBlock><Run Text="🔌 "/><Run Text="{Binding drivers, TargetNullValue=Drivers}"/></TextBlock></ComboBoxItem>
+<ComboBox Name="AppsCategory" Grid.Row="0" SelectedIndex="0" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
+<ComboBoxItem Tag="All">
+<TextBlock>
+<Run Text="🏷 "/>
+<Run Text="{Binding all, TargetNullValue=All}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Web Browsers">
+<TextBlock>
+<Run Text="🌐 "/>
+<Run Text="{Binding web browsers, TargetNullValue=Web Browsers}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Media">
+<TextBlock>
+<Run Text="🎬 "/>
+<Run Text="{Binding media, TargetNullValue=Media}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Media Tools">
+<TextBlock>
+<Run Text="🎚 "/>
+<Run Text="{Binding media tools, TargetNullValue=Media Tools}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Documents">
+<TextBlock>
+<Run Text="📃 "/>
+<Run Text="{Binding documents, TargetNullValue=Documents}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Compression">
+<TextBlock>
+<Run Text="📀 "/>
+<Run Text="{Binding compression, TargetNullValue=Compression}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Communication">
+<TextBlock>
+<Run Text="📞 "/>
+<Run Text="{Binding communication, TargetNullValue=Communication}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="File Sharing">
+<TextBlock>
+<Run Text="📁 "/>
+<Run Text="{Binding file sharing, TargetNullValue=File Sharing}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Imaging">
+<TextBlock>
+<Run Text="📷 "/>
+<Run Text="{Binding imaging, TargetNullValue=Imaging}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Gaming">
+<TextBlock>
+<Run Text="🎮 "/>
+<Run Text="{Binding gaming, TargetNullValue=Gaming}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Utilities">
+<TextBlock>
+<Run Text="🔨 "/>
+<Run Text="{Binding utilities, TargetNullValue=Utilities}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Disk Tools">
+<TextBlock>
+<Run Text="💽 "/>
+<Run Text="{Binding disk tools, TargetNullValue=Disk Tools}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Development">
+<TextBlock>
+<Run Text="👩‍💻 "/>
+<Run Text="{Binding development, TargetNullValue=Development}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Security">
+<TextBlock>
+<Run Text="🛡 "/>
+<Run Text="{Binding security, TargetNullValue=Security}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Portable">
+<TextBlock>
+<Run Text="💼 "/>
+<Run Text="{Binding portable, TargetNullValue=Portable}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Runtimes">
+<TextBlock>
+<Run Text="📈 "/>
+<Run Text="{Binding runtimes, TargetNullValue=Runtimes}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Drivers">
+<TextBlock>
+<Run Text="🔌 "/>
+<Run Text="{Binding drivers, TargetNullValue=Drivers}"/>
+</TextBlock>
+</ComboBoxItem>
 </ComboBox>
 <ListView Name="AppsListView" Grid.Row="1" AlternationCount="2">
 <ListView.ItemsPanel>
-<ItemsPanelTemplate><VirtualizingStackPanel/></ItemsPanelTemplate>
+<ItemsPanelTemplate>
+<VirtualizingStackPanel/>
+</ItemsPanelTemplate>
 </ListView.ItemsPanel>
 <ListView.ItemTemplate>
 <DataTemplate>
@@ -2650,28 +2735,69 @@ VirtualizingStackPanel.VirtualizationMode="Recycling">
 <RowDefinition Height="Auto"/>
 <RowDefinition Height="*"/>
 </Grid.RowDefinitions>
-<ComboBox Name="TwaeksCategory" Grid.Row="0" SelectedIndex="0"
-Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center"
-VirtualizingStackPanel.IsVirtualizing="True"
-VirtualizingStackPanel.VirtualizationMode="Recycling"
-IsReadOnly="True" Visibility="Collapsed">
-<ComboBoxItem Tag="all"><TextBlock><Run Text="🏷 "/><Run Text="{Binding all, TargetNullValue=All}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Privacy"><TextBlock><Run Text="🔒 "/><Run Text="{Binding privacy, TargetNullValue=Privacy}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Fixer"><TextBlock><Run Text="🔧 "/><Run Text="{Binding fixer, TargetNullValue=Fixer}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Performance"><TextBlock><Run Text="⚡ "/><Run Text="{Binding performance, TargetNullValue=Performance}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Personalization"><TextBlock><Run Text="🎨 "/><Run Text="{Binding personalization, TargetNullValue=Personalization}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Power"><TextBlock><Run Text="🔋 "/><Run Text="{Binding power, TargetNullValue=Power}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Protection"><TextBlock><Run Text="🛡 "/><Run Text="{Binding protection, TargetNullValue=Protection}"/></TextBlock></ComboBoxItem>
-<ComboBoxItem Tag="Classic"><TextBlock><Run Text="🕰 "/><Run Text="{Binding classic, TargetNullValue=Classic}"/></TextBlock></ComboBoxItem>
+<ComboBox Name="TwaeksCategory" Grid.Row="0" SelectedIndex="0" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" IsReadOnly="True" Visibility="Collapsed">
+<ComboBoxItem Tag="all">
+<TextBlock>
+<Run Text="🏷 "/>
+<Run Text="{Binding all, TargetNullValue=All}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Privacy">
+<TextBlock>
+<Run Text="🔒 "/>
+<Run Text="{Binding privacy, TargetNullValue=Privacy}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Fixer">
+<TextBlock>
+<Run Text="🔧 "/>
+<Run Text="{Binding fixer, TargetNullValue=Fixer}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Performance">
+<TextBlock>
+<Run Text="⚡ "/>
+<Run Text="{Binding performance, TargetNullValue=Performance}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Personalization">
+<TextBlock>
+<Run Text="🎨 "/>
+<Run Text="{Binding personalization, TargetNullValue=Personalization}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Power">
+<TextBlock>
+<Run Text="🔋 "/>
+<Run Text="{Binding power, TargetNullValue=Power}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Protection">
+<TextBlock>
+<Run Text="🛡 "/>
+<Run Text="{Binding protection, TargetNullValue=Protection}"/>
+</TextBlock>
+</ComboBoxItem>
+<ComboBoxItem Tag="Classic">
+<TextBlock>
+<Run Text="🕰 "/>
+<Run Text="{Binding classic, TargetNullValue=Classic}"/>
+</TextBlock>
+</ComboBoxItem>
 </ComboBox>
 <ListView Name="TweaksListView" Grid.Row="1" AlternationCount="2">
 <ListView.ItemsPanel>
-<ItemsPanelTemplate><VirtualizingStackPanel/></ItemsPanelTemplate>
+<ItemsPanelTemplate>
+<VirtualizingStackPanel/>
+</ItemsPanelTemplate>
 </ListView.ItemsPanel>
 <ListView.ItemTemplate>
 <DataTemplate>
 <StackPanel Orientation="Vertical">
+<StackPanel Orientation="Horizontal">
 <CheckBox IsChecked="{Binding IsChecked}" Content="{Binding Content}" FontSize="15"/>
+<TextBlock Text="{Binding Requires}" Margin="4,5,0,0" FontSize="14" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource TextColorSecondaryColor}"/>
+</StackPanel>
 <TextBlock Padding="20,8,0,10" FontSize="14" Foreground="{DynamicResource TextColorSecondaryColor}" TextWrapping="Wrap" Text="{Binding Description}" Width="500"/>
 </StackPanel>
 </DataTemplate>
@@ -2690,9 +2816,10 @@ IsReadOnly="True" Visibility="Collapsed">
 </TabItem.HeaderTemplate>
 <ListView Name="SettingsList" AlternationCount="2">
 <ListView.ItemsPanel>
-<ItemsPanelTemplate><VirtualizingStackPanel/></ItemsPanelTemplate>
-</ListView.ItemsPanel>
-<StackPanel Orientation="Vertical" Margin="0">
+<ItemsPanelTemplate>
+<VirtualizingStackPanel/>
+</ItemsPanelTemplate>
+</ListView.ItemsPanel>        <StackPanel Orientation="Vertical" Margin="0">
 <CheckBox Content="Show file extensions" FontSize="15" Margin="5,8,0,15" Tag="" Style="{StaticResource ToggleSwitchStyle}" Name="Showfileextensions" ToolTip="Show file extensions in Windows displays the suffix at the end of file names like .txt .jpg .exe"/>
 </StackPanel>        <StackPanel Orientation="Vertical" Margin="0">
 <CheckBox Content="Show Super Hidden" FontSize="15" Margin="5,8,0,15" Tag="" Style="{StaticResource ToggleSwitchStyle}" Name="ShowSuperHidden" ToolTip="Show Super Hidden displays files and folders"/>
