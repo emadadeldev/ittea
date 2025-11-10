@@ -22,7 +22,6 @@ function Invoke-Toggle {
         "launchtothispc" { Invoke-LaunchTo $(Get-ToggleStatus launchtothispc) }
         "disableautomaticdriverinstallation" { Invoke-DisableAutoDrivers $(Get-ToggleStatus disableautomaticdriverinstallation) }
         "AlwaysshowiconsneverThumbnail" { Invoke-ShowFile-Icons $(Get-ToggleStatus AlwaysshowiconsneverThumbnail) }
-        "CoreIsolationMemoryIntegrity" { Invoke-Core-Isolation $(Get-ToggleStatus CoreIsolationMemoryIntegrity) }
         "WindowsSandbox" { Invoke-WindowsSandbox $(Get-ToggleStatus WindowsSandbox) }
         "WindowsSubsystemforLinux" { Invoke-WindowsSandbox $(Get-ToggleStatus WindowsSubsystemforLinux) }
         "HyperVVirtualization" { Invoke-HyperV $(Get-ToggleStatus HyperVVirtualization) }
