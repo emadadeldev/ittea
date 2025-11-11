@@ -86,6 +86,7 @@ function Save-File {
     if ($saveFileDialog.ShowDialog() -eq $true) {
         # Save items to JSON file
         $jsonObject | ConvertTo-Json -Compress | Out-File -FilePath $saveFileDialog.FileName -Force
+        Message -NoneKey "Saved $($saveFileDialog.FileName)" -icon "Information" -action "OK"
         Write-Host "Saved: $($saveFileDialog.FileName)"
     }
 
