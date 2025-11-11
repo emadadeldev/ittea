@@ -41,7 +41,7 @@
   },
   {
     "Content": "Clean Taskbar",
-    "Description": "Disable icons",
+    "Description": "Disable Taskbar icons",
     "Category": "Performance",
     "IsChecked": false,
     "Requires": "🪟 10",
