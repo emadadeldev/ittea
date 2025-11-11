@@ -17,7 +17,7 @@ param (
 )
 
 try {
-    if (Test-Path -Path $OutputScript) {Remove-Item -Path $OutputScript -Force}
+    if (Test-Path -Path $OutputScript) { Remove-Item -Path $OutputScript -Force }
     Clear-Host
     Write-Host "[+] Removeing old itt.ps1..."
     # Wait until to remove old file
@@ -33,9 +33,9 @@ $itt = [Hashtable]::Synchronized(@{})
 
 $itt.database = @{
     Applications = (Get-Content -Path ./static/Database/Applications.json | ConvertFrom-Json)
-    Settings = (Get-Content -Path ./static/Database/Settings.json | ConvertFrom-Json)
-    Tweaks = (Get-Content -Path ./static/Database/Tweaks.json | ConvertFrom-Json)
-    locales = (Get-Content -Path ./static/Database/locales.json | ConvertFrom-Json)
+    Settings     = (Get-Content -Path ./static/Database/Settings.json | ConvertFrom-Json)
+    Tweaks       = (Get-Content -Path ./static/Database/Tweaks.json | ConvertFrom-Json)
+    locales      = (Get-Content -Path ./static/Database/locales.json | ConvertFrom-Json)
 }
 
 $global:imageLinkMap = @{}
@@ -53,8 +53,8 @@ function WriteToScript {
             $Content = $Content -replace '<#[\s\S]*?#>', ''
             $Content = $Content -replace '<!.*', ''
             $Content = ($Content -split "`r?`n" | ForEach-Object {
-                ($_ -replace '^\s*#.*$', '').Trim()
-            }) -join "`n"
+                    ($_ -replace '^\s*#.*$', '').Trim()
+                }) -join "`n"
 
             $Content = ($Content -split "`r?`n" | Where-Object { $_ -notmatch '^\s*$' }) -join "`n"
             $Content = $Content.Trim()
@@ -595,7 +595,7 @@ function Convert-Locales {
 
 # Write script header
 function WriteHeader {
-WriteToScript -Content @"
+    WriteToScript -Content @"
 <#
     .NOTES
     Devloper  : @emadadel
@@ -626,7 +626,7 @@ try {
 #===========================================================================
 "@
     Convert-Locales
-    Sync-JsonFiles -DatabaseDirectory $DatabaseDirectory -OutputScriptPath $OutputScript -Skip @("OST.json", "Quotes.json","Applications.json","Settings.json","tweaks.json")
+    Sync-JsonFiles -DatabaseDirectory $DatabaseDirectory -OutputScriptPath $OutputScript -Skip @("OST.json", "Quotes.json", "Applications.json", "Settings.json", "tweaks.json")
     WriteToScript -Content @"
 #===========================================================================
 #endregion End localization
@@ -663,15 +663,15 @@ try {
 
     # Define file paths
     $FilePaths = @{
-        "MainWindow" = Join-Path -Path $windows  -ChildPath "MainWindow.xaml"
+        "MainWindow"  = Join-Path -Path $windows  -ChildPath "MainWindow.xaml"
         # "EventWindow" = Join-Path -Path $windows  -ChildPath "EventWindow.xaml"
         "AboutWindow" = Join-Path -Path $windows  -ChildPath "AboutWindow.xaml"
-        "tabs"       = Join-Path -Path $Controls -ChildPath "tabs.xaml"
-        "menu"       = Join-Path -Path $Controls -ChildPath "menu.xaml"
-        "search"     = Join-Path -Path $Controls -ChildPath "search.xaml"
-        "buttons"    = Join-Path -Path $Controls -ChildPath "buttons.xaml"
-        "Style"      = Join-Path -Path $Assets   -ChildPath "Themes/Styles.xaml"
-        "Colors"     = Join-Path -Path $Assets   -ChildPath "Themes/Colors.xaml"
+        "tabs"        = Join-Path -Path $Controls -ChildPath "tabs.xaml"
+        "menu"        = Join-Path -Path $Controls -ChildPath "menu.xaml"
+        "search"      = Join-Path -Path $Controls -ChildPath "search.xaml"
+        "buttons"     = Join-Path -Path $Controls -ChildPath "buttons.xaml"
+        "Style"       = Join-Path -Path $Assets   -ChildPath "Themes/Styles.xaml"
+        "Colors"      = Join-Path -Path $Assets   -ChildPath "Themes/Colors.xaml"
     }
     try {
         # Read content from files
@@ -719,8 +719,7 @@ try {
         WriteToScript -Content "`$MainWindowXaml = @`"`n$MainXamlContent`n`"@"
 
     }
-    catch 
-    {
+    catch {
         Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
         break
     }
@@ -763,23 +762,10 @@ try {
     Update-Readme
 
     try {
-
         $param = if ($debug) { "-debug" } elseif ($Realsee) { "-Realsee" } else { break }
         $scriptPath = Join-Path $PSScriptRoot $OutputScript
         $script = "& '$scriptPath' $param"
-        
-        $powershellcmd = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
-        $processCmd = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $powershellcmd }
-        
-        if ($processCmd -eq "wt.exe") {
-            $commandLine = "$powershellcmd -NoProfile -NoExit -Command $script"
-            Start-Process wt.exe -ArgumentList $commandLine
-        } 
-        else
-        {
-            Start-Process $processCmd -ArgumentList @("-NoProfile", "-Command", $script)
-        }
-
+        Start-Process pwsh -ArgumentList @("-NoProfile", "-Command", $script)
         break
     }
     catch {
