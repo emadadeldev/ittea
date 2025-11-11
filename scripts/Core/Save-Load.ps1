@@ -9,7 +9,7 @@ function Get-file {
 
     # Open file dialog to select JSON file
     $openFileDialog = New-Object Microsoft.Win32.OpenFileDialog -Property @{
-        Filter = "itt files (*.itt)|*.itt"
+        Filter = "itt file (*.itt)|*.itt"
         Title  = "itt File"
     }
 
