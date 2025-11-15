@@ -231,7 +231,6 @@ function Update-Readme {
     $applicationsCount = $itt.database.Applications.Count
     $tweaksCount = $itt.database.Tweaks.Count
     $quotesCount = (Get-Content -Path ".\static\Database\Quotes.json" | ConvertFrom-Json).Quotes.Count
-    $tracksCount = $tracks.Count
     $settingsCount = $itt.database.Settings.Count
     $localesCount = ($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count
     # Create a hashtable for placeholders and their replacements
@@ -252,7 +251,7 @@ function Update-Readme {
     Set-Content -Path $NewReadmePath -Value $updatedContent -Encoding UTF8
     Write-Host `n`
     # Output the counts to the console in one go
-    Write-Host "[i] Apps $applicationsCount`n[i] Tweaks $tweaksCount`n[i] Quotes $quotesCount`n[i] Tracks $tracksCount`n[i] Settings $settingsCount`n[i] Locales $localesCount"
+    Write-Host "[i] Apps [$applicationsCount]`n[i] Tweaks[$tweaksCount]`n[i] Quotes[$quotesCount]`n[i] Settings[$settingsCount]`n[i] Locales[$localesCount]"
 }
 # Add New Contributor to Contributor.md and show his name in about window
 function NewCONTRIBUTOR {
