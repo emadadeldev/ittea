@@ -1320,7 +1320,7 @@
     "IsChecked": false
   },
   {
-    "Content": "Python 3.12.6",
+    "Content": "Python",
     "Description": "Python is a popular high-level programming language known for its",
     "choco": "python",
     "scoop": "main/python",
