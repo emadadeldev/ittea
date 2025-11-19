@@ -4,7 +4,6 @@
 
 ![itt.xName:yt [https://youtu.be/0kZFi6NT1gI]](https://img.youtube.com/vi/0kZFi6NT1gI/maxresdefault.jpg)
 
-
 ##### 💠 Windows 10 LTS
 
 ![itt.xName:win [https://linkjust.com/massgravelts]](https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Images/windows10lts.jpg)
