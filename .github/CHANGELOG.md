@@ -26,7 +26,3 @@
 - Shift+Q: Restore point.
 - Shift+I: ITT Shortcut.
 - Ctrl+G: Close application.
-
-##### 💡 A Secret Feature Awaits – Unlock It
-
-#### Can You Find the Hidden Easter Egg? Open the source code and uncover the secret features waiting for you!
