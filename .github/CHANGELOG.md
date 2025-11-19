@@ -9,7 +9,7 @@
 
 ![itt.xName:win [https://linkjust.com/massgravelts]](https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Images/windows10lts.jpg)
 
-#### Download the official Windows 10 LTS ISO – the stable, long-term support version
+#### Windows 10 LTS official ISO – the stable, long-term support version
 
 ##### Keyboard Shortcuts
 
