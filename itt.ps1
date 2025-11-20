@@ -2201,7 +2201,7 @@ RecognizesAccessKey="True"/>
 <Grid>
 <Grid.ColumnDefinitions>
 <ColumnDefinition Width="Auto"/>
-<ColumnDefinition Width="666"/>
+<ColumnDefinition Width="Auto"/>
 <ColumnDefinition Width="Auto"/>
 </Grid.ColumnDefinitions>
 <TextBlock x:Name="CheckIcon"
