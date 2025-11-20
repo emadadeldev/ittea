@@ -614,7 +614,7 @@
                         <!-- Label -->
                         <ContentPresenter Grid.Column="1"
                                         IsHitTestVisible="False"
-                                        Margin="0,0,15,0"/>
+                                        Margin="5,0,15,0"/>
 
                         <!-- Toggle Switch -->
                         <Grid x:Name="SwitchArea"
