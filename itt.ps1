@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-lastupdate     = "11/12/2025"
+lastupdate     = "11/20/2025"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -2537,7 +2537,7 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <BitmapImage UriSource='https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Images/windows10lts.jpg' CacheOption='OnLoad'/>
 </Image.Source>
 </Image>
-<TextBlock Text='Download the official Windows 10 LTS ISO – the stable, long-term support version' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap' MaxWidth='450'/>
+<TextBlock Text='Windows 10 LTS official ISO – the stable, long-term support version' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap' MaxWidth='450'/>
 <TextBlock Text='Keyboard Shortcuts' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryButtonForeground}' FontWeight='bold' TextWrapping='Wrap'/>
 <StackPanel Orientation='Vertical'>
 <TextBlock Text='• Ctrl+A: Clear category filter.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
@@ -2578,8 +2578,6 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <StackPanel Orientation='Vertical'>
 <TextBlock Text='• Ctrl+G: Close application.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
 </StackPanel>
-<TextBlock Text='💡 A Secret Feature Awaits – Unlock It' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryButtonForeground}' FontWeight='bold' TextWrapping='Wrap'/>
-<TextBlock Text='Can You Find the Hidden Easter Egg? Open the source code and uncover the secret features waiting for you!' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap' MaxWidth='450'/>
 </StackPanel>
 </ScrollViewer>
 </Grid>
