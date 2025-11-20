@@ -2200,8 +2200,8 @@ RecognizesAccessKey="True"/>
 <ControlTemplate TargetType="CheckBox">
 <Grid>
 <Grid.ColumnDefinitions>
-<ColumnDefinition Width="30"/>
-<ColumnDefinition Width="*"/>
+<ColumnDefinition Width="Auto"/>
+<ColumnDefinition Width="666"/>
 <ColumnDefinition Width="Auto"/>
 </Grid.ColumnDefinitions>
 <TextBlock x:Name="CheckIcon"
@@ -2211,16 +2211,22 @@ VerticalAlignment="Center"
 HorizontalAlignment="Center"
 Text="⚙️"/>
 <ContentPresenter Grid.Column="1"
-VerticalAlignment="Center"
+IsHitTestVisible="False"
 Margin="0,0,15,0"/>
-<Grid Grid.Column="2" Width="40" Height="20" VerticalAlignment="Center">
+<Grid x:Name="SwitchArea"
+Grid.Column="2"
+Width="40"
+Height="20"
+HorizontalAlignment="Right"
+Background="Transparent">
 <Border x:Name="Track"
 Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
 BorderThickness="1.2"
 BorderBrush="{DynamicResource ToggleSwitchBorderBrush}"
 CornerRadius="10"/>
 <Ellipse x:Name="Thumb"
-Width="10" Height="10"
+Width="10"
+Height="10"
 Fill="Black"
 HorizontalAlignment="Left"
 VerticalAlignment="Center"
@@ -2236,7 +2242,7 @@ Margin="2,0,0,0"/>
 <ThicknessAnimation Storyboard.TargetName="Thumb"
 Storyboard.TargetProperty="Margin"
 To="22,0,0,0"
-Duration="0:0:0.1" />
+Duration="0:0:0.1"/>
 </Storyboard>
 </BeginStoryboard>
 </Trigger.EnterActions>
@@ -2252,18 +2258,18 @@ Duration="0:0:0.1" />
 <ThicknessAnimation Storyboard.TargetName="Thumb"
 Storyboard.TargetProperty="Margin"
 To="5,0,0,0"
-Duration="0:0:0.1" />
+Duration="0:0:0.1"/>
 </Storyboard>
 </BeginStoryboard>
 </Trigger.EnterActions>
 <Setter TargetName="Thumb" Property="Fill" Value="{DynamicResource ToggleSwitchDisableColor}"/>
+<Setter TargetName="Track" Property="Background" Value="{x:Null}"/>
+<Setter TargetName="Track" Property="BorderBrush" Value="#606060"/>
+<Setter TargetName="Track" Property="BorderThickness" Value="2"/>
 </Trigger>
-<Trigger Property="IsMouseOver" Value="True">
-<Setter TargetName="Track" Property="Background" Value="{DynamicResource HighlightColor}"/>
-<Setter TargetName="Track" Property="Opacity" Value="0.2" />
-<Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-<Setter Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-<Setter Property="Cursor" Value="Hand"/>
+<Trigger SourceName="SwitchArea" Property="IsMouseOver" Value="True">
+<Setter TargetName="Thumb" Property="Width" Value="12"/>
+<Setter TargetName="Thumb" Property="Height" Value="12"/>
 </Trigger>
 </ControlTemplate.Triggers>
 </ControlTemplate>
@@ -2344,7 +2350,7 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#373e47"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#22272e"/>
 <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
-<SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="#768390"/>
+<SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="white"/>
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#444c56"/>
 <SolidColorBrush x:Key="itemColor1" Color="#2d333b"/>
 <SolidColorBrush x:Key="itemColor2" Color="#333942"/>
@@ -2367,7 +2373,7 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#1a1a1a"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#0f0f0f"/>
 <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
-<SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="#666666"/>
+<SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="white"/>
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#444444"/>
 <SolidColorBrush x:Key="itemColor1" Color="#CC141414"/>
 <SolidColorBrush x:Key="itemColor2" Color="#991C1C1C"/>
@@ -2390,7 +2396,7 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#d0d7de"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#f6f8fa"/>
 <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
-<SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="#57606a"/>
+<SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="black"/>
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#d0d7de"/>
 <SolidColorBrush x:Key="itemColor1" Color="#f6f8fa"/>
 <SolidColorBrush x:Key="itemColor2" Color="#ebf0f4"/>
@@ -2404,20 +2410,20 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <SolidColorBrush x:Key="TextColorPrimary" Color="#d1d5db"/>
 <SolidColorBrush x:Key="TextColorSecondaryColor" Color="#999999"/>
 <SolidColorBrush x:Key="TextColorSecondaryColor2" Color="white"/>
-<SolidColorBrush x:Key="PrimaryButtonForeground" Color="#00D99D"/>
+<SolidColorBrush x:Key="PrimaryButtonForeground" Color="#00B583"/>
 <SolidColorBrush x:Key="PrimaryButtonHighlight" Color="#FFFFFF"/>
 <SolidColorBrush x:Key="ButtonBorderColor" Color="#007A3D"/>
-<SolidColorBrush x:Key="HighlightColor" Color="#00D96D"/>
+<SolidColorBrush x:Key="HighlightColor" Color="#00B583"/>
 <SolidColorBrush x:Key="BorderBrush" Color="black"/>
 <SolidColorBrush x:Key="Label" Color="#444444"/>
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#202020"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#2b2b2b"/>
 <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
-<SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="#555555"/>
+<SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="white"/>
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#777777"/>
 <SolidColorBrush x:Key="itemColor1" Color="#CC000000"/>
 <SolidColorBrush x:Key="itemColor2" Color="#99000002"/>
-<SolidColorBrush x:Key="logo" Color="#00D96D"/>
+<SolidColorBrush x:Key="logo" Color="#00B583"/>
 <ImageBrush x:Key="BackgroundImage" ImageSource="https://w.wallhaven.cc/full/we/wallhaven-wegrj6.jpg" Stretch="UniformToFill" Opacity="0.3"/>
 <x:String x:Key="SubText">#StandWithPalestine</x:String>
 </ResourceDictionary>
