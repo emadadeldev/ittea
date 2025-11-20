@@ -25,7 +25,7 @@
     <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#d0d7de"/>
     <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#f6f8fa"/>
     <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
-    <SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="#57606a"/>
+    <SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="black"/>
     <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#d0d7de"/>
 
     <!-- ListView -->
