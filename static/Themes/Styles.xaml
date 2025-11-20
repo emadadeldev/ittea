@@ -598,9 +598,9 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="*"/> 
-                            <ColumnDefinition Width="Auto"/> 
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="666"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
                         <!-- Icon -->
@@ -611,20 +611,28 @@
                                 HorizontalAlignment="Center"
                                 Text="⚙️"/>
 
-                        <!-- Label (Content) -->
+                        <!-- Label -->
                         <ContentPresenter Grid.Column="1"
-                                        VerticalAlignment="Center"
+                                        IsHitTestVisible="False"
                                         Margin="0,0,15,0"/>
 
                         <!-- Toggle Switch -->
-                        <Grid Grid.Column="2" Width="40" Height="20" VerticalAlignment="Center">
+                        <Grid x:Name="SwitchArea"
+                            Grid.Column="2"
+                            Width="40"
+                            Height="20"
+                            HorizontalAlignment="Right"
+                            Background="Transparent">
+
                             <Border x:Name="Track"
                                     Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
                                     BorderThickness="1.2"
                                     BorderBrush="{DynamicResource ToggleSwitchBorderBrush}"
                                     CornerRadius="10"/>
+
                             <Ellipse x:Name="Thumb"
-                                    Width="10" Height="10"
+                                    Width="10"
+                                    Height="10"
                                     Fill="Black"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
@@ -633,6 +641,7 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
+
                         <!-- Checked -->
                         <Trigger Property="IsChecked" Value="True">
                             <Trigger.EnterActions>
@@ -642,7 +651,7 @@
                                         <ThicknessAnimation Storyboard.TargetName="Thumb"
                                                             Storyboard.TargetProperty="Margin"
                                                             To="22,0,0,0"
-                                                            Duration="0:0:0.1" />
+                                                            Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -660,21 +669,22 @@
                                         <ThicknessAnimation Storyboard.TargetName="Thumb"
                                                             Storyboard.TargetProperty="Margin"
                                                             To="5,0,0,0"
-                                                            Duration="0:0:0.1" />
+                                                            Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
                             <Setter TargetName="Thumb" Property="Fill" Value="{DynamicResource ToggleSwitchDisableColor}"/>
+                            <Setter TargetName="Track" Property="Background" Value="{x:Null}"/>
+                            <Setter TargetName="Track" Property="BorderBrush" Value="#606060"/>
+                            <Setter TargetName="Track" Property="BorderThickness" Value="2"/>
                         </Trigger>
 
-                        <!-- Mouse Over -->
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Track" Property="Background" Value="{DynamicResource HighlightColor}"/>
-                            <Setter TargetName="Track" Property="Opacity" Value="0.2" />
-                            <Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-                            <Setter Property="Cursor" Value="Hand"/>
+                        <!-- Hover on entire switch -->
+                        <Trigger SourceName="SwitchArea" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Thumb" Property="Width" Value="12"/>
+                            <Setter TargetName="Thumb" Property="Height" Value="12"/>
                         </Trigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
