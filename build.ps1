@@ -19,7 +19,7 @@ param (
 try {
     if (Test-Path -Path $OutputScript) { Remove-Item -Path $OutputScript -Force }
     Clear-Host
-    Write-Host "[+] Removeing old itt.ps1..."
+    Write-Host "[x] Removeing old itt.ps1..."
     # Wait until to remove old file
     Start-Sleep -Seconds 2
 }
@@ -251,7 +251,7 @@ function Update-Readme {
     Set-Content -Path $NewReadmePath -Value $updatedContent -Encoding UTF8
     Write-Host `n`
     # Output the counts to the console in one go
-    Write-Host "[i] Apps [$applicationsCount]`n[i] Tweaks[$tweaksCount]`n[i] Quotes[$quotesCount]`n[i] Settings[$settingsCount]`n[i] Locales[$localesCount]"
+    Write-Host "🔸$applicationsCount Apps`n🔸$tweaksCount Tweaks`n🔸$quotesCount Quotes`n🔸$settingsCount Settings`n🔸$localesCount Locales"
 }
 # Add New Contributor to Contributor.md and show his name in about window
 function NewCONTRIBUTOR {
@@ -597,7 +597,7 @@ function WriteHeader {
     WriteToScript -Content @"
 <#
     .NOTES
-    Devloper  : @emadadel
+    Devloper  : @emadadeldev
     Github    : https://github.com/emadadeldev
 #>
 "@
@@ -749,8 +749,8 @@ try {
 #===========================================================================
 "@
 
-    Write-Host "[+] Build Successful." -ForegroundColor Yellow
     Update-Readme
+    Write-Host "`n✅ Build Successful.`n" -ForegroundColor Yellow
 
     try {
         $param = if ($debug) { "-debug" } elseif ($Realsee) { "-Realsee" } else { break }
