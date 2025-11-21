@@ -10,7 +10,7 @@
 
     <Window.Resources>
         <!-- {{Style}} -->
-        <!-- {{Colors}} -->
+        <!-- {{ThemesColors}} -->
     </Window.Resources>
 
     <Grid Background="{DynamicResource BackgroundImage}">
