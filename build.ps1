@@ -239,8 +239,8 @@ function Update-Readme {
         "#{t}"    = $tweaksCount
         "#{q}"    = $quotesCount
         "#{s}"    = $settingsCount
-        "#{loc}"  = $localesCount
-        "#{last}" = $badgeUrl
+        "#{l}"  = $localesCount
+        "<!-- {ver} -->" = $badgeUrl
     }
     # Replace placeholders in a single pass
     $updatedContent = $readmeContent
