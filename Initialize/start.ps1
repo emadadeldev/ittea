@@ -18,7 +18,7 @@ $itt = [Hashtable]::Synchronized(@{
 
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "#{replaceme}"
+    version        = "#{replaceme}"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
     Theme          = "default"
@@ -36,7 +36,7 @@ $itt = [Hashtable]::Synchronized(@{
 # ================================
 if(-not $Debug)
 {
-    $checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.lastupdate)"
+    $checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.version)"
     $response = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
     if ($response.status) {
         Write-Host "$($response.message)" -ForegroundColor Red
