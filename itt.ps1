@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-lastupdate     = "11/20/2025"
+version        = "25.11.21"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -17,7 +17,7 @@ command        = "$($MyInvocation.MyCommand.Definition)"
 })
 if(-not $Debug)
 {
-$checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.lastupdate)"
+$checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.version)"
 $response = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
 if ($response.status) {
 Write-Host "$($response.message)" -ForegroundColor Red
@@ -1457,7 +1457,7 @@ Write-Warning "Unable to set WSL2 due to a Security Exception"
 }
 function About {
 $aboutPopup = $itt['window'].FindName('AboutPopup')
-$aboutPopup.FindName('ver').Text = "Latest build $($itt.lastupdate)"
+$aboutPopup.FindName('ver').Text = "Version $($itt.version)"
 $aboutPopup.IsOpen = $true
 }
 function ITTShortcut {
@@ -1646,11 +1646,11 @@ $itt.$Button.Content = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
