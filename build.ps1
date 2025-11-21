@@ -613,7 +613,7 @@ try {
 #===========================================================================
 "@
     AddFileContentToScript -FilePath $StartScript 
-    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'MM/dd/yyy')"
+    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'y.M.d')"
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Start
@@ -663,30 +663,25 @@ try {
     # Define file paths
     $FilePaths = @{
         "MainWindow"  = Join-Path -Path $windows  -ChildPath "MainWindow.xaml"
-        # "EventWindow" = Join-Path -Path $windows  -ChildPath "EventWindow.xaml"
         "AboutWindow" = Join-Path -Path $windows  -ChildPath "AboutWindow.xaml"
         "tabs"        = Join-Path -Path $Controls -ChildPath "tabs.xaml"
         "menu"        = Join-Path -Path $Controls -ChildPath "menu.xaml"
         "search"      = Join-Path -Path $Controls -ChildPath "search.xaml"
         "buttons"     = Join-Path -Path $Controls -ChildPath "buttons.xaml"
-        "Style"       = Join-Path -Path $Assets   -ChildPath "Themes/Styles.xaml"
-        "Colors"      = Join-Path -Path $Assets   -ChildPath "Themes/Colors.xaml"
+        "Style"       = Join-Path -Path $Assets   -ChildPath "Styles/Styles.xaml"
     }
     try {
         # Read content from files
         $MainXamlContent = (Get-Content -Path $FilePaths["MainWindow"] -Raw) -replace "'", "''"
         $AppXamlContent = Get-Content -Path $FilePaths["tabs"] -Raw
         $StyleXamlContent = Get-Content -Path $FilePaths["Style"] -Raw
-        $ColorsXamlContent = Get-Content -Path $FilePaths["Colors"] -Raw
         $MenuXamlContent = Get-Content -Path $FilePaths["menu"] -Raw
         $ButtonsXamlContent = Get-Content -Path $FilePaths["buttons"] -Raw
         $searchXamlContent = Get-Content -Path $FilePaths["search"] -Raw
-        #$EventWindowContent = Get-Content -Path $FilePaths["EventWindow"] -Raw
         $AboutWindowContent = Get-Content -Path $FilePaths["AboutWindow"] -Raw
 
         $MainXamlContent = $MainXamlContent -replace "<!-- {{Tabs}} -->", $AppXamlContent
         $MainXamlContent = $MainXamlContent -replace "<!-- {{Style}} -->", $StyleXamlContent
-        $MainXamlContent = $MainXamlContent -replace "<!-- {{Colors}} -->", $ColorsXamlContent
         $MainXamlContent = $MainXamlContent -replace "<!-- {{menu}} -->", $MenuXamlContent
         $MainXamlContent = $MainXamlContent -replace "<!-- {{buttons}} -->", $ButtonsXamlContent
         $MainXamlContent = $MainXamlContent -replace "<!-- {{catagory}} -->", $CatagoryXamlContent
@@ -696,11 +691,8 @@ try {
         $MainXamlContent = $MainXamlContent -replace "<!-- {{Settings}} -->", $SettingsCheckboxes 
         $MainXamlContent = $MainXamlContent -replace "<!-- {{ThemesKeys}} -->", (GenerateThemesKeys)
         $MainXamlContent = $MainXamlContent -replace "<!-- {{LocalesKeys}} -->", (GenerateLocalesKeys)
-        $MainXamlContent = $MainXamlContent -replace "<!-- {{CustomThemes}} -->", $ThemeFilesContent 
-        #$MainXamlContent = $MainXamlContent -replace "<!-- {{EventWindow}} -->", $EventWindowContent
+        $MainXamlContent = $MainXamlContent -replace "<!-- {{ThemesColors}} -->", $ThemeFilesContent 
         $MainXamlContent = $MainXamlContent -replace "<!-- {{AboutWindow}} -->", $AboutWindowContent
-
-
 
         # Update Changelog
         $ChanglogContent = Get-Content -Path $Changlog -Raw
