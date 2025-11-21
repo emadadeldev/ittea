@@ -789,7 +789,7 @@ ITT-ScriptBlock -ArgumentList $Debug -ScriptBlock {
 param($Debug)
 function UsageCount {
 try {
-$Message = "👨‍💻 Build Ver: $($itt.lastupdate)`n🚀 URL: $($itt.command)"
+$Message = "👨‍💻 Version: $($itt.version)`n🚀 URL: $($itt.command)"
 $EncodedMessage = [uri]::EscapeDataString($Message)
 $Url = "itt.emadadel4-a0a.workers.dev/log?text=$EncodedMessage"
 $result = Invoke-RestMethod -Uri $Url -Method GET
