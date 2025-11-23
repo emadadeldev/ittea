@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="Install Tweaks Tool"
         WindowStartupLocation="CenterScreen" Background="{DynamicResource PrimaryBackgroundColor}"
-        Width="1090" Height="700" MinHeight="600" MinWidth="800"
+        Width="900" Height="700" MinHeight="600" MinWidth="800"
         ShowInTaskbar="True"
         TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto"
         Icon="https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico">
