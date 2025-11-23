@@ -159,9 +159,9 @@
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
-                <Grid HorizontalAlignment="Center">
+                <Grid HorizontalAlignment="Left">
 
-                    <ItemsControl Name="AppsListView" Margin="2">
+                    <ItemsControl Name="AppsListView">
 
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -177,28 +177,20 @@
                             <DataTemplate>
 
                                 <Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
-                                        CornerRadius="12"
-                                        Padding="12"
+                                        CornerRadius="8"
+                                        Padding="10"
                                         Margin="8"
-                                        MinWidth="220"
-                                        MaxWidth="220"
                                         BorderBrush="{DynamicResource BorderBrush}"
                                         BorderThickness="1">
 
-                                    <StackPanel>
-
-                                        <CheckBox Content="{Binding Content}"
-                                                IsChecked="{Binding IsChecked}"
-                                                ToolTip="{Binding Choco}"
-                                                FontSize="14"
-                                                FontWeight="Bold"
-                                                />
-
-                                        <TextBlock Text="{Binding Description}"
-                                                Foreground="{DynamicResource TextColorSecondaryColor}"
-                                                Margin="0,6,0,0"
-                                                TextWrapping="Wrap"/>
-                                    </StackPanel>
+                                      <CheckBox
+                                        Content="{Binding Content}"
+                                        IsChecked="{Binding IsChecked}"
+                                        ToolTip="{Binding Description}"
+                                        FontSize="14"
+                                        FontWeight="SemiBold"
+                                        HorizontalContentAlignment="Stretch"/>
+                                        
 
                                 </Border>
 
