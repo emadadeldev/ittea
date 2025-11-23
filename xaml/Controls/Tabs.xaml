@@ -159,7 +159,7 @@
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
-                <Grid HorizontalAlignment="Left">
+                <Grid HorizontalAlignment="Center" Margin="10">
 
                     <ItemsControl Name="AppsListView">
 
@@ -168,8 +168,7 @@
                                 <WrapPanel IsItemsHost="True"
                                         Margin="5"
                                         HorizontalAlignment="Center" 
-                                        ItemWidth="auto"
-                                        ItemHeight="auto"/>
+                                        />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
 
@@ -177,30 +176,34 @@
                             <DataTemplate>
 
                                 <Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
-                                        CornerRadius="8"
+                                        CornerRadius="5"
                                         Padding="10"
-                                        Margin="8"
+                                        Margin="5"
                                         BorderBrush="{DynamicResource BorderBrush}"
                                         BorderThickness="1">
 
-                                      <CheckBox
-                                        Content="{Binding Content}"
-                                        IsChecked="{Binding IsChecked}"
-                                        ToolTip="{Binding Description}"
-                                        FontSize="14"
-                                        FontWeight="SemiBold"
-                                        HorizontalContentAlignment="Stretch"/>
+                                        <Grid>
                                         
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                        
+                                            <CheckBox
+                                                Grid.Row="0"
+                                                Content="{Binding Content}"
+                                                IsChecked="{Binding IsChecked}"
+                                                ToolTip="{Binding Description}"
+                                                FontSize="14"
+                                                FontWeight="SemiBold"
+                                                HorizontalContentAlignment="Stretch"/>
+                                        </Grid>
 
                                 </Border>
 
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
-
                     </ItemsControl>
-
                 </Grid>
-
             </ScrollViewer>
         </Grid>
 
@@ -221,7 +224,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions><!-- Tweaks Category -->
+            </Grid.RowDefinitions>
+            
+            <!-- Tweaks Category -->
             <ComboBox Name="TwaeksCategory" Grid.Row="0" SelectedIndex="0" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" IsReadOnly="True" Visibility="Collapsed">
                 <ComboBoxItem Tag="all">
                     <TextBlock>
@@ -272,26 +277,55 @@
                     </TextBlock>
                 </ComboBoxItem>
             </ComboBox>
-            
-            <!-- Tweaks List -->
-            <ListView Name="TweaksListView" Grid.Row="1" AlternationCount="2">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox IsChecked="{Binding IsChecked}" Content="{Binding Content}" FontSize="15"/>
-                                <TextBlock Text="{Binding Requires}" Margin="4,5,0,0" FontSize="14" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource TextColorSecondaryColor}"/>
-                            </StackPanel>
-                            <TextBlock Padding="20,8,0,10" FontSize="14" Foreground="{DynamicResource TextColorSecondaryColor}" TextWrapping="Wrap" Text="{Binding Description}" Width="500"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+                <Grid HorizontalAlignment="Center" Margin="10">
+
+                    <ItemsControl Name="TweaksListView">
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True"
+                                        Margin="5"
+                                        HorizontalAlignment="Center" 
+                                        />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+
+                                <Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
+                                        CornerRadius="5"
+                                        Padding="10"
+                                        Margin="5"
+                                        BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="1">
+
+                                        <StackPanel>
+                                        
+                                            <CheckBox
+                                                Grid.Row="0"
+                                                Content="{Binding Content}"
+                                                IsChecked="{Binding IsChecked}"
+                                                ToolTip="{Binding Description}"
+                                                FontSize="14"
+                                                FontWeight="SemiBold"
+                                                HorizontalContentAlignment="Stretch"/>
+
+                                                <TextBlock Text="{Binding Requires}" Margin="5" FontSize="12" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource TextColorSecondaryColor}"/>
+
+                                        </StackPanel>
+
+                                </Border>
+
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </ScrollViewer>
         </Grid>
     </TabItem>
     
