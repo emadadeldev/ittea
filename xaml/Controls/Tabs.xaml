@@ -1,5 +1,7 @@
 <!-- TabControl -->
-<TabControl Name="taps" Grid.Row="1" SelectedIndex="1"><!-- Whats New Tab -->
+<TabControl Name="taps" Grid.Row="1" SelectedIndex="1">
+
+<!-- Whats New Tab -->
     <TabItem Name="WhatsNewTab">
         <TabItem.Header>
             <Grid>
@@ -29,7 +31,9 @@
                 </Grid>
             </Grid>
         </Border>
-    </TabItem><!-- Apps Tab -->
+    </TabItem>
+    
+    <!-- Apps Tab -->
     <TabItem Name="apps" Header="{Binding apps, TargetNullValue=Apps}" Tag="apps">
         <TabItem.HeaderTemplate>
             <DataTemplate>
@@ -39,11 +43,15 @@
                 </StackPanel>
             </DataTemplate>
         </TabItem.HeaderTemplate>
+
         <Grid>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions><!-- Apps Category -->
+            </Grid.RowDefinitions>
+
+            <!-- Apps Category -->
             <ComboBox Name="AppsCategory" Grid.Row="0" SelectedIndex="0" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
                 <ComboBoxItem Tag="All">
                     <TextBlock>
@@ -147,24 +155,67 @@
                         <Run Text="{Binding drivers, TargetNullValue=Drivers}"/>
                     </TextBlock>
                 </ComboBoxItem>
-            </ComboBox><!-- Apps List -->
-            <ListView Name="AppsListView" Grid.Row="1" AlternationCount="2">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <CheckBox IsChecked="{Binding IsChecked}" ToolTip="{Binding Choco}" Content="{Binding Content}" FontSize="15"/>
-                            <TextBlock Padding="15,8,0,10" FontSize="14" Foreground="{DynamicResource TextColorSecondaryColor}" TextWrapping="Wrap" Text="{Binding Description}" Width="500"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            </ComboBox>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+                <Grid HorizontalAlignment="Center">
+
+                    <ItemsControl Name="AppsListView" Margin="2">
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True"
+                                        Margin="5"
+                                        HorizontalAlignment="Center" 
+                                        ItemWidth="auto"
+                                        ItemHeight="auto"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+
+                                <Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
+                                        CornerRadius="12"
+                                        Padding="12"
+                                        Margin="8"
+                                        MinWidth="220"
+                                        MaxWidth="220"
+                                        BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="1">
+
+                                    <StackPanel>
+
+                                        <CheckBox Content="{Binding Content}"
+                                                IsChecked="{Binding IsChecked}"
+                                                ToolTip="{Binding Choco}"
+                                                FontSize="15"
+                                                FontWeight="Bold"
+                                                />
+
+                                        <TextBlock Text="{Binding Description}"
+                                                Foreground="{DynamicResource TextColorSecondaryColor}"
+                                                Margin="0,6,0,0"
+                                                TextWrapping="Wrap"/>
+
+                                    </StackPanel>
+
+                                </Border>
+
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                </Grid>
+
+            </ScrollViewer>
         </Grid>
-    </TabItem><!-- Tweaks Tab -->
+
+    </TabItem>
+    
+    <!-- Tweaks Tab -->
     <TabItem x:Name="tweeksTab" Header="{Binding tweaks, TargetNullValue=Tweaks}" Tag="tweaks">
         <TabItem.HeaderTemplate>
             <DataTemplate>
@@ -248,7 +299,9 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-    </TabItem><!-- Settings Tab -->
+    </TabItem>
+    
+    <!-- Settings Tab -->
     <TabItem x:Name="SettingsTab" Header="{Binding settings, TargetNullValue=Settings}">
         <TabItem.HeaderTemplate>
             <DataTemplate>
