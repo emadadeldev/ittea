@@ -190,7 +190,7 @@
                                         <CheckBox Content="{Binding Content}"
                                                 IsChecked="{Binding IsChecked}"
                                                 ToolTip="{Binding Choco}"
-                                                FontSize="15"
+                                                FontSize="14"
                                                 FontWeight="Bold"
                                                 />
 
@@ -198,7 +198,6 @@
                                                 Foreground="{DynamicResource TextColorSecondaryColor}"
                                                 Margin="0,6,0,0"
                                                 TextWrapping="Wrap"/>
-
                                     </StackPanel>
 
                                 </Border>
@@ -225,6 +224,7 @@
                 </StackPanel>
             </DataTemplate>
         </TabItem.HeaderTemplate>
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -279,7 +279,9 @@
                         <Run Text="{Binding classic, TargetNullValue=Classic}"/>
                     </TextBlock>
                 </ComboBoxItem>
-            </ComboBox><!-- Tweaks List -->
+            </ComboBox>
+            
+            <!-- Tweaks List -->
             <ListView Name="TweaksListView" Grid.Row="1" AlternationCount="2">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
