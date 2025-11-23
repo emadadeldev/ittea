@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-version        = "25.11.23"
+version        = "25.11.24"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -1646,11 +1646,11 @@ $itt.$Button.Content = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -1664,7 +1664,7 @@ $MainWindowXaml = @"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 x:Name="Window" Title="Install Tweaks Tool"
 WindowStartupLocation="CenterScreen" Background="{DynamicResource PrimaryBackgroundColor}"
-Width="1090" Height="700" MinHeight="600" MinWidth="800"
+Width="900" Height="700" MinHeight="600" MinWidth="800"
 ShowInTaskbar="True"
 TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto"
 Icon="https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico">
@@ -2709,32 +2709,37 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 </ComboBoxItem>
 </ComboBox>
 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-<Grid HorizontalAlignment="Left">
+<Grid HorizontalAlignment="Center" Margin="10">
 <ItemsControl Name="AppsListView">
 <ItemsControl.ItemsPanel>
 <ItemsPanelTemplate>
 <WrapPanel IsItemsHost="True"
 Margin="5"
 HorizontalAlignment="Center"
-ItemWidth="auto"
-ItemHeight="auto"/>
+/>
 </ItemsPanelTemplate>
 </ItemsControl.ItemsPanel>
 <ItemsControl.ItemTemplate>
 <DataTemplate>
 <Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
-CornerRadius="8"
+CornerRadius="5"
 Padding="10"
-Margin="8"
+Margin="5"
 BorderBrush="{DynamicResource BorderBrush}"
 BorderThickness="1">
+<Grid>
+<Grid.RowDefinitions>
+<RowDefinition Height="auto"/>
+</Grid.RowDefinitions>
 <CheckBox
+Grid.Row="0"
 Content="{Binding Content}"
 IsChecked="{Binding IsChecked}"
 ToolTip="{Binding Description}"
 FontSize="14"
 FontWeight="SemiBold"
 HorizontalContentAlignment="Stretch"/>
+</Grid>
 </Border>
 </DataTemplate>
 </ItemsControl.ItemTemplate>
@@ -2807,24 +2812,42 @@ HorizontalContentAlignment="Stretch"/>
 </TextBlock>
 </ComboBoxItem>
 </ComboBox>
-<ListView Name="TweaksListView" Grid.Row="1" AlternationCount="2">
-<ListView.ItemsPanel>
+<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+<Grid HorizontalAlignment="Center" Margin="10">
+<ItemsControl Name="TweaksListView">
+<ItemsControl.ItemsPanel>
 <ItemsPanelTemplate>
-<VirtualizingStackPanel/>
+<WrapPanel IsItemsHost="True"
+Margin="5"
+HorizontalAlignment="Center"
+/>
 </ItemsPanelTemplate>
-</ListView.ItemsPanel>
-<ListView.ItemTemplate>
+</ItemsControl.ItemsPanel>
+<ItemsControl.ItemTemplate>
 <DataTemplate>
-<StackPanel Orientation="Vertical">
-<StackPanel Orientation="Horizontal">
-<CheckBox IsChecked="{Binding IsChecked}" Content="{Binding Content}" FontSize="15"/>
-<TextBlock Text="{Binding Requires}" Margin="4,5,0,0" FontSize="14" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource TextColorSecondaryColor}"/>
+<Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
+CornerRadius="5"
+Padding="10"
+Margin="5"
+BorderBrush="{DynamicResource BorderBrush}"
+BorderThickness="1">
+<StackPanel>
+<CheckBox
+Grid.Row="0"
+Content="{Binding Content}"
+IsChecked="{Binding IsChecked}"
+ToolTip="{Binding Description}"
+FontSize="14"
+FontWeight="SemiBold"
+HorizontalContentAlignment="Stretch"/>
+<TextBlock Text="{Binding Requires}" Margin="5" FontSize="12" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource TextColorSecondaryColor}"/>
 </StackPanel>
-<TextBlock Padding="20,8,0,10" FontSize="14" Foreground="{DynamicResource TextColorSecondaryColor}" TextWrapping="Wrap" Text="{Binding Description}" Width="500"/>
-</StackPanel>
+</Border>
 </DataTemplate>
-</ListView.ItemTemplate>
-</ListView>
+</ItemsControl.ItemTemplate>
+</ItemsControl>
+</Grid>
+</ScrollViewer>
 </Grid>
 </TabItem>
 <TabItem x:Name="SettingsTab" Header="{Binding settings, TargetNullValue=Settings}">
