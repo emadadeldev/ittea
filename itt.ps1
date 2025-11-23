@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-version        = "25.11.21"
+version        = "25.11.23"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -1664,7 +1664,7 @@ $MainWindowXaml = @"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 x:Name="Window" Title="Install Tweaks Tool"
 WindowStartupLocation="CenterScreen" Background="{DynamicResource PrimaryBackgroundColor}"
-Width="950" Height="700" MinHeight="600" MinWidth="800"
+Width="1090" Height="700" MinHeight="600" MinWidth="800"
 ShowInTaskbar="True"
 TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto"
 Icon="https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico">
@@ -1783,7 +1783,7 @@ CornerRadius="5"
 BorderThickness="{TemplateBinding BorderThickness}"
 Background="{TemplateBinding Background}">
 <Grid>
-<TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17" />
+<TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" />
 <Path x:Name="CheckMark"
 Margin="4"
 Stretch="Uniform"
@@ -2708,21 +2708,39 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 </TextBlock>
 </ComboBoxItem>
 </ComboBox>
-<ListView Name="AppsListView" Grid.Row="1" AlternationCount="2">
-<ListView.ItemsPanel>
+<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+<Grid HorizontalAlignment="Left">
+<ItemsControl Name="AppsListView">
+<ItemsControl.ItemsPanel>
 <ItemsPanelTemplate>
-<VirtualizingStackPanel/>
+<WrapPanel IsItemsHost="True"
+Margin="5"
+HorizontalAlignment="Center"
+ItemWidth="auto"
+ItemHeight="auto"/>
 </ItemsPanelTemplate>
-</ListView.ItemsPanel>
-<ListView.ItemTemplate>
+</ItemsControl.ItemsPanel>
+<ItemsControl.ItemTemplate>
 <DataTemplate>
-<StackPanel Orientation="Vertical">
-<CheckBox IsChecked="{Binding IsChecked}" ToolTip="{Binding Choco}" Content="{Binding Content}" FontSize="15"/>
-<TextBlock Padding="15,8,0,10" FontSize="14" Foreground="{DynamicResource TextColorSecondaryColor}" TextWrapping="Wrap" Text="{Binding Description}" Width="500"/>
-</StackPanel>
+<Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
+CornerRadius="8"
+Padding="10"
+Margin="8"
+BorderBrush="{DynamicResource BorderBrush}"
+BorderThickness="1">
+<CheckBox
+Content="{Binding Content}"
+IsChecked="{Binding IsChecked}"
+ToolTip="{Binding Description}"
+FontSize="14"
+FontWeight="SemiBold"
+HorizontalContentAlignment="Stretch"/>
+</Border>
 </DataTemplate>
-</ListView.ItemTemplate>
-</ListView>
+</ItemsControl.ItemTemplate>
+</ItemsControl>
+</Grid>
+</ScrollViewer>
 </Grid>
 </TabItem>
 <TabItem x:Name="tweeksTab" Header="{Binding tweaks, TargetNullValue=Tweaks}" Tag="tweaks">
