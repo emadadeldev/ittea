@@ -132,7 +132,7 @@
                             <Grid>
 
                                 <!-- Check Icon -->
-                                <TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17" />
+                                <TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" />
 
                                 <!-- Check Mark -->
                                 <Path x:Name="CheckMark"
