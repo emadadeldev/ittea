@@ -4,7 +4,7 @@
     "Description": "Clean temporary files that are not necessary",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disk%20cleanup/run.ps1 | iex"
     ]
@@ -14,7 +14,7 @@
     "Description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "Category": "Fixer",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/SFC/run.ps1 | iex"
     ]
@@ -24,7 +24,7 @@
     "Description": "Restore the old context menu",
     "Category": "Classic",
     "IsChecked": false,
-    "Requires": "🪟 11",
+    "Requires": "For 11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Restore%20Classic%20Context%20Menu%20Windows%2011/run.ps1 | iex"
     ]
@@ -34,7 +34,7 @@
     "Description": "if you face issues with services, try Restore All Windows Services to Default",
     "Category": "Fixer",
     "IsChecked": false,
-    "Requires": "🪟 10/11 · 🔄 Restart",
+    "Requires": "For 10/11 · 🔄 Restart",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Restore%20All%20Windows%20Services%20to%20Default/run.ps1 | iex"
     ]
@@ -44,7 +44,7 @@
     "Description": "Disable Taskbar icons",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10",
+    "Requires": "For 10",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Clean%20Taskbar/run.ps1 | iex"
     ]
@@ -54,7 +54,7 @@
     "Description": "Uninstalls pre-installed Microsoft apps like Clipchamp, People etc",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Remove%20MS%20Apps/run.ps1 | iex"
     ]
@@ -64,7 +64,7 @@
     "Description": "Uninstalls pre-installed Xbox apps",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Remove%20Xbox%20apps/run.ps1 | iex"
     ]
@@ -74,7 +74,7 @@
     "Description": "Fix Stutter in Games (Disable GameBarPresenceWriter)",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Fix%20Stutter/run.ps1 | iex"
     ]
@@ -84,7 +84,7 @@
     "Description": "This will add the Ultimate Performance power plan, to enable it go to the power options",
     "Category": "Power",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Enable%20Ultimate%20Performance%20Power%20Plan/run.ps1 | iex"
     ]
@@ -94,7 +94,7 @@
     "Description": "If you have an internet issue, reset the network configuration",
     "Category": "Fixer",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Netsh/run.ps1 | iex"
     ]
@@ -104,7 +104,7 @@
     "Description": "Setup auto login Windows username",
     "Category": "Classic",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Setup%20Auto%20login/run.ps1 | iex"
     ]
@@ -114,7 +114,7 @@
     "Description": "Disables all Xbox Services Game Mode",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Xbox%20Services/run.ps1 | iex"
     ]
@@ -124,7 +124,7 @@
     "Description": "Web search results from Bing in your Start Menu search",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Start%20Menu%20Ads/run.ps1 | iex"
     ]
@@ -134,7 +134,7 @@
     "Description": "Turn off background apps",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Background%20apps/run.ps1 | iex"
     ]
@@ -144,7 +144,7 @@
     "Description": "Suggestions on start menu",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20suggestions%20on%20Start%20Menu/run.ps1 | iex"
     ]
@@ -154,7 +154,7 @@
     "Description": "Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Remove%20Folder%20Shortcuts%20From%20File%20Explorer/run.ps1 | iex"
     ]
@@ -164,7 +164,7 @@
     "Description": "(Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data)",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Optimize%20Windows%20Services/run.ps1 | iex"
     ]
@@ -174,7 +174,7 @@
     "Description": "Allows the system to save the current state of your computer",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Hibernate/run.ps1 | iex"
     ]
@@ -184,7 +184,7 @@
     "Description": "Disabling OneDrive",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20OneDrive/run.ps1 | iex"
     ]
@@ -194,7 +194,7 @@
     "Description": "Removes OneDrive from the system",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Remove%20Onedrive/run.ps1 | iex"
     ]
@@ -204,7 +204,7 @@
     "Description": "Classic Photo Viewer",
     "Category": "Classic",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Old%20Photo%20Viewer/run.bat | iex"
     ]
@@ -214,7 +214,7 @@
     "Description": "AI assistance",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 11",
+    "Requires": "For 11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Remove%20Copilot%20Windows%2011/run.ps1 | iex"
     ]
@@ -224,7 +224,7 @@
     "Description": "Recall is an upcoming preview experience exclusive to Copilot+",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 11 24H",
+    "Requires": "For 11 24H",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Recall%20Snapshots%20in%20Windows%2011%2024H/run.ps1 | iex"
     ]
@@ -234,7 +234,7 @@
     "Description": "Removing the stored image thumbnails",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Delete%20Thumbnail%20Cache/run.ps1 | iex"
     ]
@@ -244,7 +244,7 @@
     "Description": "The old volume control",
     "Category": "Classic",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Classic%20Volume%20Control/run.ps1 | iex"
     ]
@@ -254,7 +254,7 @@
     "Description": "Toggle key sounds are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys",
     "Category": "Classic",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Sticky%20Keys/run.ps1 | iex"
     ]
@@ -264,7 +264,7 @@
     "Description": "HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Homegroup/run.ps1 | iex"
     ]
@@ -274,7 +274,7 @@
     "Description": "Home and Gallery from explorer and sets This PC as default",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Remove%20Home%20and%20Gallery%20from%20explorer%20in%20Windows%2011/run.ps1 | iex"
     ]
@@ -284,7 +284,7 @@
     "Description": "Service that phones home all nearby scanned wifi networks and your location",
     "Category": "Protection",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Wifi%20Sense/run.ps1 | iex"
     ]
@@ -294,7 +294,7 @@
     "Description": "Autoplay in prevents the automatic launch of media or applications when a removable device, such as a USB drive or CD",
     "Category": "Protection",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Autoplay%20and%20Autorun/run.ps1 | iex"
     ]
@@ -304,7 +304,7 @@
     "Description": "SMB Server enables file and printer sharing over a network, allowing access to resources on remote computers",
     "Category": "Protection",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20SMB%20Server/run.ps1 | iex"
     ]
@@ -314,7 +314,7 @@
     "Description": "Deny file sharing, device discovery",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Set%20network%20profile%20to%20public/run.ps1 | iex"
     ]
@@ -324,7 +324,7 @@
     "Description": "Enable F8 boot menu options",
     "Category": "BIOS",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Enable%20F8%20boot%20menu%20options/run.ps1 | iex"
     ]
@@ -334,7 +334,7 @@
     "Description": "If you frequently use your device, disable this",
     "Category": "Power",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20display%20and%20sleep%20mode%20timeouts/run.ps1 | iex"
     ]
@@ -344,7 +344,7 @@
     "Description": "Set Wallpaper desktop Quality",
     "Category": "Personalization",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Set%20Wallpaper%20desktop%20Quality%20to%20100%25/run.ps1 | iex"
     ]
@@ -354,7 +354,7 @@
     "Description": "Disableing improve performance",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Windows%20Transparency/run.ps1 | iex"
     ]
@@ -364,7 +364,7 @@
     "Description": "Optimizes disk performance",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20scheduled%20defragmentation%20task/run.ps1 | iex"
     ]
@@ -374,7 +374,7 @@
     "Description": "Some old games and applications require .NET Framework 3.5",
     "Category": "Classic",
     "IsChecked": false,
-    "Requires": "🪟 10/11 · 🔄 Restart",
+    "Requires": "For 10/11 · 🔄 Restart",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Enable%20NET%203.5/run.ps1 | iex"
     ]
@@ -384,7 +384,7 @@
     "Description": "Disabled all windows effects. You may need to log out and back in for changes to take effect. You can reset to default settings in Settings Tab",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Super%20Performance/run.ps1 | iex"
     ]
@@ -394,7 +394,7 @@
     "Description": "Widgets are one of the new user interface elements",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 11 · 🔄 Restart",
+    "Requires": "For 11 · 🔄 Restart",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Remove%20Widgets%20from%20Taskbar%20in%20Windows%2011/run.ps1 | iex"
     ]
@@ -404,7 +404,7 @@
     "Description": "Rename Computer name and Username to Unknown. The changes will take effect after you restart the computer",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 10/11 · 🔄 Restart",
+    "Requires": "For 10/11 · 🔄 Restart",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Set%20Username%20to%20Unknown/run.ps1 | iex"
     ]
@@ -414,7 +414,7 @@
     "Description": "Fix issues related to strange symbols appearing in Arabic text",
     "Category": "Fixer",
     "IsChecked": false,
-    "Requires": "🪟 10/11 · 🔄 Restart",
+    "Requires": "For 10/11 · 🔄 Restart",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Fix%20Arabic%20encoding/run.ps1 | iex"
     ]
@@ -424,7 +424,7 @@
     "Description": "Restoring default apps for file type associations resets Windows settings, allowing the system to select the appropriate programs by default",
     "Category": "Fixer",
     "IsChecked": false,
-    "Requires": "🪟 10",
+    "Requires": "For 10",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Restore%20Default%20File%20Type%20Associations/run.ps1 | iex"
     ]
@@ -434,7 +434,7 @@
     "Description": "Limits Defender CPU maximum usage at 25% instead of default 50%",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Limit%20Defender%20CPU%20Usage/run.ps1 | iex"
     ]
@@ -444,7 +444,7 @@
     "Description": "Disables Hardware-Accelerated GPU Scheduling, which may improve performance",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Optimizing%20GPU%20scheduling/run.ps1 | iex"
     ]
@@ -454,7 +454,7 @@
     "Description": "Fullscreen Optimizations, which may improve performance",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Fullscreen%20Optimizations/run.ps1 | iex"
     ]
@@ -464,7 +464,7 @@
     "Description": "Optimize network performance",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Optimize%20Network/run.ps1 | iex"
     ]
@@ -474,7 +474,7 @@
     "Description": "Enabling large system cache can improve performance for certain workloads but may affect system stability",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Enable%20system%20cache/run.ps1 | iex"
     ]
@@ -484,7 +484,7 @@
     "Description": "Optimize NVIDIA GPU settings ",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Optimizing%20NVIDIA%20GPU%20settings/run.ps1 | iex"
     ]
@@ -494,7 +494,7 @@
     "Description": "Fast startup (aka: hiberboot, hybrid boot, or hybrid shutdown) is turned on by default in Windows and is a setting that helps your PC start up faster after shutdown",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Enable%20Faster%20Shutdown/run.ps1 | iex"
     ]
@@ -504,7 +504,7 @@
     "Description": "Create Super Control Panel shortcut on Desktop",
     "Category": "Personalization",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Super%20Control%20Panel/run.ps1 | iex"
     ]
@@ -514,7 +514,7 @@
     "Description": "You will see a detailed Blue Screen of Death (BSOD) with more information",
     "Category": "Fixer",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Detailed%20BSoD/run.ps1 | iex"
     ]
@@ -524,7 +524,7 @@
     "Description": "If enabled then allows your computer vendor to execute a program each time it boots. It enables computer vendors to force install anti-theft software, software drivers, or a software program conveniently. This could also be a security risk",
     "Category": "BIOS",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Windows%20Platform%20Binary%20Table/run.ps1 | iex"
     ]
@@ -534,7 +534,7 @@
     "Description": "Teredo network tunneling is a ipv6 feature that can cause additional latency, but may cause problems with some games",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Teredo/run.ps1 | iex"
     ]
@@ -544,7 +544,7 @@
     "Description": "Storage Sense deletes temp files automatically",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Storage%20Sense/run.ps1 | iex"
     ]
@@ -554,7 +554,7 @@
     "Description": "Erases recent docs clipboard and run history",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Activity%20History/run.ps1 | iex"
     ]
@@ -564,7 +564,7 @@
     "Description": "Disables various annoyances like Brave Rewards,Leo AI,Crypto Wallet and VPN",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Debloat%20Brave/run.ps1 | iex"
     ]
@@ -574,7 +574,7 @@
     "Description": "Windows 10 will not automatically install any games, third-party apps, or application links from the Windows Store",
     "Category": "Privacy",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20ConsumerFeatures/run.ps1 | iex"
     ]
@@ -584,7 +584,7 @@
     "Description": "Deletes temporary files",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Delete%20Temporary%20Files/run.ps1 | iex"
     ]
@@ -594,7 +594,7 @@
     "Description": "Essential for computers that are dual booting. Fixes the time sync with Linux Systems",
     "Category": "Fixer",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Set%20Time%20to%20UTC%20(Dual%20Boot)/run.ps1 | iex"
     ]
@@ -604,7 +604,7 @@
     "Description": "Disables various telemetry options, popups, and other annoyances in Edge",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Debloat%20Edge/run.ps1 | iex"
     ]
@@ -614,7 +614,7 @@
     "Description": "Most modern laptops have connected standby enabled which drains the battery, this sets hibernation as default which will not drain the battery",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Set%20Hibernation%20as%20default/run.ps1 | iex"
     ]
@@ -624,7 +624,7 @@
     "Description": "Icon cache is 500 KB. Increasing the icon cache size to 4 MB gives the best results",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Change%20Icon%20Cache%20Size/run.ps1 | iex"
     ]
@@ -634,7 +634,7 @@
     "Description": "Prevents the hard disk from turning off automatically. Recommended for desktop PCs",
     "Category": "Power",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20hard%20disk%20sleep/run.ps1 | iex"
     ]
@@ -644,7 +644,7 @@
     "Description": "Disables IPv6.",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20IPv6/run.ps1 | iex"
     ]
@@ -654,7 +654,7 @@
     "Description": "If enabled then allows your computer vendor to execute a program each time it boots. It enables computer vendors to force install anti-theft software, software drivers, or a software program conveniently. This could also be a security risk",
     "Category": "Performance",
     "IsChecked": false,
-    "Requires": "🪟 10/11",
+    "Requires": "For 10/11",
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Windows%20Platform%20Binary%20Table%20(WPBT)/run.ps1 | iex"
     ]
