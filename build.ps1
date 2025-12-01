@@ -1,20 +1,25 @@
 param (
     [string]$OutputScript = "itt.ps1",
-    [switch]$Realsee,
-    [switch]$Debug,
-    [string]$readme = "README.md",
-    [string]$Assets = ".\static",
-    [string]$Controls = ".\xaml\Controls",
     [string]$DatabaseDirectory = ".\static\Database",
     [string]$StartScript = ".\Initialize\start.ps1",
+    [string]$LoadXamlScript = ".\Initialize\xaml.ps1",
     [string]$MainScript = ".\Initialize\main.ps1",
+    [string]$Controls = ".\xaml\Controls",
     [string]$ScritsDirectory = ".\scripts",
     [string]$windows = ".\xaml\Views",
-    [string]$LoadXamlScript = ".\Initialize\xaml.ps1",
+    [string]$Assets = ".\static",
     [string]$Themes = "themes",
-    [string]$ProjectDir = $PSScriptRoot,
-    [string]$Changlog = ".github/CHANGELOG.md"
+    [string]$readme = "README.md",
+    [string]$Changlog = ".github/CHANGELOG.md",
+    [switch]$Realsee,
+    [switch]$Debug
 )
+
+# Initializeialize synchronized hashtable
+$itt = [Hashtable]::Synchronized(@{})
+$global:imageLinkMap = @{}
+$global:TitleContent = ""
+$global:DateContent = ""
 
 try {
     if (Test-Path -Path $OutputScript) { Remove-Item -Path $OutputScript -Force }
@@ -28,20 +33,53 @@ catch {
     break
 }
 
-# Initializeialize synchronized hashtable
-$itt = [Hashtable]::Synchronized(@{})
+# Generate Locales
+function Convert-Locales {
+    param (
+        [string]$csvFolderPath = "locales", 
+        [string]$jsonOutputPath = "static/Database/locales.json"
+    )
+    Write-Host "[+] Converting locales CSV files..." -ForegroundColor Yellow
+    # Initialize an OrderedDictionary to store the "Controls" object
+    $locales = @{
+        "Controls" = [System.Collections.Specialized.OrderedDictionary]@{}
+    }
+    # Get all CSV files in the specified folder and process each one
+    Get-ChildItem -Path $csvFolderPath -Filter *.csv | ForEach-Object {
+        # Import the content of the current CSV file
+        $csvData = Import-Csv -Path $_.FullName
+        # Extract the filename without the extension to use as the language key
+        $language = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
+        # If the language key doesn't already exist in the Controls object, add it
+        if (-not $locales["Controls"].Contains($language)) {
+            $locales["Controls"][$language] = [System.Collections.Specialized.OrderedDictionary]@{}  # Use OrderedDictionary
+        }
+        # Loop through each row of the CSV file and add the key-value pairs to the respective language section
+        foreach ($row in $csvData) {
+            $locales["Controls"][$language][$row.Key] = $row.Text
+        }
+    }
+    # Convert the hashtable to JSON format and save it to the specified output path
+    $jsonOutput = $locales | ConvertTo-Json -Compress
+    # Read existing JSON content if the file exists
 
-$itt.database = @{
-    Applications = (Get-Content -Path ./static/Database/Applications.json | ConvertFrom-Json)
-    Settings     = (Get-Content -Path ./static/Database/Settings.json | ConvertFrom-Json)
-    Tweaks       = (Get-Content -Path ./static/Database/Tweaks.json | ConvertFrom-Json)
-    locales      = (Get-Content -Path ./static/Database/locales.json | ConvertFrom-Json)
+    $existingJsonOutput = if (Test-Path $jsonOutputPath) { Get-Content $jsonOutputPath -Raw } else { "" }
+    # Normalize both JSON outputs for comparison
+
+    $jsonOutputNormalized = $jsonOutput | ConvertFrom-Json | ConvertTo-Json
+    $existingJsonOutputNormalized = $existingJsonOutput | ConvertFrom-Json | ConvertTo-Json 
+    
+    # Write the JSON to the specified file only if it has changed
+    if ($existingJsonOutputNormalized -ne $jsonOutputNormalized) {
+        Set-Content -Path $jsonOutputPath -Value $jsonOutput -Encoding UTF8
+        Write-Host "[+] locales.json file updated." -ForegroundColor Yellow
+    }
+    else {
+        Write-Host "[i] No changes detected in locales.json" 
+    }
+
+    return $locales
 }
-
-$global:imageLinkMap = @{}
-$global:TitleContent = ""
-$global:DateContent = ""
-
 # write content to output script
 function WriteToScript {
     param ([string]$Content)
@@ -546,51 +584,6 @@ function GenerateInvokeButtons {
         break
     }
 }
-# Generate Locales
-function Convert-Locales {
-    param (
-        [string]$csvFolderPath = "locales", 
-        [string]$jsonOutputPath = "static/Database/locales.json"
-    )
-    Write-Host "[+] Converting locales CSV files..." -ForegroundColor Yellow
-    # Initialize an OrderedDictionary to store the "Controls" object
-    $locales = @{
-        "Controls" = [System.Collections.Specialized.OrderedDictionary]@{}
-    }
-    # Get all CSV files in the specified folder and process each one
-    Get-ChildItem -Path $csvFolderPath -Filter *.csv | ForEach-Object {
-        # Import the content of the current CSV file
-        $csvData = Import-Csv -Path $_.FullName
-        # Extract the filename without the extension to use as the language key
-        $language = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
-        # If the language key doesn't already exist in the Controls object, add it
-        if (-not $locales["Controls"].Contains($language)) {
-            $locales["Controls"][$language] = [System.Collections.Specialized.OrderedDictionary]@{}  # Use OrderedDictionary
-        }
-        # Loop through each row of the CSV file and add the key-value pairs to the respective language section
-        foreach ($row in $csvData) {
-            $locales["Controls"][$language][$row.Key] = $row.Text
-        }
-    }
-    # Convert the hashtable to JSON format and save it to the specified output path
-    $jsonOutput = $locales | ConvertTo-Json -Compress
-    # Read existing JSON content if the file exists
-
-    $existingJsonOutput = if (Test-Path $jsonOutputPath) { Get-Content $jsonOutputPath -Raw } else { "" }
-    # Normalize both JSON outputs for comparison
-
-    $jsonOutputNormalized = $jsonOutput | ConvertFrom-Json | ConvertTo-Json
-    $existingJsonOutputNormalized = $existingJsonOutput | ConvertFrom-Json | ConvertTo-Json 
-    
-    # Write the JSON to the specified file only if it has changed
-    if ($existingJsonOutputNormalized -ne $jsonOutputNormalized) {
-        Set-Content -Path $jsonOutputPath -Value $jsonOutput -Encoding UTF8
-        Write-Host "[+] locales.json file updated." -ForegroundColor Yellow
-    }
-    else {
-        Write-Host "[i] No changes detected in locales.json" 
-    }
-}
 
 # Write script header
 function WriteHeader {
@@ -602,6 +595,14 @@ function WriteHeader {
 #>
 "@
 }
+
+$itt.database = @{
+    Applications = (Get-Content -Path ./static/Database/Applications.json | ConvertFrom-Json)
+    Settings     = (Get-Content -Path ./static/Database/Settings.json | ConvertFrom-Json)
+    Tweaks       = (Get-Content -Path ./static/Database/Tweaks.json | ConvertFrom-Json)
+    locales      = Convert-Locales
+}
+
 # Main script generation
 try {
 
@@ -624,7 +625,6 @@ try {
 #region Begin localization
 #===========================================================================
 "@
-    Convert-Locales
     Sync-JsonFiles -DatabaseDirectory $DatabaseDirectory -OutputScriptPath $OutputScript -Skip @("OST.json", "Quotes.json", "Applications.json", "Settings.json", "tweaks.json")
     WriteToScript -Content @"
 #===========================================================================
