@@ -24,7 +24,7 @@
 
 # Install Tweaks Tool
 
-ITT (Install Tweaks Tool) included most Windows 10/11 Software and Windows Tweaks & Remove Bloatwares
+ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks & Remove Bloatwares
 
 ![Usage Badge](https://img.shields.io/endpoint?url=https://itt.emadadel4-a0a.workers.dev/count&label=Usage&style=for-the-badge)
 <!-- {ver} -->
