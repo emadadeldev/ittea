@@ -202,9 +202,6 @@ About
 "shelltube" {
 Start-Process -FilePath "powershell" -ArgumentList "irm https://github.com/emadadeldev/shelltube/releases/latest/download/st.ps1 | iex"
 }
-"rapidos" {
-Start-Process ("https://github.com/rapid-community/RapidOS")
-}
 "asustool" {
 Start-Process ("https://github.com/codecrafting-io/asus-setup-tool")
 }
@@ -2488,7 +2485,6 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <MenuItem Name="techpowerup" Header="TechPowerUp" ToolTip="Collection of free TechPowerUp utilities."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="majorgeeks" Header="Major Geeks" ToolTip="Website that provides trusted, safe, and curated software downloads for Windows users. It focuses on high-quality tools."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="webtor" Header="Webtor" ToolTip="Web-based platform that allows users to stream torrent files directly in their browser without needing to download them."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="rapidos" Header="RapidOS" ToolTip="RapidOS is a powerful modification for Windows 10 and 11 that significantly boosts performance."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="asustool" Header="ASUS Setup Tool" ToolTip="Tool that manages the setup installation for the legacy Aura Sync, LiveDash, AiSuite3"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 </MenuItem>
 <MenuItem Name="dev" Header="{Binding About, TargetNullValue=About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
