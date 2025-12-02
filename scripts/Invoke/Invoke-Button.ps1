@@ -143,9 +143,6 @@ function Invoke-Button {
         "shelltube" {
             Start-Process -FilePath "powershell" -ArgumentList "irm https://github.com/emadadeldev/shelltube/releases/latest/download/st.ps1 | iex"
         }
-        "rapidos" {
-            Start-Process ("https://github.com/rapid-community/RapidOS")
-        }
         "asustool" {
             Start-Process ("https://github.com/codecrafting-io/asus-setup-tool")
         }
