@@ -182,9 +182,9 @@
   {
     "Content": "Aimp",
     "Description": "A lightweight and feature-rich audio player with support for various",
-    "choco": "na",
+    "choco": "aimp",
     "scoop": "extras/aimp",
-    "winget": "na",
+    "winget": "AIMP.AIMP",
     "itt": "aimp",
     "category": "Media",
     "IsChecked": false
