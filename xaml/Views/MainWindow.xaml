@@ -13,7 +13,7 @@
         <!-- {{ThemesColors}} -->
     </Window.Resources>
 
-    <Grid Background="{DynamicResource BackgroundImage}">
+    <Grid Background="{DynamicResource BackgroundImage}" FlowDirection="{Binding FlowDirection, TargetNullValue=LeftToRight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
