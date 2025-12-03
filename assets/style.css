@@ -132,6 +132,6 @@ footer .sorce-code {
     }
 
     footer {
-        justify-content: center; /* على الموبايل يكون الفوتر في الوسط */
+        justify-content: center;
     }
 }
