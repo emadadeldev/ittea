@@ -14,5 +14,5 @@ function Add-Log {
     $color = if ($colorMap.ContainsKey($level)) { $colorMap[$level] } else { "White" }
     $icon  = if ($iconMap.ContainsKey($level)) { $iconMap[$level] } else { "i" }
 
-    Write-Host "$icon $Message" -ForegroundColor $color
+    Write-Host " $icon $Message" -ForegroundColor $color
 }
