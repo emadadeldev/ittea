@@ -71,6 +71,7 @@ $itt.Runspace.Open()
 #region Create default keys
 #===========================================================================
 try {
+    # Get current os theme
     $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
     $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
     $shortCulture = $fullCulture.Split('-')[0]
@@ -84,7 +85,7 @@ try {
         $itt['window'].FindName('hotdot').Visibility = [System.Windows.Visibility]::Visible
     }
     else {
-        # Show hotdot if first run
+        # HIDE HOTDOT IF NOT FIRST TIME
         $itt['window'].FindName('hotdot').Visibility = [System.Windows.Visibility]::Hidden
     }
     try {
