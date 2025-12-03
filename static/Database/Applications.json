@@ -3604,7 +3604,7 @@
     "Description": " Desktop Telegram client with good customization and Ghost mode",
     "choco": "na",
     "scoop": "na",
-    "winget": "na",
+    "winget": "RadolynLabs.AyuGramDesktop",
     "itt": "ayugramdesktop",
     "category": "Communication",
     "IsChecked": false
