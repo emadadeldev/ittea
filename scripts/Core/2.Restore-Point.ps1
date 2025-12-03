@@ -17,6 +17,6 @@ function CreateRestorePoint {
         Set-Statusbar -Text "✔ Created successfully. Applying tweaks..."
         Add-Log "Created successfully. Applying tweaks..." "info"
     } catch {
-        Add-Log "Error: $_" "ERROR"
+        Add-Log -Message "ERROR: $($_.Exception.Message)" -Level "ERROR"
     }
 }
