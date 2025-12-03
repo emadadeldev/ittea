@@ -1663,6 +1663,7 @@ x:Name="Window" Title="Install Tweaks Tool"
 WindowStartupLocation="CenterScreen" Background="{DynamicResource PrimaryBackgroundColor}"
 Width="1024" Height="700" MinHeight="600" MinWidth="800"
 ShowInTaskbar="True"
+FlowDirection="{Binding FlowDirection, TargetNullValue=LeftToRight}"
 TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto"
 Icon="https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico">
 <Window.Resources>
@@ -1780,9 +1781,10 @@ CornerRadius="5"
 BorderThickness="{TemplateBinding BorderThickness}"
 Background="{TemplateBinding Background}">
 <Grid>
-<TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" />
+<TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
 <Path x:Name="CheckMark"
 Margin="4"
+FlowDirection="LeftToRight"
 Stretch="Uniform"
 Stroke="White"
 StrokeThickness="2"
@@ -2425,7 +2427,7 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <x:String x:Key="SubText">#StandWithPalestine</x:String>
 </ResourceDictionary>
 </Window.Resources>
-<Grid Background="{DynamicResource BackgroundImage}" FlowDirection="{Binding FlowDirection, TargetNullValue=LeftToRight}">
+<Grid Background="{DynamicResource BackgroundImage}" >
 <Grid.RowDefinitions>
 <RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/>
 </Grid.RowDefinitions>
