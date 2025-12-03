@@ -12,6 +12,6 @@ function ExecuteCommand {
         $script = [scriptblock]::Create($tweak)
         Invoke-Command  $script -ErrorAction Stop
     } catch  {
-        Add-Log -Message "The specified command was not found." -Level "WARNING"
+        Add-Log -Message "ERROR: $($_.Exception.Message)" -Level "WARNING"
     }
 }
