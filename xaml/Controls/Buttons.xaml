@@ -4,14 +4,31 @@
     </Grid.ColumnDefinitions>
 
     <Grid Column="1">
-        <Button Name="installBtn" Content="{Binding Install, TargetNullValue=Install}" Width="140" Height="45" Margin="20"
-                HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Name="applyBtn" Content="{Binding Apply, TargetNullValue=Apply}" Visibility="Collapsed" Width="140" Height="45" Margin="20"
-                HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+        <Button Name="installBtn" FontWeight="SemiBold" 
+                Width="140" Height="45" Margin="20"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="📥" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding install, TargetNullValue=Install}" 
+                        VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Name="applyBtn" FontWeight="SemiBold" 
+                Visibility="Collapsed" Width="140" Height="45" Margin="20"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="✔" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Apply, TargetNullValue=Apply}" 
+                        VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
     </Grid>
 
-    <Grid Column="0">
-        <TextBlock Name="statusbar" Foreground="{DynamicResource TextColorPrimary}" Text="✊ #StandWithPalestine" FontWeight="SemiBold" Padding="10 0 0 0" Width="Auto"
-                   HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
+    <Grid Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+        <TextBlock Name="statusbar" Foreground="{DynamicResource TextColorPrimary}" Padding="15" Width="Auto"
+        HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
     </Grid>
 </Grid>
