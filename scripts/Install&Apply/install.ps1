@@ -31,9 +31,9 @@ function Invoke-Install {
 
     $itt.PackgeManager = (Get-ItemProperty -Path $itt.registryPath -Name "source" -ErrorAction Stop).source
 
-    ITT-ScriptBlock -ArgumentList $selectedApps $i $source -Debug $debug -ScriptBlock {
+    ITT-ScriptBlock -ArgumentList $selectedApps $source -Debug $debug -ScriptBlock {
 
-        param($selectedApps , $i, $source)
+        param($selectedApps ,$source)
 
         UpdateUI -Button "installBtn" -Content "Downloading" -Width "auto"
 
