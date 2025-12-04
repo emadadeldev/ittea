@@ -206,7 +206,7 @@
     "IsChecked": false,
     "Requires": "For 10/11",
     "Script": [
-      "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Old%20Photo%20Viewer/run.bat | iex"
+      "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Activate%20Windows%20Classic%20Photo%20Viewer/run.ps1 | iex"
     ]
   },
   {
