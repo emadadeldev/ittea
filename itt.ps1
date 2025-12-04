@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-version        = "25.12.3"
+version        = "25.12.4"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -295,13 +295,13 @@ param (
 )
 switch ($ListView) {
 "AppsListView" {
-UpdateUI -Button "InstallBtn" -Content "Install" -Width "140"
+UpdateUI -Name "InstallBtnText" -Content "Install" -Width "auto"
 Notify -title "$title" -msg "All installations have finished" -icon "Info" -time 30000
 Add-Log -Message "`n::::All installations have finished::::"
 Set-Statusbar -Text "📢 All installations have finished"
 }
 "TweaksListView" {
-UpdateUI -Button "ApplyBtn" -Content "Apply" -Width "140"
+UpdateUI -Name "ApplyBtnText" -Content "Apply" -Width "auto"
 Add-Log -Message "`n::::All tweaks have finished::::"
 Set-Statusbar -Text "📢 All tweaks have finished"
 Notify -title "$title" -msg "All tweaks have finished" -icon "Info" -time 30000
@@ -887,11 +887,11 @@ ITT-ScriptBlock -ArgumentList $selectedTweaks -debug $debug -ScriptBlock {
 param($selectedTweaks, $debug)
 $itt.ProcessRunning = $true
 if((Get-ItemProperty -Path $itt.registryPath -Name "backup" -ErrorAction Stop).backup -eq 0){
-UpdateUI -Button "ApplyBtn" -NonKey "Please Wait..." -Width "auto"
+UpdateUI -Name "ApplyBtn" -NonKey "Please Wait..." -Width "auto"
 Set-Statusbar -Text "ℹ Current task: Creating Restore Point..."
 CreateRestorePoint
 }
-UpdateUI -Button "ApplyBtn" -Content "Applying" -Width "auto"
+UpdateUI -Name "ApplyBtnText" -Content "Applying" -Width "auto"
 $itt["window"].Dispatcher.Invoke([action] { Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
 foreach ($tweak in $selectedTweaks) {
 Add-Log -Message "::::$($tweak.Content)::::" -Level "default"
@@ -920,7 +920,7 @@ return
 $itt.PackgeManager = (Get-ItemProperty -Path $itt.registryPath -Name "source" -ErrorAction Stop).source
 ITT-ScriptBlock -ArgumentList $selectedApps $source -Debug $debug -ScriptBlock {
 param($selectedApps ,$source)
-UpdateUI -Button "installBtn" -Content "Downloading" -Width "auto"
+UpdateUI -Name "installBtnText" -Content "Downloading" -Width "auto"
 $itt["window"].Dispatcher.Invoke([action] { Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
 $itt.ProcessRunning = $true
 foreach ($App in $selectedApps) {
@@ -1630,24 +1630,24 @@ param ([string]$Text)
 $itt.Statusbar.Dispatcher.Invoke([Action]{$itt.Statusbar.Text = $Text })
 }
 function UpdateUI {
-param([string]$Button,[string]$Content,[string]$NonKey,[string]$Width = "140")
+param([string]$Name,[string]$Content,[string]$NonKey,[string]$Width = "140")
 $itt['window'].Dispatcher.Invoke([Action]{
-$itt.$Button.Width = $Width
+$itt.$Name.Width = $Width
 if($Content)
 {
-$itt.$Button.Content = $itt.database.locales.Controls.$($itt.Language).$Content
+$itt.$Name.Text = $itt.database.locales.Controls.$($itt.Language).$Content
 }else{
-$itt.$Button.Content = $NonKey
+$itt.$Name.Text = $NonKey
 }
 })
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -2906,20 +2906,20 @@ HorizontalContentAlignment="Stretch"/>
 </Grid.ColumnDefinitions>
 <Grid Column="1">
 <Button Name="installBtn" FontWeight="SemiBold"
-Width="140" Height="45" Margin="20"
+Width="144" Height="45" Margin="20"
 HorizontalAlignment="Center" VerticalAlignment="Center">
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 <TextBlock Text="📥" Margin="0,0,8,0" VerticalAlignment="Center"/>
-<TextBlock Text="{Binding install, TargetNullValue=Install}"
+<TextBlock Name="installBtnText" Text="{Binding install, TargetNullValue=Install}"
 VerticalAlignment="Center"/>
 </StackPanel>
 </Button>
 <Button Name="applyBtn" FontWeight="SemiBold"
-Visibility="Collapsed" Width="140" Height="45" Margin="20"
+Visibility="Collapsed" Width="144" Height="45" Margin="20"
 HorizontalAlignment="Center" VerticalAlignment="Center">
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 <TextBlock Text="✔" Margin="0,0,8,0" VerticalAlignment="Center"/>
-<TextBlock Text="{Binding Apply, TargetNullValue=Apply}"
+<TextBlock Name="applyBtnText" Text="{Binding Apply, TargetNullValue=Apply}"
 VerticalAlignment="Center"/>
 </StackPanel>
 </Button>
