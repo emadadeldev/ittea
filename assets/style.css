@@ -4,6 +4,19 @@
     --text-color: white;
     --code-block-color: white;
     --LogoColor: #539bf5;
+    --Shadow: #444c56;
+}
+
+/* ===== Light mode ===== */
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #ffffff;
+        --SecondaryBkground-color: #f3f4f6;
+        --text-color: #000000;
+        --code-block-color: #000000;
+        --LogoColor: #1a73e8;
+        --Shadow: #d0d7de;
+    }
 }
 
 * {
@@ -44,6 +57,8 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
+    box-shadow: 0px 0px 100px var(--Shadow);
+
 }
 
 .text-box {
@@ -85,12 +100,17 @@ body {
 
 
 /* ===== Footer ===== */
+
+footer svg {
+    fill: var(--text-color);
+}
+
 footer {
     padding-top: 50px;    
     display: flex;
     align-items: center;              
     justify-content: start;         
-    gap: 10px;                       
+    gap: 10px;               
 }
 
 footer .sorce-code {
