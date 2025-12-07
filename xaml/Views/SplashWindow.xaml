@@ -1,0 +1,36 @@
+<!--splash Window-->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="splash" 
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Width="1024" 
+        Height="600" 
+        ShowInTaskbar="false">
+
+        <Border CornerRadius="15" Height="600" Width="1024">
+
+                <Border.Background>
+                <ImageBrush ImageSource="http://127.0.0.1:5500/static/Images/splash.jpg"/>
+                </Border.Background>
+
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="itt"
+                                FontSize="250"
+                                Foreground="#539bf5"
+                                FontFamily="Arial"
+                                FontWeight="Bold"
+                                TextAlignment="Center"/>
+                        <!-- Reference from Matrix Movie -->
+                        <TextBlock Text="Wake up, Neo..."  
+                                FontSize="20"
+                                Foreground="white"
+                                TextAlignment="Center"/>
+                </StackPanel>
+        </Border>
+
+</Window>
+<!--End splash Window-->
