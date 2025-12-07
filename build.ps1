@@ -3,6 +3,7 @@ param (
     [string]$DatabaseDirectory = ".\static\Database",
     [string]$StartScript = ".\Initialize\start.ps1",
     [string]$LoadXamlScript = ".\Initialize\xaml.ps1",
+    [string]$Initialize = ".\Initialize\",
     [string]$MainScript = ".\Initialize\main.ps1",
     [string]$Controls = ".\xaml\Controls",
     [string]$ScritsDirectory = ".\scripts",
@@ -608,14 +609,22 @@ try {
 
     WriteHeader
 
-    WriteToScript -Content @"
+ WriteToScript -Content @"
+
 #===========================================================================
 #region Begin Start
 #===========================================================================
 "@
-    AddFileContentToScript -FilePath $StartScript 
+
+    $FilePaths = @{
+        "StartScript" = Join-Path -Path $Initialize  -ChildPath "start.ps1"
+    }
+
+    $MainXamlContent = Get-Content -Path $FilePaths["StartScript"] -Raw
+    WriteToScript -Content $MainXamlContent = $MainXamlContent
     ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'y.M.d')"
     WriteToScript -Content @"
+    
 #===========================================================================
 #endregion End Start
 #===========================================================================
@@ -643,6 +652,35 @@ try {
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Main Functions
+#===========================================================================
+"@
+
+WriteToScript -Content @"
+#===========================================================================
+#region Begin WPF Splach Window
+#===========================================================================
+"@
+
+    # Define file paths
+    $FilePaths = @{
+        "SplashWindow"  = Join-Path -Path $windows  -ChildPath "SplashWindow.xaml"
+    }
+    try {
+        # Read content from files
+        $SplashWindowContent = (Get-Content -Path $FilePaths["SplashWindow"] -Raw) -replace "'", "''"
+
+        # Final output
+        WriteToScript -Content "`$SplashWindowContent = @`"`n$SplashWindowContent`n`"@"
+
+    }
+    catch {
+        Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
+        break
+    }
+
+    WriteToScript -Content @"
+#===========================================================================
+#endregion End WPF Splach Window
 #===========================================================================
 "@
     WriteToScript -Content @"
@@ -735,7 +773,6 @@ try {
 #endregion End loadXmal
 #===========================================================================
 "@
-
     WriteToScript -Content @"
 #===========================================================================
 #region Begin Main
