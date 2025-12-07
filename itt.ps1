@@ -6,7 +6,7 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 database       = @{}
 ProcessRunning = $false
-version        = "25.12.4"
+version        = "25.12.7"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -1641,6 +1641,37 @@ $itt.$Name.Text = $NonKey
 }
 })
 }
+$SplashWindowContent = @"
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+x:Name="splash"
+WindowStartupLocation="CenterScreen"
+Topmost="True"
+WindowStyle="None"
+Background="Transparent"
+AllowsTransparency="True"
+Width="1024"
+Height="600"
+ShowInTaskbar="false">
+<Border CornerRadius="15" Height="600" Width="1024">
+<Border.Background>
+<ImageBrush ImageSource="http://127.0.0.1:5500/static/Images/splash.jpg"/>
+</Border.Background>
+<StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+<TextBlock Text="itt"
+FontSize="250"
+Foreground="#539bf5"
+FontFamily="Arial"
+FontWeight="Bold"
+TextAlignment="Center"/>
+<TextBlock Text="Wake up, Neo..."
+FontSize="20"
+Foreground="white"
+TextAlignment="Center"/>
+</StackPanel>
+</Border>
+</Window>
+"@
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
@@ -3030,9 +3061,10 @@ $Command.Name, $Command.ScriptBlock.ToString())
 }
 try {
 [xml]$MainXaml = $MainWindowXaml
-$itt["window"] = [Windows.Markup.XamlReader]::Load(
-[System.Xml.XmlNodeReader]$MainXaml
-)
+$itt["window"] = [Windows.Markup.XamlReader]::Load([System.Xml.XmlNodeReader]$MainXaml)
+$reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
+$splash = [Windows.Markup.XamlReader]::Load($reader)
+$splash.Show()
 }
 catch {
 Write-Output "Error initializing UI: $($_.Exception.Message)"
@@ -3173,6 +3205,7 @@ $tweaksData = $tTask.Result | ConvertFrom-Json
 if ($appsData -and $tweaksData) {
 $itt.AppsListView.ItemsSource = $appsData
 $itt.TweaksListView.ItemsSource = $tweaksData
+$splash.Close()
 break
 }
 else {
@@ -3231,6 +3264,7 @@ Show-Event
 })
 $itt["window"].add_Closing($onClosingEvent)
 $itt["window"].Add_PreViewKeyDown($KeyEvents)
+$itt["window"].Activate() | Out-Null
 $itt["window"].ShowDialog() | Out-Null
 $itt.runspace.Dispose()
 $itt.runspace.Close()
