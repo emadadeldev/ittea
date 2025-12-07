@@ -45,9 +45,10 @@ foreach ($Func in $Functions) {
 
 try {
     [xml]$MainXaml = $MainWindowXaml
-    $itt["window"] = [Windows.Markup.XamlReader]::Load(
-        [System.Xml.XmlNodeReader]$MainXaml
-    )
+    $itt["window"] = [Windows.Markup.XamlReader]::Load([System.Xml.XmlNodeReader]$MainXaml)
+    $reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
+    $splash = [Windows.Markup.XamlReader]::Load($reader)
+    $splash.Show()
 }
 catch {
     Write-Output "Error initializing UI: $($_.Exception.Message)"
@@ -234,6 +235,7 @@ while ($true) {
         if ($appsData -and $tweaksData) {
             $itt.AppsListView.ItemsSource = $appsData
             $itt.TweaksListView.ItemsSource = $tweaksData
+            $splash.Close()
             break
         }
         else {
