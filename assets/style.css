@@ -96,15 +96,15 @@ body {
     margin-right: auto;
     font-size: 10px;
 }
+
+svg {
+    fill: var(--text-color);
+
+}
 /* ===== End Content Style ===== */
 
 
 /* ===== Footer ===== */
-
-footer svg {
-    fill: var(--text-color);
-}
-
 footer {
     padding-top: 50px;    
     display: flex;
