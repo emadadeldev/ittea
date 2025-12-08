@@ -9,6 +9,8 @@ param (
 # Load DLLs
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
+$Host.UI.RawUI.BackgroundColor = 'Black'
+Clear-Host
 
 # ================================
 #region Hashtable
