@@ -806,7 +806,7 @@ $i = @{quote = "💬"; info = "📢"; music = "🎵"; Cautton = "⚠"; default =
 while (1) { foreach ($x in $q) { $c = $i[$x.type]; if (-not $c) { $c = $i.default }; $t = "`“$($x.text)`”"; if ($x.name) { $t += " ― $($x.name)" }; Set-Statusbar -Text "$c $t"; Start-Sleep 25 } }
 }
 function LOG {
-Write-Host "`n  $($itt.api.message)`n"
+Write-Host "`n  $($itt.api.message)`n" -ForegroundColor Green
 Write-Host "  ███████████████████╗ " -NoNewline
 Write-Host "My old GitHub account was restricted without any reason." -ForegroundColor Yellow
 Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
