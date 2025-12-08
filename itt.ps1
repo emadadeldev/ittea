@@ -4,9 +4,10 @@ param (
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
-database       = @{}
 ProcessRunning = $false
-version        = "25.12.7"
+database       = @{}
+api            = $null
+version        = "25.12.8"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -18,9 +19,9 @@ command        = "$($MyInvocation.MyCommand.Definition)"
 if(-not $Debug)
 {
 $checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.version)"
-$response = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
-if ($response.status) {
-Write-Host "$($response.message)" -ForegroundColor Red
+$itt.api = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
+if ($itt.api.status) {
+Write-Host "$($itt.api.message)" -ForegroundColor Red
 read-host "   Press Enter to visit https://github.com/emadadeldev/ittea"
 Start-Process("https://github.com/emadadeldev/ittea")
 exit
@@ -805,7 +806,7 @@ $i = @{quote = "💬"; info = "📢"; music = "🎵"; Cautton = "⚠"; default =
 while (1) { foreach ($x in $q) { $c = $i[$x.type]; if (-not $c) { $c = $i.default }; $t = "`“$($x.text)`”"; if ($x.name) { $t += " ― $($x.name)" }; Set-Statusbar -Text "$c $t"; Start-Sleep 25 } }
 }
 function LOG {
-Write-Host "  `n` "
+Write-Host "`n$($itt.api.message)`n"
 Write-Host "  ███████████████████╗ " -NoNewline
 Write-Host "My old GitHub account was restricted without any reason." -ForegroundColor Yellow
 Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
@@ -818,9 +819,9 @@ Write-Host "  ██║  ██║      ██║    " -NoNewline
 Write-Host "Backup 2: https://codeberg.org/emadadel/itt" -ForegroundColor Yellow
 Write-Host "  ╚═╝  ╚═╝      ╚═╝    " -ForegroundColor White
 UsageCount
+Quotes
 }
 LOG
-Quotes
 }
 }
 function ChangeTap {
@@ -1454,7 +1455,7 @@ Write-Warning "Unable to set WSL2 due to a Security Exception"
 }
 function About {
 $aboutPopup = $itt['window'].FindName('AboutPopup')
-$aboutPopup.FindName('ver').Text = "Version $($itt.version)"
+$aboutPopup.FindName('ver').Text = "Version $($itt.version) $($itt.api.message)"
 $aboutPopup.IsOpen = $true
 }
 function ITTShortcut {
@@ -1674,11 +1675,11 @@ TextAlignment="Center"/>
 "@
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
