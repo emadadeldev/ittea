@@ -15,9 +15,9 @@ $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 # ================================
 # Synchronized Hashtable for shared variables
 $itt = [Hashtable]::Synchronized(@{
-
-    database       = @{}
     ProcessRunning = $false
+    database       = @{}
+    api            = $null
     version        = "#{replaceme}"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
@@ -37,9 +37,9 @@ $itt = [Hashtable]::Synchronized(@{
 if(-not $Debug)
 {
     $checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.version)"
-    $response = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
-    if ($response.status) {
-        Write-Host "$($response.message)" -ForegroundColor Red
+    $itt.api = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
+    if ($itt.api.status) {
+        Write-Host "$($itt.api.message)" -ForegroundColor Red
         read-host "   Press Enter to visit https://github.com/emadadeldev/ittea"
         Start-Process("https://github.com/emadadeldev/ittea")
         exit

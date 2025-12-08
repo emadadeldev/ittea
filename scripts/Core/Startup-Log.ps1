@@ -23,14 +23,16 @@ function Startup {
                 UsageCount
             }
         }
+
         function Quotes {
             $q = (Invoke-RestMethod "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Quotes.json").Quotes | Sort-Object { Get-Random }
             Set-Statusbar -Text "☕ $($itt.database.locales.Controls.$($itt.Language).welcome)"; Start-Sleep 18
             $i = @{quote = "💬"; info = "📢"; music = "🎵"; Cautton = "⚠"; default = "☕" }
             while (1) { foreach ($x in $q) { $c = $i[$x.type]; if (-not $c) { $c = $i.default }; $t = "`“$($x.text)`”"; if ($x.name) { $t += " ― $($x.name)" }; Set-Statusbar -Text "$c $t"; Start-Sleep 25 } }
         }
+
         function LOG {
-            Write-Host "  `n` "
+            Write-Host "`n$($itt.api.message)`n"
             Write-Host "  ███████████████████╗ " -NoNewline
             Write-Host "My old GitHub account was restricted without any reason." -ForegroundColor Yellow
             Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
@@ -42,12 +44,13 @@ function Startup {
             Write-Host "  ██║  ██║      ██║    " -NoNewline
             Write-Host "Backup 2: https://codeberg.org/emadadel/itt" -ForegroundColor Yellow
             Write-Host "  ╚═╝  ╚═╝      ╚═╝    " -ForegroundColor White
+            # debug start
+            if ($Debug) { return }
+            # debug end
             UsageCount
+            Quotes
         }
-        # debug start
-        if ($Debug) { return }
-        # debug end
+
         LOG
-        Quotes
     }
 }
