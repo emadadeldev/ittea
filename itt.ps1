@@ -3,6 +3,8 @@ param (
 )
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
+$Host.UI.RawUI.BackgroundColor = 'Black'
+Clear-Host
 $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
@@ -808,15 +810,15 @@ while (1) { foreach ($x in $q) { $c = $i[$x.type]; if (-not $c) { $c = $i.defaul
 function LOG {
 Write-Host "`n  $($itt.api.message)`n" -ForegroundColor Green
 Write-Host "  ███████████████████╗ " -NoNewline
-Write-Host "My old GitHub account was restricted without any reason." -ForegroundColor Yellow
+Write-Host "My old GitHub account was restricted without any reason." -ForegroundColor Gray
 Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
-Write-Host "This is the new official repo:" -ForegroundColor Yellow
+Write-Host "This is the new official repo:" -ForegroundColor Gray
 Write-Host "  ██║  ██║ Emad ██║    " -NoNewline
-Write-Host "Main repository: https://github.com/emadadeldev/ittea" -ForegroundColor Yellow
+Write-Host "Main repository: https://github.com/emadadeldev/ittea" -ForegroundColor Gray
 Write-Host "  ██║  ██║ Adel ██║    " -NoNewline
-Write-Host "Backup 1: https://gitlab.com/emadadel/itt" -ForegroundColor Yellow
+Write-Host "Backup 1: https://gitlab.com/emadadel/itt" -ForegroundColor Gray
 Write-Host "  ██║  ██║      ██║    " -NoNewline
-Write-Host "Backup 2: https://codeberg.org/emadadel/itt" -ForegroundColor Yellow
+Write-Host "Backup 2: https://codeberg.org/emadadel/itt" -ForegroundColor Gray
 Write-Host "  ╚═╝  ╚═╝      ╚═╝    " -ForegroundColor White
 UsageCount
 Quotes
@@ -1675,11 +1677,11 @@ TextAlignment="Center"/>
 "@
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
