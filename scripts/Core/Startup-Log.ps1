@@ -32,7 +32,7 @@ function Startup {
         }
 
         function LOG {
-            Write-Host "`n$($itt.api.message)`n"
+            Write-Host "`n  $($itt.api.message)`n"
             Write-Host "  ███████████████████╗ " -NoNewline
             Write-Host "My old GitHub account was restricted without any reason." -ForegroundColor Yellow
             Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
