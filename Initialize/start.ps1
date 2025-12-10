@@ -57,9 +57,9 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 #endregion Ask user for administrator privileges if not already running as admin
 # ================================
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
-Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
 $Host.UI.RawUI.BackgroundColor = 'Black'
 Clear-Host
+Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
 # ================================
 #region MAXIMIZE CURRENT WINDOW
 # ================================
@@ -75,7 +75,7 @@ public class Win32 {
 "@
 
 $hwnd = [Win32]::GetConsoleWindow()
-[Win32]::ShowWindowAsync($hwnd, 3)
+[Win32]::ShowWindowAsync($hwnd, 3) | Out-Null
 # ================================
 #endregion MAXIMIZE CURRENT WINDOW
 # ================================
