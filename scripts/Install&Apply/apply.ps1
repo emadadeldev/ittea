@@ -31,15 +31,13 @@ function Invoke-Apply {
 
         $itt.ProcessRunning = $true
 
+        UpdateUI -Name "ApplyBtnText" -Content "Applying" -Width "auto"
+        $itt["window"].Dispatcher.Invoke([action] { Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
+
         if((Get-ItemProperty -Path $itt.registryPath -Name "backup" -ErrorAction Stop).backup -eq 0){
-            UpdateUI -Name "ApplyBtn" -NonKey "Please Wait..." -Width "auto"
             Set-Statusbar -Text "ℹ Current task: Creating Restore Point..."
             CreateRestorePoint
         } 
-
-        UpdateUI -Name "ApplyBtnText" -Content "Applying" -Width "auto"
-
-        $itt["window"].Dispatcher.Invoke([action] { Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
 
         foreach ($tweak in $selectedTweaks) {
             Add-Log -Message "::::$($tweak.Content)::::" -Level "default"
