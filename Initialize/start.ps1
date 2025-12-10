@@ -8,10 +8,6 @@ param (
 
 # Load DLLs
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
-$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
-$Host.UI.RawUI.BackgroundColor = 'Black'
-Clear-Host
-
 # ================================
 #region Hashtable
 # ================================
@@ -62,10 +58,33 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 #endregion Ask user for administrator privileges if not already running as admin
 # ================================
 
-Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
+# ================================
+#region MAXIMIZE CURRENT WINDOW
+# ================================
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public class Win32 {
+    [DllImport("user32.dll")]
+    public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+    [DllImport("kernel32.dll")]
+    public static extern IntPtr GetConsoleWindow();
+}
+"@
+
+$hwnd = [Win32]::GetConsoleWindow()
+[Win32]::ShowWindowAsync($hwnd, 3)
+# ================================
+#endregion MAXIMIZE CURRENT WINDOW
+# ================================
 
 # Create directory if it doesn't exist
 if (-not (Test-Path -Path $itt.ittDir)) {New-Item -ItemType Directory -Path $itt.ittDir -Force | Out-Null}
+
+$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
+$Host.UI.RawUI.BackgroundColor = 'Black'
+Clear-Host
+Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
 
 # Trace the script
 Start-Transcript -Path (Join-Path $itt.ittDir "logs\log_$(Get-Date -Format 'yyyy-MM-dd').log") -Append -Force *> $null
