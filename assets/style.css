@@ -101,8 +101,14 @@ svg {
     fill: var(--text-color);
 
 }
-/* ===== End Content Style ===== */
 
+.badge {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+}
+
+/* ===== End Content Style ===== */
 
 /* ===== Footer ===== */
 footer {
@@ -121,7 +127,7 @@ footer .sorce-code {
 /* ===== End Footer Style ===== */
 
 /* ===== Responsive ===== */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1712px) {
     .content {
         flex-direction: column;
         gap: 30px;
@@ -139,7 +145,7 @@ footer .sorce-code {
     }
 
     .image-box img {
-        width: 80%;
+        width: 90%%;
         height: auto;
     }
 
