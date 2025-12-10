@@ -22,13 +22,13 @@
   <img src="https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Images/readmelogo.png" alt="itt" width="288" />
 </a>
 
-# Install Tweaks Tool
+### Install Tweaks Tool
 
-ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks & Remove Bloatwares
+ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks
 
-![Usage Badge](https://img.shields.io/endpoint?url=https://itt.emadadel4-a0a.workers.dev/count&label=Usage&style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-25.12.10-blue?style=for-the-badge)
-![Script size](https://img.shields.io/github/size/emadadeldev/ittea/itt.ps1?label=Script%20Size&style=for-the-badge)
+![Usage](https://img.shields.io/endpoint?url=https://itt.emadadel4-a0a.workers.dev/count&label=Usage&style=flat-square)
+![Version](https://img.shields.io/badge/Version-25.12.10-blue?style=flat-square)
+![Script size](https://img.shields.io/github/size/emadadeldev/ittea/itt.ps1?label=Script%20Size&style=flat-square)
 
 [![Arabic](https://flagcdn.com/w20/ps.png)](/locales/ar.csv)
 [![French](https://flagcdn.com/w20/fr.png)](/locales/fr.csv)
