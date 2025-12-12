@@ -72,9 +72,9 @@ or
 irm bit.ly/ittco | iex
 ```
 
-> [!WARNING] 
-> **LAUNCH THE SCRIPT ONLY USING OFFICIAL COMMANDS FROM THIS REPOSITORY.**  
-> **IT'S NOT PORTABLE, SO DO NOT DOWNLOAD OR RUN IT FROM ELSEWHERE.**
+> [!WARNING]  
+> **RUN THIS SCRIPT ONLY USING OFFICIAL COMMANDS FROM THIS REPOSITORY.**  
+> **IT'S NOT PORTABLE, DO NOT DOWNLOAD OR RUN IT FROM ANY OTHER SOURCE!.**
 
 > [!NOTE]  
 > All links point directly to the [itt.ps1](https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/itt.ps1)  file in this repository. You can test all links in browser, make sure the link starts with https://
