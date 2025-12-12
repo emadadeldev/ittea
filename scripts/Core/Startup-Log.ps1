@@ -14,7 +14,7 @@ function Startup {
                 $Message = "👨‍💻 Version: $($itt.version)`n🚀 URL: $($itt.command)"
                 $EncodedMessage = [uri]::EscapeDataString($Message)
                 $Url = "https://itt.emadadel4-a0a.workers.dev/log?text=$EncodedMessage"
-                $response = Invoke-WebRequest -Uri $Url -Method GET
+                $response = Invoke-WebRequest -Uri $Url -UseBasicParsing -Method GET
                 $result = $response.Content
                 Add-Log -Message "`n  $result times worldwide`n"
             }
