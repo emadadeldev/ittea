@@ -7,6 +7,7 @@ param (
 )
 # Load DLLs
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
+$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 # ================================
 #region Hashtable
 # ================================
@@ -56,7 +57,6 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 # ================================
 #endregion Ask user for administrator privileges if not already running as admin
 # ================================
-$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $Host.UI.RawUI.BackgroundColor = 'Black'
 Clear-Host
 Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
