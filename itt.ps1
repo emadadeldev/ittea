@@ -2,11 +2,12 @@ param (
 [string]$i
 )
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
+$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "25.12.10"
+version        = "25.12.12"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -30,7 +31,6 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Start-Process -FilePath "PowerShell" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"$($MyInvocation.MyCommand.Definition)`"" -Verb RunAs
 exit
 }
-$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $Host.UI.RawUI.BackgroundColor = 'Black'
 Clear-Host
 Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
@@ -804,7 +804,7 @@ try {
 $Message = "👨‍💻 Version: $($itt.version)`n🚀 URL: $($itt.command)"
 $EncodedMessage = [uri]::EscapeDataString($Message)
 $Url = "https://itt.emadadel4-a0a.workers.dev/log?text=$EncodedMessage"
-$response = Invoke-WebRequest -Uri $Url -Method GET
+$response = Invoke-WebRequest -Uri $Url -UseBasicParsing -Method GET
 $result = $response.Content
 Add-Log -Message "`n  $result times worldwide`n"
 }
@@ -1689,11 +1689,11 @@ TextAlignment="Center"/>
 "@
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
