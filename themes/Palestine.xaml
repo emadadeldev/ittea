@@ -7,19 +7,18 @@
     <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="black"/>
 
     <!-- Text -->
-    <SolidColorBrush x:Key="TextColorPrimary" Color="#d1d5db"/>
-    <SolidColorBrush x:Key="TextColorSecondaryColor" Color="#999999"/>
-    <SolidColorBrush x:Key="TextColorSecondaryColor2" Color="white"/>
+    <SolidColorBrush x:Key="PrimaryTextColor" Color="#d1d5db"/>
+    <SolidColorBrush x:Key="SecondaryTextColor" Color="#999999"/>
+    <SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
 
     <!-- Buttons and Highlights -->
-    <SolidColorBrush x:Key="PrimaryButtonForeground" Color="#00B583"/>
-    <SolidColorBrush x:Key="PrimaryButtonHighlight" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="PrimaryButtonBackground" Color="#00B583"/>
+    <SolidColorBrush x:Key="ButtonHighlightColor" Color="#00B583"/>
     <SolidColorBrush x:Key="ButtonBorderColor" Color="#007A3D"/>
-    <SolidColorBrush x:Key="HighlightColor" Color="#00B583"/>
 
     <!-- Borders and Labels -->
-    <SolidColorBrush x:Key="BorderBrush" Color="black"/>
-    <SolidColorBrush x:Key="Label" Color="#444444"/>
+    <SolidColorBrush x:Key="BorderBrushColor" Color="black"/>
+    <SolidColorBrush x:Key="LabelColor" Color="#444444"/>
 
     <!-- Toggle Switch -->
     <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#202020"/>

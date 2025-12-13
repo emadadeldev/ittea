@@ -1,4 +1,4 @@
-<!-- {Dark Knight} -->
+<!-- {The Dark Knight} -->
 <!-- by {emadadel} -->
 <ResourceDictionary x:Key="DarkKnight">
     <!-- Backgrounds -->
@@ -6,19 +6,18 @@
     <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="#121212"/>
 
     <!-- Text -->
-    <SolidColorBrush x:Key="TextColorPrimary" Color="#d1d5db"/>
-    <SolidColorBrush x:Key="TextColorSecondaryColor" Color="#999999"/>
-    <SolidColorBrush x:Key="TextColorSecondaryColor2" Color="white"/>
+    <SolidColorBrush x:Key="PrimaryTextColor" Color="#d1d5db"/>
+    <SolidColorBrush x:Key="SecondaryTextColor" Color="#999999"/>
+    <SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
 
     <!-- Buttons and Highlights -->
-    <SolidColorBrush x:Key="PrimaryButtonForeground" Color="#00b7ff"/>
-    <SolidColorBrush x:Key="PrimaryButtonHighlight" Color="#00b7ff"/> 
+    <SolidColorBrush x:Key="PrimaryButtonBackground" Color="#0366d6"/>
+    <SolidColorBrush x:Key="ButtonHighlightColor" Color="#218bff"/>     
     <SolidColorBrush x:Key="ButtonBorderColor" Color="#ff0000"/>
-    <SolidColorBrush x:Key="HighlightColor" Color="#218bff"/>     
 
     <!-- Borders and Labels -->
-    <SolidColorBrush x:Key="BorderBrush" Color="#1c1c1c"/>
-    <SolidColorBrush x:Key="Label" Color="#2a2a2a"/>
+    <SolidColorBrush x:Key="BorderBrushColor" Color="#1c1c1c"/>
+    <SolidColorBrush x:Key="LabelColor" Color="#2a2a2a"/>
 
     <!-- Toggle Switch -->
     <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#1a1a1a"/>
@@ -32,7 +31,7 @@
     <SolidColorBrush x:Key="itemColor2" Color="#991C1C1C"/>
 
     <!-- Misc -->
-    <SolidColorBrush x:Key="logo" Color="#00b7ff"/> 
+    <SolidColorBrush x:Key="logo" Color="#0366d6"/> 
     <ImageBrush x:Key="BackgroundImage" ImageSource="https://images.hdqwalls.com/wallpapers/the-batman-fan-made-4k-xx.jpg" Stretch="UniformToFill" Opacity="0.4" />
     <x:String x:Key="SubText">I am not a hero</x:String>
 </ResourceDictionary>
