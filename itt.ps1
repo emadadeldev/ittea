@@ -2967,7 +2967,7 @@ VerticalAlignment="Center"/>
 </Button>
 </Grid>
 <Grid Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
-<TextBlock Name="statusbar" Foreground="{DynamicResource TextColorPrimary}" Padding="15" Width="Auto"
+<TextBlock Name="statusbar" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
 HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
 </Grid>
 </Grid>
