@@ -20,7 +20,7 @@
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock Text="itt"
                                 FontSize="250"
-                                Foreground="#539bf5"
+                                Foreground="#0366d6"
                                 FontFamily="Arial"
                                 FontWeight="Bold"
                                 TextAlignment="Center"/>
