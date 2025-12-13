@@ -25,7 +25,7 @@
 <!--Button Style-->
     <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="FontSize" Value="14"/>
@@ -42,7 +42,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HighlightColor}"/>
+                <Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
@@ -107,7 +107,7 @@
 
 <!--CheckBox Style-->
     <Style TargetType="CheckBox">
-        <Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Background" Value="{x:Null}"/>
@@ -155,14 +155,14 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-                            <Setter Property="Background" Value="{DynamicResource HighlightColor}"/>
+                            <Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
                             <Setter TargetName="CheckIcon" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource HighlightColor}"/>
+                            <Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource HighlightColor}"/>
+                            <Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
                             <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
 
@@ -183,7 +183,7 @@
 <!--SearchBox Style-->
     <Style x:Key="SearchBox" TargetType="TextBox">
         <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="Template">
@@ -234,7 +234,7 @@
 <!--Label Style-->
   <Style TargetType="Label">
     <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
     <Setter Property="Padding" Value="7.5"/>
     <Setter Property="Template">
         <Setter.Value>
@@ -285,8 +285,8 @@
     </Style>
     <Style TargetType="MenuItem">
         <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
         <Setter Property="BorderThickness" Value="0.5"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -319,7 +319,7 @@
                             <TextBlock x:Name="ShortcutText"
                                        Grid.Column="2"
                                        Text="{TemplateBinding InputGestureText}"
-                                       Foreground="{DynamicResource TextColorSecondaryColor}"
+                                       Foreground="{DynamicResource SecondaryTextColor}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
                                        Margin="5,0"/>
@@ -327,7 +327,7 @@
                             <Path x:Name="Arrow"
                                   Grid.Column="2"
                                   Data="M0,0 L4,4 L8,0 Z"
-                                  Fill="{DynamicResource TextColorPrimary}"
+                                  Fill="{DynamicResource PrimaryTextColor}"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
                                   Visibility="Collapsed"
@@ -340,7 +340,7 @@
                                    Focusable="False"
                                    PopupAnimation="Fade">
                                 <Border Background="{TemplateBinding Background}" 
-                                        BorderBrush="{DynamicResource BorderBrush}"     
+                                        BorderBrush="{DynamicResource BorderBrushColor}"     
                                         BorderThickness="2"
                                         CornerRadius="0">
                                     <StackPanel IsItemsHost="True" 
@@ -352,9 +352,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="Transparent"/>
-                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-                            <Setter TargetName="ShortcutText" Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-                            <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource HighlightColor}"/>
+                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
+                            <Setter TargetName="ShortcutText" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
+                            <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource ButtonHighlightColor}"/>
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
@@ -387,7 +387,7 @@
     </Style>
     <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryButtonForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryButtonBackground}" />
         <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}" />
         <Setter Property="Width" Value="8" />
         <Setter Property="Template">
@@ -483,12 +483,12 @@
                 </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource HighlightColor}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource PrimaryButtonBackground}" />
                             <Setter Property="Foreground" Value="White" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="Transparent" />
-                            <Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}" />
                         </Trigger>
 
                      <!-- ITT Tab Selected -->
@@ -498,7 +498,7 @@
                             <Condition Property="Name" Value="WhatsNewTab"/>
                         </MultiTrigger.Conditions>
                         <MultiTrigger.Setters>
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource HighlightColor}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonHighlightColor}" />
                             <Setter Property="Foreground" Value="White" />
                         </MultiTrigger.Setters>
                     </MultiTrigger>
@@ -524,7 +524,7 @@
 <!--ComboBox Style-->
     <Style  TargetType="ComboBox">
         <Setter Property="Focusable" Value="True"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="FontSize" Value="12"/>
@@ -572,15 +572,15 @@
                     </Border>
                     <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource HighlightColor}"/>
-                                    <Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor2}"/>
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource PrimaryButtonBackground}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor2}"/>
                                 </Trigger>
                                 <Trigger Property="IsSelected" Value="False">
                                     <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-                                    <Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource HighlightColor}"/>
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource PrimaryButtonBackground}"/>
                                     <Setter Property="Foreground" Value="White"/>
                                 </Trigger>
                     </ControlTemplate.Triggers>
@@ -592,7 +592,7 @@
 
 <!--Toggle Switch Style-->
     <Style x:Key="ToggleSwitchStyle" TargetType="CheckBox">
-        <Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
@@ -657,7 +657,7 @@
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
                             <Setter TargetName="Thumb" Property="Fill" Value="{DynamicResource ToggleSwitchEnableColor}"/>
-                            <Setter TargetName="Track" Property="Background" Value="{DynamicResource HighlightColor}"/>
+                            <Setter TargetName="Track" Property="Background" Value="{DynamicResource PrimaryButtonBackground}"/>
                             <Setter TargetName="Track" Property="BorderBrush" Value="{x:Null}"/>
                         </Trigger>
 
@@ -754,11 +754,11 @@
         <Setter Property="Padding" Value="10"/>
         <Setter Property="Margin" Value="0,8,0,0"/>
         <Setter Property="BorderThickness" Value="0.8"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource HighlightColor}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonHighlightColor}"/>
                 <Setter Property="BorderThickness" Value="0.8"/>
             </Trigger>
         </Style.Triggers>

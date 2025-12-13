@@ -24,7 +24,7 @@ try {
   # Generate the ResourceDictionary content
   $resourceDictionary = @"
   <!-- {$themeName} -->
-  <!-- by {$authorName} -->
+  <!-- Created By {$authorName} -->
   <ResourceDictionary x:Key="$Key">
   
     <!-- Backgrounds -->
@@ -32,25 +32,24 @@ try {
     <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="#f6f8fa"/>
 
     <!-- Text -->
-    <SolidColorBrush x:Key="TextColorPrimary" Color="#24292e"/>
-    <SolidColorBrush x:Key="TextColorSecondaryColor" Color="#57606a"/>
-    <SolidColorBrush x:Key="TextColorSecondaryColor2" Color="white"/>
+    <SolidColorBrush x:Key="PrimaryTextColor" Color="#24292e"/>
+    <SolidColorBrush x:Key="SecondaryTextColor" Color="#57606a"/>
+    <SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
 
     <!-- Buttons and Highlights -->
-    <SolidColorBrush x:Key="PrimaryButtonForeground" Color="#0969da"/>
-    <SolidColorBrush x:Key="PrimaryButtonHighlight" Color="#ffffff"/>
+    <SolidColorBrush x:Key="PrimaryButtonBackground" Color="#0969da"/>
+    <SolidColorBrush x:Key="ButtonHighlightColor" Color="#218bff"/>
     <SolidColorBrush x:Key="ButtonBorderColor" Color="#0969da"/>
-    <SolidColorBrush x:Key="HighlightColor" Color="#218bff"/>
 
     <!-- Borders and Labels -->
-    <SolidColorBrush x:Key="BorderBrush" Color="#d0d7de"/>
+    <SolidColorBrush x:Key="BorderBrushColor" Color="#d0d7de"/>
     <SolidColorBrush x:Key="Label" Color="#d8e0e7"/>
 
     <!-- Toggle Switch -->
     <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#d0d7de"/>
     <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#f6f8fa"/>
     <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
-    <SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="#57606a"/>
+    <SolidColorBrush x:Key="ToggleSwitchDisableColor" Color="black"/>
     <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#d0d7de"/>
 
     <!-- ListView -->
@@ -60,10 +59,8 @@ try {
     <!-- Misc -->
     <SolidColorBrush x:Key="logo" Color="#0969da"/>
     <ImageBrush x:Key="BackgroundImage" ImageSource="{x:Null}" Stretch="UniformToFill"/>
-    <x:String x:Key="SubText">Install Tweaks Tool</x:String>
-
+    
   </ResourceDictionary>
-  <!-- Name {$themeName} -->
 "@
   # Save the ResourceDictionary content to a file
   Set-Content -Path $fileName -Value $resourceDictionary
