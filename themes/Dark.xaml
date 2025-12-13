@@ -13,7 +13,7 @@
     
     <!-- Buttons and Highlights -->
     <SolidColorBrush x:Key="PrimaryButtonBackground" Color="#0366d6"/>
-    <SolidColorBrush x:Key="ButtonHighlightColor" Color="#539bf5"/>
+    <SolidColorBrush x:Key="ButtonHighlightColor" Color="#0969da"/>
     <SolidColorBrush x:Key="ButtonBorderColor" Color="#539bf5"/>
 
     <!-- Borders and Labels -->
