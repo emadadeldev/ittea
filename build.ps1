@@ -332,7 +332,7 @@ function NewCONTRIBUTOR {
 
     $devs = @()
     foreach ($name in $contribLines) {
-        $devs += "<TextBlock Text=`"$name`" Margin=`"1`" Foreground=`"{DynamicResource TextColorSecondaryColor}`" />"
+        $devs += "<TextBlock Text=`"$name`" Margin=`"1`" Foreground=`"{DynamicResource PrimaryTextColor}`" />"
     }
    
     $devsString = $devs -join "`n"
