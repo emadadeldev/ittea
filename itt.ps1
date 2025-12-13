@@ -7,7 +7,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "25.12.12"
+version        = "25.12.13"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -1675,7 +1675,7 @@ ShowInTaskbar="false">
 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 <TextBlock Text="itt"
 FontSize="250"
-Foreground="#539bf5"
+Foreground="#0366d6"
 FontFamily="Arial"
 FontWeight="Bold"
 TextAlignment="Center"/>
@@ -1689,11 +1689,11 @@ TextAlignment="Center"/>
 "@
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -1731,7 +1731,7 @@ BeginTime="0:0:15" />
 </Storyboard>
 <Style TargetType="Button">
 <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-<Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+<Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
 <Setter Property="BorderBrush" Value="Transparent"/>
 <Setter Property="Padding" Value="8"/>
 <Setter Property="FontSize" Value="14"/>
@@ -1748,7 +1748,7 @@ BeginTime="0:0:15" />
 </Setter>
 <Style.Triggers>
 <Trigger Property="IsMouseOver" Value="True">
-<Setter Property="Background" Value="{DynamicResource HighlightColor}"/>
+<Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
 <Setter Property="Foreground" Value="White"/>
 </Trigger>
 <Trigger Property="IsPressed" Value="True">
@@ -1806,7 +1806,7 @@ ContentSource="Content"/>
 </Style.Triggers>
 </Style>
 <Style TargetType="CheckBox">
-<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}"/>
+<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 <Setter Property="Margin" Value="0"/>
 <Setter Property="Padding" Value="0"/>
 <Setter Property="Background" Value="{x:Null}"/>
@@ -1845,14 +1845,14 @@ VerticalAlignment="Center"/>
 <ControlTemplate.Triggers>
 <Trigger Property="IsChecked" Value="True">
 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-<Setter Property="Background" Value="{DynamicResource HighlightColor}"/>
+<Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
 <Setter TargetName="CheckIcon" Property="Visibility" Value="Hidden"/>
 </Trigger>
 <Trigger Property="IsMouseOver" Value="True">
-<Setter Property="Background" Value="{DynamicResource HighlightColor}"/>
+<Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-<Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-<Setter Property="Foreground" Value="{DynamicResource HighlightColor}"/>
+<Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
 <Setter Property="Cursor" Value="Hand"/>
 </Trigger>
 <DataTrigger Binding="{Binding SelectedItem.Tag, ElementName=taps}" Value="apps">
@@ -1868,7 +1868,7 @@ VerticalAlignment="Center"/>
 </Style>
 <Style x:Key="SearchBox" TargetType="TextBox">
 <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-<Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+<Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
 <Setter Property="BorderThickness" Value="0"/>
 <Setter Property="Padding" Value="8"/>
 <Setter Property="Template">
@@ -1911,7 +1911,7 @@ IsHitTestVisible="False"/>
 </Style>
 <Style TargetType="Label">
 <Setter Property="Background" Value="Transparent"/>
-<Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+<Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
 <Setter Property="Padding" Value="7.5"/>
 <Setter Property="Template">
 <Setter.Value>
@@ -1955,8 +1955,8 @@ CornerRadius="8">
 </Style>
 <Style TargetType="MenuItem">
 <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}"/>
-<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+<Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
 <Setter Property="BorderThickness" Value="0.5"/>
 <Setter Property="Template">
 <Setter.Value>
@@ -1986,14 +1986,14 @@ Margin="0"/>
 <TextBlock x:Name="ShortcutText"
 Grid.Column="2"
 Text="{TemplateBinding InputGestureText}"
-Foreground="{DynamicResource TextColorSecondaryColor}"
+Foreground="{DynamicResource SecondaryTextColor}"
 VerticalAlignment="Center"
 HorizontalAlignment="Right"
 Margin="5,0"/>
 <Path x:Name="Arrow"
 Grid.Column="2"
 Data="M0,0 L4,4 L8,0 Z"
-Fill="{DynamicResource TextColorPrimary}"
+Fill="{DynamicResource PrimaryTextColor}"
 HorizontalAlignment="Center"
 VerticalAlignment="Center"
 Visibility="Collapsed"
@@ -2005,7 +2005,7 @@ AllowsTransparency="True"
 Focusable="False"
 PopupAnimation="Fade">
 <Border Background="{TemplateBinding Background}"
-BorderBrush="{DynamicResource BorderBrush}"
+BorderBrush="{DynamicResource BorderBrushColor}"
 BorderThickness="2"
 CornerRadius="0">
 <StackPanel IsItemsHost="True"
@@ -2017,9 +2017,9 @@ KeyboardNavigation.DirectionalNavigation="Continue"/>
 <ControlTemplate.Triggers>
 <Trigger Property="IsMouseOver" Value="True">
 <Setter TargetName="Border" Property="Background" Value="Transparent"/>
-<Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-<Setter TargetName="ShortcutText" Property="Foreground" Value="{DynamicResource HighlightColor}"/>
-<Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource HighlightColor}"/>
+<Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter TargetName="ShortcutText" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource ButtonHighlightColor}"/>
 </Trigger>
 <Trigger Property="HasItems" Value="True">
 <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
@@ -2049,7 +2049,7 @@ KeyboardNavigation.DirectionalNavigation="Continue"/>
 </Style>
 <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
 <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-<Setter Property="Foreground" Value="{DynamicResource PrimaryButtonForeground}" />
+<Setter Property="Foreground" Value="{DynamicResource PrimaryButtonBackground}" />
 <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}" />
 <Setter Property="Width" Value="8" />
 <Setter Property="Template">
@@ -2141,12 +2141,12 @@ ContentSource="Header"
 </Border>
 <ControlTemplate.Triggers>
 <Trigger Property="IsSelected" Value="True">
-<Setter TargetName="Border" Property="Background" Value="{DynamicResource HighlightColor}" />
+<Setter TargetName="Border" Property="Background" Value="{DynamicResource PrimaryButtonBackground}" />
 <Setter Property="Foreground" Value="White" />
 </Trigger>
 <Trigger Property="IsSelected" Value="False">
 <Setter TargetName="Border" Property="Background" Value="Transparent" />
-<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}" />
+<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}" />
 </Trigger>
 <MultiTrigger>
 <MultiTrigger.Conditions>
@@ -2154,7 +2154,7 @@ ContentSource="Header"
 <Condition Property="Name" Value="WhatsNewTab"/>
 </MultiTrigger.Conditions>
 <MultiTrigger.Setters>
-<Setter TargetName="Border" Property="Background" Value="{DynamicResource HighlightColor}" />
+<Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonHighlightColor}" />
 <Setter Property="Foreground" Value="White" />
 </MultiTrigger.Setters>
 </MultiTrigger>
@@ -2175,7 +2175,7 @@ ContentSource="Header"
 </Style>
 <Style  TargetType="ComboBox">
 <Setter Property="Focusable" Value="True"/>
-<Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+<Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
 <Setter Property="BorderThickness" Value="0"/>
 <Setter Property="Margin" Value="5"/>
 <Setter Property="FontSize" Value="12"/>
@@ -2222,15 +2222,15 @@ RecognizesAccessKey="True"/>
 </Border>
 <ControlTemplate.Triggers>
 <Trigger Property="IsSelected" Value="True">
-<Setter TargetName="Bd" Property="Background" Value="{DynamicResource HighlightColor}"/>
-<Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor2}"/>
+<Setter TargetName="Bd" Property="Background" Value="{DynamicResource PrimaryButtonBackground}"/>
+<Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor2}"/>
 </Trigger>
 <Trigger Property="IsSelected" Value="False">
 <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-<Setter Property="Foreground" Value="{DynamicResource TextColorSecondaryColor}"/>
+<Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
 </Trigger>
 <Trigger Property="IsMouseOver" Value="True">
-<Setter TargetName="Bd" Property="Background" Value="{DynamicResource HighlightColor}"/>
+<Setter TargetName="Bd" Property="Background" Value="{DynamicResource PrimaryButtonBackground}"/>
 <Setter Property="Foreground" Value="White"/>
 </Trigger>
 </ControlTemplate.Triggers>
@@ -2239,7 +2239,7 @@ RecognizesAccessKey="True"/>
 </Setter>
 </Style>
 <Style x:Key="ToggleSwitchStyle" TargetType="CheckBox">
-<Setter Property="Foreground" Value="{DynamicResource TextColorPrimary}"/>
+<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 <Setter Property="Template">
 <Setter.Value>
 <ControlTemplate TargetType="CheckBox">
@@ -2292,7 +2292,7 @@ Duration="0:0:0.1"/>
 </BeginStoryboard>
 </Trigger.EnterActions>
 <Setter TargetName="Thumb" Property="Fill" Value="{DynamicResource ToggleSwitchEnableColor}"/>
-<Setter TargetName="Track" Property="Background" Value="{DynamicResource HighlightColor}"/>
+<Setter TargetName="Track" Property="Background" Value="{DynamicResource PrimaryButtonBackground}"/>
 <Setter TargetName="Track" Property="BorderBrush" Value="{x:Null}"/>
 </Trigger>
 <Trigger Property="IsChecked" Value="False">
@@ -2371,11 +2371,11 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <Setter Property="Padding" Value="10"/>
 <Setter Property="Margin" Value="0,8,0,0"/>
 <Setter Property="BorderThickness" Value="0.8"/>
-<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+<Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
 <Setter Property="SnapsToDevicePixels" Value="True"/>
 <Style.Triggers>
 <Trigger Property="IsMouseOver" Value="True">
-<Setter Property="BorderBrush" Value="{DynamicResource HighlightColor}"/>
+<Setter Property="BorderBrush" Value="{DynamicResource ButtonHighlightColor}"/>
 <Setter Property="BorderThickness" Value="0.8"/>
 </Trigger>
 </Style.Triggers>
@@ -2383,15 +2383,14 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <ResourceDictionary x:Key="Dark">
 <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#22272e"/>
 <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="#2d333b"/>
-<SolidColorBrush x:Key="TextColorPrimary" Color="#d1d5db"/>
-<SolidColorBrush x:Key="TextColorSecondaryColor" Color="#adbac7"/>
-<SolidColorBrush x:Key="TextColorSecondaryColor2" Color="white"/>
-<SolidColorBrush x:Key="PrimaryButtonForeground" Color="#539bf5"/>
-<SolidColorBrush x:Key="PrimaryButtonHighlight" Color="#539bf5"/>
+<SolidColorBrush x:Key="PrimaryTextColor" Color="#d1d5db"/>
+<SolidColorBrush x:Key="SecondaryTextColor" Color="#adbac7"/>
+<SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
+<SolidColorBrush x:Key="PrimaryButtonBackground" Color="#0366d6"/>
+<SolidColorBrush x:Key="ButtonHighlightColor" Color="#0969da"/>
 <SolidColorBrush x:Key="ButtonBorderColor" Color="#539bf5"/>
-<SolidColorBrush x:Key="HighlightColor" Color="#218bff"/>
-<SolidColorBrush x:Key="BorderBrush" Color="#444c56"/>
-<SolidColorBrush x:Key="Label" Color="#373e47"/>
+<SolidColorBrush x:Key="BorderBrushColor" Color="#444c56"/>
+<SolidColorBrush x:Key="LabelColor" Color="#373e47"/>
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#373e47"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#22272e"/>
 <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
@@ -2399,22 +2398,21 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#444c56"/>
 <SolidColorBrush x:Key="itemColor1" Color="#2d333b"/>
 <SolidColorBrush x:Key="itemColor2" Color="#333942"/>
-<SolidColorBrush x:Key="logo" Color="#539bf5"/>
+<SolidColorBrush x:Key="logo" Color="#0969da"/>
 <ImageBrush x:Key="BackgroundImage" ImageSource="{x:Null}" Stretch="UniformToFill"/>
 <x:String x:Key="SubText">Install Tweaks Tool</x:String>
 </ResourceDictionary>
 <ResourceDictionary x:Key="DarkKnight">
 <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#0a0a0a"/>
 <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="#121212"/>
-<SolidColorBrush x:Key="TextColorPrimary" Color="#d1d5db"/>
-<SolidColorBrush x:Key="TextColorSecondaryColor" Color="#999999"/>
-<SolidColorBrush x:Key="TextColorSecondaryColor2" Color="white"/>
-<SolidColorBrush x:Key="PrimaryButtonForeground" Color="#00b7ff"/>
-<SolidColorBrush x:Key="PrimaryButtonHighlight" Color="#00b7ff"/>
+<SolidColorBrush x:Key="PrimaryTextColor" Color="#d1d5db"/>
+<SolidColorBrush x:Key="SecondaryTextColor" Color="#999999"/>
+<SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
+<SolidColorBrush x:Key="PrimaryButtonBackground" Color="#0366d6"/>
+<SolidColorBrush x:Key="ButtonHighlightColor" Color="#218bff"/>
 <SolidColorBrush x:Key="ButtonBorderColor" Color="#ff0000"/>
-<SolidColorBrush x:Key="HighlightColor" Color="#218bff"/>
-<SolidColorBrush x:Key="BorderBrush" Color="#1c1c1c"/>
-<SolidColorBrush x:Key="Label" Color="#2a2a2a"/>
+<SolidColorBrush x:Key="BorderBrushColor" Color="#1c1c1c"/>
+<SolidColorBrush x:Key="LabelColor" Color="#2a2a2a"/>
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#1a1a1a"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#0f0f0f"/>
 <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
@@ -2422,21 +2420,20 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#444444"/>
 <SolidColorBrush x:Key="itemColor1" Color="#CC141414"/>
 <SolidColorBrush x:Key="itemColor2" Color="#991C1C1C"/>
-<SolidColorBrush x:Key="logo" Color="#00b7ff"/>
+<SolidColorBrush x:Key="logo" Color="#0366d6"/>
 <ImageBrush x:Key="BackgroundImage" ImageSource="https://images.hdqwalls.com/wallpapers/the-batman-fan-made-4k-xx.jpg" Stretch="UniformToFill" Opacity="0.4" />
 <x:String x:Key="SubText">I am not a hero</x:String>
 </ResourceDictionary>
 <ResourceDictionary x:Key="Light">
 <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#ffffff"/>
 <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="#f6f8fa"/>
-<SolidColorBrush x:Key="TextColorPrimary" Color="#24292e"/>
-<SolidColorBrush x:Key="TextColorSecondaryColor" Color="#57606a"/>
-<SolidColorBrush x:Key="TextColorSecondaryColor2" Color="white"/>
-<SolidColorBrush x:Key="PrimaryButtonForeground" Color="#0969da"/>
-<SolidColorBrush x:Key="PrimaryButtonHighlight" Color="#ffffff"/>
+<SolidColorBrush x:Key="PrimaryTextColor" Color="#24292e"/>
+<SolidColorBrush x:Key="SecondaryTextColor" Color="#57606a"/>
+<SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
+<SolidColorBrush x:Key="PrimaryButtonBackground" Color="#0969da"/>
+<SolidColorBrush x:Key="ButtonHighlightColor" Color="#218bff"/>
 <SolidColorBrush x:Key="ButtonBorderColor" Color="#0969da"/>
-<SolidColorBrush x:Key="HighlightColor" Color="#218bff"/>
-<SolidColorBrush x:Key="BorderBrush" Color="#d0d7de"/>
+<SolidColorBrush x:Key="BorderBrushColor" Color="#d0d7de"/>
 <SolidColorBrush x:Key="Label" Color="#d8e0e7"/>
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#d0d7de"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#f6f8fa"/>
@@ -2452,15 +2449,14 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <ResourceDictionary x:Key="Palestine">
 <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="black"/>
 <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="black"/>
-<SolidColorBrush x:Key="TextColorPrimary" Color="#d1d5db"/>
-<SolidColorBrush x:Key="TextColorSecondaryColor" Color="#999999"/>
-<SolidColorBrush x:Key="TextColorSecondaryColor2" Color="white"/>
-<SolidColorBrush x:Key="PrimaryButtonForeground" Color="#00B583"/>
-<SolidColorBrush x:Key="PrimaryButtonHighlight" Color="#FFFFFF"/>
+<SolidColorBrush x:Key="PrimaryTextColor" Color="#d1d5db"/>
+<SolidColorBrush x:Key="SecondaryTextColor" Color="#999999"/>
+<SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
+<SolidColorBrush x:Key="PrimaryButtonBackground" Color="#00B583"/>
+<SolidColorBrush x:Key="ButtonHighlightColor" Color="#00B583"/>
 <SolidColorBrush x:Key="ButtonBorderColor" Color="#007A3D"/>
-<SolidColorBrush x:Key="HighlightColor" Color="#00B583"/>
-<SolidColorBrush x:Key="BorderBrush" Color="black"/>
-<SolidColorBrush x:Key="Label" Color="#444444"/>
+<SolidColorBrush x:Key="BorderBrushColor" Color="black"/>
+<SolidColorBrush x:Key="LabelColor" Color="#444444"/>
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#202020"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#2b2b2b"/>
 <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
@@ -2504,7 +2500,7 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <MenuItem Name="save" Header="{Binding Save, TargetNullValue=Save}" ToolTip="Save selected apps" InputGestureText="Shift+S"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="load" Header="{Binding Restore, TargetNullValue=Restore}" ToolTip="Restore selected apps" InputGestureText="Shift+D"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Header="{Binding Theme}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="systheme" Header="{Binding Use_system_setting, TargetNullValue=System}" ToolTip="Use system theme if available"/><MenuItem Name="Dark" Header="Dark"/>
-<MenuItem Name="DarkKnight" Header="Dark Knight"/>
+<MenuItem Name="DarkKnight" Header="The Dark Knight"/>
 <MenuItem Name="Light" Header="Light"/>
 <MenuItem Name="Palestine" Header="Palestine"/></MenuItem>
 <MenuItem Header="{Binding Language, TargetNullValue=Language}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="systemlang" Header="{Binding Use_system_setting, TargetNullValue=System Language}"/><MenuItem Name="ar" Header="عربي"/>
@@ -2568,8 +2564,8 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <StackPanel x:Name="MainStackPanel" Background="Transparent" Orientation="Vertical" Margin="25,25,0,0">
 <Grid Background="Transparent">
 <StackPanel>
-<TextBlock Name="title" FontSize="20" Text="What&apos;s New" Foreground="{DynamicResource TextColorSecondaryColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-<TextBlock Name="date" Visibility="Hidden" Margin="5,5,0,0" FontSize="12" Text="8/29/2024" Foreground="{DynamicResource TextColorSecondaryColor}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+<TextBlock Name="title" FontSize="20" Text="What&apos;s New" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+<TextBlock Name="date" Visibility="Hidden" Margin="5,5,0,0" FontSize="12" Text="8/29/2024" Foreground="{DynamicResource SecondaryTextColor}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 </StackPanel>
 </Grid>
 </StackPanel>
@@ -2884,7 +2880,7 @@ ToolTip="{Binding Description}"
 FontSize="14"
 FontWeight="SemiBold"
 HorizontalContentAlignment="Stretch"/>
-<TextBlock Text="{Binding Requires}" Margin="5" FontSize="12" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource TextColorSecondaryColor}"/>
+<TextBlock Text="{Binding Requires}" Margin="5" FontSize="12" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource SecondaryTextColor}"/>
 </StackPanel>
 </Border>
 </DataTemplate>
@@ -3000,17 +2996,17 @@ FontSize="80" FontFamily="Arial" FontWeight="Bold"
 HorizontalAlignment="Center" Foreground="{DynamicResource logo}"/>
 <TextBlock Text="Install Tweaks Tool"
 FontSize="13" FontFamily="Arial" FontWeight="SemiBold"
-HorizontalAlignment="Center" Foreground="{DynamicResource TextColorPrimary}"/>
+HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="9/30/2025" Name="ver" Margin="0,5,0,0"
 FontSize="12" FontFamily="Arial" FontWeight="Regular"
-HorizontalAlignment="Center" TextAlignment="Left" Foreground="{DynamicResource TextColorPrimary}"/>
+HorizontalAlignment="Center" TextAlignment="Left" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="Contributors"
 FontSize="13" FontFamily="Arial"
-Foreground="{DynamicResource TextColorPrimary}" HorizontalAlignment="Center" Margin="0,15,0,0"/>
+Foreground="{DynamicResource PrimaryTextColor}" HorizontalAlignment="Center" Margin="0,15,0,0"/>
 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,15,0,0" Height="80">
 <StackPanel Orientation="Vertical" Margin="15,0,0,0">
-<TextBlock Text="emadadeldev" Margin="1" Foreground="{DynamicResource TextColorSecondaryColor}" />
-<TextBlock Text="youssefmhd" Margin="1" Foreground="{DynamicResource TextColorSecondaryColor}" />
+<TextBlock Text="emadadeldev" Margin="1" Foreground="{DynamicResource PrimaryTextColor}" />
+<TextBlock Text="youssefmhd" Margin="1" Foreground="{DynamicResource PrimaryTextColor}" />
 </StackPanel>
 </ScrollViewer>
 </StackPanel>
@@ -3019,33 +3015,33 @@ Foreground="{DynamicResource TextColorPrimary}" HorizontalAlignment="Center" Mar
 <Border Name="github" Style="{StaticResource HighlightBorder}">
 <StackPanel Orientation="Vertical">
 <TextBlock Text="🛠 Source code"
-FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource TextColorPrimary}"/>
+FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="Browse the full project on GitHub" Margin="0,2,0,0"
-FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource TextColorPrimary}"/>
+FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
 <Border Name="translate" Style="{StaticResource HighlightBorder}">
 <StackPanel Orientation="Vertical">
 <TextBlock Text="🌍 Help to translate"
-FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource TextColorPrimary}"/>
+FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="Contribute your language to the project" Margin="0,2,0,0"
-FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource TextColorPrimary}"/>
+FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
 <Border Name="community" Style="{StaticResource HighlightBorder}">
 <StackPanel Orientation="Vertical">
 <TextBlock Text="💬 Community chat"
-FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource TextColorPrimary}"/>
+FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="Join our group and stay connected" Margin="0,2,0,0"
-FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource TextColorPrimary}"/>
+FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
 <Border Name="donate" Style="{StaticResource HighlightBorder}">
 <StackPanel Orientation="Vertical">
 <TextBlock Text="❤ Donate"
-FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource TextColorPrimary}"/>
+FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="Be listed as one of our contributors" Margin="0,2,0,0"
-FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource TextColorPrimary}"/>
+FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
 </StackPanel>
