@@ -170,6 +170,9 @@ function Invoke-Button {
         "donate" {
             Start-Process("https://github.com/emadadeldev/ittea/blob/main/.github/DONATE.md")
         }
+         "feedback" {
+            FeedbackWindow
+        }
     }
 
     # debug start
