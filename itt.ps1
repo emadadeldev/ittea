@@ -3141,7 +3141,7 @@ FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColo
 </Border>
 <Border Name="feedback" Style="{StaticResource HighlightBorder}">
 <StackPanel Orientation="Vertical">
-<TextBlock Text="📝 Feedabck"
+<TextBlock Text="📝 Feedback"
 FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="Suggestions, or bug reports" TextWrapping="Wrap" Margin="0,2,0,0"
 FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
