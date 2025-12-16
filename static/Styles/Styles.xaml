@@ -6,6 +6,11 @@
     </Storyboard>
 <!--Listview Fade in-->
 
+<Style TargetType="TextBox">
+    <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+</Style>
+
 <!--Logo Fade in-->
     <Storyboard x:Key="Logo" RepeatBehavior="Forever">
         <!-- Fade Out -->
@@ -233,9 +238,7 @@
 
 <!--Label Style-->
   <Style TargetType="Label">
-    <Setter Property="Background" Value="Transparent"/>
     <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
-    <Setter Property="Padding" Value="7.5"/>
     <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Label">
@@ -251,13 +254,6 @@
     </Setter>
   </Style>
 <!--End Label Style-->
-
-<!--TextBlock Style-->
-    <Style TargetType="TextBlock">
-        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-    </Style>
-<!--End TextBlock Style-->
 
 <!-- Menu Style -->
     <Style TargetType="Menu">
@@ -725,7 +721,6 @@
     </Setter>
     </Style>
 <!--End ContextMenu Style-->
-
 
 <!-- BlinkingDotStyle -->
     <Style x:Key="BlinkingDotStyle" TargetType="Ellipse">
