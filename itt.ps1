@@ -7,7 +7,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "25.12.13"
+version        = "25.12.16"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -243,6 +243,9 @@ Start-Process("https://github.com/emadadeldev/ittea/tree/main/locales")
 }
 "donate" {
 Start-Process("https://github.com/emadadeldev/ittea/blob/main/.github/DONATE.md")
+}
+"feedback" {
+FeedbackWindow
 }
 }
 }
@@ -1597,6 +1600,108 @@ $notification.Visible = $true
 $notification.ShowBalloonTip($time)
 $notification.Dispose()
 }
+function FeedbackWindow {
+$workerURL = "https://itt.emadadel4-a0a.workers.dev/feedback"
+$window = New-Object System.Windows.Window
+$window.Resources.MergedDictionaries.Add($itt["window"].Resources)
+$window.Background = $window.Resources["PrimaryBackgroundColor"]
+$window.Title = "Send Feedback"
+$window.Icon = $itt.Icon
+$window.Height = 434
+$window.Width = 480
+$window.WindowStartupLocation = "CenterScreen"
+$window.ResizeMode = "NoResize"
+$grid = New-Object System.Windows.Controls.Grid
+$grid.Margin = [System.Windows.Thickness]::new(10)
+$row0 = New-Object System.Windows.Controls.RowDefinition; $row0.Height = "Auto"
+$row1 = New-Object System.Windows.Controls.RowDefinition; $row1.Height = "Auto"
+$row2 = New-Object System.Windows.Controls.RowDefinition; $row2.Height = "Auto"
+$row3 = New-Object System.Windows.Controls.RowDefinition; $row3.Height = "Auto"
+$row4 = New-Object System.Windows.Controls.RowDefinition; $row4.Height = "Auto"
+$row5 = New-Object System.Windows.Controls.RowDefinition; $row5.Height = "*"
+$row6 = New-Object System.Windows.Controls.RowDefinition; $row6.Height = "Auto"
+$grid.RowDefinitions.Add($row0)
+$grid.RowDefinitions.Add($row1)
+$grid.RowDefinitions.Add($row2)
+$grid.RowDefinitions.Add($row3)
+$grid.RowDefinitions.Add($row4)
+$grid.RowDefinitions.Add($row5)
+$grid.RowDefinitions.Add($row6)
+$typeLabel = New-Object System.Windows.Controls.Label
+$typeLabel.Content = "Feedback:"
+$typeLabel.FontSize = 14
+[System.Windows.Controls.Grid]::SetRow($typeLabel,0)
+$grid.Children.Add($typeLabel)
+$typeBox = New-Object System.Windows.Controls.ComboBox
+$typeBox.Margin = [System.Windows.Thickness]::new(0,5,0,10)
+$typeBox.Items.Add("Improvement")
+$typeBox.Items.Add("Bug / Issue")
+$typeBox.Items.Add("Feature Request")
+$typeBox.Items.Add("Other")
+$typeBox.SelectedIndex = 0
+[System.Windows.Controls.Grid]::SetRow($typeBox,1)
+$grid.Children.Add($typeBox)
+$subjectLabel = New-Object System.Windows.Controls.Label
+$subjectLabel.Content = "Subject:"
+$subjectLabel.FontSize = 14
+[System.Windows.Controls.Grid]::SetRow($subjectLabel,2)
+$grid.Children.Add($subjectLabel)
+$subjectBox = New-Object System.Windows.Controls.TextBox
+$subjectBox.Height = 30
+$subjectBox.Margin = [System.Windows.Thickness]::new(0,5,0,10)
+[System.Windows.Controls.Grid]::SetRow($subjectBox,3)
+$grid.Children.Add($subjectBox)
+$msgLabel = New-Object System.Windows.Controls.Label
+$msgLabel.Content = "Message:"
+$msgLabel.FontSize = 14
+[System.Windows.Controls.Grid]::SetRow($msgLabel,4)
+$grid.Children.Add($msgLabel)
+$msgBox = New-Object System.Windows.Controls.TextBox
+$msgBox.Height = 120
+$msgBox.Margin = [System.Windows.Thickness]::new(0,5,0,10)
+$msgBox.AcceptsReturn = $true
+$msgBox.TextWrapping = "Wrap"
+[System.Windows.Controls.Grid]::SetRow($msgBox,5)
+$grid.Children.Add($msgBox)
+$sendButton = New-Object System.Windows.Controls.Button
+$sendButton.Content = "Send"
+$sendButton.Height = 35
+$sendButton.Width = 100
+$sendButton.HorizontalAlignment = "Center"
+$sendButton.Margin = [System.Windows.Thickness]::new(0,10,0,0)
+[System.Windows.Controls.Grid]::SetRow($sendButton,6)
+$grid.Children.Add($sendButton)
+$window.Content = $grid
+$sendButton.Add_Click({
+$type = $typeBox.SelectedItem
+$subject = $subjectBox.Text.Trim()
+$msg  = $msgBox.Text.Trim()
+if (-not $subject -or -not $msg) {
+[System.Windows.MessageBox]::Show("Please fill in all fields.","Warning")
+return
+}
+if ($msg.Length -gt 100) {
+[System.Windows.MessageBox]::Show("Message too long. Maximum 50 characters allowed.","Warning")
+return
+}
+try {
+$jsonBody = @{
+type = $type
+subject = $subject
+text = $msg
+} | ConvertTo-Json
+$response = Invoke-RestMethod -Uri $workerURL -Method Post -Body $jsonBody -ContentType "application/json"
+[System.Windows.MessageBox]::Show("Feedback sent successfully!`n$response","Success")
+$subjectBox.Clear()
+$msgBox.Clear()
+$typeBox.SelectedIndex = 0
+}
+catch {
+[System.Windows.MessageBox]::Show("Failed to send feedback.`n$_","Error")
+}
+})
+$window.ShowDialog() | Out-Null
+}
 function System-Default {
 try {
 $dc = $itt.database.locales.Controls.$shortCulture
@@ -1689,11 +1794,11 @@ TextAlignment="Center"/>
 "@
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -1718,6 +1823,10 @@ Icon="https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon
 Storyboard.TargetProperty="Opacity"
 From="0" To="1" Duration="0:0:0.2" />
 </Storyboard>
+<Style TargetType="TextBox">
+<Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
+<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+</Style>
 <Storyboard x:Key="Logo" RepeatBehavior="Forever">
 <DoubleAnimation
 Storyboard.TargetProperty="Opacity"
@@ -1910,9 +2019,7 @@ IsHitTestVisible="False"/>
 </Setter>
 </Style>
 <Style TargetType="Label">
-<Setter Property="Background" Value="Transparent"/>
 <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
-<Setter Property="Padding" Value="7.5"/>
 <Setter Property="Template">
 <Setter.Value>
 <ControlTemplate TargetType="Label">
@@ -1926,10 +2033,6 @@ VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 </ControlTemplate>
 </Setter.Value>
 </Setter>
-</Style>
-<Style TargetType="TextBlock">
-<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-<Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
 </Style>
 <Style TargetType="Menu">
 <Setter Property="Background" Value="#FFFFFF"/>
@@ -2531,7 +2634,7 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <MenuItem Name="webtor" Header="Webtor" ToolTip="Web-based platform that allows users to stream torrent files directly in their browser without needing to download them."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="asustool" Header="ASUS Setup Tool" ToolTip="Tool that manages the setup installation for the legacy Aura Sync, LiveDash, AiSuite3"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 </MenuItem>
-<MenuItem Name="dev" Header="{Binding About, TargetNullValue=About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
+<MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About, TargetNullValue=About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
 <MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/></MenuItem.Icon>
 </MenuItem>
 </Menu>
@@ -2571,58 +2674,58 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 </StackPanel>
 <Grid Grid.Row="1" Background="Transparent" Margin="25,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto">
-<StackPanel><TextBlock Text='▶️ Watch a demo' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryButtonForeground}' FontWeight='bold' TextWrapping='Wrap'/>
+<StackPanel><TextBlock Text='▶️ Watch a demo' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
 <Image x:Name='yt' Cursor='Hand' ToolTip='Click to visit' Margin='15,0,0,15' Height='Auto' Width='388' HorizontalAlignment='Left'>
 <Image.Source>
 <BitmapImage UriSource='https://img.youtube.com/vi/0kZFi6NT1gI/maxresdefault.jpg' CacheOption='OnLoad'/>
 </Image.Source>
 </Image>
-<TextBlock Text='💠 Windows 10 LTS' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryButtonForeground}' FontWeight='bold' TextWrapping='Wrap'/>
+<TextBlock Text='💠 Windows 10 LTS' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
 <Image x:Name='win' Cursor='Hand' ToolTip='Click to visit' Margin='15,0,0,15' Height='Auto' Width='388' HorizontalAlignment='Left'>
 <Image.Source>
 <BitmapImage UriSource='https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Images/windows10lts.jpg' CacheOption='OnLoad'/>
 </Image.Source>
 </Image>
-<TextBlock Text='Windows 10 LTS official ISO – the stable, long-term support version' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap' MaxWidth='450'/>
-<TextBlock Text='Keyboard Shortcuts' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryButtonForeground}' FontWeight='bold' TextWrapping='Wrap'/>
+<TextBlock Text='Windows 10 LTS official ISO – the stable, long-term support version' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='450'/>
+<TextBlock Text='Keyboard Shortcuts' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Ctrl+A: Clear category filter.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Ctrl+A: Clear category filter.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Ctrl+F: toggle search mode.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Ctrl+F: toggle search mode.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Ctrl+Q: Switch to Apps.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Ctrl+Q: Switch to Apps.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Ctrl+W: Switch to Tweaks.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Ctrl+W: Switch to Tweaks.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Ctrl+E: Switch to Settings.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Ctrl+E: Switch to Settings.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Ctrl+S: Install selected Apps/Tweaks.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Ctrl+S: Install selected Apps/Tweaks.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Shift+S: Save selected.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Shift+S: Save selected.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Shift+D: Load save file.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Shift+D: Load save file.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Shift+P: Open Choco folder.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Shift+P: Open Choco folder.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Shift+T: Open ITT folder.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Shift+T: Open ITT folder.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Shift+Q: Restore point.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Shift+Q: Restore point.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Shift+I: ITT Shortcut.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Shift+I: ITT Shortcut.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 <StackPanel Orientation='Vertical'>
-<TextBlock Text='• Ctrl+G: Close application.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource TextColorSecondaryColor}' TextWrapping='Wrap'/>
+<TextBlock Text='• Ctrl+G: Close application.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
 </StackPanel>
 </ScrollViewer>
@@ -2980,7 +3083,7 @@ IsOpen="false">
 <Border Background="{DynamicResource PrimaryBackgroundColor}"
 BorderBrush="{DynamicResource BorderBrush}"
 BorderThickness="2"
-Width="533" Height="320"
+Width="533" Height="400"
 Padding="8"
 CornerRadius="8"
 SnapsToDevicePixels="True">
@@ -3033,6 +3136,14 @@ FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColo
 <TextBlock Text="💬 Community chat"
 FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="Join our group and stay connected" Margin="0,2,0,0"
+FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
+</StackPanel>
+</Border>
+<Border Name="feedback" Style="{StaticResource HighlightBorder}">
+<StackPanel Orientation="Vertical">
+<TextBlock Text="📝 Feedabck"
+FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
+<TextBlock Text="Suggestions, or bug reports" TextWrapping="Wrap" Margin="0,2,0,0"
 FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
