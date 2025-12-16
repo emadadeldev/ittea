@@ -1690,8 +1690,8 @@ type = $type
 subject = $subject
 text = $msg
 } | ConvertTo-Json
-$response = Invoke-RestMethod -Uri $workerURL -Method Post -Body $jsonBody -ContentType "application/json"
-[System.Windows.MessageBox]::Show("Feedback sent successfully!`n$response","Success")
+Invoke-RestMethod -Uri $workerURL -Method Post -Body $jsonBody -ContentType "application/json"
+[System.Windows.MessageBox]::Show("Sent successfully. Thank you for your feedback!","Success")
 $subjectBox.Clear()
 $msgBox.Clear()
 $typeBox.SelectedIndex = 0
