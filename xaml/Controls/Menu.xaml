@@ -48,7 +48,7 @@
     </MenuItem>
 
     <!-- About -->
-    <MenuItem Name="dev" Header="{Binding About, TargetNullValue=About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
+    <MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About, TargetNullValue=About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
         <MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/></MenuItem.Icon>
     </MenuItem>
 
