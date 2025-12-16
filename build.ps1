@@ -372,24 +372,24 @@ function ConvertTo-Xaml {
             "^### (.+)" {
                 # Headline 
                 $text = $matches[1].Trim()
-                $xaml += "<TextBlock Text=''$text'' FontSize=''$HeadlineFontSize'' Padding=''10'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>`n"
+                $xaml += "<TextBlock Text=''$text'' FontSize=''$HeadlineFontSize'' Padding=''10'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryTextColor}'' TextWrapping=''Wrap''/>`n"
             }
             "^##### (.+)" {
                 ##### Headline
                 $Headline = $matches[1].Trim()  
-                $xaml += "<TextBlock Text=''$Headline'' FontSize=''$HeadlineFontSize'' Padding=''10 25 0 20'' Foreground=''{DynamicResource PrimaryButtonForeground}'' FontWeight=''bold'' TextWrapping=''Wrap''/>`n" 
+                $xaml += "<TextBlock Text=''$Headline'' FontSize=''$HeadlineFontSize'' Padding=''10 25 0 20'' Foreground=''{DynamicResource PrimaryTextColor}'' FontWeight=''bold'' TextWrapping=''Wrap''/>`n" 
             }
             "^#### (.+)" {
                 #### Description
                 $Description = $matches[1].Trim()  
-                $xaml += "<TextBlock Text=''$Description'' FontSize=''$DescriptionFontSize'' HorizontalAlignment=''Left'' Padding=''10 0 0 10'' Foreground=''{DynamicResource TextColorSecondaryColor}'' TextWrapping=''Wrap'' MaxWidth=''450''/>`n"
+                $xaml += "<TextBlock Text=''$Description'' FontSize=''$DescriptionFontSize'' HorizontalAlignment=''Left'' Padding=''10 0 0 10'' Foreground=''{DynamicResource PrimaryTextColor}'' TextWrapping=''Wrap'' MaxWidth=''450''/>`n"
             }
             "^- (.+)" {
                 # - Lists
                 $List = $matches[1].Trim()  
                 $xaml += "
                 <StackPanel Orientation=''Vertical''>
-                    <TextBlock Text=''• $List'' Padding=''35,0,0,0'' FontSize=''$DescriptionFontSize'' HorizontalAlignment=''Left'' Width=''Auto'' Height=''Auto'' Foreground=''{DynamicResource TextColorSecondaryColor}'' TextWrapping=''Wrap''/>
+                    <TextBlock Text=''• $List'' Padding=''35,0,0,0'' FontSize=''$DescriptionFontSize'' HorizontalAlignment=''Left'' Width=''Auto'' Height=''Auto'' Foreground=''{DynamicResource PrimaryTextColor}'' TextWrapping=''Wrap''/>
                 </StackPanel>
                 `n" 
             }
