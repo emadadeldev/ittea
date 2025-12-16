@@ -27,7 +27,7 @@
 ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks
 
 ![Usage](https://img.shields.io/endpoint?url=https://itt.emadadel4-a0a.workers.dev/count&label=Usage&style=flat-square)
-![Version](https://img.shields.io/badge/Version-25.12.13-blue?style=flat-square)
+![Version](https://img.shields.io/badge/Version-25.12.16-blue?style=flat-square)
 ![Script size](https://img.shields.io/github/size/emadadeldev/ittea/itt.ps1?label=Script%20Size&style=flat-square)
 
 [![Arabic](https://flagcdn.com/w20/ps.png)](/locales/ar.csv)
@@ -72,7 +72,7 @@ or
 irm bit.ly/ittco | iex
 ```
 
-> [!WARNING]  
+> [!CAUTION]  
 > **RUN THIS SCRIPT ONLY USING OFFICIAL COMMANDS FROM THIS REPOSITORY.**  
 > **IT'S NOT PORTABLE, DO NOT DOWNLOAD OR RUN IT FROM ANY OTHER SOURCE!.**
 
