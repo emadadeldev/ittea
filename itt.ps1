@@ -7,7 +7,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "25.12.16"
+version        = "25.12.17"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -1680,7 +1680,7 @@ if (-not $subject -or -not $msg) {
 [System.Windows.MessageBox]::Show("Please fill in all fields.","Warning")
 return
 }
-if ($msg.Length -gt 100) {
+if ($msg.Length -gt 250) {
 [System.Windows.MessageBox]::Show("Message too long. Maximum 50 characters allowed.","Warning")
 return
 }
@@ -1691,13 +1691,13 @@ subject = $subject
 text = $msg
 } | ConvertTo-Json
 Invoke-RestMethod -Uri $workerURL -Method Post -Body $jsonBody -ContentType "application/json"
-[System.Windows.MessageBox]::Show("Sent successfully. Thank you for your feedback!","Success")
+[System.Windows.MessageBox]::Show($response.message)
 $subjectBox.Clear()
 $msgBox.Clear()
 $typeBox.SelectedIndex = 0
 }
 catch {
-[System.Windows.MessageBox]::Show("Failed to send feedback.`n$_","Error")
+[System.Windows.MessageBox]::Show("Failed to send feedback.`n$_")
 }
 })
 $window.ShowDialog() | Out-Null
@@ -1794,11 +1794,11 @@ TextAlignment="Center"/>
 "@
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -2512,9 +2512,9 @@ KeyboardNavigation.DirectionalNavigation="Cycle" />
 <SolidColorBrush x:Key="SecondaryTextColor" Color="#999999"/>
 <SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
 <SolidColorBrush x:Key="PrimaryButtonBackground" Color="#0366d6"/>
-<SolidColorBrush x:Key="ButtonHighlightColor" Color="#218bff"/>
+<SolidColorBrush x:Key="ButtonHighlightColor" Color="#0366d6"/>
 <SolidColorBrush x:Key="ButtonBorderColor" Color="#ff0000"/>
-<SolidColorBrush x:Key="BorderBrushColor" Color="#1c1c1c"/>
+<SolidColorBrush x:Key="BorderBrushColor" Color="#444c56"/>
 <SolidColorBrush x:Key="LabelColor" Color="#2a2a2a"/>
 <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#1a1a1a"/>
 <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#0f0f0f"/>
@@ -2868,8 +2868,8 @@ HorizontalAlignment="Center"
 CornerRadius="5"
 Padding="10"
 Margin="5"
-BorderBrush="{DynamicResource BorderBrush}"
-BorderThickness="1">
+BorderBrush="{DynamicResource BorderBrushColor}"
+BorderThickness="1.2">
 <Grid>
 <Grid.RowDefinitions>
 <RowDefinition Height="auto"/>
@@ -2972,8 +2972,8 @@ HorizontalAlignment="Center"
 CornerRadius="5"
 Padding="10"
 Margin="5"
-BorderBrush="{DynamicResource BorderBrush}"
-BorderThickness="1">
+BorderBrush="{DynamicResource BorderBrushColor}"
+BorderThickness="1.2">
 <StackPanel>
 <CheckBox
 Grid.Row="0"
@@ -3081,7 +3081,7 @@ StaysOpen="false"
 PopupAnimation="Fade"
 IsOpen="false">
 <Border Background="{DynamicResource PrimaryBackgroundColor}"
-BorderBrush="{DynamicResource BorderBrush}"
+BorderBrush="{DynamicResource BorderBrushColor}"
 BorderThickness="2"
 Width="533" Height="400"
 Padding="8"
@@ -3093,7 +3093,7 @@ SnapsToDevicePixels="True">
 <ColumnDefinition Width="*"/>
 </Grid.ColumnDefinitions>
 <Grid Grid.Column="0">
-<StackPanel Orientation="Vertical" Margin="0,12,0,0">
+<StackPanel Orientation="Vertical" Margin="0,25,0,0">
 <TextBlock Text="itt"
 FontSize="80" FontFamily="Arial" FontWeight="Bold"
 HorizontalAlignment="Center" Foreground="{DynamicResource logo}"/>
@@ -3106,7 +3106,7 @@ HorizontalAlignment="Center" TextAlignment="Left" Foreground="{DynamicResource P
 <TextBlock Text="Contributors"
 FontSize="13" FontFamily="Arial"
 Foreground="{DynamicResource PrimaryTextColor}" HorizontalAlignment="Center" Margin="0,15,0,0"/>
-<ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,15,0,0" Height="80">
+<ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,15,0,0" Height="170">
 <StackPanel Orientation="Vertical" Margin="15,0,0,0">
 <TextBlock Text="emadadeldev" Margin="1" Foreground="{DynamicResource PrimaryTextColor}" />
 <TextBlock Text="youssefmhd" Margin="1" Foreground="{DynamicResource PrimaryTextColor}" />
