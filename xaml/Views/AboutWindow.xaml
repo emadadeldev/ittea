@@ -6,7 +6,7 @@
        IsOpen="false">
 
     <Border Background="{DynamicResource PrimaryBackgroundColor}"
-            BorderBrush="{DynamicResource BorderBrush}"
+            BorderBrush="{DynamicResource BorderBrushColor}"
             BorderThickness="2"
             Width="533" Height="400"
             Padding="8"
@@ -21,7 +21,7 @@
 
             <!-- Left Panel -->
             <Grid Grid.Column="0">
-                <StackPanel Orientation="Vertical" Margin="0,12,0,0">
+                <StackPanel Orientation="Vertical" Margin="0,25,0,0">
                     <TextBlock Text="itt" 
                                FontSize="80" FontFamily="Arial" FontWeight="Bold"
                                HorizontalAlignment="Center" Foreground="{DynamicResource logo}"/>
@@ -38,7 +38,7 @@
                                FontSize="13" FontFamily="Arial" 
                                Foreground="{DynamicResource PrimaryTextColor}" HorizontalAlignment="Center" Margin="0,15,0,0"/>
 
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,15,0,0" Height="80">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,15,0,0" Height="170">
                         <StackPanel Orientation="Vertical" Margin="15,0,0,0">
                             <!-- names -->
                         </StackPanel>
