@@ -104,7 +104,7 @@ function FeedbackWindow {
             return
         }
 
-        if ($msg.Length -gt 100) {
+        if ($msg.Length -gt 250) {
             [System.Windows.MessageBox]::Show("Message too long. Maximum 50 characters allowed.","Warning")
             return
         }
@@ -117,15 +117,13 @@ function FeedbackWindow {
             } | ConvertTo-Json
 
             Invoke-RestMethod -Uri $workerURL -Method Post -Body $jsonBody -ContentType "application/json"
-
-            [System.Windows.MessageBox]::Show("Sent successfully. Thank you for your feedback!","Success")
-
+            [System.Windows.MessageBox]::Show($response.message)
             $subjectBox.Clear()
             $msgBox.Clear()
             $typeBox.SelectedIndex = 0
         }
         catch {
-            [System.Windows.MessageBox]::Show("Failed to send feedback.`n$_","Error")
+            [System.Windows.MessageBox]::Show("Failed to send feedback.`n$_")
         }
     })
 
