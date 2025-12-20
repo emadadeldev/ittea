@@ -658,5 +658,15 @@
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Windows%20Platform%20Binary%20Table%20(WPBT)/run.ps1 | iex"
     ]
+  },
+  {
+    "Content": "Disable Telemetry",
+    "Description": "Disables Microsoft Telemetry",
+    "Category": "Privacy",
+    "IsChecked": false,
+    "Requires": "For 10/11",
+    "Script": [
+      "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Telemetry/run.ps1 | iex"
+    ]
   }
 ]
