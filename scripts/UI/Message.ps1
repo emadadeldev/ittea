@@ -16,6 +16,6 @@ function Message {
     $actionMap = @{ YesNo = "YesNo"; OK = "OK"; default = "OK" }
     $icon = if ($iconMap.ContainsKey($icon.ToLower())) { $iconMap[$icon.ToLower()] } else { $iconMap.default }
     $action = if ($actionMap.ContainsKey($action.ToLower())) { $actionMap[$action.ToLower()] } else { $actionMap.default }
-    $msg = if ([string]::IsNullOrWhiteSpace($key)) { $NoneKey } else { $itt.database.locales.Controls.$($itt.Language).$key }
+    $msg = if ([string]::IsNullOrWhiteSpace($key)) { $NoneKey } else { $localsUrl.Controls.$($itt.Language).$key }
     [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$action, [System.Windows.MessageBoxImage]::$icon)
 }
