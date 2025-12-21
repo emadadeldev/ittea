@@ -75,7 +75,7 @@ irm bit.ly/ittco | iex
 ```
 
 > [!CAUTION]  
-> **RUN THIS SCRIPT ONLY USING OFFICIAL COMMANDS FROM ```emadadeldev/ittea``` REPOSITORY Only**  
+> **RUN THIS SCRIPT ONLY USING OFFICIAL COMMANDS FROM THIS [emadadeldev/ittea](https://github.com/emadadeldev/ittea) REPOSITORY ONLY**  
 > **IT'S NOT PORTABLE, DO NOT DOWNLOAD OR RUN IT FROM ANY OTHER SOURCE!.**
 
 > [!NOTE]  
