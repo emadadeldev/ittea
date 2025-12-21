@@ -149,14 +149,17 @@ try {
     $h.AutomaticDecompression = [System.Net.DecompressionMethods] 'GZip,Deflate'
     $c = [System.Net.Http.HttpClient]::new($h)
 
-    $appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/update/static/Database/Applications.json"
-    $tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/update/static/Database/Tweaks.json"
-    $localsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/update/static/Database/locales.json"
+    $appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
+    $tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Tweaks.json"
+    $localsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/locales.json"
 
     while ($true) {
         try {
             $aTask, $tTask, $lTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl), $c.GetStringAsync($localsUrl)
             [Threading.Tasks.Task]::WaitAll($aTask, $tTask, $lTask)
+
+            # $splash.FindName("status").Text = "Getting Apps"
+            # [System.Windows.Threading.Dispatcher]::CurrentDispatcher.Invoke([Action]{}, [System.Windows.Threading.DispatcherPriority]::Render)
 
             $appsData = $aTask.Result | ConvertFrom-Json
             $tweaksData = $tTask.Result | ConvertFrom-Json
@@ -181,8 +184,6 @@ try {
     #===========================================================================
     #endregion Fetch Data
     #===========================================================================
-
-
     #===========================================================================
     #region Set Language based on culture
     #===========================================================================
