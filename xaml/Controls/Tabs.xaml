@@ -5,7 +5,7 @@
     <TabItem Name="WhatsNewTab">
         <TabItem.Header>
             <Grid>
-                <TextBlock Text="itt" FontFamily="Arial" FontWeight="Bold" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="itt" FontFamily="Arial" FontWeight="Bold" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Ellipse Width="9" Height="9" Fill="Red" Style="{StaticResource BlinkingDotStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" Margin="40,0,0,0" x:Name="hotdot"/>
             </Grid>
         </TabItem.Header><!-- Whats New Content -->
@@ -32,7 +32,7 @@
             </Grid>
         </Border>
     </TabItem>
-    
+
     <!-- Apps Tab -->
     <TabItem Name="apps" Header="{Binding apps, TargetNullValue=Apps}" Tag="apps">
         <TabItem.HeaderTemplate>
@@ -167,7 +167,7 @@
                             <ItemsPanelTemplate>
                                 <WrapPanel IsItemsHost="True"
                                         Margin="5"
-                                        HorizontalAlignment="Center" 
+                                        HorizontalAlignment="Center"
                                         />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
@@ -183,11 +183,11 @@
                                         BorderThickness="1.2">
 
                                         <Grid>
-                                        
+
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
-                                        
+
                                             <CheckBox
                                                 Grid.Row="0"
                                                 Content="{Binding Content}"
@@ -208,7 +208,7 @@
         </Grid>
 
     </TabItem>
-    
+
     <!-- Tweaks Tab -->
     <TabItem x:Name="tweeksTab" Header="{Binding tweaks, TargetNullValue=Tweaks}" Tag="tweaks">
         <TabItem.HeaderTemplate>
@@ -219,13 +219,13 @@
                 </StackPanel>
             </DataTemplate>
         </TabItem.HeaderTemplate>
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <!-- Tweaks Category -->
             <ComboBox Name="TwaeksCategory" Grid.Row="0" SelectedIndex="0" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" IsReadOnly="True" Visibility="Collapsed">
                 <ComboBoxItem Tag="all">
@@ -289,7 +289,7 @@
                             <ItemsPanelTemplate>
                                 <WrapPanel IsItemsHost="True"
                                         Margin="5"
-                                        HorizontalAlignment="Center" 
+                                        HorizontalAlignment="Center"
                                         />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
@@ -305,7 +305,7 @@
                                         BorderThickness="1.2">
 
                                         <StackPanel>
-                                        
+
                                             <CheckBox
                                                 Grid.Row="0"
                                                 Content="{Binding Content}"
@@ -328,7 +328,7 @@
             </ScrollViewer>
         </Grid>
     </TabItem>
-    
+
     <!-- Settings Tab -->
     <TabItem x:Name="SettingsTab" Header="{Binding settings, TargetNullValue=Settings}">
         <TabItem.HeaderTemplate>
