@@ -46,9 +46,9 @@ function Startup {
             Write-Host "Backup 2: https://codeberg.org/emadadel/itt" -ForegroundColor Gray
             Write-Host "  ╚═╝  ╚═╝      ╚═╝    " -ForegroundColor White
             # debug start
-            #if ($Debug) { return }
+            if ($Debug) { return }
             # debug end
-            #UsageCount
+            UsageCount
             Quotes
         }
 
