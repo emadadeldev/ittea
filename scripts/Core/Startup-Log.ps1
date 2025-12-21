@@ -27,7 +27,7 @@ function Startup {
 
         function Quotes {
             $q = (Invoke-RestMethod "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Quotes.json").Quotes | Sort-Object { Get-Random }
-            Set-Statusbar -Text "☕ $($localsUrl.Controls.$($itt.Language).welcome)"; Start-Sleep 18
+            Start-Sleep 18
             $i = @{quote = "💬"; info = "📢"; music = "🎵"; Cautton = "⚠"; default = "☕" }
             while (1) { foreach ($x in $q) { $c = $i[$x.type]; if (-not $c) { $c = $i.default }; $t = "`“$($x.text)`”"; if ($x.name) { $t += " ― $($x.name)" }; Set-Statusbar -Text "$c $t"; Start-Sleep 25 } }
         }
@@ -46,9 +46,9 @@ function Startup {
             Write-Host "Backup 2: https://codeberg.org/emadadel/itt" -ForegroundColor Gray
             Write-Host "  ╚═╝  ╚═╝      ╚═╝    " -ForegroundColor White
             # debug start
-            if ($Debug) { return }
+            #if ($Debug) { return }
             # debug end
-            UsageCount
+            #UsageCount
             Quotes
         }
 
