@@ -271,7 +271,8 @@ function Update-Readme {
     $tweaksCount = $itt.database.Tweaks.Count
     $quotesCount = (Get-Content -Path ".\static\Database\Quotes.json" | ConvertFrom-Json).Quotes.Count
     $settingsCount = $itt.database.Settings.Count
-    $localesCount = ($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count
+    $localesCount = ((Get-Content ".\static\Database\locales.json" -Raw | ConvertFrom-Json).Controls.PSObject.Properties | Measure-Object).Count
+
     # Create a hashtable for placeholders and their replacements
     $placeholders = @{
         "#{a}"    = $applicationsCount
