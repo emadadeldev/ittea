@@ -27,7 +27,7 @@
 ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks
 
 ![Usage](https://img.shields.io/endpoint?url=https://itt.emadadel4-a0a.workers.dev/count&label=Usage&style=flat-square)
-![Version](https://img.shields.io/badge/Version-25.12.17-blue?style=flat-square)
+![Version](https://img.shields.io/badge/Version-25.12.21-blue?style=flat-square)
 ![Script size](https://img.shields.io/github/size/emadadeldev/ittea/itt.ps1?label=Script%20Size&style=flat-square)
 [![VirusTotal](https://img.shields.io/badge/VirusTotal-Clean-blue?logo=virustotal)](https://www.virustotal.com/gui/url/591b66d6e7206f7dafd53bef0b3bee4116914db6bbfe576078c591d603096a27)
 
@@ -42,7 +42,7 @@ ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks
 [![Italian](https://flagcdn.com/w20/it.png)](/locales/it.csv)
 [![Hindi](https://flagcdn.com/w20/in.png)](/locales/hi.csv)
 
-###### 📦 419 Apps • ⚙️ 66 Tweaks • 🔧 17 Settings • 💬 118 Quote • 🌐 11 Localization
+###### 📦 419 Apps • ⚙️ 67 Tweaks • 🔧 17 Settings • 💬 118 Quote • 🌐 11 Localization
 
 </div>
 
