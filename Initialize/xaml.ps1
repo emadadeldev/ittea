@@ -1,5 +1,5 @@
 #===========================================================================
-#region initialize Runspace & Window
+#region initialize Runspace
 #===========================================================================
 # Max threads = number of logical processors
 $MaxThreads = [int]$env:NUMBER_OF_PROCESSORS
@@ -11,10 +11,12 @@ $HashVars = New-Object System.Management.Automation.Runspaces.SessionStateVariab
 # Create the initial session state
 $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
 $InitialSessionState.Variables.Add($HashVars)
-
+#===========================================================================
+#endregion initialize Runspace
+#===========================================================================
 
 # ================================
-# Function Injection
+#region Function Injection
 # ================================
 
 # List of functions to include in the runspace environment
@@ -37,10 +39,25 @@ foreach ($Func in $Functions) {
         # Debug end
     }
 }
-
+# ================================
+#endregion Function Injection
+# ================================
 
 # ================================
-# UI Initialization
+#region Runspace Pool Creation
+# ================================
+
+$itt.Runspace = [RunspaceFactory]::CreateRunspacePool(
+    1, $MaxThreads, $InitialSessionState, $Host
+)
+
+$itt.Runspace.Open()
+# ================================
+#endregion Runspace Pool Creation
+# ================================
+
+# ================================
+#region UI Windows Initialization
 # ================================
 
 try {
@@ -54,18 +71,35 @@ catch {
     Write-Output "Error initializing UI: $($_.Exception.Message)"
 }
 
+# ==================================
+#endregion UI Windows Initialization
+# ==================================
 
-# ================================
-# Runspace Pool Creation
-# ================================
-
-$itt.Runspace = [RunspaceFactory]::CreateRunspacePool(
-    1, $MaxThreads, $InitialSessionState, $Host
-)
-
-$itt.Runspace.Open()
 #===========================================================================
-#endregion initialize Runspace & Window
+#region Initialize WPF Controls
+#===========================================================================
+# List Views
+$itt.CurrentList
+$itt.CurrentCategory
+$itt.TabControl = $itt["window"].FindName("taps")
+$itt.AppsListView = $itt["window"].FindName("AppsListView")
+$itt.TweaksListView = $itt["window"].FindName("TweaksListView")
+$itt.searchInput = $itt["window"].FindName("searchInput")
+$itt.SettingsListView = $itt["window"].FindName("SettingsList")
+
+# Buttons and Inputs
+$itt.Description = $itt["window"].FindName("description")
+$itt.Statusbar = $itt["window"].FindName("statusbar")
+$itt.InstallBtn = $itt["window"].FindName("installBtn")
+$itt.ApplyBtn = $itt["window"].FindName("applyBtn")
+$itt.installText = $itt["window"].FindName("installText")
+$itt.installIcon = $itt["window"].FindName("installIcon")
+$itt.applyText = $itt["window"].FindName("applyText")
+$itt.applyIcon = $itt["window"].FindName("applyIcon")
+$itt.QuoteIcon = $itt["window"].FindName("QuoteIcon")
+
+#===========================================================================
+#endregion Initialize WPF Controls
 #===========================================================================
 
 #===========================================================================
@@ -105,8 +139,52 @@ try {
         New-ItemProperty -Path $itt.registryPath -Name "locales" -Value "default" -PropertyType String -Force *> $Null
         New-ItemProperty -Path $itt.registryPath -Name "backup" -Value 0 -PropertyType DWORD -Force *> $Null
         New-ItemProperty -Path $itt.registryPath -Name "source" -Value "auto" -PropertyType String -Force *> $Null
-
     }
+
+
+    #===========================================================================
+    #region Fetch Data
+    #===========================================================================
+    $h = [System.Net.Http.HttpClientHandler]::new()
+    $h.AutomaticDecompression = [System.Net.DecompressionMethods] 'GZip,Deflate'
+    $c = [System.Net.Http.HttpClient]::new($h)
+
+    $appsUrl = "http://127.0.0.1:5500/static/Database/Applications.json"
+    $tweaksUrl = "http://127.0.0.1:5500/static/Database/Tweaks.json"
+    $localsUrl = "http://127.0.0.1:5500/static/Database/locales.json"
+
+
+    while ($true) {
+        try {
+            $aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
+            [Threading.Tasks.Task]::WaitAll($aTask, $tTask)
+
+            $appsData = $aTask.Result | ConvertFrom-Json
+            $tweaksData = $tTask.Result | ConvertFrom-Json
+            #$localsUrl = $lTask.Result | ConvertFrom-Json
+
+
+            if ($appsData -and $tweaksData) {
+                $itt.AppsListView.ItemsSource = $appsData
+                $itt.TweaksListView.ItemsSource = $tweaksData
+                $splash.Close()
+                break
+            }
+            else {
+                Write-Host "Still loading data..." -ForegroundColor Yellow
+            }
+        }
+        catch {
+            Write-Host "Unstable internet connection detected. Retrying in 10 seconds..." -ForegroundColor Yellow
+        }
+
+        Start-Sleep 10
+    }
+    #===========================================================================
+    #endregion Fetch Data
+    #===========================================================================
+
+
     #===========================================================================
     #region Set Language based on culture
     #===========================================================================
@@ -184,70 +262,4 @@ catch {
 }
 #===========================================================================
 #endregion Create default keys
-#===========================================================================
-
-#===========================================================================
-#region Initialize WPF Controls
-#===========================================================================
-
-# List Views
-$itt.CurrentList
-$itt.CurrentCategory
-$itt.TabControl = $itt["window"].FindName("taps")
-$itt.AppsListView = $itt["window"].FindName("AppsListView")
-$itt.TweaksListView = $itt["window"].FindName("TweaksListView")
-$itt.searchInput = $itt["window"].FindName("searchInput")
-$itt.SettingsListView = $itt["window"].FindName("SettingsList")
-
-# Buttons and Inputs
-$itt.Description = $itt["window"].FindName("description")
-$itt.Statusbar = $itt["window"].FindName("statusbar")
-$itt.InstallBtn = $itt["window"].FindName("installBtn")
-$itt.ApplyBtn = $itt["window"].FindName("applyBtn")
-$itt.installText = $itt["window"].FindName("installText")
-$itt.installIcon = $itt["window"].FindName("installIcon")
-$itt.applyText = $itt["window"].FindName("applyText")
-$itt.applyIcon = $itt["window"].FindName("applyIcon")
-$itt.QuoteIcon = $itt["window"].FindName("QuoteIcon")
-
-#===========================================================================
-#endregion Initialize WPF Controls
-#===========================================================================
-
-#===========================================================================
-#region Fetch Data
-#===========================================================================
-$h = [System.Net.Http.HttpClientHandler]::new()
-$h.AutomaticDecompression = [System.Net.DecompressionMethods] 'GZip,Deflate'
-$c = [System.Net.Http.HttpClient]::new($h)
-
-$appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
-$tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Tweaks.json"
-
-while ($true) {
-    try {
-        $aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
-        [Threading.Tasks.Task]::WaitAll($aTask, $tTask)
-
-        $appsData = $aTask.Result | ConvertFrom-Json
-        $tweaksData = $tTask.Result | ConvertFrom-Json
-
-        if ($appsData -and $tweaksData) {
-            $itt.AppsListView.ItemsSource = $appsData
-            $itt.TweaksListView.ItemsSource = $tweaksData
-            $splash.Close()
-            break
-        }
-        else {
-            Write-Host "Still loading data..." -ForegroundColor Yellow
-        }
-    }
-    catch {
-        Write-Host "Unstable internet connection detected. Retrying in 10 seconds..." -ForegroundColor Yellow
-    }
-
-    Start-Sleep 10
-}
-#===========================================================================
-#endregion Fetch Data
 #===========================================================================
