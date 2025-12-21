@@ -10,7 +10,7 @@
     <SolidColorBrush x:Key="PrimaryTextColor" Color="#d1d5db"/>
     <SolidColorBrush x:Key="SecondaryTextColor" Color="#adbac7"/>
     <SolidColorBrush x:Key="SecondaryTextColor2" Color="white"/>
-    
+
     <!-- Buttons and Highlights -->
     <SolidColorBrush x:Key="PrimaryButtonBackground" Color="#0366d6"/>
     <SolidColorBrush x:Key="ButtonHighlightColor" Color="#0969da"/>
@@ -32,7 +32,7 @@
     <SolidColorBrush x:Key="itemColor2" Color="#333942"/>
 
     <!-- Misc -->
-    <SolidColorBrush x:Key="logo" Color="#0969da"/>
+    <SolidColorBrush x:Key="logo" Color="white"/>
     <ImageBrush x:Key="BackgroundImage" ImageSource="{x:Null}" Stretch="UniformToFill"/>
     <x:String x:Key="SubText">Install Tweaks Tool</x:String>
 
