@@ -816,7 +816,7 @@ UsageCount
 }
 function Quotes {
 $q = (Invoke-RestMethod "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Quotes.json").Quotes | Sort-Object { Get-Random }
-Set-Statusbar -Text "☕ $($localsUrl.Controls.$($itt.Language).welcome)"; Start-Sleep 18
+Start-Sleep 18
 $i = @{quote = "💬"; info = "📢"; music = "🎵"; Cautton = "⚠"; default = "☕" }
 while (1) { foreach ($x in $q) { $c = $i[$x.type]; if (-not $c) { $c = $i.default }; $t = "`“$($x.text)`”"; if ($x.name) { $t += " ― $($x.name)" }; Set-Statusbar -Text "$c $t"; Start-Sleep 25 } }
 }
@@ -3067,7 +3067,7 @@ VerticalAlignment="Center"/>
 </Button>
 </Grid>
 <Grid Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
-<TextBlock Name="statusbar" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
+<TextBlock Name="statusbar" Text="{Binding Welcome, TargetNullValue=Save time and install all your programs at once and debloat Windows and more. Be part of ITT and contribute to improving it}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
 HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
 </Grid>
 </Grid>
