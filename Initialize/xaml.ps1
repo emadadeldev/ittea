@@ -149,20 +149,18 @@ try {
     $h.AutomaticDecompression = [System.Net.DecompressionMethods] 'GZip,Deflate'
     $c = [System.Net.Http.HttpClient]::new($h)
 
-    $appsUrl = "http://127.0.0.1:5500/static/Database/Applications.json"
-    $tweaksUrl = "http://127.0.0.1:5500/static/Database/Tweaks.json"
-    $localsUrl = "http://127.0.0.1:5500/static/Database/locales.json"
-
+    $appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/update/static/Database/Applications.json"
+    $tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/update/static/Database/Tweaks.json"
+    $localsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/update/static/Database/locales.json"
 
     while ($true) {
         try {
-            $aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
-            [Threading.Tasks.Task]::WaitAll($aTask, $tTask)
+            $aTask, $tTask, $lTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl), $c.GetStringAsync($localsUrl)
+            [Threading.Tasks.Task]::WaitAll($aTask, $tTask, $lTask)
 
             $appsData = $aTask.Result | ConvertFrom-Json
             $tweaksData = $tTask.Result | ConvertFrom-Json
-            #$localsUrl = $lTask.Result | ConvertFrom-Json
-
+            $localsUrl = $lTask.Result | ConvertFrom-Json
 
             if ($appsData -and $tweaksData) {
                 $itt.AppsListView.ItemsSource = $appsData
@@ -199,12 +197,12 @@ try {
             #{LangagesSwitch}
             default { "en" }
         }
-        $itt["window"].DataContext = $itt.database.locales.Controls.$Locales
+        $itt["window"].DataContext = $localsUrl.Controls.$Locales
         $itt.Language = $Locales
     }
     catch {
         # fallbak to en lang
-        $itt["window"].DataContext = $itt.database.locales.Controls.en
+        $itt["window"].DataContext = $localsUrl.Controls.en
     }
     #===========================================================================
     #endregion Set Language based on culture
