@@ -634,7 +634,7 @@ try {
 #region Begin localization
 #===========================================================================
 "@
-    Sync-JsonFiles -DatabaseDirectory $DatabaseDirectory -OutputScriptPath $OutputScript -Skip @("OST.json", "Quotes.json", "Applications.json", "Settings.json", "tweaks.json")
+    Sync-JsonFiles -DatabaseDirectory $DatabaseDirectory -OutputScriptPath $OutputScript -Skip @("OST.json", "Quotes.json", "Applications.json", "Settings.json", "tweaks.json", "locales.json")
     WriteToScript -Content @"
 #===========================================================================
 #endregion End localization
