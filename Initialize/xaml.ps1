@@ -151,19 +151,19 @@ try {
 
     $appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
     $tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Tweaks.json"
-    $localsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/locales.json"
+    #$localsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/locales.json"
 
     while ($true) {
         try {
-            $aTask, $tTask, $lTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl), $c.GetStringAsync($localsUrl)
-            [Threading.Tasks.Task]::WaitAll($aTask, $tTask, $lTask)
+            $aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
+            [Threading.Tasks.Task]::WaitAll($aTask, $tTask)
 
             # $splash.FindName("status").Text = "Getting Apps"
             # [System.Windows.Threading.Dispatcher]::CurrentDispatcher.Invoke([Action]{}, [System.Windows.Threading.DispatcherPriority]::Render)
 
             $appsData = $aTask.Result | ConvertFrom-Json
             $tweaksData = $tTask.Result | ConvertFrom-Json
-            $localsUrl = $lTask.Result | ConvertFrom-Json
+            # $localsUrl = $lTask.Result | ConvertFrom-Json
 
             if ($appsData -and $tweaksData) {
                 $itt.AppsListView.ItemsSource = $appsData
@@ -198,12 +198,12 @@ try {
             #{LangagesSwitch}
             default { "en" }
         }
-        $itt["window"].DataContext = $localsUrl.Controls.$Locales
+        $itt["window"].DataContext = $itt.database.locales.Controls.$Locales
         $itt.Language = $Locales
     }
     catch {
         # fallbak to en lang
-        $itt["window"].DataContext = $localsUrl.Controls.en
+        $itt["window"].DataContext = $itt.database.locales.Controls.en
     }
     #===========================================================================
     #endregion Set Language based on culture
