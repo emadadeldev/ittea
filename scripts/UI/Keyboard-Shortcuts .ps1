@@ -1,10 +1,5 @@
 $KeyEvents = {
 
-    if ($itt.ProcessRunning) { 
-        Set-Statusbar -Text "📢 Shortcut is disabled while process is running" 
-        return 
-    }
-
     $modifiers = $_.KeyboardDevice.Modifiers
     $key = $_.Key
 
@@ -20,7 +15,10 @@ $KeyEvents = {
             }
             elseif ($modifiers -eq "Shift") { Save-File }
         }
-        "D" { if ($modifiers -eq "Shift") { Get-file } }
+        "D" { 
+            if ($itt.ProcessRunning) { Set-Statusbar -Text "📢 Shortcut is disabled while process is running" return }
+            if ($modifiers -eq "Shift") { Get-file } 
+        }
         "Q" {
             if ($modifiers -eq "Ctrl") {
                 $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
