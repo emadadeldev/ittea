@@ -23,10 +23,8 @@ function Show-Selected {
 
     $view = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
 
-    $selectedItems = $itt.$ListView.Items | Where-Object { $_.IsChecked }
-
-    if ($selectedItems.Count -eq 0 -and $Mode -eq 'Filter') {
-        return 
+    if ($Mode -eq "Filter" -and -not ($itt.$ListView.Items | Where-Object { $_.IsChecked })) {
+        return
     }
 
     if ($Mode -eq 'Filter') {
