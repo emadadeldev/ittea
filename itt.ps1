@@ -347,8 +347,15 @@ $obj
 return $selected
 }
 function Show-Selected {
-param ([string]$ListView, [string]$Mode)
+param (
+[string]$ListView,
+[string]$Mode
+)
 $view = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
+$selectedItems = $itt.$ListView.Items | Where-Object { $_.IsChecked }
+if ($selectedItems.Count -eq 0 -and $Mode -eq 'Filter') {
+return
+}
 if ($Mode -eq 'Filter') {
 $view.Filter = { param($i) $i.IsChecked }
 }
@@ -740,6 +747,7 @@ Write-Warning "Failed to load or parse JSON file: $_"
 }
 }
 function Save-File {
+if($itt.currentList -eq "SettingsList") {return}
 Show-Selected -ListView "$($itt.currentList)" -Mode "Filter"
 $selectedApps = Get-SelectedItems -Mode "$($itt.currentList)"
 if ($selectedApps.Count -le 0) { return }
@@ -749,10 +757,6 @@ if ($item.IsChecked) {
 Name = $item.Content
 }
 }
-}
-if ($items.Count -eq 0) {
-Message -key "Empty_save_msg" -icon "Information" -action "OK"
-return
 }
 $jsonObject = @{
 ListView = $itt.currentList
