@@ -1717,9 +1717,9 @@ function Set-Language {
 param ([string]$lang)
 if ($lang -eq "default") { System-Default }
 else {
+$itt.Language = $lang
 $itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
 Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value $lang -Force
-$itt.Language = $lang
 }
 }
 function SwitchToSystem {
