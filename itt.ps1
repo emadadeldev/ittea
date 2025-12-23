@@ -7,7 +7,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "25.12.22"
+version        = "25.12.23"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -740,7 +740,6 @@ Write-Warning "Failed to load or parse JSON file: $_"
 }
 }
 function Save-File {
-$itt['window'].FindName($itt.currentList).SelectedIndex = 0
 Show-Selected -ListView "$($itt.currentList)" -Mode "Filter"
 $selectedApps = Get-SelectedItems -Mode "$($itt.currentList)"
 if ($selectedApps.Count -le 0) { return }
@@ -1525,10 +1524,6 @@ return $tags -ieq $Cat
 $collectionView.Refresh()
 }
 $KeyEvents = {
-if ($itt.ProcessRunning) {
-Set-Statusbar -Text "📢 Shortcut is disabled while process is running"
-return
-}
 $modifiers = $_.KeyboardDevice.Modifiers
 $key = $_.Key
 switch ($key) {
@@ -1543,7 +1538,10 @@ elseif ($itt.currentList -eq "TweaksListView") { Invoke-Apply }
 }
 elseif ($modifiers -eq "Shift") { Save-File }
 }
-"D" { if ($modifiers -eq "Shift") { Get-file } }
+"D" {
+if ($itt.ProcessRunning) { Set-Statusbar -Text "📢 Shortcut is disabled while process is running" return }
+if ($modifiers -eq "Shift") { Get-file }
+}
 "Q" {
 if ($modifiers -eq "Ctrl") {
 $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
@@ -1706,7 +1704,7 @@ function System-Default {
 try {
 $dc = $itt.database.locales.Controls.$shortCulture
 if (-not $dc -or [string]::IsNullOrWhiteSpace($dc)) {
-Set-Statusbar -Text "Your default system language is not supported yet, fallback to English"
+Set-Statusbar -Text "Default System language is not supported yet, Fallback to English"
 $dc = $itt.database.locales.Controls.en
 }
 $itt["window"].DataContext = $dc
