@@ -1709,6 +1709,7 @@ $itt.Language = $shortCulture
 else
 {
 Set-Statusbar -Text "System language is not supported yet, Fallback to English"
+$itt["window"].DataContext = $itt.database.locales.Controls.en
 $itt.Language = "en"
 }
 Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value "default" -Force
