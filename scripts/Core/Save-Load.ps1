@@ -50,6 +50,8 @@ function Get-file {
 # Save selected items to a JSON file
 function Save-File {
 
+    if($itt.currentList -eq "SettingsList") {return}
+
     Show-Selected -ListView "$($itt.currentList)" -Mode "Filter"
     $selectedApps = Get-SelectedItems -Mode "$($itt.currentList)"
 
@@ -62,12 +64,6 @@ function Save-File {
                 Name = $item.Content
             }
         }
-    }
-
-    # If no items are selected, show a message and return
-    if ($items.Count -eq 0) {
-        Message -key "Empty_save_msg" -icon "Information" -action "OK"
-        return
     }
 
     # Prepare the custom JSON structure
