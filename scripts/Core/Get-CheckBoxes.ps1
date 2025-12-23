@@ -16,9 +16,18 @@ function Get-SelectedItems {
 }
 
 function Show-Selected {
-    param ([string]$ListView, [string]$Mode)
+    param (
+        [string]$ListView,
+        [string]$Mode
+    )
 
     $view = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
+
+    $selectedItems = $itt.$ListView.Items | Where-Object { $_.IsChecked }
+
+    if ($selectedItems.Count -eq 0 -and $Mode -eq 'Filter') {
+        return 
+    }
 
     if ($Mode -eq 'Filter') {
         $view.Filter = { param($i) $i.IsChecked }
