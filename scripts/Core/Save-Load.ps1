@@ -50,7 +50,6 @@ function Get-file {
 # Save selected items to a JSON file
 function Save-File {
 
-    $itt['window'].FindName($itt.currentList).SelectedIndex = 0
     Show-Selected -ListView "$($itt.currentList)" -Mode "Filter"
     $selectedApps = Get-SelectedItems -Mode "$($itt.currentList)"
 
