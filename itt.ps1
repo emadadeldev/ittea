@@ -1701,26 +1701,25 @@ catch {
 $window.ShowDialog() | Out-Null
 }
 function System-Default {
-try {
-$dc = $itt.database.locales.Controls.$shortCulture
-if (-not $dc -or [string]::IsNullOrWhiteSpace($dc)) {
-Set-Statusbar -Text "Default System language is not supported yet, Fallback to English"
-$dc = $itt.database.locales.Controls.en
+$itt.Language = $itt.database.locales.Controls
+if ($itt.Language.PSObject.Properties.Name -contains $shortCulture) {
+$itt["window"].DataContext = $itt.database.locales.Controls.$shortCulture
+$itt.Language = $shortCulture
 }
-$itt["window"].DataContext = $dc
+else
+{
+Set-Statusbar -Text "System language is not supported yet, Fallback to English"
+$itt.Language = "en"
+}
 Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value "default" -Force
-}
-catch {
-Write-Host "An error occurred: $_"
-}
 }
 function Set-Language {
 param ([string]$lang)
 if ($lang -eq "default") { System-Default }
 else {
-$itt.Language = $lang
 $itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
 Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value $lang -Force
+$itt.Language = $lang
 }
 }
 function SwitchToSystem {
