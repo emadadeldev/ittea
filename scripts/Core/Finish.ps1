@@ -13,13 +13,13 @@ function Finish {
 
     switch ($ListView) {
         "AppsListView" {
-            UpdateUI -Name "InstallBtnText" -Content "Install" -Width "auto"
+            UpdateUI -Name "installBtn" -Content "Install" -Width "auto"
             Notify -title "$title" -msg "All installations have finished" -icon "Info" -time 30000
             Add-Log -Message "`n::::All installations have finished::::"
             Set-Statusbar -Text "📢 All installations have finished"
         }
         "TweaksListView" {
-            UpdateUI -Name "ApplyBtnText" -Content "Apply" -Width "auto"
+            UpdateUI -Name "applyBtn" -Content "Apply" -Width "auto"
             Add-Log -Message "`n::::All tweaks have finished::::"
             Set-Statusbar -Text "📢 All tweaks have finished"
             Notify -title "$title" -msg "All tweaks have finished" -icon "Info" -time 30000
