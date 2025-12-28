@@ -12,7 +12,7 @@ function UpdateUI {
 
         if($Content)
         {
-            $itt.$Name.Text = $itt.database.locales.Controls.$($itt.Language).$Content
+            $itt.$Name.Content.Inlines[1].Text = $itt.database.locales.Controls.$($itt.Language).$Content
         }else{
             $itt.$Name.Text = $NonKey
         }
