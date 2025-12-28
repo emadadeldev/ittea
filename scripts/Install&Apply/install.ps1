@@ -35,7 +35,7 @@ function Invoke-Install {
 
         param($selectedApps ,$source)
 
-        UpdateUI -Name "installBtnText" -Content "Downloading" -Width "auto"
+        UpdateUI -Name "installBtn" -Content "Downloading" -Width "auto"
 
         $itt["window"].Dispatcher.Invoke([action] { Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
 
