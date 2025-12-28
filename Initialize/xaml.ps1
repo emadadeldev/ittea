@@ -63,9 +63,6 @@ $itt.Runspace.Open()
 try {
     [xml]$MainXaml = $MainWindowXaml
     $itt["window"] = [Windows.Markup.XamlReader]::Load([System.Xml.XmlNodeReader]$MainXaml)
-    $reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
-    $splash = [Windows.Markup.XamlReader]::Load($reader)
-    $splash.Show()
 }
 catch {
     Write-Output "Error initializing UI: $($_.Exception.Message)"
@@ -148,6 +145,11 @@ try {
     $h = [System.Net.Http.HttpClientHandler]::new()
     $h.AutomaticDecompression = [System.Net.DecompressionMethods] 'GZip,Deflate'
     $c = [System.Net.Http.HttpClient]::new($h)
+
+    # debug start
+        # $appsUrl = "http://127.0.0.1:5541/static/Database/Applications.json"
+        # $tweaksUrl = "http://127.0.0.1:5541/static/Database/Tweaks.json"
+    # debug end
 
     $appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
     $tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Tweaks.json"

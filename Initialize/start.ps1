@@ -1,13 +1,13 @@
-param (
-    # debug start
-    [switch]$Debug,
-    # debug end
-    # Quick install
-    [string]$i
-)
 # Load DLLs
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
+
+# Init Splash Window
+$reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
+$splash = [Windows.Markup.XamlReader]::Load($reader)
+
+# Console Title
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
+
 # ================================
 #region Hashtable
 # ================================
@@ -57,7 +57,11 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 # ================================
 #endregion Ask user for administrator privileges if not already running as admin
 # ================================
+# Show Splash Window
+$splash.Show()
+# Console Color
 $Host.UI.RawUI.BackgroundColor = 'Black'
+# Clear Consle
 Clear-Host
 Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
 # ================================
