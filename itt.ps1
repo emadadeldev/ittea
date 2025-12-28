@@ -1,13 +1,43 @@
-param (
-[string]$i
-)
+$SplashWindowContent = @"
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+x:Name="splash"
+WindowStartupLocation="CenterScreen"
+Topmost="True"
+WindowStyle="None"
+Background="Transparent"
+AllowsTransparency="True"
+Width="1024"
+Height="600"
+ShowInTaskbar="false">
+<Border CornerRadius="15" Height="600" Width="1024">
+<Border.Background>
+<ImageBrush ImageSource="http://127.0.0.1:5500/static/Images/splash.jpg"/>
+</Border.Background>
+<StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+<TextBlock Text="itt"
+FontSize="250"
+Foreground="#0366d6"
+FontFamily="Arial"
+FontWeight="Bold"
+TextAlignment="Center"/>
+<TextBlock Text="Wake up, Neo..."
+FontSize="20"
+Foreground="white"
+TextAlignment="Center"/>
+</StackPanel>
+</Border>
+</Window>
+"@
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
+$reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
+$splash = [Windows.Markup.XamlReader]::Load($reader)
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "25.12.23"
+version        = "25.12.28"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
 Theme          = "default"
@@ -31,6 +61,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Start-Process -FilePath "PowerShell" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"$($MyInvocation.MyCommand.Definition)`"" -Verb RunAs
 exit
 }
+$splash.Show()
 $Host.UI.RawUI.BackgroundColor = 'Black'
 Clear-Host
 Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
@@ -352,8 +383,7 @@ param (
 [string]$Mode
 )
 $view = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
-$selectedItems = $itt.$ListView.Items | Where-Object { $_.IsChecked }
-if ($selectedItems.Count -eq 0 -and $Mode -eq 'Filter') {
+if ($Mode -eq "Filter" -and -not ($itt.$ListView.Items | Where-Object { $_.IsChecked })) {
 return
 }
 if ($Mode -eq 'Filter') {
@@ -1763,37 +1793,6 @@ $itt.$Name.Text = $NonKey
 }
 })
 }
-$SplashWindowContent = @"
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-x:Name="splash"
-WindowStartupLocation="CenterScreen"
-Topmost="True"
-WindowStyle="None"
-Background="Transparent"
-AllowsTransparency="True"
-Width="1024"
-Height="600"
-ShowInTaskbar="false">
-<Border CornerRadius="15" Height="600" Width="1024">
-<Border.Background>
-<ImageBrush ImageSource="http://127.0.0.1:5500/static/Images/splash.jpg"/>
-</Border.Background>
-<StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-<TextBlock Text="itt"
-FontSize="250"
-Foreground="#0366d6"
-FontFamily="Arial"
-FontWeight="Bold"
-TextAlignment="Center"/>
-<TextBlock Text="Wake up, Neo..."
-FontSize="20"
-Foreground="white"
-TextAlignment="Center"/>
-</StackPanel>
-</Border>
-</Window>
-"@
 function Show-Event {
 $itt['window'].FindName('date').text = '10/02/2025'.Trim()
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
@@ -3190,9 +3189,6 @@ $itt.Runspace.Open()
 try {
 [xml]$MainXaml = $MainWindowXaml
 $itt["window"] = [Windows.Markup.XamlReader]::Load([System.Xml.XmlNodeReader]$MainXaml)
-$reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
-$splash = [Windows.Markup.XamlReader]::Load($reader)
-$splash.Show()
 }
 catch {
 Write-Output "Error initializing UI: $($_.Exception.Message)"
