@@ -5,24 +5,18 @@
 
     <Grid Column="1">
 
-        <Button Name="installBtn" FontWeight="SemiBold" 
-                Width="144" Height="45" Margin="20"
-                HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="📥" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                <TextBlock Name="installBtnText" Text="{Binding install, TargetNullValue=Install}" 
-                        VerticalAlignment="Center"/>
-            </StackPanel>
+        <Button Name="installBtn" FontWeight="SemiBold" VerticalAlignment="Center" Width="144" Height="40" Margin="8">
+            <TextBlock>
+                <Run Text="  " FontFamily="Segoe MDL2 Assets"/>
+                <Run Text="{Binding INSTALL, TargetNullValue=INSTALL}"/>
+            </TextBlock>
         </Button>
 
-        <Button Name="applyBtn" FontWeight="SemiBold" 
-                Visibility="Collapsed" Width="144" Height="45" Margin="20"
-                HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="✔" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                <TextBlock Name="applyBtnText" Text="{Binding Apply, TargetNullValue=Apply}" 
-                        VerticalAlignment="Center"/>
-            </StackPanel>
+        <Button Name="applyBtn" Visibility="Collapsed" FontWeight="SemiBold" VerticalAlignment="Center" Width="144" Height="40" Margin="8">
+            <TextBlock >
+                <Run Text="  " FontFamily="Segoe MDL2 Assets"/>
+                <Run Text="{Binding Apply, TargetNullValue=Apply}"/>
+            </TextBlock>
         </Button>
 
     </Grid>
