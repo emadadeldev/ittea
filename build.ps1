@@ -608,7 +608,42 @@ $itt.database = @{
 # Main script generation
 try {
 
-    WriteHeader
+    WriteToScript -Content @"
+# debug start
+param (
+    [switch]`$Debug
+)
+# debug end
+"@
+
+    WriteToScript -Content @"
+#===========================================================================
+#region Begin WPF Splach Window
+#===========================================================================
+"@
+
+    # Define file paths
+    $FilePaths = @{
+        "SplashWindow"  = Join-Path -Path $windows  -ChildPath "SplashWindow.xaml"
+    }
+    try {
+        # Read content from files
+        $SplashWindowContent = (Get-Content -Path $FilePaths["SplashWindow"] -Raw) -replace "'", "''"
+
+        # Final output
+        WriteToScript -Content "`$SplashWindowContent = @`"`n$SplashWindowContent`n`"@"
+
+    }
+    catch {
+        Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
+        break
+    }
+
+    WriteToScript -Content @"
+#===========================================================================
+#endregion End WPF Splach Window
+#===========================================================================
+"@
 
  WriteToScript -Content @"
 
@@ -656,34 +691,6 @@ try {
 #===========================================================================
 "@
 
-WriteToScript -Content @"
-#===========================================================================
-#region Begin WPF Splach Window
-#===========================================================================
-"@
-
-    # Define file paths
-    $FilePaths = @{
-        "SplashWindow"  = Join-Path -Path $windows  -ChildPath "SplashWindow.xaml"
-    }
-    try {
-        # Read content from files
-        $SplashWindowContent = (Get-Content -Path $FilePaths["SplashWindow"] -Raw) -replace "'", "''"
-
-        # Final output
-        WriteToScript -Content "`$SplashWindowContent = @`"`n$SplashWindowContent`n`"@"
-
-    }
-    catch {
-        Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
-        break
-    }
-
-    WriteToScript -Content @"
-#===========================================================================
-#endregion End WPF Splach Window
-#===========================================================================
-"@
     WriteToScript -Content @"
 #===========================================================================
 #region Begin WPF Main Window
