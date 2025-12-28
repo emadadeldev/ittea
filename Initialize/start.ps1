@@ -57,13 +57,13 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 # ================================
 #endregion Ask user for administrator privileges if not already running as admin
 # ================================
-# Show Splash Window
-$splash.Show()
 # Console Color
 $Host.UI.RawUI.BackgroundColor = 'Black'
 # Clear Consle
 Clear-Host
+# Show Splash Window
 Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
+$splash.Show()
 # ================================
 #region MAXIMIZE CURRENT WINDOW
 # ================================
