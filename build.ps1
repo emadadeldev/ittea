@@ -608,6 +608,8 @@ $itt.database = @{
 # Main script generation
 try {
 
+    WriteHeader
+
     WriteToScript -Content @"
 # debug start
 param (
