@@ -31,7 +31,7 @@ function Invoke-Apply {
 
         $itt.ProcessRunning = $true
 
-        UpdateUI -Name "ApplyBtnText" -Content "Applying" -Width "auto"
+        UpdateUI -Name "applyBtn" -Content "Applying" -Width "auto"
         $itt["window"].Dispatcher.Invoke([action] { Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
 
         if((Get-ItemProperty -Path $itt.registryPath -Name "backup" -ErrorAction Stop).backup -eq 0){
