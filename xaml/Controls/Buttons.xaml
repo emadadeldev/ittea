@@ -1,9 +1,9 @@
 <Grid Row="2">
     <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
 
-    <Grid Column="1">
+    <Grid Column="0">
 
         <Button Name="installBtn" FontWeight="SemiBold" VerticalAlignment="Center" Width="144" Height="40" Margin="8">
             <TextBlock>
@@ -21,7 +21,7 @@
 
     </Grid>
 
-    <Grid Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+    <Grid Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
         <TextBlock Name="statusbar" Text="{Binding Welcome, TargetNullValue=Save time and install all your programs at once and debloat Windows and more. Be part of ITT and contribute to improving it}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
         HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
     </Grid>
