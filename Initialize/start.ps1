@@ -4,6 +4,9 @@ Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'Present
 # Init Splash Window
 $reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
 $splash = [Windows.Markup.XamlReader]::Load($reader)
+# Show Splash Window
+$splash.Show()
+Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
 
 # Console Title
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
@@ -40,7 +43,9 @@ if(-not $Debug)
         Write-Host "$($itt.api.message)" -ForegroundColor Red
         read-host "   Press Enter to visit https://github.com/emadadeldev/ittea"
         Start-Process("https://github.com/emadadeldev/ittea")
+        $splash.Close()
         exit
+        
     }
 }
 # ================================
@@ -61,9 +66,6 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 $Host.UI.RawUI.BackgroundColor = 'Black'
 # Clear Consle
 Clear-Host
-# Show Splash Window
-Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
-$splash.Show()
 # ================================
 #region MAXIMIZE CURRENT WINDOW
 # ================================
