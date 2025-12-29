@@ -2,11 +2,13 @@ function FeedbackWindow {
    
     # ------------------- Create Window -------------------
     $workerURL = "https://itt.emadadel4-a0a.workers.dev/feedback"
+    $icon = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
+
     $window = New-Object System.Windows.Window
     $window.Resources.MergedDictionaries.Add($itt["window"].Resources)
     $window.Background = $window.Resources["PrimaryBackgroundColor"]
     $window.Title = "Send Feedback"
-    $window.Icon = $itt.Icon
+    $window.Icon = $Icon
     $window.Height = 434
     $window.Width = 480
     $window.WindowStartupLocation = "CenterScreen"
