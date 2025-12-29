@@ -20,21 +20,22 @@ $hwnd = [Win32]::GetConsoleWindow()
 
 # Console Color
 $Host.UI.RawUI.BackgroundColor = 'Black'
+# Console Title
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 
 # Clear Consle
 Clear-Host
 
+Write-Host "`n  Checking everything...`n"
+
 # Load DLLs
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
 
-# Console Title
 # Init Splash Window
 $reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
 $splash = [Windows.Markup.XamlReader]::Load($reader)
 # Show Splash Window
 $splash.Show()
-Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
 
 # ================================
 #region Hashtable
@@ -62,17 +63,33 @@ $itt = [Hashtable]::Synchronized(@{
 # ================================
 if(-not $Debug)
 {
-    $checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.version)"
-    $itt.api = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
-    if ($itt.api.status) {
-        Write-Host "$($itt.api.message)" -ForegroundColor Red
-        read-host "   Press Enter to visit https://github.com/emadadeldev/ittea"
-        Start-Process("https://github.com/emadadeldev/ittea")
-        $splash.Close()
-        exit
-        
+    while ($true) {
+        try {
+            $checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.version)"
+            $itt.api = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
+
+            if ($itt.api.status) {
+                Write-Host "$($itt.api.message)" -ForegroundColor Red
+                Read-Host "   Press Enter to visit https://github.com/emadadeldev/ittea"
+                Start-Process "https://github.com/emadadeldev/ittea"
+                $splash.Close()
+                exit
+            }
+
+            Write-Host "  Status           [$($itt.api.message)]" -ForegroundColor Green
+            Write-Host "  Version          [$($itt.Version)]" -ForegroundColor Green
+            Write-Host "`n  Relax, good things are loading… almost there!`n"
+            break
+        }
+        catch {
+            Write-Host "Unstable internet connection detected. Retrying in 10 seconds..." -ForegroundColor Yellow
+            Start-Sleep 10
+        }
     }
 }
+# ================================
+#endregion Check for updates
+# ================================
 # ================================
 #endregion Check for updates
 # ================================
