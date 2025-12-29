@@ -21,7 +21,7 @@
 
     </Grid>
 
-    <Grid Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+    <Grid Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
         <TextBlock Name="statusbar" Text="{Binding Welcome, TargetNullValue=Save time and install all your programs at once and debloat Windows and more. Be part of ITT and contribute to improving it}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
         HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
     </Grid>
