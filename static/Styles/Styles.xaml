@@ -494,8 +494,8 @@
                             <Condition Property="Name" Value="WhatsNewTab"/>
                         </MultiTrigger.Conditions>
                         <MultiTrigger.Setters>
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonHighlightColor}" />
-                            <Setter Property="Foreground" Value="White" />
+                            <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryButtonBackground}" />
                         </MultiTrigger.Setters>
                     </MultiTrigger>
 
@@ -723,23 +723,22 @@
 <!--End ContextMenu Style-->
 
 <!-- BlinkingDotStyle -->
-    <Style x:Key="BlinkingDotStyle" TargetType="Ellipse">
-        <Setter Property="Opacity" Value="0"/>
-        <Style.Triggers>
-            <EventTrigger RoutedEvent="Ellipse.Loaded">
-                <BeginStoryboard>
-                    <Storyboard RepeatBehavior="Forever">
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity">
-                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.5"/>
-                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:1.5"/>
-                            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:2.0"/>
-                            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:2.5"/>
-                        </DoubleAnimationUsingKeyFrames>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-        </Style.Triggers>
-    </Style>
+<Style x:Key="BlinkingDotStyle" TargetType="FrameworkElement">
+    <Setter Property="Opacity" Value="1"/>
+    <Style.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard RepeatBehavior="Forever">
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0"
+                        Duration="0:0:0.9"
+                        AutoReverse="True"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Style.Triggers>
+</Style>
 <!-- End BlinkingDotStyle -->
 
 <!-- Border Style -->
