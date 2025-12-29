@@ -13,7 +13,6 @@ function UpdateUI {
         if($Content)
         {
             $itt.$Name.Content = $itt.database.locales.Controls.$($itt.Language).$Content
-            $itt.$Name.Backgrond = "Transparent"
         }else{
             $itt.$Name.Text = $NonKey
         }
