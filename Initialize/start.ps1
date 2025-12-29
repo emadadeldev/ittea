@@ -47,7 +47,6 @@ $itt = [Hashtable]::Synchronized(@{
     api            = $null
     version        = "#{replaceme}"
     registryPath   = "HKCU:\Software\ITT@emadadel"
-    icon           = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
     Theme          = "default"
     Date           = (Get-Date -Format "MM/dd/yyy")
     Language       = "default"
