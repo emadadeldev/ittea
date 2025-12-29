@@ -32,6 +32,8 @@ TextAlignment="Center"/>
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
 $reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
 $splash = [Windows.Markup.XamlReader]::Load($reader)
+$splash.Show()
+Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
@@ -54,6 +56,7 @@ if ($itt.api.status) {
 Write-Host "$($itt.api.message)" -ForegroundColor Red
 read-host "   Press Enter to visit https://github.com/emadadeldev/ittea"
 Start-Process("https://github.com/emadadeldev/ittea")
+$splash.Close()
 exit
 }
 }
@@ -63,8 +66,6 @@ exit
 }
 $Host.UI.RawUI.BackgroundColor = 'Black'
 Clear-Host
-Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
-$splash.Show()
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
