@@ -383,7 +383,7 @@ function ConvertTo-Xaml {
             "^#### (.+)" {
                 #### Description
                 $Description = $matches[1].Trim()  
-                $xaml += "<TextBlock Text=''$Description'' FontSize=''$DescriptionFontSize'' HorizontalAlignment=''Left'' Padding=''10 0 0 10'' Foreground=''{DynamicResource PrimaryTextColor}'' TextWrapping=''Wrap'' MaxWidth=''450''/>`n"
+                $xaml += "<TextBlock Text=''$Description'' FontSize=''$DescriptionFontSize'' HorizontalAlignment=''Left'' Padding=''10 0 0 10'' Foreground=''{DynamicResource PrimaryTextColor}'' TextWrapping=''Wrap'' MaxWidth=''500''/>`n"
             }
             "^- (.+)" {
                 # - Lists
