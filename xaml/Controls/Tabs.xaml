@@ -6,7 +6,7 @@
         <TabItem.Header>
             <Grid>
                 <TextBlock Text="itt" FontFamily="Arial" FontWeight="Bold" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Ellipse Width="9" Height="9" Fill="Red" Style="{StaticResource BlinkingDotStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" Margin="40,0,0,0" x:Name="hotdot"/>
+                <TextBlock Name="hotdot" Text="🎉" FontSize="14" HorizontalAlignment="Right" Visibility="Hidden" Padding="0,0,0,67" Style="{StaticResource BlinkingDotStyle}" />
             </Grid>
         </TabItem.Header><!-- Whats New Content -->
         <Border Background="transparent" Padding="20">
