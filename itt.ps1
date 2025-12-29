@@ -29,6 +29,18 @@ TextAlignment="Center"/>
 </Border>
 </Window>
 "@
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public class Win32 {
+[DllImport("user32.dll")]
+public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+[DllImport("kernel32.dll")]
+public static extern IntPtr GetConsoleWindow();
+}
+"@
+$hwnd = [Win32]::GetConsoleWindow()
+[Win32]::ShowWindowAsync($hwnd, 3) | Out-Null
 $Host.UI.RawUI.BackgroundColor = 'Black'
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 Clear-Host
@@ -66,18 +78,6 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Start-Process -FilePath "PowerShell" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"$($MyInvocation.MyCommand.Definition)`"" -Verb RunAs
 exit
 }
-Add-Type @"
-using System;
-using System.Runtime.InteropServices;
-public class Win32 {
-[DllImport("user32.dll")]
-public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-[DllImport("kernel32.dll")]
-public static extern IntPtr GetConsoleWindow();
-}
-"@
-$hwnd = [Win32]::GetConsoleWindow()
-[Win32]::ShowWindowAsync($hwnd, 3) | Out-Null
 if (-not (Test-Path -Path $itt.ittDir)) {New-Item -ItemType Directory -Path $itt.ittDir -Force | Out-Null}
 Start-Transcript -Path (Join-Path $itt.ittDir "logs\log_$(Get-Date -Format 'yyyy-MM-dd').log") -Append -Force *> $null
 $itt.database.locales = @'
