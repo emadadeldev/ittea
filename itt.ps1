@@ -29,12 +29,14 @@ TextAlignment="Center"/>
 </Border>
 </Window>
 "@
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
+Clear-Host
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
 $reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
 $splash = [Windows.Markup.XamlReader]::Load($reader)
 $splash.Show()
 Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
-$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
@@ -64,8 +66,6 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Start-Process -FilePath "PowerShell" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"$($MyInvocation.MyCommand.Definition)`"" -Verb RunAs
 exit
 }
-$Host.UI.RawUI.BackgroundColor = 'Black'
-Clear-Host
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
