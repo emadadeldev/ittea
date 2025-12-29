@@ -52,7 +52,7 @@
             </Grid.RowDefinitions>
 
             <!-- Apps Category -->
-            <ComboBox Name="AppsCategory" Grid.Row="0" SelectedIndex="0" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
+            <ComboBox Name="AppsCategory" Grid.Row="0" SelectedIndex="0" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" IsReadOnly="True">
                 <ComboBoxItem Tag="All">
                     <TextBlock>
                         <Run Text="🏷 "/>
