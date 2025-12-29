@@ -89,7 +89,6 @@ protection,Protection
 classic,Classic
 auto,Auto
 package_manager,Package Manager
-DisablePopupText,Show on update
 "@
     # Write the cOntent to the CSV file
     $csvFilePath = "locales/$csvFilePath.csv"
