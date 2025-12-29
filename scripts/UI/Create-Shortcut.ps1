@@ -7,10 +7,11 @@ function ITTShortcut {
 
     # URL of the icon file
     # Determine the path in AppData\Roaming
+    $icon = "https://raw.githubusercontent.com/emadadeldev/ittea/main/static/Icons/icon.ico"
     $appDataPath = "$env:ProgramData/itt"
     $localIconPath = Join-Path -Path $appDataPath -ChildPath "icon.ico"
     # Download the icon file
-    Invoke-WebRequest -Uri $itt.icon -OutFile $localIconPath
+    Invoke-WebRequest -Uri $icon -OutFile $localIconPath
     # Create a shortcut object
     $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
     # Set the target path to PowerShell with your command
