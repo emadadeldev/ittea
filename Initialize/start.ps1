@@ -1,15 +1,19 @@
+# Console Color
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
+# Clear Consle
+Clear-Host
+
 # Load DLLs
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
 
+# Console Title
 # Init Splash Window
 $reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
 $splash = [Windows.Markup.XamlReader]::Load($reader)
 # Show Splash Window
 $splash.Show()
 Write-Host "`n  Relax, good things are loading… almost there!" -ForegroundColor Yellow
-
-# Console Title
-$Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 
 # ================================
 #region Hashtable
@@ -62,10 +66,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 # ================================
 #endregion Ask user for administrator privileges if not already running as admin
 # ================================
-# Console Color
-$Host.UI.RawUI.BackgroundColor = 'Black'
-# Clear Consle
-Clear-Host
+
 # ================================
 #region MAXIMIZE CURRENT WINDOW
 # ================================
