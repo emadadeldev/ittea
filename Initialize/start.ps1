@@ -81,7 +81,7 @@ if(-not $Debug)
             break
         }
         catch {
-            Write-Host "  Unstable internet connection detected. Retrying in 10 seconds..." -ForegroundColor Yellow
+            Write-Host "  Unstable internet connection detected. Retrying in 10 seconds...`n" -ForegroundColor Yellow
             Start-Sleep 10
         }
     }
