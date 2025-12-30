@@ -1808,11 +1808,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -2537,7 +2537,7 @@ AutoReverse="True"/>
 <SolidColorBrush x:Key="itemColor1" Color="#CC141414"/>
 <SolidColorBrush x:Key="itemColor2" Color="#991C1C1C"/>
 <SolidColorBrush x:Key="logo" Color="#0366d6"/>
-<ImageBrush x:Key="BackgroundImage" ImageSource="https://images.hdqwalls.com/wallpapers/the-batman-fan-made-4k-xx.jpg" Stretch="UniformToFill" Opacity="0.4" />
+<ImageBrush x:Key="BackgroundImage" ImageSource="https://images.hdqwalls.com/wallpapers/the-batman-fan-made-4k-xx.jpg" Stretch="UniformToFill" Opacity="0.1" />
 <x:String x:Key="SubText">I am not a hero</x:String>
 </ResourceDictionary>
 <ResourceDictionary x:Key="Light">
@@ -2581,7 +2581,7 @@ AutoReverse="True"/>
 <SolidColorBrush x:Key="itemColor1" Color="#CC000000"/>
 <SolidColorBrush x:Key="itemColor2" Color="#99000002"/>
 <SolidColorBrush x:Key="logo" Color="#00B583"/>
-<ImageBrush x:Key="BackgroundImage" ImageSource="https://w.wallhaven.cc/full/we/wallhaven-wegrj6.jpg" Stretch="UniformToFill" Opacity="0.3"/>
+<ImageBrush x:Key="BackgroundImage" ImageSource="https://w.wallhaven.cc/full/we/wallhaven-wegrj6.jpg" Stretch="UniformToFill" Opacity="0.1"/>
 <x:String x:Key="SubText">#StandWithPalestine</x:String>
 </ResourceDictionary>
 </Window.Resources>
