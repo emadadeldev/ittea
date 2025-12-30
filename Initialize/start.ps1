@@ -1,23 +1,3 @@
-# ================================
-#region MAXIMIZE CURRENT WINDOW
-# ================================
-Add-Type @"
-using System;
-using System.Runtime.InteropServices;
-public class Win32 {
-    [DllImport("user32.dll")]
-    public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-    [DllImport("kernel32.dll")]
-    public static extern IntPtr GetConsoleWindow();
-}
-"@
-
-$hwnd = [Win32]::GetConsoleWindow()
-[Win32]::ShowWindowAsync($hwnd, 3) | Out-Null
-# ================================
-#endregion MAXIMIZE CURRENT WINDOW
-# ================================
-
 # Console Color
 $Host.UI.RawUI.BackgroundColor = 'Black'
 # Console Title
@@ -102,6 +82,26 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 }
 # ================================
 #endregion Ask user for administrator privileges if not already running as admin
+# ================================
+
+# ================================
+#region MAXIMIZE CURRENT WINDOW
+# ================================
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public class Win32 {
+    [DllImport("user32.dll")]
+    public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+    [DllImport("kernel32.dll")]
+    public static extern IntPtr GetConsoleWindow();
+}
+"@
+
+$hwnd = [Win32]::GetConsoleWindow()
+[Win32]::ShowWindowAsync($hwnd, 3) | Out-Null
+# ================================
+#endregion MAXIMIZE CURRENT WINDOW
 # ================================
 
 # Create directory if it doesn't exist
