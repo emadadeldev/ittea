@@ -34,7 +34,7 @@
     </TabItem>
 
     <!-- Apps Tab -->
-    <TabItem Name="apps" Header="{Binding apps, TargetNullValue=Apps}" Tag="apps">
+    <TabItem Name="apps" Header="{Binding apps}" Tag="apps">
         <TabItem.HeaderTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Vertical">
@@ -56,103 +56,103 @@
                 <ComboBoxItem Tag="All">
                     <TextBlock>
                         <Run Text="🏷 "/>
-                        <Run Text="{Binding all, TargetNullValue=All}"/>
+                        <Run Text="{Binding all}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Web Browsers">
                     <TextBlock>
                         <Run Text="🌐 "/>
-                        <Run Text="{Binding web browsers, TargetNullValue=Web Browsers}"/>
+                        <Run Text="{Binding web browsers}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Media">
                     <TextBlock>
                         <Run Text="🎬 "/>
-                        <Run Text="{Binding media, TargetNullValue=Media}"/>
+                        <Run Text="{Binding media}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Media Tools">
                     <TextBlock>
                         <Run Text="🎚 "/>
-                        <Run Text="{Binding media tools, TargetNullValue=Media Tools}"/>
+                        <Run Text="{Binding media tools}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Documents">
                     <TextBlock>
                         <Run Text="📃 "/>
-                        <Run Text="{Binding documents, TargetNullValue=Documents}"/>
+                        <Run Text="{Binding documents}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Compression">
                     <TextBlock>
                         <Run Text="📀 "/>
-                        <Run Text="{Binding compression, TargetNullValue=Compression}"/>
+                        <Run Text="{Binding compression}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Communication">
                     <TextBlock>
                         <Run Text="📞 "/>
-                        <Run Text="{Binding communication, TargetNullValue=Communication}"/>
+                        <Run Text="{Binding communication}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="File Sharing">
                     <TextBlock>
                         <Run Text="📁 "/>
-                        <Run Text="{Binding file sharing, TargetNullValue=File Sharing}"/>
+                        <Run Text="{Binding file sharing}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Imaging">
                     <TextBlock>
                         <Run Text="📷 "/>
-                        <Run Text="{Binding imaging, TargetNullValue=Imaging}"/>
+                        <Run Text="{Binding imaging}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Gaming">
                     <TextBlock>
                         <Run Text="🎮 "/>
-                        <Run Text="{Binding gaming, TargetNullValue=Gaming}"/>
+                        <Run Text="{Binding gaming}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Utilities">
                     <TextBlock>
                         <Run Text="🔨 "/>
-                        <Run Text="{Binding utilities, TargetNullValue=Utilities}"/>
+                        <Run Text="{Binding utilities}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Disk Tools">
                     <TextBlock>
                         <Run Text="💽 "/>
-                        <Run Text="{Binding disk tools, TargetNullValue=Disk Tools}"/>
+                        <Run Text="{Binding disk tools}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Development">
                     <TextBlock>
                         <Run Text="👩‍💻 "/>
-                        <Run Text="{Binding development, TargetNullValue=Development}"/>
+                        <Run Text="{Binding development}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Security">
                     <TextBlock>
                         <Run Text="🛡 "/>
-                        <Run Text="{Binding security, TargetNullValue=Security}"/>
+                        <Run Text="{Binding security}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Portable">
                     <TextBlock>
                         <Run Text="💼 "/>
-                        <Run Text="{Binding portable, TargetNullValue=Portable}"/>
+                        <Run Text="{Binding portable}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Runtimes">
                     <TextBlock>
                         <Run Text="📈 "/>
-                        <Run Text="{Binding runtimes, TargetNullValue=Runtimes}"/>
+                        <Run Text="{Binding runtimes}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Drivers">
                     <TextBlock>
                         <Run Text="🔌 "/>
-                        <Run Text="{Binding drivers, TargetNullValue=Drivers}"/>
+                        <Run Text="{Binding drivers}"/>
                     </TextBlock>
                 </ComboBoxItem>
             </ComboBox>
@@ -210,7 +210,7 @@
     </TabItem>
 
     <!-- Tweaks Tab -->
-    <TabItem x:Name="tweeksTab" Header="{Binding tweaks, TargetNullValue=Tweaks}" Tag="tweaks">
+    <TabItem x:Name="tweeksTab" Header="{Binding tweaks}" Tag="tweaks">
         <TabItem.HeaderTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Vertical">
@@ -231,49 +231,49 @@
                 <ComboBoxItem Tag="all">
                     <TextBlock>
                         <Run Text="🏷 "/>
-                        <Run Text="{Binding all, TargetNullValue=All}"/>
+                        <Run Text="{Binding all}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Privacy">
                     <TextBlock>
                         <Run Text="🔒 "/>
-                        <Run Text="{Binding privacy, TargetNullValue=Privacy}"/>
+                        <Run Text="{Binding privacy}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Fixer">
                     <TextBlock>
                         <Run Text="🔧 "/>
-                        <Run Text="{Binding fixer, TargetNullValue=Fixer}"/>
+                        <Run Text="{Binding fixer}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Performance">
                     <TextBlock>
                         <Run Text="⚡ "/>
-                        <Run Text="{Binding performance, TargetNullValue=Performance}"/>
+                        <Run Text="{Binding performance}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Personalization">
                     <TextBlock>
                         <Run Text="🎨 "/>
-                        <Run Text="{Binding personalization, TargetNullValue=Personalization}"/>
+                        <Run Text="{Binding personalization}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Power">
                     <TextBlock>
                         <Run Text="🔋 "/>
-                        <Run Text="{Binding power, TargetNullValue=Power}"/>
+                        <Run Text="{Binding power}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Protection">
                     <TextBlock>
                         <Run Text="🛡 "/>
-                        <Run Text="{Binding protection, TargetNullValue=Protection}"/>
+                        <Run Text="{Binding protection}"/>
                     </TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="Classic">
                     <TextBlock>
                         <Run Text="🕰 "/>
-                        <Run Text="{Binding classic, TargetNullValue=Classic}"/>
+                        <Run Text="{Binding classic}"/>
                     </TextBlock>
                 </ComboBoxItem>
             </ComboBox>
@@ -330,7 +330,7 @@
     </TabItem>
 
     <!-- Settings Tab -->
-    <TabItem x:Name="SettingsTab" Header="{Binding settings, TargetNullValue=Settings}">
+    <TabItem x:Name="SettingsTab" Header="{Binding settings}">
         <TabItem.HeaderTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Vertical">
