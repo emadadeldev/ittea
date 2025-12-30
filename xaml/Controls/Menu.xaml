@@ -49,7 +49,7 @@
 
     <!-- About -->
     <MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About, TargetNullValue=About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
-        <MenuItem.Icon><TextBlock Text="👩‍💻"/></MenuItem.Icon>
+        <MenuItem.Icon><TextBlock Text="🏅"/></MenuItem.Icon>
     </MenuItem>
 
 </Menu>
