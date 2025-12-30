@@ -2648,7 +2648,7 @@ AutoReverse="True"/>
 <MenuItem Name="asustool" Header="ASUS Setup Tool" ToolTip="Tool that manages the setup installation for the legacy Aura Sync, LiveDash, AiSuite3"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 </MenuItem>
 <MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About, TargetNullValue=About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
-<MenuItem.Icon><TextBlock Text="👩‍💻"/></MenuItem.Icon>
+<MenuItem.Icon><TextBlock Text="🏅"/></MenuItem.Icon>
 </MenuItem>
 </Menu>
 <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
