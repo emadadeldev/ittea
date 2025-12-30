@@ -8,7 +8,7 @@
 
         <Button Name="installBtn" 
                     FontWeight="SemiBold" 
-                    Content="{Binding INSTALL, TargetNullValue=INSTALL}" 
+                    Content="{Binding Install}" 
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Center" 
                     Width="90" 
@@ -16,7 +16,7 @@
 
         <Button Name="applyBtn" 
             Visibility="Collapsed" 
-            Content="{Binding Apply, 
+            Content="{Binding Apply}, 
             TargetNullValue=Apply}" 
             FontWeight="SemiBold" 
             VerticalAlignment="Top" 
