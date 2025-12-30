@@ -68,10 +68,10 @@ if(-not $Debug)
             $itt.api = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
 
             if ($itt.api.status) {
+                $splash.Close()
                 Write-Host "$($itt.api.message)" -ForegroundColor Red
                 Read-Host "   Press Enter to visit https://github.com/emadadeldev/ittea"
                 Start-Process "https://github.com/emadadeldev/ittea"
-                $splash.Close()
                 exit
             }
 
