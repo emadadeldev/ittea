@@ -35,7 +35,7 @@ foreach ($Func in $Functions) {
         )
             
         # Debug start
-        Write-Output "Added function: $Func"
+        Write-Output "  [Debug] <$Func> included in runspace`n"
         # Debug end
     }
 }
