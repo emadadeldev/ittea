@@ -33,6 +33,6 @@
 
     <!-- Misc -->
     <SolidColorBrush x:Key="logo" Color="#00B583"/>
-    <ImageBrush x:Key="BackgroundImage" ImageSource="https://w.wallhaven.cc/full/we/wallhaven-wegrj6.jpg" Stretch="UniformToFill" Opacity="0.3"/>
+    <ImageBrush x:Key="BackgroundImage" ImageSource="https://w.wallhaven.cc/full/we/wallhaven-wegrj6.jpg" Stretch="UniformToFill" Opacity="0.1"/>
     <x:String x:Key="SubText">#StandWithPalestine</x:String>
 </ResourceDictionary>
