@@ -41,7 +41,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "25.12.30"
+version        = "25.12.31"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -2594,32 +2594,32 @@ AutoReverse="True"/>
 <ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/>
 </Grid.ColumnDefinitions>
 <Menu Grid.Row="0" Grid.Column="0" Background="{DynamicResource SecondaryPrimaryBackgroundColor}" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left">
-<MenuItem Header="{Binding Management, TargetNullValue=Management}" VerticalAlignment="Center" HorizontalAlignment="Left" >
+<MenuItem Header="{Binding Management}" VerticalAlignment="Center" HorizontalAlignment="Left" >
 <MenuItem.Icon><TextBlock Text="🖥"/></MenuItem.Icon>
-<MenuItem Name="sysinfo" Header="{Binding System_Info, TargetNullValue=System Info}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="poweroption" Header="{Binding Power_Options, TargetNullValue=Power Options}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="sysinfo" Header="{Binding System_Info}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="poweroption" Header="{Binding Power_Options}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="deviceManager"><MenuItem.Header><Binding Path="Device_Manager" TargetNullValue="Device Manager"/></MenuItem.Header><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="services" Header="{Binding Services, TargetNullValue=Services}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="network" Header="{Binding Networks, TargetNullValue=Networks}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="appsfeatures" Header="{Binding Apps_features, TargetNullValue=Programs and Features}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="taskmgr" Header="{Binding Task_Manager, TargetNullValue=Task Manager}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="diskmgmt" Header="{Binding Disk_Managment, TargetNullValue=Disk Management}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="msconfig" Header="{Binding Msconfig, TargetNullValue=System Configuration}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="ev" Header="{Binding Environment_Variables, TargetNullValue=Environment Variables}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE81E;"/></MenuItem.Icon></MenuItem>
-<MenuItem Name="spp" Header="{Binding System_Protection, TargetNullValue=System Protection}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="services" Header="{Binding Services}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="network" Header="{Binding Networks}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="appsfeatures" Header="{Binding Apps_features}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="taskmgr" Header="{Binding Task_Manager}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="diskmgmt" Header="{Binding Disk_Managment}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="msconfig" Header="{Binding Msconfig}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="ev" Header="{Binding Environment_Variables}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE81E;"/></MenuItem.Icon></MenuItem>
+<MenuItem Name="spp" Header="{Binding System_Protection}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 </MenuItem>
-<MenuItem Header="{Binding Preferences, TargetNullValue=Preferences}" VerticalAlignment="Center" HorizontalAlignment="Left" >
+<MenuItem Header="{Binding Preferences}" VerticalAlignment="Center" HorizontalAlignment="Left" >
 <MenuItem.Icon><TextBlock Text="🌟"/></MenuItem.Icon>
-<MenuItem Name="restorepoint" Header="{Binding Create_restore_point, TargetNullValue=Restore Point}" InputGestureText="Shift+Q"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Header="{Binding package_manager, TargetNullValue=Package Manager}" ToolTip="Select Package Manager"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="auto" Header="{Binding auto, TargetNullValue=Auto}" ToolTip="Automatically install using the best available method"/><MenuItem Name="choco" Header="Choco"/><MenuItem Name="winget" Header="Winget"/></MenuItem>
+<MenuItem Name="restorepoint" Header="{Binding Create_restore_point}" InputGestureText="Shift+Q"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Header="{Binding package_manager}" ToolTip="Select Package Manager"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="auto" Header="{Binding auto}" ToolTip="Automatically install using the best available method"/><MenuItem Name="choco" Header="Choco"/><MenuItem Name="winget" Header="Winget"/></MenuItem>
 <MenuItem Header="{Binding Portable_Downloads_Folder}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="chocoloc" Header="Choco" InputGestureText="Shift+C"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem><MenuItem Name="itt" Header="ITT" InputGestureText="Shift+T"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem></MenuItem>
-<MenuItem Name="save" Header="{Binding Save, TargetNullValue=Save}" ToolTip="Save selected apps" InputGestureText="Shift+S"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Name="load" Header="{Binding Restore, TargetNullValue=Restore}" ToolTip="Restore selected apps" InputGestureText="Shift+D"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Header="{Binding Theme}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="systheme" Header="{Binding Use_system_setting, TargetNullValue=System}" ToolTip="Use system theme if available"/><MenuItem Name="Dark" Header="Dark"/>
+<MenuItem Name="save" Header="{Binding Save}" ToolTip="Save selected apps" InputGestureText="Shift+S"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="load" Header="{Binding Restore}" ToolTip="Restore selected apps" InputGestureText="Shift+D"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Header="{Binding Theme}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="systheme" Header="{Binding Use_system_setting}" ToolTip="Use system theme if available"/><MenuItem Name="Dark" Header="Dark"/>
 <MenuItem Name="DarkKnight" Header="The Dark Knight"/>
 <MenuItem Name="Light" Header="Light"/>
 <MenuItem Name="Palestine" Header="Palestine"/></MenuItem>
-<MenuItem Header="{Binding Language, TargetNullValue=Language}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="systemlang" Header="{Binding Use_system_setting, TargetNullValue=System Language}"/><MenuItem Name="ar" Header="عربي"/>
+<MenuItem Header="{Binding Language}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="systemlang" Header="{Binding Use_system_setting}"/><MenuItem Name="ar" Header="عربي"/>
 <MenuItem Name="de" Header="Deutsch"/>
 <MenuItem Name="en" Header="English"/>
 <MenuItem Name="es" Header="Español"/>
@@ -2630,9 +2630,9 @@ AutoReverse="True"/>
 <MenuItem Name="ru" Header="Русский"/>
 <MenuItem Name="tr" Header="Türkçe"/>
 <MenuItem Name="zh" Header="中文"/></MenuItem>
-<MenuItem Name="ittshortcut" Header="{Binding Create_desktop_shortcut, TargetNullValue=Create Shortcut}" InputGestureText="Shift+I"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="ittshortcut" Header="{Binding Create_desktop_shortcut}" InputGestureText="Shift+I"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" Text=""/></MenuItem.Icon></MenuItem>
 </MenuItem>
-<MenuItem Header="{Binding Third_party, TargetNullValue=Third Party}" VerticalAlignment="Center" HorizontalAlignment="Center" >
+<MenuItem Header="{Binding Third_party}" VerticalAlignment="Center" HorizontalAlignment="Center" >
 <MenuItem.Icon><TextBlock Text="🔗"/></MenuItem.Icon>
 <MenuItem Name="finddriver" Header="Find GPU Driver" ToolTip="Find GPU Driver on official manufacturer website"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="mas" Header="Windows activation" ToolTip="Windows activation"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
@@ -2640,14 +2640,14 @@ AutoReverse="True"/>
 <MenuItem Name="idm" Header="IDM Trial Reset" ToolTip="Get rid of IDM Active message"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="shelltube" Header="ShellTube" ToolTip="Download YouTube video easily"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="spotifydown" Header="Spotify Downloader" ToolTip="SpotifyDown allows you to download tracks, playlists and albums from Spotify instantly."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
-<MenuItem Header="{Binding Browsers_extensions, TargetNullValue=Browsers Extensions}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="uBlock" Header="uBlockOrigin"/><MenuItem Header="Youtube"><MenuItem Name="Unhook" Header="Unhook Customize YouTube"/><MenuItem Name="efy" Header="Enhancer for YouTube"/></MenuItem></MenuItem>
+<MenuItem Header="{Binding Browsers_extensions}"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon><MenuItem Name="uBlock" Header="uBlockOrigin"/><MenuItem Header="Youtube"><MenuItem Name="Unhook" Header="Unhook Customize YouTube"/><MenuItem Name="efy" Header="Enhancer for YouTube"/></MenuItem></MenuItem>
 <MenuItem Name="sordum" Header="Sordum tools" ToolTip="Collection of free utilities designed to enhance or control various aspects of the Windows operating system"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="techpowerup" Header="TechPowerUp" ToolTip="Collection of free TechPowerUp utilities."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="majorgeeks" Header="Major Geeks" ToolTip="Website that provides trusted, safe, and curated software downloads for Windows users. It focuses on high-quality tools."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="webtor" Header="Webtor" ToolTip="Web-based platform that allows users to stream torrent files directly in their browser without needing to download them."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="asustool" Header="ASUS Setup Tool" ToolTip="Tool that manages the setup installation for the legacy Aura Sync, LiveDash, AiSuite3"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 </MenuItem>
-<MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About, TargetNullValue=About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
+<MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
 <MenuItem.Icon><TextBlock Text="🏅"/></MenuItem.Icon>
 </MenuItem>
 </Menu>
@@ -2748,7 +2748,7 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 </Grid>
 </Border>
 </TabItem>
-<TabItem Name="apps" Header="{Binding apps, TargetNullValue=Apps}" Tag="apps">
+<TabItem Name="apps" Header="{Binding apps}" Tag="apps">
 <TabItem.HeaderTemplate>
 <DataTemplate>
 <StackPanel Orientation="Vertical">
@@ -2766,103 +2766,103 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <ComboBoxItem Tag="All">
 <TextBlock>
 <Run Text="🏷 "/>
-<Run Text="{Binding all, TargetNullValue=All}"/>
+<Run Text="{Binding all}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Web Browsers">
 <TextBlock>
 <Run Text="🌐 "/>
-<Run Text="{Binding web browsers, TargetNullValue=Web Browsers}"/>
+<Run Text="{Binding web browsers}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Media">
 <TextBlock>
 <Run Text="🎬 "/>
-<Run Text="{Binding media, TargetNullValue=Media}"/>
+<Run Text="{Binding media}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Media Tools">
 <TextBlock>
 <Run Text="🎚 "/>
-<Run Text="{Binding media tools, TargetNullValue=Media Tools}"/>
+<Run Text="{Binding media tools}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Documents">
 <TextBlock>
 <Run Text="📃 "/>
-<Run Text="{Binding documents, TargetNullValue=Documents}"/>
+<Run Text="{Binding documents}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Compression">
 <TextBlock>
 <Run Text="📀 "/>
-<Run Text="{Binding compression, TargetNullValue=Compression}"/>
+<Run Text="{Binding compression}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Communication">
 <TextBlock>
 <Run Text="📞 "/>
-<Run Text="{Binding communication, TargetNullValue=Communication}"/>
+<Run Text="{Binding communication}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="File Sharing">
 <TextBlock>
 <Run Text="📁 "/>
-<Run Text="{Binding file sharing, TargetNullValue=File Sharing}"/>
+<Run Text="{Binding file sharing}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Imaging">
 <TextBlock>
 <Run Text="📷 "/>
-<Run Text="{Binding imaging, TargetNullValue=Imaging}"/>
+<Run Text="{Binding imaging}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Gaming">
 <TextBlock>
 <Run Text="🎮 "/>
-<Run Text="{Binding gaming, TargetNullValue=Gaming}"/>
+<Run Text="{Binding gaming}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Utilities">
 <TextBlock>
 <Run Text="🔨 "/>
-<Run Text="{Binding utilities, TargetNullValue=Utilities}"/>
+<Run Text="{Binding utilities}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Disk Tools">
 <TextBlock>
 <Run Text="💽 "/>
-<Run Text="{Binding disk tools, TargetNullValue=Disk Tools}"/>
+<Run Text="{Binding disk tools}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Development">
 <TextBlock>
 <Run Text="👩‍💻 "/>
-<Run Text="{Binding development, TargetNullValue=Development}"/>
+<Run Text="{Binding development}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Security">
 <TextBlock>
 <Run Text="🛡 "/>
-<Run Text="{Binding security, TargetNullValue=Security}"/>
+<Run Text="{Binding security}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Portable">
 <TextBlock>
 <Run Text="💼 "/>
-<Run Text="{Binding portable, TargetNullValue=Portable}"/>
+<Run Text="{Binding portable}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Runtimes">
 <TextBlock>
 <Run Text="📈 "/>
-<Run Text="{Binding runtimes, TargetNullValue=Runtimes}"/>
+<Run Text="{Binding runtimes}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Drivers">
 <TextBlock>
 <Run Text="🔌 "/>
-<Run Text="{Binding drivers, TargetNullValue=Drivers}"/>
+<Run Text="{Binding drivers}"/>
 </TextBlock>
 </ComboBoxItem>
 </ComboBox>
@@ -2906,7 +2906,7 @@ HorizontalContentAlignment="Stretch"/>
 </ScrollViewer>
 </Grid>
 </TabItem>
-<TabItem x:Name="tweeksTab" Header="{Binding tweaks, TargetNullValue=Tweaks}" Tag="tweaks">
+<TabItem x:Name="tweeksTab" Header="{Binding tweaks}" Tag="tweaks">
 <TabItem.HeaderTemplate>
 <DataTemplate>
 <StackPanel Orientation="Vertical">
@@ -2924,49 +2924,49 @@ HorizontalContentAlignment="Stretch"/>
 <ComboBoxItem Tag="all">
 <TextBlock>
 <Run Text="🏷 "/>
-<Run Text="{Binding all, TargetNullValue=All}"/>
+<Run Text="{Binding all}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Privacy">
 <TextBlock>
 <Run Text="🔒 "/>
-<Run Text="{Binding privacy, TargetNullValue=Privacy}"/>
+<Run Text="{Binding privacy}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Fixer">
 <TextBlock>
 <Run Text="🔧 "/>
-<Run Text="{Binding fixer, TargetNullValue=Fixer}"/>
+<Run Text="{Binding fixer}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Performance">
 <TextBlock>
 <Run Text="⚡ "/>
-<Run Text="{Binding performance, TargetNullValue=Performance}"/>
+<Run Text="{Binding performance}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Personalization">
 <TextBlock>
 <Run Text="🎨 "/>
-<Run Text="{Binding personalization, TargetNullValue=Personalization}"/>
+<Run Text="{Binding personalization}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Power">
 <TextBlock>
 <Run Text="🔋 "/>
-<Run Text="{Binding power, TargetNullValue=Power}"/>
+<Run Text="{Binding power}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Protection">
 <TextBlock>
 <Run Text="🛡 "/>
-<Run Text="{Binding protection, TargetNullValue=Protection}"/>
+<Run Text="{Binding protection}"/>
 </TextBlock>
 </ComboBoxItem>
 <ComboBoxItem Tag="Classic">
 <TextBlock>
 <Run Text="🕰 "/>
-<Run Text="{Binding classic, TargetNullValue=Classic}"/>
+<Run Text="{Binding classic}"/>
 </TextBlock>
 </ComboBoxItem>
 </ComboBox>
@@ -3008,7 +3008,7 @@ HorizontalContentAlignment="Stretch"/>
 </ScrollViewer>
 </Grid>
 </TabItem>
-<TabItem x:Name="SettingsTab" Header="{Binding settings, TargetNullValue=Settings}">
+<TabItem x:Name="SettingsTab" Header="{Binding settings}">
 <TabItem.HeaderTemplate>
 <DataTemplate>
 <StackPanel Orientation="Vertical">
@@ -3068,15 +3068,14 @@ HorizontalContentAlignment="Stretch"/>
 <Grid Column="0">
 <Button Name="installBtn"
 FontWeight="SemiBold"
-Content="{Binding INSTALL, TargetNullValue=INSTALL}"
+Content="{Binding Install}"
 VerticalAlignment="Top"
 HorizontalAlignment="Center"
 Width="90"
 Height="40" Margin="8"/>
 <Button Name="applyBtn"
 Visibility="Collapsed"
-Content="{Binding Apply,
-TargetNullValue=Apply}"
+Content="{Binding Apply}"
 FontWeight="SemiBold"
 VerticalAlignment="Top"
 HorizontalAlignment="Left"
@@ -3084,7 +3083,7 @@ Width="90"
 Height="40" Margin="8"/>
 </Grid>
 <Grid Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-<TextBlock Name="statusbar" Text="{Binding Welcome, TargetNullValue=Save time and install all your programs at once and debloat Windows and more. Be part of ITT and contribute to improving it}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
+<TextBlock Name="statusbar" Text="{Binding Welcome}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
 HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
 </Grid>
 </Grid>
