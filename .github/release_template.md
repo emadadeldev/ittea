@@ -4,7 +4,7 @@
 2. Paste any of the following commands:
 
 ```PowerShell
-irm raw.githubusercontent.com/emadadeldev/ittea/main/itt.ps1 | iex
+irm https://raw.githubusercontent.com/emadadeldev/ittea/main/itt.ps1 | iex
 ```
 
 **or**
