@@ -1,7 +1,13 @@
 ###### 01/01/2026
 
-##### 🎉 New Year – Thank You All
-#### As we step into a new year, I want to sincerely thank every one of you for using and supporting my tool ❤️ Whether you used it regularly, tested it once, or shared feedback — your support truly means a lot. Your trust and encouragement are the main motivation behind improving and developing this project. Thanks to you, the tool keeps growing and getting better Wishing you all a happy new year 🎆
+##### Verified repositories
+
+#### Main: https://github.com/emadadeldev/ittea 
+#### Backup: https://gitlab.com/emadadel/itt/-/tree/main   
+#### Backup2: https://codeberg.org/emadadel/itt
+
+
+
 
 ##### ▶️ Watch a demo 
 ![itt.xName:yt [https://youtu.be/0kZFi6NT1gI]](https://img.youtube.com/vi/0kZFi6NT1gI/maxresdefault.jpg)
