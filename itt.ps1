@@ -41,7 +41,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "25.12.31"
+version        = "26.1.3"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -1526,7 +1526,7 @@ $localIconPath = Join-Path -Path $appDataPath -ChildPath "icon.ico"
 Invoke-WebRequest -Uri $icon -OutFile $localIconPath
 $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
 $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
-$Shortcut.Arguments = "-ExecutionPolicy Bypass -NoProfile -Command ""irm raw.githubusercontent.com/emadadeldev/ittea/main/itt.ps1 | iex"""
+$Shortcut.Arguments = "-ExecutionPolicy Bypass -NoProfile -Command ""irm https://raw.githubusercontent.com/emadadeldev/ittea/main/itt.ps1 | iex"""
 $Shortcut.IconLocation = "$localIconPath"
 $Shortcut.Save()
 }
@@ -1808,11 +1808,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -2687,8 +2687,10 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 </StackPanel>
 <Grid Grid.Row="1" Background="Transparent" Margin="25,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto">
-<StackPanel><TextBlock Text='🎉 New Year – Thank You All' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
-<TextBlock Text='As we step into a new year, I want to sincerely thank every one of you for using and supporting my tool ❤️ Whether you used it regularly, tested it once, or shared feedback — your support truly means a lot. Your trust and encouragement are the main motivation behind improving and developing this project. Thanks to you, the tool keeps growing and getting better Wishing you all a happy new year 🎆' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
+<StackPanel><TextBlock Text='Verified repositories' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
+<TextBlock Text='Main: https://github.com/emadadeldev/ittea' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
+<TextBlock Text='Backup: https://gitlab.com/emadadel/itt/-/tree/main' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
+<TextBlock Text='Backup2: https://codeberg.org/emadadel/itt' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
 <TextBlock Text='▶️ Watch a demo' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
 <Image x:Name='yt' Cursor='Hand' ToolTip='Click to visit' Margin='15,0,0,15' Height='Auto' Width='388' HorizontalAlignment='Left'>
 <Image.Source>
