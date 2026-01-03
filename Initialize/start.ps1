@@ -54,9 +54,6 @@ if(-not $Debug)
                 Start-Process "https://github.com/emadadeldev/ittea"
                 exit
             }
-
-            Write-Host "  Status           [$($itt.api.message)]" -ForegroundColor Green
-            Write-Host "  Version          [$($itt.Version)]" -ForegroundColor Green
             Write-Host "`n  Relax, good things are loading… almost there!`n"
             break
         }

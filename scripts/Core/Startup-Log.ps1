@@ -34,11 +34,11 @@ function Startup {
 
         function LOG {
             Write-Host "  ███████████████████╗ " -NoNewline
-            Write-Host "My old GitHub account was restricted without any reason." -ForegroundColor Gray
+            Write-Host "Status  [$($itt.api.message)]" -ForegroundColor Green
             Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
-            Write-Host "This is the new official repo:" -ForegroundColor Gray
+            Write-Host "Version [$($itt.Version)]" -ForegroundColor Green
             Write-Host "  ██║  ██║ Emad ██║    " -NoNewline
-            Write-Host "Main repository: https://github.com/emadadeldev/ittea" -ForegroundColor Gray
+            Write-Host "Main repository: https://github.com/emadadeldev/ittea" -ForegroundColor Yellow
             Write-Host "  ██║  ██║ Adel ██║    " -NoNewline
             Write-Host "Backup 1: https://gitlab.com/emadadel/itt" -ForegroundColor Gray
             Write-Host "  ██║  ██║      ██║    " -NoNewline
