@@ -2687,7 +2687,7 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 </StackPanel>
 <Grid Grid.Row="1" Background="Transparent" Margin="25,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto">
-<StackPanel><TextBlock Text='Verified repositories' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
+<StackPanel><TextBlock Text='📂 Offical Repositories' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
 <TextBlock Text='Main: https://github.com/emadadeldev/ittea' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
 <TextBlock Text='Backup: https://gitlab.com/emadadel/itt/-/tree/main' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
 <TextBlock Text='Backup2: https://codeberg.org/emadadel/itt' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
