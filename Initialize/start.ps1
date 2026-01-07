@@ -54,7 +54,6 @@ if(-not $Debug)
                 Start-Process "https://github.com/emadadeldev/ittea"
                 exit
             }
-            Write-Host "`n  Relax, good things are loading… almost there!`n"
             break
         }
         catch {
@@ -80,7 +79,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 # ================================
 #endregion Ask user for administrator privileges if not already running as admin
 # ================================
-
+Write-Host "`n  Relax, good things are loading… almost there!`n"
 # ================================
 #region MAXIMIZE CURRENT WINDOW
 # ================================
