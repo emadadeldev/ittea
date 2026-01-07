@@ -41,7 +41,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.1.3"
+version        = "26.1.7"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -62,7 +62,6 @@ Read-Host "   Press Enter to visit https://github.com/emadadeldev/ittea"
 Start-Process "https://github.com/emadadeldev/ittea"
 exit
 }
-Write-Host "`n  Relax, good things are loading… almost there!`n"
 break
 }
 catch {
@@ -75,6 +74,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Start-Process -FilePath "PowerShell" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"$($MyInvocation.MyCommand.Definition)`"" -Verb RunAs
 exit
 }
+Write-Host "`n  Relax, good things are loading… almost there!`n"
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
@@ -1806,11 +1806,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -3071,16 +3071,18 @@ FontWeight="SemiBold"
 Content="{Binding Install}"
 VerticalAlignment="Top"
 HorizontalAlignment="Center"
-Width="90"
-Height="40" Margin="8"/>
+Width="140"
+Height="40"
+Margin="8"/>
 <Button Name="applyBtn"
 Visibility="Collapsed"
 Content="{Binding Apply}"
 FontWeight="SemiBold"
 VerticalAlignment="Top"
 HorizontalAlignment="Left"
-Width="90"
-Height="40" Margin="8"/>
+Width="140"
+Height="40"
+Margin="8"/>
 </Grid>
 <Grid Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
 <TextBlock Name="statusbar" Text="{Binding Welcome}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
