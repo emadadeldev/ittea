@@ -2,7 +2,7 @@ function Startup {
 
     <#
     .SYNOPSIS
-        Runs startup tasks including usage logging, music playback, and quote display.
+        Usage count, and quote display.
     #>
 
     ITT-ScriptBlock -ArgumentList $Debug -ScriptBlock {
