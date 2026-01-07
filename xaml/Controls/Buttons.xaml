@@ -7,12 +7,13 @@
     <Grid Column="0">
 
         <Button Name="installBtn" 
-                    FontWeight="SemiBold" 
-                    Content="{Binding Install}" 
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Center" 
-                    Width="90" 
-                    Height="40" Margin="8"/>
+            FontWeight="SemiBold" 
+            Content="{Binding Install}" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Center" 
+            Width="140" 
+            Height="40" 
+            Margin="8"/>
 
         <Button Name="applyBtn" 
             Visibility="Collapsed" 
@@ -20,8 +21,9 @@
             FontWeight="SemiBold" 
             VerticalAlignment="Top" 
             HorizontalAlignment="Left" 
-            Width="90" 
-            Height="40" Margin="8"/>
+            Width="140" 
+            Height="40" 
+            Margin="8"/>
 
     </Grid>
 
