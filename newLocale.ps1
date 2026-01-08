@@ -21,8 +21,8 @@ Key,Text
 name,$name
 author,$Author
 Welcome,Save time and install all your programs at once and debloat Windows and more. Be part of ITT and contribute to improving it
-Install,Install
-Apply,Apply
+Install,INSTALL
+Apply,APPLY
 Downloading,Downloading...
 About,About
 Third_party,Third-party
@@ -58,11 +58,10 @@ Create_restore_point,Create a restore point
 Portable_Downloads_Folder,Portable Downloads Folder
 Install_msg,Are you sure you want to install the following App(s)
 Apply_msg,Are you sure you want to apply the following Tweak(s)
-Applying,Applying...
+Applying,APPLYING...
 Please_wait,Please wait a process is running in the background
 Last_update,Last update
 Exit_msg,Are you sure you want to close the program? Any ongoing installations will be canceled
-Empty_save_msg,Choose at least One app to save it
 system_protection,System protection
 web browsers,Web Browsers
 media,Media
