@@ -198,7 +198,7 @@
 
                         <Border Background="{TemplateBinding Background}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="15">
+                                CornerRadius="6">
                             <ScrollViewer x:Name="PART_ContentHost"
                                         Background="Transparent"/>
                         </Border>
