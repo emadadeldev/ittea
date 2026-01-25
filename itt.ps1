@@ -867,7 +867,7 @@ catch {
 }
 function Startup {
 ITT-ScriptBlock -ArgumentList $i, $Debug -ScriptBlock {
-param($Debug)
+param($i, $Debug)
 function UsageCount {
 try {
 $Message = "👨‍💻 Version: $($itt.version)`n🚀 URL: $($itt.command)"
