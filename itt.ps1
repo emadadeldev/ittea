@@ -1829,11 +1829,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -3420,7 +3420,7 @@ Startup
 Show-Event
 if ($i) {
 Get-File -Source $i
-Invoke-Install
+Invoke-Install *> $null
 }
 })
 $itt["window"].add_Closing($onClosingEvent)
