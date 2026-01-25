@@ -1,49 +1,79 @@
-# load file.itt
-function Get-file {
+function Get-File {
+    
+    param(
+        [string]$Source
+    )
 
-    # Check if a process is running
     if ($itt.ProcessRunning) {
         Message -key "Please_wait" -icon "Warning" -action "OK"
         return
     }
 
-    # Open file dialog to select JSON file
-    $openFileDialog = New-Object Microsoft.Win32.OpenFileDialog -Property @{
-        Filter = "itt file (*.itt)|*.itt"
-        Title  = "itt File"
-    }
+    try {
 
-    if ($openFileDialog.ShowDialog() -eq $true) {
+        # =========================
+        # CLI: URL or file path
+        # =========================
+        if ($Source) {
 
-        try {
+            if ($Source -match '^https?://') {
+                # Load from URL
+                $jsonRaw = (Invoke-WebRequest -Uri $Source -UseBasicParsing -ErrorAction Stop).Content
+            }
+            elseif (Test-Path $Source) {
+                # Load from local file
+                $jsonRaw = Get-Content -Path $Source -Raw
+            }
+            else {
+                throw "Invalid source"
+            }
 
-            # Load and parse JSON data
-            $FileContent = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json -ErrorAction Stop
+        }
+        # =========================
+        #  UI: File Dialog
+        # =========================
+        else {
 
-            # Check if ListView matches the current list
-            if ($FileContent.ListView -ne $itt.currentList) {
-                Message -NoneKey "PLEASE SELECT THE CORRECT TAB" -icon "Warning" -action "OK"
+            $openFileDialog = New-Object Microsoft.Win32.OpenFileDialog -Property @{
+                Filter = "itt file (*.itt)|*.itt"
+                Title  = "itt File"
+            }
+
+            if ($openFileDialog.ShowDialog() -ne $true) {
                 return
             }
 
-            # Get the apps list and collection view
-            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.($itt.currentList).Items)
+            $jsonRaw = Get-Content -Path $openFileDialog.FileName -Raw
+        }
 
-            # Define the filter predicate using Items array
-            $collectionView.Filter = {
-                param($item)
+        # =========================
+        # Parse JSON
+        # =========================
+        $FileContent = $jsonRaw | ConvertFrom-Json -ErrorAction Stop
 
-                if ($FileContent.Items.Name -contains $item.Content) { 
-                    $item.IsChecked = $true
-                    return $true
-                } else { 
-                    return $false 
-                }
+        if ($FileContent.ListView -ne $itt.currentList) {
+            Message -NoneKey "PLEASE SELECT THE CORRECT TAB" -icon "Warning" -action "OK"
+            return
+        }
+
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView(
+            $itt.($itt.currentList).Items
+        )
+
+        $collectionView.Filter = {
+            param($item)
+
+            if ($FileContent.Items.Name -contains $item.Content) {
+                $item.IsChecked = $true
+                return $true
             }
+            return $false
         }
-        catch {
-            Write-Warning "Failed to load or parse JSON file: $_"
-        }
+
+    }
+    catch {
+        Message -NoneKey "Failed to load ITT source" -icon "Error" -action "OK"
+        Write-Warning $_
     }
 }
 
