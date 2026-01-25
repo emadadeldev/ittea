@@ -54,11 +54,11 @@ $onClosingEvent = {
 $itt["window"].Add_ContentRendered({
         Startup
         Show-Event
-
-        # # Quick install
-        # if ($i) {
-        #     Quick-Install -file $i *> $null
-        # }
+        # Quick install
+        if ($i) {
+            Get-File -Source $i
+            Invoke-Install
+        }
     })
 
 # Close event handler
