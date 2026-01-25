@@ -5,7 +5,7 @@ function Startup {
         Usage count, and quote display.
     #>
 
-    ITT-ScriptBlock -ArgumentList $Debug -ScriptBlock {
+    ITT-ScriptBlock -ArgumentList $i, $Debug -ScriptBlock {
  
         param($Debug)
         
