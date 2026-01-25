@@ -74,6 +74,16 @@ or
 irm bit.ly/ittco | iex
 ```
 
+
+## Install apps from your saved .itt file
+
+```
+iex "& { $(irm bit.ly/ittco) } -i .\filename.itt"
+```
+
+<br>
+
+
 > [!CAUTION]  
 > **RUN THIS SCRIPT ONLY USING OFFICIAL COMMANDS FROM THIS [emadadeldev/ittea](https://github.com/emadadeldev/ittea) REPOSITORY ONLY**  
 > **IT'S NOT PORTABLE, DO NOT DOWNLOAD OR RUN IT FROM ANY OTHER SOURCE!.**
