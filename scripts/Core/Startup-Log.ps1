@@ -7,7 +7,7 @@ function Startup {
 
     ITT-ScriptBlock -ArgumentList $i, $Debug -ScriptBlock {
  
-        param($i, $Debug)
+        param($Debug)
         
         function UsageCount {
             try {
