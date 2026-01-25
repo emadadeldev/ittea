@@ -77,7 +77,7 @@ irm bit.ly/ittco | iex
 
 ## Install apps from your saved .itt file
 
-***Run as Administrator required***
+***Run as Administrator***
 
 ```powershell
 iex "& { $(irm bit.ly/ittco) } -i .\filename.itt"
