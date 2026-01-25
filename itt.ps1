@@ -878,7 +878,6 @@ $result = $response.Content
 Add-Log -Message "`n  $result times worldwide`n"
 }
 catch {
-Add-Log -Message "Unstable internet connection detected." -Level "info"
 Start-Sleep 8
 UsageCount
 }
