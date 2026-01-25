@@ -1,3 +1,6 @@
+param (
+[string]$i
+)
 $SplashWindowContent = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -41,7 +44,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.1.7"
+version        = "26.1.25"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -754,36 +757,56 @@ if (-not (Get-Process -processName: Explorer)) {
 Start-Process explorer.exe
 }
 }
-function Get-file {
+function Get-File {
+param(
+[string]$Source
+)
 if ($itt.ProcessRunning) {
 Message -key "Please_wait" -icon "Warning" -action "OK"
 return
 }
+try {
+if ($Source) {
+if ($Source -match '^https?://') {
+$jsonRaw = (Invoke-WebRequest -Uri $Source -UseBasicParsing -ErrorAction Stop).Content
+}
+elseif (Test-Path $Source) {
+$jsonRaw = Get-Content -Path $Source -Raw
+}
+else {
+throw "Invalid source"
+}
+}
+else {
 $openFileDialog = New-Object Microsoft.Win32.OpenFileDialog -Property @{
 Filter = "itt file (*.itt)|*.itt"
 Title  = "itt File"
 }
-if ($openFileDialog.ShowDialog() -eq $true) {
-try {
-$FileContent = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json -ErrorAction Stop
+if ($openFileDialog.ShowDialog() -ne $true) {
+return
+}
+$jsonRaw = Get-Content -Path $openFileDialog.FileName -Raw
+}
+$FileContent = $jsonRaw | ConvertFrom-Json -ErrorAction Stop
 if ($FileContent.ListView -ne $itt.currentList) {
 Message -NoneKey "PLEASE SELECT THE CORRECT TAB" -icon "Warning" -action "OK"
 return
 }
-$collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.($itt.currentList).Items)
+$collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView(
+$itt.($itt.currentList).Items
+)
 $collectionView.Filter = {
 param($item)
 if ($FileContent.Items.Name -contains $item.Content) {
 $item.IsChecked = $true
 return $true
-} else {
+}
 return $false
 }
 }
-}
 catch {
-Write-Warning "Failed to load or parse JSON file: $_"
-}
+Message -NoneKey "Failed to load ITT source" -icon "Error" -action "OK"
+Write-Warning $_
 }
 }
 function Save-File {
@@ -1998,7 +2021,7 @@ VerticalAlignment="Center"/>
 <Grid>
 <Border Background="{TemplateBinding Background}"
 BorderThickness="{TemplateBinding BorderThickness}"
-CornerRadius="15">
+CornerRadius="6">
 <ScrollViewer x:Name="PART_ContentHost"
 Background="Transparent"/>
 </Border>
@@ -3395,6 +3418,10 @@ $c.Cancel = $true
 $itt["window"].Add_ContentRendered({
 Startup
 Show-Event
+if ($i) {
+Get-File -Source $i
+Invoke-Install
+}
 })
 $itt["window"].add_Closing($onClosingEvent)
 $itt["window"].Add_PreViewKeyDown($KeyEvents)
