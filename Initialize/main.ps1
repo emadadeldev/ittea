@@ -57,7 +57,7 @@ $itt["window"].Add_ContentRendered({
         # Quick install
         if ($i) {
             Get-File -Source $i
-            Invoke-Install
+            Invoke-Install *> $null
         }
     })
 
