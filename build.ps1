@@ -611,11 +611,12 @@ try {
     WriteHeader
 
     WriteToScript -Content @"
-# debug start
 param (
-    [switch]`$Debug
+#debug start
+    [switch]`$Debug,
+#debug end
+    [string]`$i
 )
-# debug end
 "@
 
     WriteToScript -Content @"
