@@ -20,7 +20,7 @@ function Startup {
             }
             catch {
                 Add-Log -Message "Unstable internet connection detected." -Level "info"
-                Start-Sleep 10
+                Start-Sleep 8
                 UsageCount
             }
         }
