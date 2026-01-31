@@ -165,7 +165,7 @@ function Invoke-Button {
             Start-Process("https://discord.gg/6HkJpAWpSM")
         }
         "translate" {
-            Start-Process("https://github.com/emadadeldev/ittea/tree/main/locales")
+            Start-Process("https://docs.google.com/spreadsheets/d/1b9h032ZQhFlZv8LcYKV64qzMtKi3djgkArajSdrT3F8/edit?usp=sharing")
         }
         "donate" {
             Start-Process("https://github.com/emadadeldev/ittea/blob/main/.github/DONATE.md")
