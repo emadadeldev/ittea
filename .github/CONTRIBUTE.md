@@ -38,7 +38,7 @@ Set-Location "C:\Users\$env:USERNAME\Documents\Github\ittea"
 
 ---
 
-### 🌐 Add your native language  
+### 🌐 Edit or Add New Language
 
 [Add New Language](https://docs.google.com/spreadsheets/d/1b9h032ZQhFlZv8LcYKV64qzMtKi3djgkArajSdrT3F8/edit?usp=sharing)
 
