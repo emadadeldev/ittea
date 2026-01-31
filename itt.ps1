@@ -44,7 +44,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.1.25"
+version        = "26.1.31"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -283,7 +283,7 @@ Start-Process("https://github.com/emadadeldev/ittea")
 Start-Process("https://discord.gg/6HkJpAWpSM")
 }
 "translate" {
-Start-Process("https://github.com/emadadeldev/ittea/tree/main/locales")
+Start-Process("https://docs.google.com/spreadsheets/d/1b9h032ZQhFlZv8LcYKV64qzMtKi3djgkArajSdrT3F8/edit?usp=sharing")
 }
 "donate" {
 Start-Process("https://github.com/emadadeldev/ittea/blob/main/.github/DONATE.md")
@@ -1828,11 +1828,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -3106,9 +3106,10 @@ Width="140"
 Height="40"
 Margin="8"/>
 </Grid>
-<Grid Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+<Grid Column="1">
 <TextBlock Name="statusbar" Text="{Binding Welcome}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
-HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
+VerticalAlignment="Center"
+TextWrapping="Wrap"/>
 </Grid>
 </Grid>
 <Popup x:Name="AboutPopup"
