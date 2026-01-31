@@ -27,8 +27,9 @@
 
     </Grid>
 
-    <Grid Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock Name="statusbar" Text="{Binding Welcome}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto"
-        HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
+    <Grid Column="1">
+        <TextBlock Name="statusbar" Text="{Binding Welcome}" Foreground="{DynamicResource PrimaryTextColor}" Padding="15" Width="Auto" 
+        VerticalAlignment="Center"
+        TextWrapping="Wrap"/>
     </Grid>
 </Grid>
