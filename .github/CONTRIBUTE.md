@@ -40,11 +40,7 @@ Set-Location "C:\Users\$env:USERNAME\Documents\Github\ittea"
 
 ### 🌐 Add your native language  
 
-```PowerShell
-.\newLocale.ps1
-```
-
-> Edit `locale.csv` file using [edit-csv extension](https://marketplace.visualstudio.com/items?itemName=janisdd.vscode-edit-csv)
+[Add New Language](https://docs.google.com/spreadsheets/d/1b9h032ZQhFlZv8LcYKV64qzMtKi3djgkArajSdrT3F8/edit?usp=sharing)
 
 ---
 
