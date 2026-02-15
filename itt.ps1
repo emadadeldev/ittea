@@ -288,9 +288,6 @@ Start-Process("https://docs.google.com/spreadsheets/d/1b9h032ZQhFlZv8LcYKV64qzMt
 "donate" {
 Start-Process("https://github.com/emadadeldev/ittea/blob/main/.github/DONATE.md")
 }
-"feedback" {
-FeedbackWindow
-}
 }
 }
 function ITT-ScriptBlock {
@@ -1826,11 +1823,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -3172,14 +3169,6 @@ FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColo
 <TextBlock Text="💬 Community chat"
 FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="Join our group and stay connected" Margin="0,2,0,0"
-FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-</StackPanel>
-</Border>
-<Border Name="feedback" Style="{StaticResource HighlightBorder}">
-<StackPanel Orientation="Vertical">
-<TextBlock Text="📝 Feedback"
-FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-<TextBlock Text="Suggestions, or bug reports" TextWrapping="Wrap" Margin="0,2,0,0"
 FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
