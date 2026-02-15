@@ -78,16 +78,6 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Feedback -->
-                <Border Name="feedback" Style="{StaticResource HighlightBorder}">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="📝 Feedback" 
-                                   FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-                        <TextBlock Text="Suggestions, or bug reports" TextWrapping="Wrap" Margin="0,2,0,0" 
-                                   FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-                    </StackPanel>
-                </Border>
-
                 <!-- Donate -->
                 <Border Name="donate" Style="{StaticResource HighlightBorder}">
                     <StackPanel Orientation="Vertical">
