@@ -1,34 +1,37 @@
 function Invoke-DisableAutoDrivers {
-    
+
     <#
         .SYNOPSIS
-        Toggles the visibility of file extensions in Windows Explorer.
+        Disables or enables automatic driver updates and sets all related Registry keys.
     #>
 
     Param(
-        $Enabled,
-        [string]$Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching",
-        [string]$name = "SearchOrderConfig"
+        [bool]$Enabled = $true
     )
-        Try{
-            if ($Enabled -eq $false){
-                $value = 1
-                Add-Log -Message "Enabled auto drivers update" -Level "info"
+
+    $driverValue = if ($Enabled) { 0 } else { 1 }
+
+    $registryKeys = @(
+        @{ Path = "HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Update"; Name = "ExcludeWUDriversInQualityUpdate"; Value = 1 },
+        @{ Path = "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Update"; Name = "ExcludeWUDriversInQualityUpdate"; Value = 1 },
+        @{ Path = "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Update\ExcludeWUDriversInQualityUpdate"; Name = "value"; Value = 1 },
+        @{ Path = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings"; Name = "ExcludeWUDriversInQualityUpdate"; Value = 1 },
+        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"; Name = "ExcludeWUDriversInQualityUpdate"; Value = 1 },
+        @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching"; Name = "SearchOrderConfig"; Value = $driverValue }
+    )
+
+    foreach ($key in $registryKeys) {
+        try {
+            if (-not (Test-Path $key.Path)) {
+                New-Item -Path $key.Path -Force | Out-Null
             }
-            else {
-                $value = 0
-                Add-Log -Message "Disabled auto drivers update" -Level "info"
-            }
-        Set-ItemProperty -Path $Path -Name $name -Value $value -ErrorAction Stop
+            Set-ItemProperty -Path $key.Path -Name $key.Name -Value $key.Value -Type DWord -Force
+            Write-Host "Set $($key.Path)\$($key.Name) = $($key.Value)" -ForegroundColor Green
         }
-        Catch [System.Security.SecurityException] {
-            Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+        catch {
+            Write-Warning "Failed to set $($key.Path)\$($key.Name) : $_"
         }
-        Catch [System.Management.Automation.ItemNotFoundException] {
-            Write-Warning $psitem.Exception.ErrorRecord
-        }
-        Catch{
-            Write-Warning "Unable to set $Name due to unhandled exception"
-            Write-Warning $psitem.Exception.StackTrace
-        }
+    }
+
+    Write-Host ("Auto drivers update " + (if ($Enabled) {"Disabled"} else {"Enabled"})) -ForegroundColor Cyan
 }
