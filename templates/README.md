@@ -113,7 +113,7 @@ iex "& { $(irm bit.ly/ittco) } -i .\filename.itt"
 
 <br>
 
-## ✊ Resist for Justice in a World Ruled by Authoritarian Regimes 
+## ✊ Above All, We Stand for Humanity
 
 <a href="https://git.io/typing-svg">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=5000&color=F70000&width=435&lines=%23STOP_GENOCIDE!;%23StandWithPalestine" alt="Typing SVG" />
