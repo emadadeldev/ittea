@@ -44,7 +44,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.1.31"
+version        = "26.2.15"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -870,12 +870,10 @@ ITT-ScriptBlock -ArgumentList $i, $Debug -ScriptBlock {
 param($Debug)
 function UsageCount {
 try {
-$Message = "👨‍💻 Version: $($itt.version)`n🚀 URL: $($itt.command)"
-$EncodedMessage = [uri]::EscapeDataString($Message)
-$Url = "https://itt.emadadel4-a0a.workers.dev/log?text=$EncodedMessage"
+$Url = "https://itt.emadadel4-a0a.workers.dev/log"
 $response = Invoke-WebRequest -Uri $Url -UseBasicParsing -Method GET
-$result = $response.Content
-Add-Log -Message "`n  $result times worldwide`n"
+$count = $response.Content.Trim()
+Add-Log -Message "`n  $count times worldwide`n"
 }
 catch {
 Start-Sleep 8
@@ -1828,11 +1826,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
