@@ -9,14 +9,13 @@ function Startup {
  
         param($Debug)
         
+        # Get usage count
         function UsageCount {
             try {
-                $Message = "👨‍💻 Version: $($itt.version)`n🚀 URL: $($itt.command)"
-                $EncodedMessage = [uri]::EscapeDataString($Message)
-                $Url = "https://itt.emadadel4-a0a.workers.dev/log?text=$EncodedMessage"
+                $Url = "https://itt.emadadel4-a0a.workers.dev/log"
                 $response = Invoke-WebRequest -Uri $Url -UseBasicParsing -Method GET
-                $result = $response.Content
-                Add-Log -Message "`n  $result times worldwide`n"
+                $count = $response.Content.Trim()
+                Add-Log -Message "`n  $count times worldwide`n"
             }
             catch {
                 Start-Sleep 8
