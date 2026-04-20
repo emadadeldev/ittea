@@ -43,7 +43,7 @@ ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks
 [![Italian](https://flagcdn.com/w20/it.png)](/locales/it.csv)
 [![Hindi](https://flagcdn.com/w20/in.png)](/locales/hi.csv)
 
-###### 📦 419 Apps • ⚙️ 67 Tweaks • 🔧 17 Settings • 💬 118 Quote • 🌐 11 Localization
+###### 📦 422 Apps • ⚙️ 67 Tweaks • 🔧 17 Settings • 💬 118 Quote • 🌐 11 Localization
 
 </div>
 
