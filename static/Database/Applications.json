@@ -4188,5 +4188,35 @@
     "itt": "na",
     "category": "Utilities",
     "IsChecked": false
+  },
+  {
+    "Content": "VLC Nightly",
+    "Description": "The Nightly version of VLC is the latest unstable and unsupported software as provided by VideoLAN",
+    "choco": "vlc-nightly",
+    "scoop": "versions/vlc-nightly",
+    "winget": "na",
+    "itt": "na",
+    "category": "Media",
+    "IsChecked": false
+  },
+  {
+    "Content": "Ngrok Agent",
+    "Description": "The Nightly version of VLC is the latest unstable and unsupported",
+    "choco": "ngrok",
+    "scoop": "main/ngrok",
+    "winget": "Ngrok.Ngrok",
+    "itt": "na",
+    "category": "Development",
+    "IsChecked": false
+  },
+  {
+    "Content": "Brave Nightly",
+    "Description": "Nightly is our testing and development version of Brave",
+    "choco": "na",
+    "scoop": "versions/brave-nightly",
+    "winget": "Brave.Brave.Nightly",
+    "itt": "na",
+    "category": "Web Browsers",
+    "IsChecked": false
   }
 ]
