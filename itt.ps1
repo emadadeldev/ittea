@@ -332,7 +332,7 @@ param ([string]$Message, [string]$Level = "Default")
 $level = $Level.ToUpper()
 $date = Get-date -f "[HH:MM:ss tt]"
 $colorMap = @{ INFO="White"; WARNING="Yellow"; ERROR="Red"; INSTALLED="White"; APPLY="White"; DEBUG="Yellow" }
-$iconMap  = @{ INFO="[i] $date"; WARNING="[!] $date"; ERROR="[X] $date"; DEFAULT="$date"; DEBUG="[DEBUG] $date"; ITT="[ITT] $date"; Chocolatey="[Chocolatey] $date"; Winget="[Winget] $date" }
+$iconMap  = @{ INFO="[i] $date"; WARNING="[!] $date"; ERROR="[X] $date"; DEFAULT=""; DEBUG="[DEBUG] $date"; ITT="[ITT] $date"; Chocolatey="[Chocolatey] $date"; Winget="[Winget] $date" }
 $color = if ($colorMap.ContainsKey($level)) { $colorMap[$level] } else { "White" }
 $icon  = if ($iconMap.ContainsKey($level)) { $iconMap[$level] } else { "i" }
 Write-Host "  $icon $Message" -ForegroundColor $color
@@ -1823,11 +1823,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
