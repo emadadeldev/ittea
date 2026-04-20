@@ -8,7 +8,7 @@ function ExecuteCommand {
     param ($tweak)
 
     try {
-        Add-Log -Message "Please wait..."
+        Add-Log -Message "Please wait..." -Level "INFO"
         $script = [scriptblock]::Create($tweak)
         Invoke-Command  $script -ErrorAction Stop
     } catch  {

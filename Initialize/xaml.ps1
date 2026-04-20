@@ -35,7 +35,10 @@ foreach ($Func in $Functions) {
         )
             
         # Debug start
-        Write-Output "  [Debug] <$Func> included in runspace`n"
+        #Write-Output "  [Debug] <$Func> included in runspace`n"
+
+        Add-Log "<$Func> included in runspace`n" -Level "debug"
+
         # Debug end
     }
 }

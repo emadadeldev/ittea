@@ -40,7 +40,7 @@ function Invoke-Apply {
         } 
 
         foreach ($tweak in $selectedTweaks) {
-            Add-Log -Message "::::$($tweak.Content)::::" -Level "default"
+            Add-Log -Message "$($tweak.Content)" -Level "INFO"
             ExecuteCommand -tweak $tweak.Script
         }
 
