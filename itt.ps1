@@ -44,7 +44,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.2.15"
+version        = "26.4.20"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -330,8 +330,9 @@ Add-Log -Message "ERROR: $($_.Exception.Message)" -Level "ERROR"
 function Add-Log {
 param ([string]$Message, [string]$Level = "Default")
 $level = $Level.ToUpper()
+$date = Get-date -f "[HH:MM:ss tt]"
 $colorMap = @{ INFO="White"; WARNING="Yellow"; ERROR="Red"; INSTALLED="White"; APPLY="White"; DEBUG="Yellow" }
-$iconMap  = @{ INFO="[i]"; WARNING="[!]"; ERROR="[X]"; DEFAULT=""; DEBUG="[DEBUG]"; ITT="[ITT]"; Chocolatey="[Chocolatey]"; Winget="[Winget]" }
+$iconMap  = @{ INFO="[i] $date"; WARNING="[!] $date"; ERROR="[X] $date"; DEFAULT="$date"; DEBUG="[DEBUG] $date"; ITT="[ITT] $date"; Chocolatey="[Chocolatey] $date"; Winget="[Winget] $date" }
 $color = if ($colorMap.ContainsKey($level)) { $colorMap[$level] } else { "White" }
 $icon  = if ($iconMap.ContainsKey($level)) { $iconMap[$level] } else { "i" }
 Write-Host "  $icon $Message" -ForegroundColor $color
@@ -339,7 +340,7 @@ Write-Host "  $icon $Message" -ForegroundColor $color
 function ExecuteCommand {
 param ($tweak)
 try {
-Add-Log -Message "Please wait..."
+Add-Log -Message "Please wait..." -Level "INFO"
 $script = [scriptblock]::Create($tweak)
 Invoke-Command  $script -ErrorAction Stop
 } catch  {
@@ -356,12 +357,12 @@ switch ($ListView) {
 "AppsListView" {
 UpdateUI -Name "installBtn" -Content "Install" -Width "auto"
 Notify -title "$title" -msg "All installations have finished" -icon "Info" -time 30000
-Add-Log -Message "`n::::All installations have finished::::"
+Add-Log -Message "All installations have finished" -Level "INFO"
 Set-Statusbar -Text "📢 All installations have finished"
 }
 "TweaksListView" {
 UpdateUI -Name "applyBtn" -Content "Apply" -Width "auto"
-Add-Log -Message "`n::::All tweaks have finished::::"
+Add-Log -Message "All tweaks have finished" -Level "INFO"
 Set-Statusbar -Text "📢 All tweaks have finished"
 Notify -title "$title" -msg "All tweaks have finished" -icon "Info" -time 30000
 }
@@ -377,7 +378,7 @@ $collectionView.Refresh()
 function Get-SelectedItems {
 param ([ValidateSet("AppsListView","TweaksListView")] [string]$Mode)
 $listView = if ($Mode -eq "AppsListView") { $itt.AppsListView } else { $itt.TweaksListView }
-$props    = if ($Mode -eq "AppsListView") { 'Content','Choco','Scoop','Winget','ITT' } else { 'Name','Script' }
+$props    = if ($Mode -eq "AppsListView") { 'Content','Choco','Scoop','Winget','ITT' } else { "Content",'Name','Script' }
 $selected = foreach ($item in $listView.Items) {
 if ($item.IsChecked) {
 $obj = @{}
@@ -971,7 +972,7 @@ Set-Statusbar -Text "ℹ Current task: Creating Restore Point..."
 CreateRestorePoint
 }
 foreach ($tweak in $selectedTweaks) {
-Add-Log -Message "::::$($tweak.Content)::::" -Level "default"
+Add-Log -Message "$($tweak.Content)" -Level "INFO"
 ExecuteCommand -tweak $tweak.Script
 }
 $itt.ProcessRunning = $false
