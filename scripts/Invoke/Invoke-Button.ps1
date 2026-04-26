@@ -10,7 +10,7 @@ function Invoke-Button {
     Param ([string]$action, [string]$Content)
 
     # debug start
-    function Debug-Message { if ($Debug) { Add-Log "$action,$Content" -Level "Debug" } }
+    function Debug-Message { if ($Debug) { Add-Log "x:name [$action] | Path:[$Content]" -Level "Debug" } }
     # debug end
 
     # Switch block to handle different actions
