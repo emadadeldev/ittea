@@ -19,7 +19,7 @@
                 <StackPanel x:Name="MainStackPanel" Background="Transparent" Orientation="Vertical" Margin="25,25,0,0">
                     <Grid Background="Transparent">
                         <StackPanel>
-                            <TextBlock Name="title" FontSize="20" Text="What&apos;s New" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Name="title" FontSize="20" Text="Welcome to ITT" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                             <TextBlock Name="date" Visibility="Hidden" Margin="5,5,0,0" FontSize="12" Text="8/29/2024" Foreground="{DynamicResource SecondaryTextColor}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </StackPanel>
                     </Grid>
