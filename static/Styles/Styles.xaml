@@ -295,7 +295,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <!-- Icon -->
@@ -723,22 +723,22 @@
 <!--End ContextMenu Style-->
 
 <!-- BlinkingDotStyle -->
-<Style x:Key="BlinkingDotStyle" TargetType="FrameworkElement">
-    <Setter Property="Opacity" Value="1"/>
-    <Style.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard>
-                <Storyboard RepeatBehavior="Forever">
-                    <DoubleAnimation
-                        Storyboard.TargetProperty="Opacity"
-                        From="1" To="0"
-                        Duration="0:0:0.9"
-                        AutoReverse="True"/>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Style.Triggers>
-</Style>
+    <Style x:Key="BlinkingDotStyle" TargetType="FrameworkElement">
+        <Setter Property="Opacity" Value="1"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard RepeatBehavior="Forever">
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Opacity"
+                            From="1" To="0"
+                            Duration="0:0:0.9"
+                            AutoReverse="True"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
 <!-- End BlinkingDotStyle -->
 
 <!-- Border Style -->
@@ -758,3 +758,24 @@
         </Style.Triggers>
     </Style>
 <!-- End Border Style -->
+
+<!-- Begin Window Style -->
+    <Style TargetType="Window">
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+<!-- End Window Style -->
+
+<!-- Begin ItemsControl Style -->
+     <Style TargetType="ItemsControl">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+<!-- End ItemsControl Style -->
