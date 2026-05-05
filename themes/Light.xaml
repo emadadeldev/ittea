@@ -32,7 +32,7 @@
     <SolidColorBrush x:Key="itemColor2" Color="#ebf0f4"/>
 
     <!-- Misc -->
-    <SolidColorBrush x:Key="logo" Color="#0969da"/>
+    <SolidColorBrush x:Key="logo" Color="black"/>
     <ImageBrush x:Key="BackgroundImage" ImageSource="{x:Null}" Stretch="UniformToFill"/>
     <x:String x:Key="SubText">Install Tweaks Tool</x:String>
 </ResourceDictionary>
