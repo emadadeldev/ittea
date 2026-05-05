@@ -31,7 +31,7 @@
     <SolidColorBrush x:Key="itemColor2" Color="#991C1C1C"/>
 
     <!-- Misc -->
-    <SolidColorBrush x:Key="logo" Color="#0366d6"/> 
+    <SolidColorBrush x:Key="logo" Color="White"/> 
     <ImageBrush x:Key="BackgroundImage" ImageSource="https://images.hdqwalls.com/wallpapers/the-batman-fan-made-4k-xx.jpg" Stretch="UniformToFill" Opacity="0.1" />
     <x:String x:Key="SubText">I am not a hero</x:String>
 </ResourceDictionary>
