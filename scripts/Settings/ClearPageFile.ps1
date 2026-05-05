@@ -2,7 +2,7 @@ function Invoke-ClearPageFile {
 
     <#
         .SYNOPSIS
-        Toggles the visibility of file extensions in Windows Explorer.
+        Toggles the Clear Page File At Shutdown.
     #>
     
     Param(
@@ -13,11 +13,11 @@ function Invoke-ClearPageFile {
     Try {
         if ($Enabled -eq $false) {
             $value = 1
-            Add-Log -Message "Show End Task on taskbar" -Level "info"
+            Add-Log -Message "Clear Page FileAt Shutdown is ON" -Level "info"
         }
         else {
             $value = 0
-            Add-Log -Message "Disable End Task on taskbar" -Level "info"
+            Add-Log -Message "Clear Page FileAt Shutdown is OFF" -Level "info"
         }
         Set-ItemProperty -Path $Path -Name $name -Value $value -ErrorAction Stop
     }
