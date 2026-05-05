@@ -34,7 +34,7 @@
                                FontSize="12" FontFamily="Arial" FontWeight="Regular"
                                HorizontalAlignment="Center" TextAlignment="Left" Foreground="{DynamicResource PrimaryTextColor}"/>
 
-                    <TextBlock Text="Contributors" 
+                    <TextBlock Text="{Binding Contributors}" 
                                FontSize="13" FontFamily="Arial" 
                                Foreground="{DynamicResource PrimaryTextColor}" HorizontalAlignment="Center" Margin="0,15,0,0"/>
 
@@ -48,6 +48,7 @@
 
             <!-- Right Panel -->
             <StackPanel Orientation="Vertical" Grid.Column="1" Margin="8" VerticalAlignment="Center">
+
                 <!-- Source Code -->
                 <Border Name="github" Style="{StaticResource HighlightBorder}">
                     <StackPanel Orientation="Vertical">
@@ -61,33 +62,41 @@
                 <!-- Translate -->
                 <Border Name="translate" Style="{StaticResource HighlightBorder}">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="🌍 Help to translate" 
-                                   FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-                        <TextBlock Text="Contribute your language to the project" Margin="0,2,0,0" 
-                                   FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
+
+                    <TextBlock FontSize="16" Foreground="{DynamicResource PrimaryTextColor}">
+                        <Run Text=" 🌍 "/>
+                        <Run Text="Help to translate"/>
+                    </TextBlock>
+                                   
+                    <TextBlock Text="Contribute your language to the project" Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource PrimaryTextColor}"/>
+
                     </StackPanel>
                 </Border>
 
                 <!-- Community -->
                 <Border Name="community" Style="{StaticResource HighlightBorder}">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="💬 Community chat" 
-                                   FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-                        <TextBlock Text="Join our group and stay connected" Margin="0,2,0,0" 
-                                   FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
+
+                    <TextBlock FontSize="16" Foreground="{DynamicResource PrimaryTextColor}">
+                        <Run Text=" 💬 "/>
+                        <Run Text="Community chat"/>
+                    </TextBlock>
+                    <TextBlock Text="Join our group and stay connected" Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource PrimaryTextColor}"/>
                     </StackPanel>
                 </Border>
 
                 <!-- Donate -->
                 <Border Name="donate" Style="{StaticResource HighlightBorder}">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="❤ Donate" 
-                                   FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-                        <TextBlock Text="Be listed as one of our contributors" Margin="0,2,0,0" 
-                                   FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
+
+                    <TextBlock FontSize="16" Foreground="{DynamicResource PrimaryTextColor}">
+                        <Run Text=" ❤ "/>
+                        <Run Text="Donate"/>
+                    </TextBlock>
+                    <TextBlock Text="Be listed as one of our contributors" Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource PrimaryTextColor}"/>
                     </StackPanel>
                 </Border>
-
+                
             </StackPanel>
         </Grid>
     </Border>
