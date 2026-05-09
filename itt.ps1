@@ -13,10 +13,7 @@ AllowsTransparency="True"
 Width="1024"
 Height="600"
 ShowInTaskbar="false">
-<Border CornerRadius="15" Height="600" Width="1024">
-<Border.Background>
-<ImageBrush ImageSource="http://127.0.0.1:5500/static/Images/splash.jpg"/>
-</Border.Background>
+<Border Height="600" Width="1024">
 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 <TextBlock Text="itt"
 FontSize="250"
@@ -26,6 +23,7 @@ FontWeight="Bold"
 TextAlignment="Center"/>
 <TextBlock Text="Wake up, Neo..."
 FontSize="20"
+Name="status"
 Foreground="white"
 TextAlignment="Center"/>
 </StackPanel>
@@ -44,7 +42,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.4.20"
+version        = "26.5.9"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -332,7 +330,7 @@ param ([string]$Message, [string]$Level = "Default")
 $level = $Level.ToUpper()
 $date = Get-date -f "[HH:MM:ss tt]"
 $colorMap = @{ INFO="White"; WARNING="Yellow"; ERROR="Red"; INSTALLED="White"; APPLY="White"; DEBUG="Yellow" }
-$iconMap  = @{ INFO="[i] $date"; WARNING="[!] $date"; ERROR="[X] $date"; DEFAULT=""; DEBUG="[DEBUG] $date"; ITT="[ITT] $date"; Chocolatey="[Chocolatey] $date"; Winget="[Winget] $date" }
+$iconMap  = @{ INFO="[i]$date"; WARNING="[i]$date"; ERROR="[X]$date"; DEFAULT=""; DEBUG="[DEBUG]$date"; ITT="[ITT]$date"; Chocolatey="[Chocolatey]$date"; Winget="[Winget]$date" }
 $color = if ($colorMap.ContainsKey($level)) { $colorMap[$level] } else { "White" }
 $icon  = if ($iconMap.ContainsKey($level)) { $iconMap[$level] } else { "i" }
 Write-Host "  $icon $Message" -ForegroundColor $color
@@ -344,7 +342,7 @@ Add-Log -Message "Please wait..." -Level "INFO"
 $script = [scriptblock]::Create($tweak)
 Invoke-Command  $script -ErrorAction Stop
 } catch  {
-Add-Log -Message "ERROR: $($_.Exception.Message)" -Level "WARNING"
+Add-Log -Message "$($_.Exception.Message)" -Level "WARNING"
 }
 }
 function Finish {
@@ -1111,11 +1109,11 @@ $Enabled,
 Try {
 if ($Enabled -eq $false) {
 $value = 1
-Add-Log -Message "Show End Task on taskbar" -Level "info"
+Add-Log -Message "Clear Page FileAt Shutdown is ON" -Level "info"
 }
 else {
 $value = 0
-Add-Log -Message "Disable End Task on taskbar" -Level "info"
+Add-Log -Message "Clear Page FileAt Shutdown is OFF" -Level "info"
 }
 Set-ItemProperty -Path $Path -Name $name -Value $value -ErrorAction Stop
 }
@@ -1531,7 +1529,7 @@ Write-Warning "Unable to set WSL2 due to a Security Exception"
 }
 function About {
 $aboutPopup = $itt['window'].FindName('AboutPopup')
-$aboutPopup.FindName('ver').Text = "Version $($itt.version) $($itt.api.message)"
+$aboutPopup.FindName('ver').Text = "$($itt.version) $($itt.api.message)"
 $aboutPopup.IsOpen = $true
 }
 function ITTShortcut {
@@ -1822,12 +1820,12 @@ $itt.$Name.Text = $NonKey
 })
 }
 function Show-Event {
-$itt['window'].FindName('date').text = '01/01/2026'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
+$itt['window'].FindName('date').text = '05/11/2026'.Trim()
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -2101,7 +2099,7 @@ CornerRadius="0">
 <Grid>
 <Grid.ColumnDefinitions>
 <ColumnDefinition Width="Auto"/>
-<ColumnDefinition Width="*"/>
+<ColumnDefinition Width="Auto"/>
 <ColumnDefinition Width="Auto"/>
 </Grid.ColumnDefinitions>
 <ContentPresenter Grid.Column="0"
@@ -2511,6 +2509,21 @@ AutoReverse="True"/>
 </Trigger>
 </Style.Triggers>
 </Style>
+<Style TargetType="Window">
+<Setter Property="BorderBrush" Value="Red"/>
+<Style.Triggers>
+<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+<BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+</EventTrigger>
+</Style.Triggers>
+</Style>
+<Style TargetType="ItemsControl">
+<Style.Triggers>
+<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+<BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+</EventTrigger>
+</Style.Triggers>
+</Style>
 <ResourceDictionary x:Key="Dark">
 <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#22272e"/>
 <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="#2d333b"/>
@@ -2551,7 +2564,7 @@ AutoReverse="True"/>
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#444444"/>
 <SolidColorBrush x:Key="itemColor1" Color="#CC141414"/>
 <SolidColorBrush x:Key="itemColor2" Color="#991C1C1C"/>
-<SolidColorBrush x:Key="logo" Color="#0366d6"/>
+<SolidColorBrush x:Key="logo" Color="White"/>
 <ImageBrush x:Key="BackgroundImage" ImageSource="https://images.hdqwalls.com/wallpapers/the-batman-fan-made-4k-xx.jpg" Stretch="UniformToFill" Opacity="0.1" />
 <x:String x:Key="SubText">I am not a hero</x:String>
 </ResourceDictionary>
@@ -2573,7 +2586,7 @@ AutoReverse="True"/>
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#d0d7de"/>
 <SolidColorBrush x:Key="itemColor1" Color="#f6f8fa"/>
 <SolidColorBrush x:Key="itemColor2" Color="#ebf0f4"/>
-<SolidColorBrush x:Key="logo" Color="#0969da"/>
+<SolidColorBrush x:Key="logo" Color="black"/>
 <ImageBrush x:Key="BackgroundImage" ImageSource="{x:Null}" Stretch="UniformToFill"/>
 <x:String x:Key="SubText">Install Tweaks Tool</x:String>
 </ResourceDictionary>
@@ -2595,7 +2608,7 @@ AutoReverse="True"/>
 <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#777777"/>
 <SolidColorBrush x:Key="itemColor1" Color="#CC000000"/>
 <SolidColorBrush x:Key="itemColor2" Color="#99000002"/>
-<SolidColorBrush x:Key="logo" Color="#00B583"/>
+<SolidColorBrush x:Key="logo" Color="White"/>
 <ImageBrush x:Key="BackgroundImage" ImageSource="https://w.wallhaven.cc/full/we/wallhaven-wegrj6.jpg" Stretch="UniformToFill" Opacity="0.1"/>
 <x:String x:Key="SubText">#StandWithPalestine</x:String>
 </ResourceDictionary>
@@ -2695,31 +2708,36 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <StackPanel x:Name="MainStackPanel" Background="Transparent" Orientation="Vertical" Margin="25,25,0,0">
 <Grid Background="Transparent">
 <StackPanel>
-<TextBlock Name="title" FontSize="20" Text="What&apos;s New" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+<TextBlock Name="title" FontSize="20" Text="Welcome to ITT 👋" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 <TextBlock Name="date" Visibility="Hidden" Margin="5,5,0,0" FontSize="12" Text="8/29/2024" Foreground="{DynamicResource SecondaryTextColor}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 </StackPanel>
 </Grid>
 </StackPanel>
 <Grid Grid.Row="1" Background="Transparent" Margin="25,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto">
-<StackPanel><TextBlock Text='📂 Offical Repositories' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
-<TextBlock Text='Main: https://github.com/emadadeldev/ittea' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
-<TextBlock Text='Backup: https://gitlab.com/emadadel/itt/-/tree/main' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
-<TextBlock Text='Backup2: https://codeberg.org/emadadel/itt' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
-<TextBlock Text='▶️ Watch a demo' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
+<StackPanel><TextBlock Text='🔗 Offical Repositories' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
+<StackPanel Orientation='Vertical'>
+<TextBlock Text='• Main: https://github.com/emadadeldev/ittea' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
+</StackPanel>
+<StackPanel Orientation='Vertical'>
+<TextBlock Text='• Backup: https://gitlab.com/emadadel/itt/' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
+</StackPanel>
+<StackPanel Orientation='Vertical'>
+<TextBlock Text='• Backup2: https://codeberg.org/emadadel/itt' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
+</StackPanel>
+<TextBlock Text='▶️ Watch a demo' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 <Image x:Name='yt' Cursor='Hand' ToolTip='Click to visit' Margin='15,0,0,15' Height='Auto' Width='388' HorizontalAlignment='Left'>
 <Image.Source>
 <BitmapImage UriSource='https://img.youtube.com/vi/0kZFi6NT1gI/maxresdefault.jpg' CacheOption='OnLoad'/>
 </Image.Source>
 </Image>
-<TextBlock Text='💠 Windows 10 LTS' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
+<TextBlock Text='💠 Windows 10 LTS' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 <Image x:Name='win' Cursor='Hand' ToolTip='Click to visit' Margin='15,0,0,15' Height='Auto' Width='388' HorizontalAlignment='Left'>
 <Image.Source>
 <BitmapImage UriSource='https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Images/windows10lts.jpg' CacheOption='OnLoad'/>
 </Image.Source>
 </Image>
-<TextBlock Text='Windows 10 LTS official ISO – the stable, long-term support version' FontSize='15' HorizontalAlignment='Left' Padding='10 0 0 10' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap' MaxWidth='500'/>
-<TextBlock Text='Keyboard Shortcuts' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' FontWeight='bold' TextWrapping='Wrap'/>
+<TextBlock Text='Keyboard Shortcuts' FontSize='20' Padding='10 25 0 20' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 <StackPanel Orientation='Vertical'>
 <TextBlock Text='• Ctrl+A: Clear category filter.' Padding='35,0,0,0' FontSize='15' HorizontalAlignment='Left' Width='Auto' Height='Auto' Foreground='{DynamicResource PrimaryTextColor}' TextWrapping='Wrap'/>
 </StackPanel>
@@ -3136,7 +3154,7 @@ HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}"/>
 <TextBlock Text="9/30/2025" Name="ver" Margin="0,5,0,0"
 FontSize="12" FontFamily="Arial" FontWeight="Regular"
 HorizontalAlignment="Center" TextAlignment="Left" Foreground="{DynamicResource PrimaryTextColor}"/>
-<TextBlock Text="Contributors"
+<TextBlock Text="{Binding Contributors}"
 FontSize="13" FontFamily="Arial"
 Foreground="{DynamicResource PrimaryTextColor}" HorizontalAlignment="Center" Margin="0,15,0,0"/>
 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,15,0,0" Height="170">
@@ -3158,26 +3176,29 @@ FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColo
 </Border>
 <Border Name="translate" Style="{StaticResource HighlightBorder}">
 <StackPanel Orientation="Vertical">
-<TextBlock Text="🌍 Help to translate"
-FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-<TextBlock Text="Contribute your language to the project" Margin="0,2,0,0"
-FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
+<TextBlock FontSize="16" Foreground="{DynamicResource PrimaryTextColor}">
+<Run Text=" 🌍 "/>
+<Run Text="Help to translate"/>
+</TextBlock>
+<TextBlock Text="Contribute your language to the project" Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
 <Border Name="community" Style="{StaticResource HighlightBorder}">
 <StackPanel Orientation="Vertical">
-<TextBlock Text="💬 Community chat"
-FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-<TextBlock Text="Join our group and stay connected" Margin="0,2,0,0"
-FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
+<TextBlock FontSize="16" Foreground="{DynamicResource PrimaryTextColor}">
+<Run Text=" 💬 "/>
+<Run Text="Community chat"/>
+</TextBlock>
+<TextBlock Text="Join our group and stay connected" Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
 <Border Name="donate" Style="{StaticResource HighlightBorder}">
 <StackPanel Orientation="Vertical">
-<TextBlock Text="❤ Donate"
-FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
-<TextBlock Text="Be listed as one of our contributors" Margin="0,2,0,0"
-FontSize="12" FontFamily="Segoe UI" Foreground="{DynamicResource PrimaryTextColor}"/>
+<TextBlock FontSize="16" Foreground="{DynamicResource PrimaryTextColor}">
+<Run Text=" ❤ "/>
+<Run Text="Donate"/>
+</TextBlock>
+<TextBlock Text="Be listed as one of our contributors" Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource PrimaryTextColor}"/>
 </StackPanel>
 </Border>
 </StackPanel>
