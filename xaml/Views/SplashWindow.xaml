@@ -11,11 +11,7 @@
         Height="600" 
         ShowInTaskbar="false">
 
-        <Border CornerRadius="15" Height="600" Width="1024">
-
-                <Border.Background>
-                <ImageBrush ImageSource="http://127.0.0.1:5500/static/Images/splash.jpg"/>
-                </Border.Background>
+        <Border Height="600" Width="1024">
 
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock Text="itt"
@@ -27,10 +23,10 @@
                         <!-- Reference from Matrix Movie -->
                         <TextBlock Text="Wake up, Neo..."  
                                 FontSize="20"
+                                Name="status"
                                 Foreground="white"
                                 TextAlignment="Center"/>
                 </StackPanel>
         </Border>
-
 </Window>
 <!--End splash Window-->
