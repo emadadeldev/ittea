@@ -1,19 +1,19 @@
-###### 01/01/2026
+###### 05/07/2026
 
-##### 📂 Offical Repositories
+# 🔗 Offical Repositories
 
-#### Main: https://github.com/emadadeldev/ittea 
-#### Backup: https://gitlab.com/emadadel/itt/-/tree/main   
-#### Backup2: https://codeberg.org/emadadel/itt
+- Main: https://github.com/emadadeldev/ittea 
+- Backup: https://gitlab.com/emadadel/itt/   
+- Backup2: https://codeberg.org/emadadel/itt
 
-##### ▶️ Watch a demo 
+# ▶️ Watch a demo 
 ![itt.xName:yt [https://youtu.be/0kZFi6NT1gI]](https://img.youtube.com/vi/0kZFi6NT1gI/maxresdefault.jpg)
 
-##### 💠 Windows 10 LTS
+# 💠 Windows 10 LTS
 ![itt.xName:win [https://linkjust.com/massgravelts]](https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Images/windows10lts.jpg)
-#### Windows 10 LTS official ISO – the stable, long-term support version
+ ### Windows 10 LTS official ISO – the stable, long-term support version
 
-##### Keyboard Shortcuts
+# Keyboard Shortcuts
 
 - Ctrl+A: Clear category filter.
 - Ctrl+F: toggle search mode.
