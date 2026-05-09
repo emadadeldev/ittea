@@ -27,7 +27,7 @@ try {
     Clear-Host
     Write-Host "[x] Removeing old itt.ps1..."
     # Wait until to remove old file
-    Start-Sleep -Seconds 2
+    Start-Sleep -Seconds 1
 }
 catch {
     Write-Host $psitem.Exception.Message
@@ -86,7 +86,9 @@ function WriteToScript {
     param ([string]$Content)
 
     try {
+
         if ($Realsee) {
+            # Remove all comments and debug sections
             $Content = $Content.Trim()
             $Content = $Content -replace '(#\s*debug start[\s\S]*?#\s*debug end)', ''
             $Content = $Content -replace '<#[\s\S]*?#>', ''
@@ -157,7 +159,7 @@ function ProcessDirectory {
         Get-ChildItem $Directory -Recurse -File | ForEach-Object {
         
             if ($Skip -contains $_.Name) {
-                Write-Host "[-] Skip $($_.Name) from ProcessDirectory." -ForegroundColor Yellow
+                Write-Host "[-] Skip $($_.Name) from Process Directory." -ForegroundColor Yellow
                 return
             }
     
@@ -354,6 +356,8 @@ function ConvertTo-Xaml {
     # Process each line of the input text
     foreach ($line in $text -split "`n") {
         switch -Regex ($line) {
+
+            # Date
             "^###### (.+)" {
                 $global:DateContent += $matches[1].Trim()
             }
@@ -370,23 +374,18 @@ function ConvertTo-Xaml {
                 $global:imageLinkMap[$name] = $link
                 # Image section
             }
-            "^### (.+)" {
-                # Headline 
-                $text = $matches[1].Trim()
-                $xaml += "<TextBlock Text=''$text'' FontSize=''$HeadlineFontSize'' Padding=''10'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryTextColor}'' TextWrapping=''Wrap''/>`n"
-            }
-            "^##### (.+)" {
-                ##### Headline
+            # Headline
+            "^# (.+)" {
                 $Headline = $matches[1].Trim()  
-                $xaml += "<TextBlock Text=''$Headline'' FontSize=''$HeadlineFontSize'' Padding=''10 25 0 20'' Foreground=''{DynamicResource PrimaryTextColor}'' FontWeight=''bold'' TextWrapping=''Wrap''/>`n" 
+                $xaml += "<TextBlock Text=''$Headline'' FontSize=''$HeadlineFontSize'' Padding=''10 25 0 20'' Foreground=''{DynamicResource PrimaryTextColor}'' TextWrapping=''Wrap''/>`n" 
             }
-            "^#### (.+)" {
-                #### Description
-                $Description = $matches[1].Trim()  
+            ### Description
+            "^### (.+)" {
+                $text = $matches[1].Trim()
                 $xaml += "<TextBlock Text=''$Description'' FontSize=''$DescriptionFontSize'' HorizontalAlignment=''Left'' Padding=''10 0 0 10'' Foreground=''{DynamicResource PrimaryTextColor}'' TextWrapping=''Wrap'' MaxWidth=''500''/>`n"
             }
+            # - Lists
             "^- (.+)" {
-                # - Lists
                 $List = $matches[1].Trim()  
                 $xaml += "
                 <StackPanel Orientation=''Vertical''>
