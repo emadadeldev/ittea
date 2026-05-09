@@ -3,8 +3,6 @@ function ChangeTap {
     <#
         .SYNOPSIS
         Updates the visibility of buttons and sets the current list based on the selected tab.
-        .DESCRIPTION
-        This function manages the visibility of buttons and the selection of lists based on which tab is currently selected in a user interface.
     #>
 
     $tabSettings = @{
