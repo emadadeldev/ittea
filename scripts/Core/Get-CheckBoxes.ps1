@@ -1,4 +1,11 @@
 function Get-SelectedItems {
+
+    <#
+        .SYNOPSIS
+        Get props selected itmes.
+    #>
+
+
     param ([ValidateSet("AppsListView","TweaksListView")] [string]$Mode)
 
     $listView = if ($Mode -eq "AppsListView") { $itt.AppsListView } else { $itt.TweaksListView }
@@ -16,6 +23,12 @@ function Get-SelectedItems {
 }
 
 function Show-Selected {
+
+    <#
+        .SYNOPSIS
+        Show Selected items or Clear Selected
+    #>
+
     param (
         [string]$ListView,
         [string]$Mode
