@@ -4218,5 +4218,15 @@
     "itt": "na",
     "category": "Web Browsers",
     "IsChecked": false
+  },
+    {
+    "Content": "Groove Music",
+    "Description": "Groove Music is a music player app that comes pre-installed on Windows 10 and Windows 11",
+    "choco": "na",
+    "scoop": "na",
+    "winget": "na",
+    "itt": "msgroovemusic",
+    "category": "Media",
+    "IsChecked": false
   }
 ]
