@@ -4228,5 +4228,15 @@
     "itt": "msgroovemusic",
     "category": "Media",
     "IsChecked": false
+  },
+  {
+    "Content": "Deskflow",
+    "Description": "Deskflow is a free and open-source software KVM that lets you share a single keyboard and mouse across multiple computers",
+    "choco": "deskflow",
+    "scoop": "na",
+    "winget": "Deskflow.Deskflow",
+    "itt": "na",
+    "category": "Utilities",
+    "IsChecked": false
   }
 ]
