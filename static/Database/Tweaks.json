@@ -668,5 +668,15 @@
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Telemetry/run.ps1 | iex"
     ]
+  },
+  {
+    "Content": "Disable Windows Update (Not Recommended)",
+    "Description": "Windows Update should only be disabled by advanced users",
+    "Category": "Personalization",
+    "IsChecked": false,
+    "Requires": "For 10/11",
+    "Script": [
+      "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Telemetry/run.ps1 | iex"
+    ]
   }
 ]
