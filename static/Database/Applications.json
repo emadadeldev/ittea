@@ -2650,8 +2650,8 @@
     "IsChecked": false
   },
   {
-    "Content": "HFS HTTP File Server",
-    "Description": "You can use HFS HTTP File Server to send and",
+    "Content": "HFS",
+    "Description": "HFS is a web file server for your computer. Share folders",
     "choco": "hfs",
     "scoop": "na",
     "winget": "na",
