@@ -42,7 +42,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.5.9"
+version        = "26.5.13"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -284,7 +284,7 @@ Start-Process("https://discord.gg/6HkJpAWpSM")
 Start-Process("https://docs.google.com/spreadsheets/d/1b9h032ZQhFlZv8LcYKV64qzMtKi3djgkArajSdrT3F8/edit?usp=sharing")
 }
 "donate" {
-Start-Process("https://github.com/emadadeldev/ittea/blob/main/.github/DONATE.md")
+Start-Process("https://www.paypal.com/paypalme/emadadeldev")
 }
 }
 }
@@ -1821,11 +1821,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '05/11/2026'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
