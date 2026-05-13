@@ -27,7 +27,7 @@
 ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks
 
 ![Usage](https://img.shields.io/endpoint?url=https://itt.emadadel4-a0a.workers.dev/count&style=flat-square)
-![Version](https://img.shields.io/badge/Version-26.5.9-blue?logo=git&logoColor=white&style=flat-square)
+![Version](https://img.shields.io/badge/Version-26.5.13-blue?logo=git&logoColor=white&style=flat-square)
 ![Script](https://img.shields.io/github/size/emadadeldev/ittea/itt.ps1?label=Script%20&logo=git&logoColor=white&style=flat-square)
 [![VirusTotal](https://img.shields.io/badge/VirusTotal-Clean-blue?logo=virustotal)](https://www.virustotal.com/gui/url/591b66d6e7206f7dafd53bef0b3bee4116914db6bbfe576078c591d603096a27)
 [![Discord](https://img.shields.io/badge/Discord-Join-2f80ed?logo=discord&logoColor=white&style=flat-square)](https://discord.com/invite/6HkJpAWpSM)
@@ -43,7 +43,7 @@ ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks
 [![Italian](https://flagcdn.com/w20/it.png)](/locales/it.csv)
 [![Hindi](https://flagcdn.com/w20/in.png)](/locales/hi.csv)
 
-###### 📦 422 Apps • ⚙️ 68 Tweaks • 🔧 17 Settings • 💬 118 Quote • 🌐 11 Localization
+###### 📦 424 Apps • ⚙️ 68 Tweaks • 🔧 17 Settings • 💬 118 Quote • 🌐 11 Localization
 
 </div>
 
@@ -104,6 +104,9 @@ iex "& { $(irm bit.ly/ittco) } -i .\filename.itt"
 
 # ❤️ Donate
 
+<a href="https://paypal.me/emadadeldev" target="_blank">
+  <img src="https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal&logoColor=white" alt="Donate with PayPal" height="36">
+</a>
 <a href="https://www.buymeacoffee.com/emadadeldev" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="36">
 </a>
