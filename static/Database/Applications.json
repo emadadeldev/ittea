@@ -4238,5 +4238,15 @@
     "itt": "na",
     "category": "Utilities",
     "IsChecked": false
+  },
+  {
+    "Content": "Helium Browser",
+    "Description": "Helium is a browser based on ungoogled-chromium.",
+    "choco": "helium",
+    "scoop": "na",
+    "winget": "na",
+    "itt": "na",
+    "category": "Web Browsers",
+    "IsChecked": false
   }
 ]
