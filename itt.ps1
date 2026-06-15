@@ -42,7 +42,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.5.13"
+version        = "26.6.16"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -285,6 +285,9 @@ Start-Process("https://docs.google.com/spreadsheets/d/1b9h032ZQhFlZv8LcYKV64qzMt
 }
 "donate" {
 Start-Process("https://www.paypal.com/paypalme/emadadeldev")
+}
+"spotx" {
+Start-Process("https://github.com/SpotX-Official/SpotX")
 }
 }
 }
@@ -2674,6 +2677,7 @@ AutoReverse="True"/>
 <MenuItem Name="majorgeeks" Header="Major Geeks" ToolTip="Website that provides trusted, safe, and curated software downloads for Windows users. It focuses on high-quality tools."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="webtor" Header="Webtor" ToolTip="Web-based platform that allows users to stream torrent files directly in their browser without needing to download them."><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="asustool" Header="ASUS Setup Tool" ToolTip="Tool that manages the setup installation for the legacy Aura Sync, LiveDash, AiSuite3"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
+<MenuItem Name="spotx" Header="SpotX" ToolTip="SpotX patcher used for patching the desktop version of Spotify"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 </MenuItem>
 <MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
 <MenuItem.Icon><TextBlock Text="🏅"/></MenuItem.Icon>
