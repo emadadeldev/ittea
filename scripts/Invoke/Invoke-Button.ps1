@@ -170,6 +170,9 @@ function Invoke-Button {
         "donate" {
             Start-Process("https://www.paypal.com/paypalme/emadadeldev")
         }
+        "spotx" {
+            Start-Process("https://github.com/SpotX-Official/SpotX")
+        }
     }
 
     # debug start
