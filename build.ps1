@@ -25,7 +25,7 @@ $global:DateContent = ""
 try {
     if (Test-Path -Path $OutputScript) { Remove-Item -Path $OutputScript -Force }
     Clear-Host
-    Write-Host "[x] Removeing old itt.ps1..."
+    Write-Host "[-] Delete old itt.ps1..."
     # Wait until to remove old file
     Start-Sleep -Seconds 1
 }
@@ -703,7 +703,7 @@ param (
     #$TweaksCheckboxes = GenerateCheckboxes -Database $itt.database.Tweaks -DatabaseName "tweaks" -ContentField "Name" -IsCheckedField "check"
     $SettingsCheckboxes = GenerateCheckboxes -Database $itt.database.Settings -ContentField "Name" -NameField "Name" -ToggleField "Style=" { StaticResource ToggleSwitchStyle }""
 
-    # Get xaml files from Themes and put it inside MainXamlContent
+    # Get xaml files from Themes directory and put it inside MainXaml Content
     $ThemeFilesContent = Get-ChildItem -Path "$Themes" -File | 
     ForEach-Object { Get-Content $_.FullName -Raw } | 
     Out-String
