@@ -75,12 +75,12 @@ function Check {
 }
 function Create-JsonObject {
 
-    $Name = Read-Host "Enter app name"
+    $Content = Read-Host "Enter app name"
     $Description = Read-Host "Enter app description"
 
     # Create the base JSON object
     $jsonObject = @{
-        name        = $Name
+        Content     = $Content
         description = $Description
         choco       = "na"
         scoop       = "na"
@@ -198,7 +198,7 @@ if (Test-Path $applications) {
     $jsonOutput = @()
     foreach ($item in $existingJson) {
         $jsonOutput += [PSCustomObject]@{
-            Name        = $item.Name
+            Content     = $item.Content
             Description = $item.Description
             choco       = $item.choco
             scoop       = $item.scoop
