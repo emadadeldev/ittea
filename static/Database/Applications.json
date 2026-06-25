@@ -3980,7 +3980,7 @@
     "IsChecked": false
   },
   {
-    "Content": "ZenBrowser",
+    "Content": "Zen Browser",
     "Description": "The modern, privacy-focused, performance-driven browser built on Firefox",
     "choco": "na",
     "scoop": "na",
@@ -4241,12 +4241,32 @@
   },
   {
     "Content": "Helium Browser",
-    "Description": "Helium is a browser based on ungoogled-chromium.",
+    "Description": "Helium is a browser based on ungoogled-chromium",
     "choco": "helium",
     "scoop": "na",
     "winget": "na",
     "itt": "na",
     "category": "Web Browsers",
+    "IsChecked": false
+  },
+  {
+    "Content": "ePSXe",
+    "Description": "ePSXe is a Sony PlayStation emulator designed to enable users to play classic PlayStation games on modern computers",
+    "choco": "na",
+    "scoop": "na",
+    "winget": "ePSXe.ePSXe",
+    "itt": "na",
+    "category": "Gaming",
+    "IsChecked": false
+  },
+  {
+    "Content": "WeChat",
+    "Description": "WeChat is a free messaging and calling app",
+    "choco": "wechat",
+    "scoop": "na",
+    "winget": "Tencent.WeChat",
+    "itt": "na",
+    "category": "Communication",
     "IsChecked": false
   }
 ]
