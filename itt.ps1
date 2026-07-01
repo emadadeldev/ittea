@@ -10,30 +10,18 @@ Topmost="True"
 WindowStyle="None"
 Background="Transparent"
 AllowsTransparency="True"
-Width="1024"
-Height="600"
+Width="350"
+Height="350"
 ShowInTaskbar="false">
-<Border Height="600" Width="1024">
+<Border Height="350" Width="350" CornerRadius="12" Background="#0366d6">
 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 <TextBlock Text="itt"
 FontSize="250"
-Foreground="#0366d6"
+Foreground="white"
 FontFamily="Arial"
 FontWeight="Bold"
 TextAlignment="Center">
-<TextBlock.Effect>
-<DropShadowEffect
-BlurRadius="95"
-ShadowDepth="10"
-Color="blue"
-Opacity="0.9"/>
-</TextBlock.Effect>
 </TextBlock>
-<TextBlock Text="Wake up, Neo..."
-FontSize="19"
-Name="status"
-Foreground="white"
-TextAlignment="Center"/>
 </StackPanel>
 </Border>
 </Window>
@@ -50,7 +38,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.6.25"
+version        = "26.7.1"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
