@@ -99,13 +99,17 @@ body {
 
 svg {
     fill: var(--text-color);
-
 }
 
 .badge {
     position: fixed;
     top: 25px;
     left: 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
 }
 
 /* ===== End Content Style ===== */
