@@ -7,34 +7,19 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
-        Width="1024" 
-        Height="600" 
+        Width="350" 
+        Height="350" 
         ShowInTaskbar="false">
 
-        <Border Height="600" Width="1024">
-
+        <Border Height="350" Width="350" CornerRadius="12" Background="#0366d6">
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-
-                <TextBlock Text="itt"
-                        FontSize="250"
-                        Foreground="#0366d6"
-                        FontFamily="Arial"
-                        FontWeight="Bold"
-                        TextAlignment="Center">
-                        <TextBlock.Effect>
-                                <DropShadowEffect 
-                                BlurRadius="95" 
-                                ShadowDepth="10" 
-                                Color="blue" 
-                                Opacity="0.9"/>
-                        </TextBlock.Effect>
-                </TextBlock>
-                <!-- Reference from Matrix Movie -->
-                <TextBlock Text="Wake up, Neo..."  
-                        FontSize="19"
-                        Name="status"
-                        Foreground="white"
-                        TextAlignment="Center"/>
+                        <TextBlock Text="itt"
+                                FontSize="250"
+                                Foreground="white"
+                                FontFamily="Arial"
+                                FontWeight="Bold"
+                                TextAlignment="Center">
+                        </TextBlock>
                 </StackPanel>
         </Border>
 </Window>
