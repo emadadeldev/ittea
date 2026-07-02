@@ -678,5 +678,15 @@
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/Disable%20Windows%20Update/run.ps1 | iex"
     ]
+  },
+  {
+    "Content": "Remove Microsoft Edge",
+    "Description": "Removes the Microsoft Edge browser from your system",
+    "Category": "Personalization",
+    "IsChecked": false,
+    "Requires": "For 10",
+    "Script": [
+      "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/remove%20edge/run.ps1 | iex"
+    ]
   }
 ]
