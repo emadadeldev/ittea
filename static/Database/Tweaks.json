@@ -688,5 +688,15 @@
     "Script": [
       "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/remove%20edge/run.ps1 | iex"
     ]
+  },
+  {
+    "Content": "Take Ownership",
+    "Description": "Adds a 'Take Ownership' option to the right-click context menu",
+    "Category": "Personalization",
+    "IsChecked": false,
+    "Requires": "For 10/11",
+    "Script": [
+      "irm https://raw.githubusercontent.com/emadadeldev/itt-tweaks/refs/heads/main/take%20ownership/run.p1 | iex"
+    ]
   }
 ]
