@@ -61,7 +61,8 @@ exit
 }
 break
 }
-catch {
+catch
+{
 Write-Host "  Unstable internet connection detected. Retrying in 10 seconds...`n" -ForegroundColor Yellow
 Start-Sleep 10
 }
@@ -1820,11 +1821,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '05/11/2026'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
