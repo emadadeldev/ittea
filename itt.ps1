@@ -46,6 +46,27 @@ Language       = "default"
 ittDir         = "$env:ProgramData\itt\"
 command        = "$($MyInvocation.MyCommand.Definition)"
 })
+if(-not $Debug)
+{
+while ($true) {
+try {
+$checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.version)"
+$itt.api = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
+if ($itt.api.status) {
+$splash.Close()
+Write-Host "$($itt.api.message)" -ForegroundColor Red
+Read-Host "   Press Enter to visit https://github.com/emadadeldev/ittea"
+Start-Process "https://github.com/emadadeldev/ittea"
+exit
+}
+break
+}
+catch {
+Write-Host "  Unstable internet connection detected. Retrying in 10 seconds...`n" -ForegroundColor Yellow
+Start-Sleep 10
+}
+}
+}
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
 Start-Process -FilePath "PowerShell" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"$($MyInvocation.MyCommand.Definition)`"" -Verb RunAs
 exit
