@@ -29,7 +29,6 @@ TextAlignment="Center">
 $Host.UI.RawUI.BackgroundColor = 'Black'
 $Host.UI.RawUI.WindowTitle = "Install Twaeks Tool"
 Clear-Host
-Write-Host "`n  Checking everything...`n"
 Add-Type -AssemblyName 'System.Windows.Forms', 'PresentationFramework', 'PresentationCore', 'WindowsBase','System.Net.Http'
 $reader = New-Object System.Xml.XmlNodeReader ([xml]$SplashWindowContent)
 $splash = [Windows.Markup.XamlReader]::Load($reader)
@@ -48,14 +47,15 @@ command        = "$($MyInvocation.MyCommand.Definition)"
 })
 if(-not $Debug)
 {
-while ($true) {
+Write-Host "`n  Checking everything...`n"
+while ($true)
+{
 try {
-$checkUrl = "https://ver.emadadel4-a0a.workers.dev/check?version=$($itt.version)"
-$itt.api = Invoke-RestMethod -Uri $checkUrl -ErrorAction Stop
-if ($itt.api.status) {
+$latestVersion = (Invoke-RestMethod -Uri "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/version.txt" -ErrorAction Stop).Trim()
+if ($latestVersion -ne $itt.version) {
 $splash.Close()
-Write-Host "$($itt.api.message)" -ForegroundColor Red
-Read-Host "   Press Enter to visit https://github.com/emadadeldev/ittea"
+Write-Host "YOU ARE USING AN OLD VERSION OF ITT. PORTABLE SCRIPT IS NOT RECOMMENDED`nPLEASE USE THE LATEST VERSION FROM THE OFFICIAL COMMANDS AT https://github.com/emadadeldev/ittea" -ForegroundColor Red
+Read-Host "Press Enter to visit https://github.com/emadadeldev/ittea"
 Start-Process "https://github.com/emadadeldev/ittea"
 exit
 }
@@ -71,6 +71,8 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Start-Process -FilePath "PowerShell" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"$($MyInvocation.MyCommand.Definition)`"" -Verb RunAs
 exit
 }
+Write-Host "  Version [$($itt.Version)]" -ForegroundColor Green
+Write-Host "  Status [Verified]" -ForegroundColor Green
 Write-Host "`n  Relax, good things are loading… almost there!`n"
 Add-Type @"
 using System;
@@ -882,10 +884,8 @@ $i = @{quote = "💬"; info = "📢"; music = "🎵"; Cautton = "⚠"; default =
 while (1) { foreach ($x in $q) { $c = $i[$x.type]; if (-not $c) { $c = $i.default }; $t = "`“$($x.text)`”"; if ($x.name) { $t += " ― $($x.name)" }; Set-Statusbar -Text "$c $t"; Start-Sleep 25 } }
 }
 function LOG {
-Write-Host "  ███████████████████╗ " -NoNewline
-Write-Host "Status  [$($itt.api.message)]" -ForegroundColor Green
-Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
-Write-Host "Version [$($itt.Version)]" -ForegroundColor Green
+Write-Host "  ███████████████████╗ "
+Write-Host "  ██╚══██╔══╚═══██╔══╝ "
 Write-Host "  ██║  ██║ Emad ██║    " -NoNewline
 Write-Host "Main repository: https://github.com/emadadeldev/ittea" -ForegroundColor Yellow
 Write-Host "  ██║  ██║ Adel ██║    " -NoNewline

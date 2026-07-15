@@ -31,10 +31,8 @@ function Startup {
         }
 
         function LOG {
-            Write-Host "  ███████████████████╗ " -NoNewline
-            Write-Host "Status  [$($itt.api.message)]" -ForegroundColor Green
-            Write-Host "  ██╚══██╔══╚═══██╔══╝ " -NoNewline
-            Write-Host "Version [$($itt.Version)]" -ForegroundColor Green
+            Write-Host "  ███████████████████╗ "
+            Write-Host "  ██╚══██╔══╚═══██╔══╝ "
             Write-Host "  ██║  ██║ Emad ██║    " -NoNewline
             Write-Host "Main repository: https://github.com/emadadeldev/ittea" -ForegroundColor Yellow
             Write-Host "  ██║  ██║ Adel ██║    " -NoNewline
