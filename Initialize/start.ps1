@@ -41,7 +41,6 @@ $itt = [Hashtable]::Synchronized(@{
 # ================================
 if(-not $Debug)
 {
-
     Write-Host "`n  Checking everything...`n"
 
     while ($true) 
@@ -56,15 +55,14 @@ if(-not $Debug)
                 Start-Process "https://github.com/emadadeldev/ittea"
                 exit
             }
-
             break
         }
-        catch {
+        catch 
+        {
             Write-Host "  Unstable internet connection detected. Retrying in 10 seconds...`n" -ForegroundColor Yellow
             Start-Sleep 10
+        }
     }
-
-}
 }
 # ================================
 #endregion Check for updates
