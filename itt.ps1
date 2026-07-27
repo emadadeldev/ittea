@@ -37,7 +37,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.7.16"
+version        = "26.7.27"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -235,7 +235,7 @@ ITT-ScriptBlock -ScriptBlock { irm https://get.activated.win | iex }
 }
 "idm" {
 Add-Log -Message "Running IDM Activation..." -Level "info"
-ITT-ScriptBlock -ScriptBlock { curl.exe -L -o $env:TEMP\\IDM_Trial_Reset.exe "https://github.com/itt-co/itt-packages/raw/refs/heads/main/automation/idm-trial-reset/IDM%20Trial%20Reset.exe"; cmd /c "$env:TEMP\\IDM_Trial_Reset.exe" }
+Start-Process "https://github.com/J2TEAM/idm-trial-reset"
 }
 "winoffice" {
 Start-Process "https://linkjust.com/massgrave"
