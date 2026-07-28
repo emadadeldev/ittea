@@ -31,14 +31,15 @@
     <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
+        <Setter Property="BorderThickness" Value="1.8"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="6">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
