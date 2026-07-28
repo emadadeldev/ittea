@@ -17,7 +17,7 @@
     <SolidColorBrush x:Key="ButtonBorderColor" Color="#539bf5"/>
 
     <!-- Borders and Labels -->
-    <SolidColorBrush x:Key="BorderBrushColor" Color="#444c56"/>
+    <SolidColorBrush x:Key="BorderBrushColor" Color="#52525B"/>
     <SolidColorBrush x:Key="LabelColor" Color="#373e47"/>
 
     <!-- Toggle Switch -->
