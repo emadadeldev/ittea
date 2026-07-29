@@ -13,10 +13,10 @@ AllowsTransparency="True"
 Width="200"
 Height="200"
 ShowInTaskbar="false">
-<Border Height="200" Width="200" CornerRadius="6" Background="#0366d6">
+<Border Height="200" Width="200" CornerRadius="8" Background="#0366d6">
 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 <TextBlock Text="itt"
-FontSize="173"
+FontSize="170"
 Foreground="white"
 FontFamily="Arial"
 FontWeight="Bold"
