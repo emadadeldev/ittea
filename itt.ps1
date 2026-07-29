@@ -10,13 +10,13 @@ Topmost="True"
 WindowStyle="None"
 Background="Transparent"
 AllowsTransparency="True"
-Width="350"
-Height="350"
+Width="200"
+Height="200"
 ShowInTaskbar="false">
-<Border Height="350" Width="350" CornerRadius="12" Background="#0366d6">
+<Border Height="200" Width="200" CornerRadius="6" Background="#0366d6">
 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 <TextBlock Text="itt"
-FontSize="250"
+FontSize="173"
 Foreground="white"
 FontFamily="Arial"
 FontWeight="Bold"
@@ -37,7 +37,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.7.28"
+version        = "26.7.29"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -1821,11 +1821,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '05/11/2026'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
