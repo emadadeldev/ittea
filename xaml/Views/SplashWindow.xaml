@@ -7,14 +7,14 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
-        Width="350" 
-        Height="350" 
+        Width="200" 
+        Height="200" 
         ShowInTaskbar="false">
 
-        <Border Height="350" Width="350" CornerRadius="12" Background="#0366d6">
+        <Border Height="200" Width="200" CornerRadius="6" Background="#0366d6">
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock Text="itt"
-                                FontSize="250"
+                                FontSize="173"
                                 Foreground="white"
                                 FontFamily="Arial"
                                 FontWeight="Bold"
