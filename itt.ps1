@@ -1821,11 +1821,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '05/11/2026'.Trim()
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
-})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
+})
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -3278,14 +3278,10 @@ $appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/
 $tweaksUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Tweaks.json"
 while ($true) {
 try {
-$appsTask   = $c.GetStringAsync($appsUrl)
-$tweaksTask = $c.GetStringAsync($tweaksUrl)
-$appsJson   = $appsTask.GetAwaiter().GetResult()
-$tweaksJson = $tweaksTask.GetAwaiter().GetResult()
-$appsData   = $appsJson | ConvertFrom-Json
-$tweaksData = $tweaksJson | ConvertFrom-Json
-if ($appsData -and $tweaksData)
-{
+$aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
+[Threading.Tasks.Task]::WaitAll($aTask, $tTask)
+$appsData = $aTask.Result | ConvertFrom-Json
+$tweaksData = $tTask.Result | ConvertFrom-Json
 foreach ($app in $appsData)
 {
 if ($app.link)
@@ -3301,17 +3297,20 @@ $app | Add-Member -Force NoteProperty Icon ""
 $app | Add-Member -Force NoteProperty IconVisibility "Collapsed"
 }
 }
-$itt.AppsListView.ItemsSource   = $appsData
+if ($appsData -and $tweaksData) {
+$itt.AppsListView.ItemsSource = $appsData
 $itt.TweaksListView.ItemsSource = $tweaksData
 $splash.Close()
 break
 }
+else {
 Write-Host "Still loading data..." -ForegroundColor Yellow
 }
-catch {
-Write-Host "Unstable internet connection detected. Retrying in 10 seconds..." -ForegroundColor Yellow
 }
-Start-Sleep -Seconds 10
+catch {
+Write-Host "  Unstable internet connection detected. Retrying in 10 seconds...`n" -ForegroundColor Yellow
+}
+Start-Sleep 10
 }
 try {
 $Locales = switch ($itt.Locales) {
