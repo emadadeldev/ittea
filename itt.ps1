@@ -37,7 +37,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.8.6"
+version        = "26.7.29"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -1868,14 +1868,15 @@ BeginTime="0:0:15" />
 <Style TargetType="Button">
 <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
 <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
-<Setter Property="BorderBrush" Value="Transparent"/>
+<Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
+<Setter Property="BorderThickness" Value="1.8"/>
 <Setter Property="Padding" Value="8"/>
 <Setter Property="FontSize" Value="14"/>
 <Setter Property="Template">
 <Setter.Value>
 <ControlTemplate TargetType="Button">
 <Grid>
-<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="6">
+<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6">
 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
 </Border>
 </Grid>
@@ -2099,7 +2100,7 @@ CornerRadius="0">
 <Grid>
 <Grid.ColumnDefinitions>
 <ColumnDefinition Width="Auto"/>
-<ColumnDefinition Width="*"/>
+<ColumnDefinition Width="Auto"/>
 <ColumnDefinition Width="Auto"/>
 </Grid.ColumnDefinitions>
 <ContentPresenter Grid.Column="0"
@@ -2509,6 +2510,21 @@ AutoReverse="True"/>
 </Trigger>
 </Style.Triggers>
 </Style>
+<Style TargetType="Window">
+<Setter Property="BorderBrush" Value="Red"/>
+<Style.Triggers>
+<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+<BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+</EventTrigger>
+</Style.Triggers>
+</Style>
+<Style TargetType="ItemsControl">
+<Style.Triggers>
+<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+<BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+</EventTrigger>
+</Style.Triggers>
+</Style>
 <ResourceDictionary x:Key="Dark">
 <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#22272e"/>
 <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="#2d333b"/>
@@ -2694,7 +2710,7 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <StackPanel x:Name="MainStackPanel" Background="Transparent" Orientation="Vertical" Margin="25,25,0,0">
 <Grid Background="Transparent">
 <StackPanel>
-<TextBlock Name="title" FontSize="20" Text="What&apos;s New" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+<TextBlock Name="title" FontSize="20" Text="Welcome to ITT 👋" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 <TextBlock Name="date" Visibility="Hidden" Margin="5,5,0,0" FontSize="12" Text="8/29/2024" Foreground="{DynamicResource SecondaryTextColor}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 </StackPanel>
 </Grid>
