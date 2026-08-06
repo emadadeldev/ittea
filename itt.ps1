@@ -2906,11 +2906,6 @@ HorizontalAlignment="Center"
 ToolTip="{Binding Description}"
 Margin="5">
 <StackPanel Orientation="Horizontal">
-<Image Name="AppIcon" Source="{Binding Icon}"
-Visibility="{Binding IconVisibility}"
-Width="30"
-Height="30"
-Margin="0,0,8,0"/>
 <TextBlock Text="{Binding Content}"
 VerticalAlignment="Center"
 FontSize="14"
