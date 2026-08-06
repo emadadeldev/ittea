@@ -1868,15 +1868,14 @@ BeginTime="0:0:15" />
 <Style TargetType="Button">
 <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
 <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
-<Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
-<Setter Property="BorderThickness" Value="1.8"/>
+<Setter Property="BorderBrush" Value="Transparent"/>
 <Setter Property="Padding" Value="8"/>
 <Setter Property="FontSize" Value="14"/>
 <Setter Property="Template">
 <Setter.Value>
 <ControlTemplate TargetType="Button">
 <Grid>
-<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6">
+<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="6">
 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
 </Border>
 </Grid>
@@ -1945,45 +1944,59 @@ ContentSource="Content"/>
 <Style TargetType="CheckBox">
 <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 <Setter Property="Margin" Value="0"/>
-<Setter Property="Padding" Value="10"/>
-<Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
-<Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
-<Setter Property="BorderThickness" Value="1.2"/>
-<Setter Property="Cursor" Value="Hand"/>
+<Setter Property="Padding" Value="0"/>
+<Setter Property="Background" Value="{x:Null}"/>
+<Setter Property="BorderThickness" Value="0"/>
+<Setter Property="BorderBrush" Value="DarkGray"/>
 <Setter Property="Template">
 <Setter.Value>
 <ControlTemplate TargetType="CheckBox">
-<Border x:Name="Root"
-Background="{TemplateBinding Background}"
+<Grid Margin="4">
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="Auto"/>
+<ColumnDefinition Width="*" />
+</Grid.ColumnDefinitions>
+<Border Width="20" Height="20"
+Grid.Column="0"
 BorderBrush="{TemplateBinding BorderBrush}"
-BorderThickness="{TemplateBinding BorderThickness}"
 CornerRadius="5"
-Padding="{TemplateBinding Padding}">
-<ContentPresenter
-HorizontalAlignment="Stretch"
-VerticalAlignment="Center"
-Content="{TemplateBinding Content}"
-ContentTemplate="{TemplateBinding ContentTemplate}"
-RecognizesAccessKey="True"/>
+BorderThickness="{TemplateBinding BorderThickness}"
+Background="{TemplateBinding Background}">
+<Grid>
+<TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+<Path x:Name="CheckMark"
+Margin="4"
+FlowDirection="LeftToRight"
+Stretch="Uniform"
+Stroke="White"
+StrokeThickness="2"
+Data="M 0 5 L 4 8 L 10 0"
+Visibility="Collapsed"
+HorizontalAlignment="Center"
+VerticalAlignment="Center"/>
+</Grid>
 </Border>
+<ContentPresenter Grid.Column="1" Margin="8 0 0 0" VerticalAlignment="Center"/>
+</Grid>
 <ControlTemplate.Triggers>
 <Trigger Property="IsChecked" Value="True">
-<Setter TargetName="Root"
-Property="Background"
-Value="{DynamicResource ButtonHighlightColor}"/>
-<Setter Property="Foreground"
-Value="White"/>
+<Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+<Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter TargetName="CheckIcon" Property="Visibility" Value="Hidden"/>
 </Trigger>
 <Trigger Property="IsMouseOver" Value="True">
-<Setter TargetName="Root"
-Property="BorderBrush"
-Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+<Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter Property="Cursor" Value="Hand"/>
 </Trigger>
-<Trigger Property="IsEnabled" Value="False">
-<Setter TargetName="Root"
-Property="Opacity"
-Value="0.5"/>
-</Trigger>
+<DataTrigger Binding="{Binding SelectedItem.Tag, ElementName=taps}" Value="apps">
+<Setter TargetName="CheckIcon" Property="Text" Value="📦"/>
+</DataTrigger>
+<DataTrigger Binding="{Binding SelectedItem.Tag, ElementName=taps}" Value="tweaks">
+<Setter TargetName="CheckIcon" Property="Text" Value="🛠"/>
+</DataTrigger>
 </ControlTemplate.Triggers>
 </ControlTemplate>
 </Setter.Value>
@@ -2086,7 +2099,7 @@ CornerRadius="0">
 <Grid>
 <Grid.ColumnDefinitions>
 <ColumnDefinition Width="Auto"/>
-<ColumnDefinition Width="Auto"/>
+<ColumnDefinition Width="*"/>
 <ColumnDefinition Width="Auto"/>
 </Grid.ColumnDefinitions>
 <ContentPresenter Grid.Column="0"
@@ -2496,21 +2509,6 @@ AutoReverse="True"/>
 </Trigger>
 </Style.Triggers>
 </Style>
-<Style TargetType="Window">
-<Setter Property="BorderBrush" Value="Red"/>
-<Style.Triggers>
-<EventTrigger RoutedEvent="FrameworkElement.Loaded">
-<BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
-</EventTrigger>
-</Style.Triggers>
-</Style>
-<Style TargetType="ItemsControl">
-<Style.Triggers>
-<EventTrigger RoutedEvent="FrameworkElement.Loaded">
-<BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
-</EventTrigger>
-</Style.Triggers>
-</Style>
 <ResourceDictionary x:Key="Dark">
 <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#22272e"/>
 <SolidColorBrush x:Key="SecondaryPrimaryBackgroundColor" Color="#2d333b"/>
@@ -2696,7 +2694,7 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <StackPanel x:Name="MainStackPanel" Background="Transparent" Orientation="Vertical" Margin="25,25,0,0">
 <Grid Background="Transparent">
 <StackPanel>
-<TextBlock Name="title" FontSize="20" Text="Welcome to ITT 👋" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+<TextBlock Name="title" FontSize="20" Text="What&apos;s New" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 <TextBlock Name="date" Visibility="Hidden" Margin="5,5,0,0" FontSize="12" Text="8/29/2024" Foreground="{DynamicResource SecondaryTextColor}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 </StackPanel>
 </Grid>
@@ -2902,16 +2900,26 @@ HorizontalAlignment="Center"
 </ItemsControl.ItemsPanel>
 <ItemsControl.ItemTemplate>
 <DataTemplate>
-<CheckBox IsChecked="{Binding IsChecked}"
+<Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
+CornerRadius="5"
+Padding="10"
+Margin="5"
+BorderBrush="{DynamicResource BorderBrushColor}"
+BorderThickness="1.2">
+<Grid>
+<Grid.RowDefinitions>
+<RowDefinition Height="auto"/>
+</Grid.RowDefinitions>
+<CheckBox
+Grid.Row="0"
+Content="{Binding Content}"
+IsChecked="{Binding IsChecked}"
 ToolTip="{Binding Description}"
-Margin="5">
-<StackPanel Orientation="Horizontal">
-<TextBlock Text="{Binding Content}"
-VerticalAlignment="Center"
 FontSize="14"
-FontWeight="SemiBold"/>
-</StackPanel>
-</CheckBox>
+FontWeight="SemiBold"
+HorizontalContentAlignment="Stretch"/>
+</Grid>
+</Border>
 </DataTemplate>
 </ItemsControl.ItemTemplate>
 </ItemsControl>
@@ -2996,29 +3004,22 @@ HorizontalAlignment="Center"
 </ItemsControl.ItemsPanel>
 <ItemsControl.ItemTemplate>
 <DataTemplate>
-<Border Background="{DynamicResource PrimaryBackgroundColor}"
+<Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
 CornerRadius="5"
-Padding="5"
-Margin="0"
+Padding="10"
+Margin="5"
 BorderBrush="{DynamicResource BorderBrushColor}"
-BorderThickness="0">
+BorderThickness="1.2">
 <StackPanel>
 <CheckBox
+Grid.Row="0"
+Content="{Binding Content}"
 IsChecked="{Binding IsChecked}"
 ToolTip="{Binding Description}"
-HorizontalContentAlignment="Stretch">
-<StackPanel Orientation="Horizontal">
-<TextBlock Text="{Binding Content}"
 FontSize="14"
-FontWeight="SemiBold"/>
-<TextBlock Text=" "
-FontSize="14"
-FontWeight="SemiBold"/>
-<TextBlock Text="{Binding Requires}"
-FontSize="14"
-FontWeight="SemiBold"/>
-</StackPanel>
-</CheckBox>
+FontWeight="SemiBold"
+HorizontalContentAlignment="Stretch"/>
+<TextBlock Text="{Binding Requires}" Margin="5" FontSize="12" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource SecondaryTextColor}"/>
 </StackPanel>
 </Border>
 </DataTemplate>
