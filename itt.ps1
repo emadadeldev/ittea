@@ -55,7 +55,7 @@ $latestVersion = (Invoke-RestMethod -Uri "https://raw.githubusercontent.com/emad
 if ($latestVersion -ne $itt.version) {
 $splash.Close()
 Write-Host "  YOU ARE USING AN OLD VERSION OF ITT. PORTABLE SCRIPT IS NOT RECOMMENDED`n  PLEASE USE THE LATEST VERSION FROM THE OFFICIAL COMMANDS AT https://github.com/emadadeldev/ittea" -ForegroundColor Red
-Read-Host "Press Enter to visit https://github.com/emadadeldev/ittea"
+Read-Host "   Press Enter to visit https://github.com/emadadeldev/ittea"
 Start-Process "https://github.com/emadadeldev/ittea"
 exit
 }
