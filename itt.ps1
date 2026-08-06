@@ -1821,11 +1821,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '05/11/2026'.Trim()
-$itt['window'].FindName('yt').add_MouseLeftButtonDown({
-Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
 $itt['window'].FindName('win').add_MouseLeftButtonDown({
 Start-Process('https://linkjust.com/massgravelts')
+})
+$itt['window'].FindName('yt').add_MouseLeftButtonDown({
+Start-Process('https://youtu.be/0kZFi6NT1gI')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -3282,21 +3282,6 @@ $aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
 [Threading.Tasks.Task]::WaitAll($aTask, $tTask)
 $appsData = $aTask.Result | ConvertFrom-Json
 $tweaksData = $tTask.Result | ConvertFrom-Json
-foreach ($app in $appsData)
-{
-if ($app.link)
-{
-$app | Add-Member -Force NoteProperty Icon (
-"https://www.google.com/s2/favicons?sz=64&domain_url=$([Uri]::EscapeDataString($app.link))"
-)
-$app | Add-Member -Force NoteProperty IconVisibility "Visible"
-}
-else
-{
-$app | Add-Member -Force NoteProperty Icon ""
-$app | Add-Member -Force NoteProperty IconVisibility "Collapsed"
-}
-}
 if ($appsData -and $tweaksData) {
 $itt.AppsListView.ItemsSource = $appsData
 $itt.TweaksListView.ItemsSource = $tweaksData
