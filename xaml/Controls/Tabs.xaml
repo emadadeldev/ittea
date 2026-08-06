@@ -19,7 +19,7 @@
                 <StackPanel x:Name="MainStackPanel" Background="Transparent" Orientation="Vertical" Margin="25,25,0,0">
                     <Grid Background="Transparent">
                         <StackPanel>
-                            <TextBlock Name="title" FontSize="20" Text="What&apos;s New" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Name="title" FontSize="20" Text="Welcome to ITT 👋" Foreground="{DynamicResource SecondaryTextColor}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                             <TextBlock Name="date" Visibility="Hidden" Margin="5,5,0,0" FontSize="12" Text="8/29/2024" Foreground="{DynamicResource SecondaryTextColor}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </StackPanel>
                     </Grid>
@@ -158,11 +158,8 @@
             </ComboBox>
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-
                 <Grid HorizontalAlignment="Center" Margin="10">
-
-                    <ItemsControl Name="AppsListView">
-
+                   <ItemsControl Name="AppsListView">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel IsItemsHost="True"
@@ -174,39 +171,25 @@
 
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsChecked}"
+                                        ToolTip="{Binding Description}"
+                                        Margin="5">
 
-                                <Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
-                                        CornerRadius="5"
-                                        Padding="10"
-                                        Margin="5"
-                                        BorderBrush="{DynamicResource BorderBrushColor}"
-                                        BorderThickness="1.2">
-
-                                        <Grid>
-
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-
-                                            <CheckBox
-                                                Grid.Row="0"
-                                                Content="{Binding Content}"
-                                                IsChecked="{Binding IsChecked}"
-                                                ToolTip="{Binding Description}"
+                                    <StackPanel Orientation="Horizontal">
+                                    
+                                        <TextBlock Text="{Binding Content}"
+                                                VerticalAlignment="Center"
                                                 FontSize="14"
-                                                FontWeight="SemiBold"
-                                                HorizontalContentAlignment="Stretch"/>
-                                        </Grid>
-
-                                </Border>
-
+                                                FontWeight="SemiBold"/>
+                                    </StackPanel>
+                                </CheckBox>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </Grid>
             </ScrollViewer>
+            
         </Grid>
-
     </TabItem>
 
     <!-- Tweaks Tab -->
@@ -296,29 +279,35 @@
 
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-
-                                <Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
+                                <Border Background="{DynamicResource PrimaryBackgroundColor}"
                                         CornerRadius="5"
-                                        Padding="10"
-                                        Margin="5"
+                                        Padding="5"
+                                        Margin="0"
                                         BorderBrush="{DynamicResource BorderBrushColor}"
-                                        BorderThickness="1.2">
+                                        BorderThickness="0">
 
                                         <StackPanel>
+                                           <CheckBox
+                                            IsChecked="{Binding IsChecked}"
+                                            ToolTip="{Binding Description}"
+                                            HorizontalContentAlignment="Stretch">
 
-                                            <CheckBox
-                                                Grid.Row="0"
-                                                Content="{Binding Content}"
-                                                IsChecked="{Binding IsChecked}"
-                                                ToolTip="{Binding Description}"
-                                                FontSize="14"
-                                                FontWeight="SemiBold"
-                                                HorizontalContentAlignment="Stretch"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Content}"
+                                                        FontSize="14"
+                                                        FontWeight="SemiBold"/>
 
-                                                <TextBlock Text="{Binding Requires}" Margin="5" FontSize="12" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource SecondaryTextColor}"/>
+                                                <TextBlock Text=" "
+                                                        FontSize="14"
+                                                        FontWeight="SemiBold"/>
 
+                                                <TextBlock Text="{Binding Requires}"
+                                                        FontSize="14"
+                                                        FontWeight="SemiBold"/>
+                                            </StackPanel>
+
+                                        </CheckBox>
                                         </StackPanel>
-
                                 </Border>
 
                             </DataTemplate>

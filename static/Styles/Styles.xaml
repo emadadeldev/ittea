@@ -31,14 +31,15 @@
     <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
+        <Setter Property="BorderThickness" Value="1.8"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="6">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
@@ -114,71 +115,59 @@
     <Style TargetType="CheckBox">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Background" Value="{x:Null}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="BorderBrush" Value="DarkGray"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
+        <Setter Property="BorderThickness" Value="1.2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
-                    <Grid Margin="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        
-                        <!-- Check Radius -->
-                        <Border Width="20" Height="20"
-                                Grid.Column="0"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                CornerRadius="5"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                Background="{TemplateBinding Background}">
-                            <Grid>
 
-                                <!-- Check Icon -->
-                                <TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                    <Border x:Name="Root"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5"
+                            Padding="{TemplateBinding Padding}">
 
-                                <!-- Check Mark -->
-                                <Path x:Name="CheckMark"
-                                    Margin="4"
-                                    FlowDirection="LeftToRight"
-                                    Stretch="Uniform"
-                                    Stroke="White"
-                                    StrokeThickness="2"
-                                    Data="M 0 5 L 4 8 L 10 0"
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                            </Grid>
-                        </Border>
+                        <ContentPresenter
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            RecognizesAccessKey="True"/>
 
-                        <!-- Content -->
-                        <ContentPresenter Grid.Column="1" Margin="8 0 0 0" VerticalAlignment="Center"/>
-                    </Grid>
+                    </Border>
 
                     <ControlTemplate.Triggers>
+
+                        <!-- Checked -->
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-                            <Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
-                            <Setter TargetName="CheckIcon" Property="Visibility" Value="Hidden"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
-                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
-                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter TargetName="Root"
+                                    Property="Background"
+                                    Value="{DynamicResource ButtonHighlightColor}"/>
+                            <Setter Property="Foreground"
+                                    Value="White"/>
                         </Trigger>
 
-                        <!-- Custom icon based on selected tab -->
-                        <DataTrigger Binding="{Binding SelectedItem.Tag, ElementName=taps}" Value="apps">
-                            <Setter TargetName="CheckIcon" Property="Text" Value="📦"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding SelectedItem.Tag, ElementName=taps}" Value="tweaks">
-                            <Setter TargetName="CheckIcon" Property="Text" Value="🛠"/>
-                        </DataTrigger>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Root"
+                                    Property="BorderBrush"
+                                    Value="{DynamicResource ButtonHighlightColor}"/>
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Root"
+                                    Property="Opacity"
+                                    Value="0.5"/>
+                        </Trigger>
+
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -295,7 +284,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <!-- Icon -->
@@ -723,22 +712,22 @@
 <!--End ContextMenu Style-->
 
 <!-- BlinkingDotStyle -->
-<Style x:Key="BlinkingDotStyle" TargetType="FrameworkElement">
-    <Setter Property="Opacity" Value="1"/>
-    <Style.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard>
-                <Storyboard RepeatBehavior="Forever">
-                    <DoubleAnimation
-                        Storyboard.TargetProperty="Opacity"
-                        From="1" To="0"
-                        Duration="0:0:0.9"
-                        AutoReverse="True"/>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Style.Triggers>
-</Style>
+    <Style x:Key="BlinkingDotStyle" TargetType="FrameworkElement">
+        <Setter Property="Opacity" Value="1"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard RepeatBehavior="Forever">
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Opacity"
+                            From="1" To="0"
+                            Duration="0:0:0.9"
+                            AutoReverse="True"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
 <!-- End BlinkingDotStyle -->
 
 <!-- Border Style -->
@@ -758,3 +747,24 @@
         </Style.Triggers>
     </Style>
 <!-- End Border Style -->
+
+<!-- Begin Window Style -->
+    <Style TargetType="Window">
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+<!-- End Window Style -->
+
+<!-- Begin ItemsControl Style -->
+     <Style TargetType="ItemsControl">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+<!-- End ItemsControl Style -->
