@@ -37,7 +37,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.7.29"
+version        = "26.8.7"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -1945,59 +1945,45 @@ ContentSource="Content"/>
 <Style TargetType="CheckBox">
 <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 <Setter Property="Margin" Value="0"/>
-<Setter Property="Padding" Value="0"/>
-<Setter Property="Background" Value="{x:Null}"/>
-<Setter Property="BorderThickness" Value="0"/>
-<Setter Property="BorderBrush" Value="DarkGray"/>
+<Setter Property="Padding" Value="10"/>
+<Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}"/>
+<Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}"/>
+<Setter Property="BorderThickness" Value="1.2"/>
+<Setter Property="Cursor" Value="Hand"/>
 <Setter Property="Template">
 <Setter.Value>
 <ControlTemplate TargetType="CheckBox">
-<Grid Margin="4">
-<Grid.ColumnDefinitions>
-<ColumnDefinition Width="Auto"/>
-<ColumnDefinition Width="*" />
-</Grid.ColumnDefinitions>
-<Border Width="20" Height="20"
-Grid.Column="0"
+<Border x:Name="Root"
+Background="{TemplateBinding Background}"
 BorderBrush="{TemplateBinding BorderBrush}"
-CornerRadius="5"
 BorderThickness="{TemplateBinding BorderThickness}"
-Background="{TemplateBinding Background}">
-<Grid>
-<TextBlock x:Name="CheckIcon" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-<Path x:Name="CheckMark"
-Margin="4"
-FlowDirection="LeftToRight"
-Stretch="Uniform"
-Stroke="White"
-StrokeThickness="2"
-Data="M 0 5 L 4 8 L 10 0"
-Visibility="Collapsed"
-HorizontalAlignment="Center"
-VerticalAlignment="Center"/>
-</Grid>
+CornerRadius="5"
+Padding="{TemplateBinding Padding}">
+<ContentPresenter
+HorizontalAlignment="Stretch"
+VerticalAlignment="Center"
+Content="{TemplateBinding Content}"
+ContentTemplate="{TemplateBinding ContentTemplate}"
+RecognizesAccessKey="True"/>
 </Border>
-<ContentPresenter Grid.Column="1" Margin="8 0 0 0" VerticalAlignment="Center"/>
-</Grid>
 <ControlTemplate.Triggers>
 <Trigger Property="IsChecked" Value="True">
-<Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-<Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
-<Setter TargetName="CheckIcon" Property="Visibility" Value="Hidden"/>
+<Setter TargetName="Root"
+Property="Background"
+Value="{DynamicResource ButtonHighlightColor}"/>
+<Setter Property="Foreground"
+Value="White"/>
 </Trigger>
 <Trigger Property="IsMouseOver" Value="True">
-<Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
-<Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-<Setter TargetName="CheckIcon" Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
-<Setter Property="Foreground" Value="{DynamicResource ButtonHighlightColor}"/>
-<Setter Property="Cursor" Value="Hand"/>
+<Setter TargetName="Root"
+Property="BorderBrush"
+Value="{DynamicResource ButtonHighlightColor}"/>
 </Trigger>
-<DataTrigger Binding="{Binding SelectedItem.Tag, ElementName=taps}" Value="apps">
-<Setter TargetName="CheckIcon" Property="Text" Value="📦"/>
-</DataTrigger>
-<DataTrigger Binding="{Binding SelectedItem.Tag, ElementName=taps}" Value="tweaks">
-<Setter TargetName="CheckIcon" Property="Text" Value="🛠"/>
-</DataTrigger>
+<Trigger Property="IsEnabled" Value="False">
+<Setter TargetName="Root"
+Property="Opacity"
+Value="0.5"/>
+</Trigger>
 </ControlTemplate.Triggers>
 </ControlTemplate>
 </Setter.Value>
@@ -2916,26 +2902,16 @@ HorizontalAlignment="Center"
 </ItemsControl.ItemsPanel>
 <ItemsControl.ItemTemplate>
 <DataTemplate>
-<Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
-CornerRadius="5"
-Padding="10"
-Margin="5"
-BorderBrush="{DynamicResource BorderBrushColor}"
-BorderThickness="1.2">
-<Grid>
-<Grid.RowDefinitions>
-<RowDefinition Height="auto"/>
-</Grid.RowDefinitions>
-<CheckBox
-Grid.Row="0"
-Content="{Binding Content}"
-IsChecked="{Binding IsChecked}"
+<CheckBox IsChecked="{Binding IsChecked}"
 ToolTip="{Binding Description}"
+Margin="5">
+<StackPanel Orientation="Horizontal">
+<TextBlock Text="{Binding Content}"
+VerticalAlignment="Center"
 FontSize="14"
-FontWeight="SemiBold"
-HorizontalContentAlignment="Stretch"/>
-</Grid>
-</Border>
+FontWeight="SemiBold"/>
+</StackPanel>
+</CheckBox>
 </DataTemplate>
 </ItemsControl.ItemTemplate>
 </ItemsControl>
@@ -3020,22 +2996,29 @@ HorizontalAlignment="Center"
 </ItemsControl.ItemsPanel>
 <ItemsControl.ItemTemplate>
 <DataTemplate>
-<Border Background="{DynamicResource SecondaryPrimaryBackgroundColor}"
+<Border Background="{DynamicResource PrimaryBackgroundColor}"
 CornerRadius="5"
-Padding="10"
-Margin="5"
+Padding="5"
+Margin="0"
 BorderBrush="{DynamicResource BorderBrushColor}"
-BorderThickness="1.2">
+BorderThickness="0">
 <StackPanel>
 <CheckBox
-Grid.Row="0"
-Content="{Binding Content}"
 IsChecked="{Binding IsChecked}"
 ToolTip="{Binding Description}"
+HorizontalContentAlignment="Stretch">
+<StackPanel Orientation="Horizontal">
+<TextBlock Text="{Binding Content}"
 FontSize="14"
-FontWeight="SemiBold"
-HorizontalContentAlignment="Stretch"/>
-<TextBlock Text="{Binding Requires}" Margin="5" FontSize="12" FontFamily="Segoe UI Emoji" Foreground="{DynamicResource SecondaryTextColor}"/>
+FontWeight="SemiBold"/>
+<TextBlock Text=" "
+FontSize="14"
+FontWeight="SemiBold"/>
+<TextBlock Text="{Binding Requires}"
+FontSize="14"
+FontWeight="SemiBold"/>
+</StackPanel>
+</CheckBox>
 </StackPanel>
 </Border>
 </DataTemplate>
