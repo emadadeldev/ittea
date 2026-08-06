@@ -7,7 +7,6 @@
     "winget": "Brave.Brave",
     "itt": "na",
     "category": "Web Browsers",
-    "link": "https://brave.com/",
     "IsChecked": false
   },
   {
@@ -18,7 +17,6 @@
     "winget": "Mozilla.Firefox",
     "itt": "na",
     "category": "Web Browsers",
-    "link": "https://www.firefox.com/",
     "IsChecked": false
   },
   {
@@ -29,7 +27,6 @@
     "winget": "Alex313031.Thorium.AVX2",
     "itt": "na",
     "category": "Web Browsers",
-    "link": "https://thorium.rocks/",
     "IsChecked": false
   },
   {
@@ -40,7 +37,6 @@
     "winget": "Google.Chrome",
     "itt": "na",
     "category": "Web Browsers",
-    "link": "https://www.google.com/chrome/",
     "IsChecked": false
   },
   {
@@ -51,7 +47,6 @@
     "winget": "Alex313031.Thorium",
     "itt": "na",
     "category": "Web Browsers",
-    "link": "https://thorium.rocks/",
     "IsChecked": false
   },
   {
@@ -62,7 +57,6 @@
     "winget": "Mozilla.Firefox.ESR",
     "itt": "na",
     "category": "Web Browsers",
-    "link": "https://www.firefox.com/",
     "IsChecked": false
   },
   {
@@ -73,8 +67,17 @@
     "winget": "Microsoft.Edge",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://www.microsoft.com/edge"
+    "IsChecked": false
+  },
+  {
+    "Content": "Chromium",
+    "Description": "An open-source web browser project that serves as the foundation",
+    "choco": "chromium",
+    "scoop": "extras/chromium",
+    "winget": "eloston.ungoogled-chromium",
+    "itt": "na",
+    "category": "Web Browsers",
+    "IsChecked": false
   },
   {
     "Content": "Tor Browser",
@@ -84,8 +87,7 @@
     "winget": "TorProject.TorBrowser",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://www.torproject.org/"
+    "IsChecked": false
   },
   {
     "Content": "Opera",
@@ -95,8 +97,7 @@
     "winget": "Opera.Opera",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://www.opera.com/download"
+    "IsChecked": false
   },
   {
     "Content": "Internet Download Manager",
@@ -106,8 +107,7 @@
     "winget": "Tonec.InternetDownloadManager",
     "itt": "na",
     "category": "Utilities",
-    "IsChecked": false,
-    "link": "https://www.internetdownloadmanager.com/"
+    "IsChecked": false
   },
   {
     "Content": "JDownloader",
@@ -117,8 +117,7 @@
     "winget": "AppWork.JDownloader",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://jdownloader.org/"
+    "IsChecked": false
   },
   {
     "Content": "KLite Mega Codec Full Pack",
@@ -128,7 +127,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Media",
-    "link": "https://codecguide.com/download_kl.htm",
     "IsChecked": false
   },
   {
@@ -139,8 +137,7 @@
     "winget": "Daum.PotPlayer",
     "itt": "na",
     "category": "Media",
-    "IsChecked": false,
-    "link": "https://potplayer.tv/"
+    "IsChecked": false
   },
   {
     "Content": "VLC",
@@ -150,8 +147,7 @@
     "winget": "VideoLAN.VLC",
     "itt": "na",
     "category": "Media",
-    "IsChecked": false,
-    "link": "https://www.videolan.org/vlc/"
+    "IsChecked": false
   },
   {
     "Content": "Kodi",
@@ -161,8 +157,7 @@
     "winget": "9NBLGGH4T892",
     "itt": "na",
     "category": "Media",
-    "IsChecked": false,
-    "link": "https://kodi.tv/"
+    "IsChecked": false
   },
   {
     "Content": "Jellyfin Server",
@@ -172,8 +167,7 @@
     "winget": "Jellyfin.Server",
     "itt": "na",
     "category": "Media",
-    "IsChecked": false,
-    "link": "https://jellyfin.org/"
+    "IsChecked": false
   },
   {
     "Content": "Winamp",
@@ -183,8 +177,7 @@
     "winget": "Winamp.Winamp",
     "itt": "na",
     "category": "Media",
-    "IsChecked": false,
-    "link": "https://www.winamp.com/"
+    "IsChecked": false
   },
   {
     "Content": "Aimp",
@@ -194,8 +187,7 @@
     "winget": "AIMP.AIMP",
     "itt": "aimp",
     "category": "Media",
-    "IsChecked": false,
-    "link": "https://www.aimp.ru/"
+    "IsChecked": false
   },
   {
     "Content": "Spotify",
@@ -205,8 +197,7 @@
     "winget": "Spotify.Spotify",
     "itt": "na",
     "category": "Media",
-    "IsChecked": false,
-    "link": "https://www.spotify.com/"
+    "IsChecked": false
   },
   {
     "Content": "FastStone Image Viewer",
@@ -216,8 +207,7 @@
     "winget": "FastStone.Viewer",
     "itt": "na",
     "category": "Imaging",
-    "IsChecked": false,
-    "link": "https://www.faststone.org/FSViewer.htm"
+    "IsChecked": false
   },
   {
     "Content": "OpenOffice",
@@ -227,18 +217,16 @@
     "winget": "Apache.OpenOffice",
     "itt": "na",
     "category": "Documents",
-    "link": "https://www.openoffice.org/",
     "IsChecked": false
   },
   {
-    "Content": "Foxit Reader",
+    "Content": "FoxitReader",
     "Description": "A lightweight and feature-rich PDF reader with annotation, form filling",
     "choco": "foxitreader",
     "scoop": "extras/foxit-reader",
     "winget": "Foxit.FoxitReader",
     "itt": "na",
     "category": "Documents",
-    "link": "https://www.foxit.com/pdf-reader/",
     "IsChecked": false
   },
   {
@@ -249,8 +237,7 @@
     "winget": "Foxit.FoxitReader",
     "itt": "na",
     "category": "Documents",
-    "IsChecked": false,
-    "link": "https://www.libreoffice.org/"
+    "IsChecked": false
   },
   {
     "Content": "SumatraPDF",
@@ -260,8 +247,7 @@
     "winget": "SumatraPDF.SumatraPDF",
     "itt": "na",
     "category": "Documents",
-    "IsChecked": false,
-    "link": "https://www.sumatrapdfreader.org/free-pdf-reader.html",
+    "IsChecked": false
   },
   {
     "Content": "WinRAR",
@@ -271,8 +257,7 @@
     "winget": "RARLab.WinRAR",
     "itt": "na",
     "category": "Compression",
-    "IsChecked": false,
-    "link": "https://www.win-rar.com/"
+    "IsChecked": false
   },
   {
     "Content": "7Zip",
@@ -282,8 +267,7 @@
     "winget": "7zip.7zip",
     "itt": "na",
     "category": "Compression",
-    "IsChecked": false,
-    "link": "https://www.7-zip.org/"
+    "IsChecked": false
   },
   {
     "Content": "PeaZip",
@@ -293,7 +277,6 @@
     "winget": "Giorgiotani.Peazip",
     "itt": "na",
     "category": "Compression",
-    "link": "https://peazip.github.io/",
     "IsChecked": false
   },
   {
@@ -304,7 +287,6 @@
     "winget": "Telegram.TelegramDesktop",
     "itt": "na",
     "category": "Communication",
-     "link": "https://telegram.org/",
     "IsChecked": false
   },
   {
@@ -315,7 +297,6 @@
     "winget": "OpenWhisperSystems.Signal",
     "itt": "na",
     "category": "Communication",
-    "link": "https://signal.org/",
     "IsChecked": false
   },
   {
@@ -326,7 +307,6 @@
     "winget": "9WZDNCRF0083",
     "itt": "na",
     "category": "Communication",
-    "link": "https://www.messenger.com/",
     "IsChecked": false
   },
   {
@@ -337,7 +317,6 @@
     "winget": "Zoom.ZoomRooms",
     "itt": "na",
     "category": "Communication",
-    "link": "https://zoom.us/",
     "IsChecked": false
   },
   {
@@ -348,7 +327,6 @@
     "winget": "Microsoft.Teams",
     "itt": "na",
     "category": "Communication",
-    "link": "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software",
     "IsChecked": false
   },
   {
@@ -359,7 +337,6 @@
     "winget": "Discord.Discord",
     "itt": "na",
     "category": "Communication",
-    "link": "https://discord.com/",
     "IsChecked": false
   },
   {
@@ -370,7 +347,6 @@
     "winget": "TeamViewer.TeamViewer",
     "itt": "na",
     "category": "File Sharing",
-    "link": "https://www.teamviewer.com/",
     "IsChecked": false
   },
   {
@@ -381,7 +357,6 @@
     "winget": "GIMP.GIMP",
     "itt": "na",
     "category": "Imaging",
-    "link": "https://www.gimp.org/",
     "IsChecked": false
   },
   {
@@ -392,7 +367,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Runtimes",
-    "link": "https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads",
     "IsChecked": false
   },
   {
@@ -403,7 +377,106 @@
     "winget": "Microsoft.DirectX",
     "itt": "na",
     "category": "Runtimes",
-    "link": "https://www.microsoft.com/en-us/download/details.aspx?id=35",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2005 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed",
+    "choco": "vcredist2005",
+    "scoop": "extras/vcredist2005",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2005 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications",
+    "choco": "vcredist2005",
+    "scoop": "na",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2008 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed",
+    "choco": "vcredist2008",
+    "scoop": "extras/vcredist2008",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2008 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications",
+    "choco": "vcredist2008",
+    "scoop": "extras/vcredist2008",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2010 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed",
+    "choco": "vcredist2010",
+    "scoop": "extras/vcredist2010",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2010 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications",
+    "choco": "vcredist2010",
+    "scoop": "extras/vcredist2010",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2012 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed",
+    "choco": "vcredist2012",
+    "scoop": "extras/vcredist2012",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2012 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications",
+    "choco": "vcredist2012",
+    "scoop": "extras/vcredist2012",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2013 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed",
+    "choco": "vcredist2013",
+    "scoop": "extras/vcredist2013",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
+    "IsChecked": false
+  },
+  {
+    "Content": "Microsoft Visual C++ 2013 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications",
+    "choco": "vcredist2013",
+    "scoop": "extras/vcredist2013",
+    "winget": "na",
+    "itt": "na",
+    "category": "Runtimes",
     "IsChecked": false
   },
   {
@@ -414,7 +487,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Runtimes",
-    "link": "https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads",
     "IsChecked": false
   },
   {
@@ -425,7 +497,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Runtimes",
-    "link": "https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads",
     "IsChecked": false
   },
   {
@@ -436,7 +507,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Runtimes",
-    "link": "https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads",
     "IsChecked": false
   },
   {
@@ -447,18 +517,16 @@
     "winget": "na",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.amd.com/en/products/processors/chipsets.html",
     "IsChecked": false
   },
   {
-    "Content": "NVIDIA Display Driver",
+    "Content": "NVidia Display Driver",
     "Description": "The software component that allows the operating system and installed",
     "choco": "nvidia-display-driver",
     "scoop": "nonportable/nvidia-display-driver-np",
     "winget": "na",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.nvidia.com/en-us/drivers/",
     "IsChecked": false
   },
   {
@@ -469,18 +537,16 @@
     "winget": "Nvidia.GeForceExperience",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.nvidia.com/en-us/software/nvidia-app/",
     "IsChecked": false
   },
   {
-    "Content": "MSI Afterburner",
+    "Content": "Msi Afterburner",
     "Description": "MSI Afterburner is the ultimate graphics card utility, co-developed by",
     "choco": "msiafterburner",
     "scoop": "extras/msiafterburner",
     "winget": "Guru3D.Afterburner",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.msi.com/Landing/afterburner",
     "IsChecked": false
   },
   {
@@ -491,7 +557,6 @@
     "winget": "Nvidia.PhysXLegacy",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.nvidia.com/en-us/drivers/physx/physx-9-19-0218-driver/",
     "IsChecked": false
   },
   {
@@ -502,7 +567,6 @@
     "winget": "Valve.Steam",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://store.steampowered.com/",
     "IsChecked": false
   },
   {
@@ -513,7 +577,6 @@
     "winget": "Ubisoft.Connect",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://ubisoftconnect.com/",
     "IsChecked": false
   },
   {
@@ -524,7 +587,6 @@
     "winget": "ElectronicArts.Origin",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://www.origin.com/",
     "IsChecked": false
   },
   {
@@ -535,7 +597,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://www.rockstargames.com/launcher",
     "IsChecked": false
   },
   {
@@ -546,18 +607,16 @@
     "winget": "InsaneMatt.GameSaveManager",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://www.gamesave-manager.com/",
     "IsChecked": false
   },
   {
-    "Content": "Streamlabs OBS",
+    "Content": "StreamlabsOBS",
     "Description": "A free and open-source streaming software built on top of",
     "choco": "streamlabs-obs",
     "scoop": "extras/streamlabs-obs",
     "winget": "Streamlabs.StreamlabsOBS",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://streamlabs.com/",
     "IsChecked": false
   },
   {
@@ -568,7 +627,6 @@
     "winget": "OBSProject.OBSStudio",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://obsproject.com/",
     "IsChecked": false
   },
   {
@@ -579,7 +637,6 @@
     "winget": "Logitech.LGS",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://www.logitech.com/en-us/gaming/software",
     "IsChecked": false
   },
   {
@@ -590,7 +647,6 @@
     "winget": "rocksdanister.LivelyWallpaper",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://www.rocksdanister.com/lively/",
     "IsChecked": false
   },
   {
@@ -601,7 +657,6 @@
     "winget": "Playnite.Playnite",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://playnite.link/",
     "IsChecked": false
   },
   {
@@ -612,7 +667,6 @@
     "winget": "Easeware.DriverEasy",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.drivereasy.com/",
     "IsChecked": false
   },
   {
@@ -623,7 +677,6 @@
     "winget": "Intel.IntelDriverAndSupportAssistant",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.intel.com/content/www/us/en/support/driver-support.html",
     "IsChecked": false
   },
   {
@@ -634,7 +687,6 @@
     "winget": "samlab-ws.SnappyDriverInstaller",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://sdi-tool.org/",
     "IsChecked": false
   },
   {
@@ -645,7 +697,6 @@
     "winget": "IObit.DriverBooster",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.iobit.com/en/driver-booster.php",
     "IsChecked": false
   },
   {
@@ -656,7 +707,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://driver-genius.com/",
     "IsChecked": false
   },
   {
@@ -667,7 +717,6 @@
     "winget": "Wagnardsoft.DisplayDriverUninstaller",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://www.guru3d.com/download/display-driver-uninstaller-download/",
     "IsChecked": false
   },
   {
@@ -678,7 +727,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Drivers",
-    "link": "https://github.com/lostindark/driverstoreExplorer",
     "IsChecked": false
   },
   {
@@ -689,7 +737,6 @@
     "winget": "AgileBits.1Password",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://1password.com/",
     "IsChecked": false
   },
   {
@@ -700,7 +747,6 @@
     "winget": "AOMEI.PartitionAssistant",
     "itt": "na",
     "category": "Disk Tools",
-    "link": "https://www.aomeitech.com/",
     "IsChecked": false
   },
   {
@@ -711,7 +757,6 @@
     "winget": "AOMEI.Backupper.Standard",
     "itt": "na",
     "category": "Disk Tools",
-    "link": "https://www.aomeitech.com/ab/standard.html",
     "IsChecked": false
   },
   {
@@ -722,7 +767,6 @@
     "winget": "Piriform.Recuva",
     "itt": "na",
     "category": "Disk Tools",
-    "link": "https://www.ccleaner.com/recuva",
     "IsChecked": false
   },
   {
@@ -733,7 +777,6 @@
     "winget": "SingularLabs.CCEnhancer",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.ccleaner.com/",
     "IsChecked": false
   },
   {
@@ -744,7 +787,6 @@
     "winget": "Klocman.BulkCrapUninstaller",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.bcuninstaller.com/",
     "IsChecked": false
   },
   {
@@ -755,7 +797,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.sordum.org/7615/easy-context-menu-v1-6/",
     "IsChecked": false
   },
   {
@@ -766,7 +807,6 @@
     "winget": "REALiX.HWiNFO",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.hwinfo.com/",
     "IsChecked": false
   },
   {
@@ -777,7 +817,6 @@
     "winget": "Piriform.Speccy",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.ccleaner.com/speccy/download",
     "IsChecked": false
   },
   {
@@ -788,7 +827,6 @@
     "winget": "Geeks3D.FurMark",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://geeks3d.com/furmark/",
     "IsChecked": false
   },
   {
@@ -799,7 +837,6 @@
     "winget": "JanosMathe.HardDiskSentinelPro",
     "itt": "na",
     "category": "Disk Tools",
-    "link": "https://www.hdsentinel.com/",
     "IsChecked": false
   },
   {
@@ -810,7 +847,6 @@
     "winget": "CPUID.CPU-Z",
     "itt": "na",
     "category": "Utilities",
-     "link": "https://www.cpuid.com/softwares/cpu-z.html",
     "IsChecked": false
   },
   {
@@ -821,7 +857,6 @@
     "winget": "Henry++.MemReduct",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://memreduct.org/",
     "IsChecked": false
   },
   {
@@ -832,7 +867,6 @@
     "winget": "HandBrake.HandBrake",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://handbrake.fr/",
     "IsChecked": false
   },
   {
@@ -843,7 +877,6 @@
     "winget": "Rufus.Rufus",
     "itt": "na",
     "category": "Portable",
-    "link": "https://rufus.ie/en/",
     "IsChecked": false
   },
   {
@@ -854,7 +887,6 @@
     "winget": "LIGHTNINGUK.ImgBurn",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.imgburn.com/",
     "IsChecked": false
   },
   {
@@ -865,7 +897,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.elby.ch/en/products/vcd.html",
     "IsChecked": false
   },
   {
@@ -876,7 +907,6 @@
     "winget": "EZBSystems.UltraISO",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.ultraiso.com/",
     "IsChecked": false
   },
   {
@@ -887,7 +917,6 @@
     "winget": "Ventoy.Ventoy",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.ventoy.net/",
     "IsChecked": false
   },
   {
@@ -898,7 +927,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.ventoy.net/",
     "IsChecked": false
   },
   {
@@ -909,7 +937,6 @@
     "winget": "AutoHotkey.AutoHotkey",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.autohotkey.com/",
     "IsChecked": false
   },
   {
@@ -920,7 +947,6 @@
     "winget": "Rainmeter.Rainmeter",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.rainmeter.net/",
     "IsChecked": false
   },
   {
@@ -931,7 +957,6 @@
     "winget": "FxSoundLLC.FxSound",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.fxsound.com/",
     "IsChecked": false
   },
   {
@@ -942,7 +967,6 @@
     "winget": "Vysor.Vysor",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.vysor.io/",
     "IsChecked": false
   },
   {
@@ -953,7 +977,6 @@
     "winget": "UnifiedIntents.UnifiedRemote",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.unifiedremote.com/",
     "IsChecked": false
   },
   {
@@ -964,7 +987,6 @@
     "winget": "AnyDeskSoftwareGmbH.AnyDesk",
     "itt": "na",
     "category": "File Sharing",
-    "link": "https://anydesk.com/",
     "IsChecked": false
   },
   {
@@ -975,7 +997,6 @@
     "winget": "AirDroid.AirDroid",
     "itt": "na",
     "category": "File Sharing",
-    "link": "https://web.airdroid.com/",
     "IsChecked": false
   },
   {
@@ -986,7 +1007,6 @@
     "winget": "DucFabulous.UltraViewer",
     "itt": "na",
     "category": "File Sharing",
-    "link": "https://www.ultraviewer.net/",
     "IsChecked": false
   },
   {
@@ -997,7 +1017,6 @@
     "winget": "NirSoft.WirelessNetworkWatcher",
     "itt": "na",
     "category": "Portable",
-    "link": "https://www.nirsoft.net/utils/wireless_network_watcher.html",
     "IsChecked": false
   },
   {
@@ -1008,7 +1027,6 @@
     "winget": "NirSoft.WifiInfoView",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.nirsoft.net/utils/wifi_information_view.html",
     "IsChecked": false
   },
   {
@@ -1019,7 +1037,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://www.nirsoft.net/",
     "IsChecked": false
   },
   {
@@ -1030,7 +1047,6 @@
     "winget": "qBittorrent.qBittorrent",
     "itt": "na",
     "category": "File Sharing",
-    "link": "https://www.qbittorrent.org/",
     "IsChecked": false
   },
   {
@@ -1041,7 +1057,6 @@
     "winget": "Google.EarthPro",
     "itt": "na",
     "category": "Imaging",
-    "link": "https://earth.google.com/web",
     "IsChecked": false
   },
   {
@@ -1052,7 +1067,6 @@
     "winget": "ApacheFriends.Xampp.8.2",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.apachefriends.org/",
     "IsChecked": false
   },
   {
@@ -1063,7 +1077,6 @@
     "winget": "Microsoft.VisualStudio.2022.Professional",
     "itt": "na",
     "category": "Development",
-    "link": "https://visualstudio.microsoft.com/vs/older-downloads/",
     "IsChecked": false
   },
   {
@@ -1074,7 +1087,6 @@
     "winget": "Microsoft.VisualStudio.2022.Community",
     "itt": "na",
     "category": "Development",
-    "link": "https://visualstudio.microsoft.com/vs/older-downloads/",
     "IsChecked": false
   },
   {
@@ -1085,7 +1097,6 @@
     "winget": "Unity.UnityHub",
     "itt": "na",
     "category": "Development",
-    "link": "https://unity.com/",
     "IsChecked": false
   },
   {
@@ -1096,7 +1107,6 @@
     "winget": "GodotEngine.GodotEngine",
     "itt": "na",
     "category": "Development",
-    "link": "https://godotengine.org/",
     "IsChecked": false
   },
   {
@@ -1107,8 +1117,7 @@
     "winget": "Unity.Unity.2020",
     "itt": "na",
     "category": "Development",
-    "link": "https://unity.com/",
-      "IsChecked": false
+    "IsChecked": false
   },
   {
     "Content": "Blender",
@@ -1118,7 +1127,6 @@
     "winget": "BlenderFoundation.Blender",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.blender.org/download/",
     "IsChecked": false
   },
   {
@@ -1129,7 +1137,6 @@
     "winget": "Microsoft.VisualStudioCode",
     "itt": "na",
     "category": "Development",
-    "link": "https://code.visualstudio.com/",
     "IsChecked": false
   },
   {
@@ -1140,7 +1147,6 @@
     "winget": "vim.vim",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.vim.org/",
     "IsChecked": false
   },
   {
@@ -1151,7 +1157,6 @@
     "winget": "SublimeHQ.SublimeText.4",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.sublimetext.com/",
     "IsChecked": false
   },
   {
@@ -1162,7 +1167,6 @@
     "winget": "GitHub.Atom",
     "itt": "na",
     "category": "Development",
-    "link": "https://atom.io/",
     "IsChecked": false
   },
   {
@@ -1173,7 +1177,6 @@
     "winget": "JRSoftware.InnoSetup",
     "itt": "na",
     "category": "Development",
-    "link": "https://jrsoftware.org/",
     "IsChecked": false
   },
   {
@@ -1184,7 +1187,6 @@
     "winget": "JetBrains.PyCharm.Community",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.jetbrains.com/pycharm/",
     "IsChecked": false
   },
   {
@@ -1195,7 +1197,6 @@
     "winget": "JetBrains.PyCharm.Professional",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.jetbrains.com/pycharm/",
     "IsChecked": false
   },
   {
@@ -1206,7 +1207,6 @@
     "winget": "JetBrains.Rider",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.jetbrains.com/rider/",
     "IsChecked": false
   },
   {
@@ -1217,7 +1217,6 @@
     "winget": "OpenJS.NodeJS.LTS",
     "itt": "na",
     "category": "Development",
-    "link": "https://nodejs.org/",
     "IsChecked": false
   },
   {
@@ -1228,7 +1227,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Development",
-    "link": "https://electronjs.org/",
     "IsChecked": false
   },
   {
@@ -1239,7 +1237,6 @@
     "winget": "Electrum.Electrum",
     "itt": "na",
     "category": "Development",
-    "link": "https://electronjs.org/",
     "IsChecked": false
   },
   {
@@ -1250,7 +1247,6 @@
     "winget": "Hugo.Hugo",
     "itt": "na",
     "category": "Development",
-     "link": "https://github.com/gohugoio/hugo/",
     "IsChecked": false
   },
   {
@@ -1261,7 +1257,6 @@
     "winget": "Hugo.Hugo.Extended",
     "itt": "na",
     "category": "Development",
-     "link": "https://github.com/gohugoio/hugo/",
     "IsChecked": false
   },
   {
@@ -1272,7 +1267,6 @@
     "winget": "Notepad++.Notepad++",
     "itt": "na",
     "category": "Development",
-    "link": "https://notepad-plus-plus.org/",
     "IsChecked": false
   },
   {
@@ -1283,7 +1277,6 @@
     "winget": "Microsoft.WindowsTerminal",
     "itt": "na",
     "category": "Development",
-    "link": "https://aka.ms/terminal",
     "IsChecked": false
   },
   {
@@ -1294,7 +1287,6 @@
     "winget": "Microsoft.PowerShell",
     "itt": "na",
     "category": "Development",
-    "link": "https://github.com/PowerShell/PowerShell",
     "IsChecked": false
   },
   {
@@ -1305,7 +1297,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Portable",
-    "link": "https://x64dbg.com/",
     "IsChecked": false
   },
   {
@@ -1316,7 +1307,6 @@
     "winget": "dnSpyEx.dnSpy",
     "itt": "na",
     "category": "Development",
-    "link": "https://github.com/dnspy/dnspy",
     "IsChecked": false
   },
   {
@@ -1327,7 +1317,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.cheatengine.org/",
     "IsChecked": false
   },
   {
@@ -1338,7 +1327,6 @@
     "winget": "Python.Python.3.9",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.python.org/",
     "IsChecked": false
   },
   {
@@ -1349,7 +1337,6 @@
     "winget": "Git.Git",
     "itt": "na",
     "category": "Development",
-    "link": "https://git-scm.com/",
     "IsChecked": false
   },
   {
@@ -1360,7 +1347,6 @@
     "winget": "GitHub.GitHubDesktop",
     "itt": "na",
     "category": "Development",
-    "link": "https://desktop.github.com/",
     "IsChecked": false
   },
   {
@@ -1371,7 +1357,6 @@
     "winget": "Docker.DockerDesktop",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.docker.com/products/docker-desktop/",
     "IsChecked": false
   },
   {
@@ -1382,7 +1367,6 @@
     "winget": "Docker.DockerCompose",
     "itt": "na",
     "category": "Development",
-    "link": "https://docs.docker.com/compose/",
     "IsChecked": false
   },
   {
@@ -1393,7 +1377,6 @@
     "winget": "Microsoft.PowerToys",
     "itt": "na",
     "category": "Development",
-    "link": "https://learn.microsoft.com/en-us/windows/powertoys/",
     "IsChecked": false
   },
   {
@@ -1404,7 +1387,6 @@
     "winget": "Notion.Notion",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.notion.com/",
     "IsChecked": false
   },
   {
@@ -1415,7 +1397,6 @@
     "winget": "ImageLine.FLStudio",
     "itt": "na",
     "category": "Media Tools",
-    "link": "https://www.image-line.com/",
     "IsChecked": false
   },
   {
@@ -1426,7 +1407,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Development",
-    "link": "https://developer.android.com/tools/adb",
     "IsChecked": false
   },
   {
@@ -1437,7 +1417,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Development",
-    "link": "https://developer.android.com/tools/adb",
     "IsChecked": false
   },
   {
@@ -1448,7 +1427,6 @@
     "winget": "Genymobile.scrcpy",
     "itt": "na",
     "category": "Development",
-    "link": "https://scrcpy.org/",
     "IsChecked": false
   },
   {
@@ -1459,7 +1437,6 @@
     "winget": "Oracle.VirtualBox",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.virtualbox.org/",
     "IsChecked": false
   },
   {
@@ -1470,7 +1447,6 @@
     "winget": "JanDeDobbeleer.OhMyPosh",
     "itt": "na",
     "category": "Development",
-    "link": "https://ohmyposh.dev/",
     "IsChecked": false
   },
   {
@@ -1481,7 +1457,6 @@
     "winget": "Malwarebytes.Malwarebytes",
     "itt": "na",
     "category": "Security",
-    "link": "https://www.malwarebytes.com/",
     "IsChecked": false
   },
   {
@@ -1492,7 +1467,6 @@
     "winget": "XPDNZJFNCR1B07",
     "itt": "na",
     "category": "Security",
-    "link": "https://www.avast.com/free-antivirus-download",
     "IsChecked": false
   },
   {
@@ -1503,7 +1477,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Development",
-    "link": "https://www.nerdfonts.com/",
     "IsChecked": false
   },
   {
@@ -1524,8 +1497,7 @@
     "winget": "Audacity.Audacity",
     "itt": "na",
     "category": "Media Tools",
-    "IsChecked": false,
-    "link": "https://www.audacityteam.org/"
+    "IsChecked": false
   },
   {
     "Content": "MusicBee",
@@ -2065,7 +2037,6 @@
     "winget": "Apple.iTunes",
     "itt": "na",
     "category": "Media",
-    "link": "https://www.apple.com/itunes/",
     "IsChecked": false
   },
   {
@@ -2306,7 +2277,6 @@
     "winget": "MHNexus.HxD",
     "itt": "na",
     "category": "Disk Tools",
-    "link": "https://mh-nexus.de/en/hxd/",
     "IsChecked": false
   },
   {
@@ -2317,7 +2287,6 @@
     "winget": "EpicGames.EpicGamesLauncher",
     "itt": "na",
     "category": "Gaming",
-    "link": "https://www.epicgames.com/store/en-US/home",
     "IsChecked": false
   },
   {
@@ -2328,7 +2297,6 @@
     "winget": "VivaldiTechnologies.Vivaldi",
     "itt": "na",
     "category": "Web Browsers",
-    "link": "https://vivaldi.com/",
     "IsChecked": false
   },
   {
@@ -2349,7 +2317,6 @@
     "winget": "OpenShot.OpenShot",
     "itt": "na",
     "category": "Media Tools",
-    "link": "https://www.openshot.org/",
     "IsChecked": false
   },
   {
@@ -2360,7 +2327,6 @@
     "winget": "9NKSQGP7F2NH",
     "itt": "na",
     "category": "Communication",
-    "link": "https://apps.microsoft.com/detail/9nksqgp7f2nh",
     "IsChecked": false
   },
   {
@@ -2371,7 +2337,6 @@
     "winget": "dotPDNLLC.paintdotnet",
     "itt": "na",
     "category": "Imaging",
-    "link": "https://www.getpaint.net/",
     "IsChecked": false
   },
   {
@@ -2382,7 +2347,6 @@
     "winget": "Stretchly.Stretchly",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://stretchly.net/",
     "IsChecked": false
   },
   {
@@ -2483,7 +2447,6 @@
     "winget": "Microsoft.Sysinternals.Autoruns",
     "itt": "na",
     "category": "Utilities",
-    "link": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
     "IsChecked": false
   },
   {
@@ -4104,7 +4067,6 @@
     "winget": "na",
     "itt": "na",
     "category": "Portable",
-    "link": "https://web.telegram.org/",
     "IsChecked": false
   },
   {
