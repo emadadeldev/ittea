@@ -7,8 +7,8 @@
     "winget": "Brave.Brave",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://brave.com/"
+    "link": "https://brave.com/",
+    "IsChecked": false
   },
   {
     "Content": "Mozilla Firefox",
@@ -18,8 +18,8 @@
     "winget": "Mozilla.Firefox",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://www.firefox.com/"
+    "link": "https://www.firefox.com/",
+    "IsChecked": false
   },
   {
     "Content": "Thorium AVX",
@@ -29,8 +29,8 @@
     "winget": "Alex313031.Thorium.AVX2",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://thorium.rocks/"
+    "link": "https://thorium.rocks/",
+    "IsChecked": false
   },
   {
     "Content": "Google Chrome",
@@ -40,8 +40,8 @@
     "winget": "Google.Chrome",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://www.google.com/chrome/"
+    "link": "https://www.google.com/chrome/",
+    "IsChecked": false
   },
   {
     "Content": "Thorium SSE3",
@@ -51,8 +51,8 @@
     "winget": "Alex313031.Thorium",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://thorium.rocks/"
+    "link": "https://thorium.rocks/",
+    "IsChecked": false
   },
   {
     "Content": "Mozilla Firefox ESR",
@@ -62,8 +62,8 @@
     "winget": "Mozilla.Firefox.ESR",
     "itt": "na",
     "category": "Web Browsers",
-    "IsChecked": false,
-    "link": "https://www.mozilla.org/firefox/esr/"
+    "link": "https://www.firefox.com/",
+    "IsChecked": false
   },
   {
     "Content": "Microsoft Edge",
@@ -128,7 +128,7 @@
     "winget": "na",
     "itt": "na",
     "category": "Media",
-    "link": "https://www.codecguide.com/",
+    "link": "https://codecguide.com/download_kl.htm",
     "IsChecked": false
   },
   {
