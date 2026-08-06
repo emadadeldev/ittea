@@ -150,8 +150,8 @@ try {
     $c = [System.Net.Http.HttpClient]::new($h)
 
     # debug start
-        # $appsUrl = "http://127.0.0.1:5541/static/Database/Applications.json"
-        # $tweaksUrl = "http://127.0.0.1:5541/static/Database/Tweaks.json"
+        # $appsUrl = "http://127.0.0.1:5500/static/Database/Applications.json"
+         #$tweaksUrl = "http://127.0.0.1:5500/static/Database/Tweaks.json"
     # debug end
 
     $appsUrl = "https://raw.githubusercontent.com/emadadeldev/ittea/refs/heads/main/static/Database/Applications.json"
@@ -160,31 +160,48 @@ try {
 
     while ($true) {
         try {
-            $aTask, $tTask = $c.GetStringAsync($appsUrl), $c.GetStringAsync($tweaksUrl)
-            [Threading.Tasks.Task]::WaitAll($aTask, $tTask)
+            $appsTask   = $c.GetStringAsync($appsUrl)
+            $tweaksTask = $c.GetStringAsync($tweaksUrl)
 
-            # $splash.FindName("status").Text = "Getting Apps"
-            # [System.Windows.Threading.Dispatcher]::CurrentDispatcher.Invoke([Action]{}, [System.Windows.Threading.DispatcherPriority]::Render)
+            $appsJson   = $appsTask.GetAwaiter().GetResult()
+            $tweaksJson = $tweaksTask.GetAwaiter().GetResult()
 
-            $appsData = $aTask.Result | ConvertFrom-Json
-            $tweaksData = $tTask.Result | ConvertFrom-Json
-            # $localsUrl = $lTask.Result | ConvertFrom-Json
+            $appsData   = $appsJson | ConvertFrom-Json
+            $tweaksData = $tweaksJson | ConvertFrom-Json
 
-            if ($appsData -and $tweaksData) {
-                $itt.AppsListView.ItemsSource = $appsData
+            if ($appsData -and $tweaksData) 
+            {
+                foreach ($app in $appsData)
+                {
+                    if ($app.link)
+                    {
+                        $app | Add-Member -Force NoteProperty Icon (
+                            "https://www.google.com/s2/favicons?sz=64&domain_url=$([Uri]::EscapeDataString($app.link))"
+                        )
+
+                        $app | Add-Member -Force NoteProperty IconVisibility "Visible"
+                    }
+                    else
+                    {
+                        $app | Add-Member -Force NoteProperty Icon ""
+                        $app | Add-Member -Force NoteProperty IconVisibility "Collapsed"
+                    }
+                }
+
+                $itt.AppsListView.ItemsSource   = $appsData
                 $itt.TweaksListView.ItemsSource = $tweaksData
+
                 $splash.Close()
                 break
             }
-            else {
-                Write-Host "Still loading data..." -ForegroundColor Yellow
-            }
+
+            Write-Host "Still loading data..." -ForegroundColor Yellow
         }
         catch {
-            Write-Host "  Unstable internet connection detected. Retrying in 10 seconds...`n" -ForegroundColor Yellow
+            Write-Host "Unstable internet connection detected. Retrying in 10 seconds..." -ForegroundColor Yellow
         }
 
-        Start-Sleep 10
+        Start-Sleep -Seconds 10
     }
     #===========================================================================
     #endregion Fetch Data
