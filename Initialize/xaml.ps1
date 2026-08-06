@@ -170,23 +170,6 @@ try {
             $tweaksData = $tTask.Result | ConvertFrom-Json
             # $localsUrl = $lTask.Result | ConvertFrom-Json
 
-            foreach ($app in $appsData)
-            {
-                if ($app.link)
-                {
-                    $app | Add-Member -Force NoteProperty Icon (
-                        "https://www.google.com/s2/favicons?sz=64&domain_url=$([Uri]::EscapeDataString($app.link))"
-                    )
-
-                    $app | Add-Member -Force NoteProperty IconVisibility "Visible"
-                }
-                else
-                {
-                    $app | Add-Member -Force NoteProperty Icon ""
-                    $app | Add-Member -Force NoteProperty IconVisibility "Collapsed"
-                }
-            }
-
             if ($appsData -and $tweaksData) {
                 $itt.AppsListView.ItemsSource = $appsData
                 $itt.TweaksListView.ItemsSource = $tweaksData
