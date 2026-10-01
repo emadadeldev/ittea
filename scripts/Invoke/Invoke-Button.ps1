@@ -173,6 +173,9 @@ function Invoke-Button {
         "spotx" {
             Start-Process("https://github.com/SpotX-Official/SpotX")
         }
+        "bc" {
+            Start-Process("https://batscave.gitlab.io")
+        }
     }
 
     # debug start

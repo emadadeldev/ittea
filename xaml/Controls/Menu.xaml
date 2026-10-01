@@ -48,6 +48,11 @@
         <MenuItem Name="spotx" Header="SpotX" ToolTip="SpotX patcher used for patching the desktop version of Spotify"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
     </MenuItem>
 
+    <!-- Batman Cave -->
+    <MenuItem Name="bc" ToolTip="Arabic Communirty Archive" Header="Batman Cave" VerticalAlignment="Center" HorizontalAlignment="Center" >
+        <MenuItem.Icon><TextBlock Text="🦇"/></MenuItem.Icon>
+    </MenuItem>
+
     <!-- About -->
     <MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
         <MenuItem.Icon><TextBlock Text="🏅"/></MenuItem.Icon>
