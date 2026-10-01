@@ -37,7 +37,7 @@ $itt = [Hashtable]::Synchronized(@{
 ProcessRunning = $false
 database       = @{}
 api            = $null
-version        = "26.8.7"
+version        = "26.10.1"
 registryPath   = "HKCU:\Software\ITT@emadadel"
 Theme          = "default"
 Date           = (Get-Date -Format "MM/dd/yyy")
@@ -287,6 +287,9 @@ Start-Process("https://www.paypal.com/paypalme/emadadeldev")
 }
 "spotx" {
 Start-Process("https://github.com/SpotX-Official/SpotX")
+}
+"bc" {
+Start-Process("https://batscave.gitlab.io")
 }
 }
 }
@@ -1821,11 +1824,11 @@ $itt.$Name.Text = $NonKey
 }
 function Show-Event {
 $itt['window'].FindName('date').text = '05/11/2026'.Trim()
+$itt['window'].FindName('win').add_MouseLeftButtonDown({
+Start-Process('https://massgrave.dev/windows_ltsc_links#download-links')
+})
 $itt['window'].FindName('yt').add_MouseLeftButtonDown({
 Start-Process('https://youtu.be/0kZFi6NT1gI')
-})
-$itt['window'].FindName('win').add_MouseLeftButtonDown({
-Start-Process('https://linkjust.com/massgravelts')
 })
 $storedDate = [datetime]::ParseExact($itt['window'].FindName('date').Text, 'MM/dd/yyyy', $null)
 $daysElapsed = (Get-Date) - $storedDate
@@ -2663,6 +2666,9 @@ AutoReverse="True"/>
 <MenuItem Name="asustool" Header="ASUS Setup Tool" ToolTip="Tool that manages the setup installation for the legacy Aura Sync, LiveDash, AiSuite3"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 <MenuItem Name="spotx" Header="SpotX" ToolTip="SpotX patcher used for patching the desktop version of Spotify"><MenuItem.Icon><TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/></MenuItem.Icon></MenuItem>
 </MenuItem>
+<MenuItem Name="bc" ToolTip="Arabic Communirty Archive" Header="Batman Cave" VerticalAlignment="Center" HorizontalAlignment="Center" >
+<MenuItem.Icon><TextBlock Text="🦇"/></MenuItem.Icon>
+</MenuItem>
 <MenuItem Name="dev" ToolTip="Send your feedback" Header="{Binding About}" VerticalAlignment="Center" HorizontalAlignment="Center" >
 <MenuItem.Icon><TextBlock Text="🏅"/></MenuItem.Icon>
 </MenuItem>
@@ -2683,7 +2689,7 @@ HorizontalAlignment="Left" VerticalAlignment="Center"/>
 <TabItem.Header>
 <Grid>
 <TextBlock Text="itt" FontFamily="Arial" FontWeight="Bold" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-<TextBlock Name="hotdot" Text="🎉" FontSize="14" HorizontalAlignment="Right" Visibility="Hidden" Padding="0,0,0,67" Style="{StaticResource BlinkingDotStyle}" />
+<TextBlock Name="hotdot" Text="●" Foreground="red" FontSize="14" HorizontalAlignment="Right" Visibility="Hidden" Padding="0,0,0,67" Style="{StaticResource BlinkingDotStyle}" />
 </Grid>
 </TabItem.Header>
 <Border Background="transparent" Padding="20">
