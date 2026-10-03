@@ -4268,5 +4268,15 @@
     "itt": "na",
     "category": "Communication",
     "IsChecked": false
+  },
+  {
+    "Content": "Winaero Tweaker",
+    "Description": "Winaero Tweaker is a system utility that allows you to customize and tweak various aspects of your Windows operating system",
+    "choco": "winaero-tweaker.portable",
+    "scoop": "na",
+    "winget": "na",
+    "itt": "na",
+    "category": "Portable",
+    "IsChecked": false
   }
 ]
