@@ -29,7 +29,7 @@ ITT (Install Tweaks Tool) included most Windows 10/11 Software and Tweaks
 ![Usage](https://img.shields.io/endpoint?url=https://itt.emadadel4-a0a.workers.dev/count&style=flat-square)
 ![Version](https://img.shields.io/badge/Version-26.10.1-blue?logo=git&logoColor=white&style=flat-square)
 ![Script](https://img.shields.io/github/size/emadadeldev/ittea/itt.ps1?label=Script%20&logo=git&logoColor=white&style=flat-square)
-[![VirusTotal](https://img.shields.io/badge/VirusTotal-Clean-blue?logo=virustotal)](https://www.virustotal.com/gui/url/591b66d6e7206f7dafd53bef0b3bee4116914db6bbfe576078c591d603096a27)
+[![VirusTotal](https://img.shields.io/badge/VirusTotal-Clean-blue?logo=virustotal)](https://www.virustotal.com/gui/url/657167ecf9ab5978863e86535b4d7edae42a23289edae72bb3e3c25b9c6ad378)
 [![Discord](https://img.shields.io/badge/Discord-Join-2f80ed?logo=discord&logoColor=white&style=flat-square)](https://discord.com/invite/6HkJpAWpSM)
 
 [![Arabic](https://flagcdn.com/w20/ps.png)](/locales/ar.csv)
